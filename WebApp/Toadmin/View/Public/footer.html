@@ -1,0 +1,10 @@
+</body>
+<notempty name="alert">
+<script>
+alert("{$alert['message']}");
+<?php if (!empty($alert['jumpUrl'])) { ?>
+window.location.href = "{$alert['jumpUrl']}";
+<?php } ?>
+</script>
+</notempty>
+</html>

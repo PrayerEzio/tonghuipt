@@ -1,0 +1,162 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main" style="background-color: #f7f7f7">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <a href="{:U('Member/index')}">会员中心</a> / <span>订单管理</span>
+        </div>
+        <div class="member">
+            {:W('Menu/index')}
+            <div class="memberR fl">
+                <h3 style="color: #0D6FB8">订单状态</h3>
+                <ul class="clearfix ddzt">
+                    <li class="fl">维修单号：{$info['rp_sn']}</li>
+                    <li class="fl">下单时间：{$info['addtime']|date='Y-m-d H:i:s',###}</li>
+                    <li class="fl">订单状态：{$info['rp_status']|get_rp_status_name}</li>
+                    <li class="fl">会员：{$info['member_id']|get_member_nickname}</li>
+                </ul>
+                <h3 style="color: #0D6FB8">订单详情</h3>
+                <h3>分配维修商信息</h3>
+                <p class="wxsP">维修商：{$info['admin_id']|get_member_nickname}</p>
+                <h3>故障信息</h3>
+                <div class="order">
+                    <div class="orderHeader"><span>商品信息</span>
+                        <ul class="fr">
+                            <li class="fl" style="width: 240px;">机器号</li>
+                            <li class="fl" style="width: 240px;">故障分类</li>
+                            <li class="fl" style="width: 240px;">故障描述</li>
+                        </ul>
+                    </div>
+                    <div class="orderBottom">
+                        <dl class="fl" style="width: 100px;">
+                            <dt class="fl"><a href="{:U('Goods/detail',array('id'=>$info['Goods']['goods_id']))}" target="_blank"><notempty name="v['goods_pic']"><img src="__IMG__/{$v['goods_pic']}" alt="" width="56" height="56"><else/><img src="__IMG__/nopic.jpg" alt="" width="56" height="56"></notempty>{$info['Goods']['goods_name']}</a></dt>
+                        </dl>
+                        <ul class="fr">
+                            <li class="fl" style="width: 240px;">{$info['machine_code']}</li>
+                            <li class="fl" style="width: 240px;">{$info['Breakdown']['bd_name']}</li>
+                            <li class="fl" style="width: 240px;">{$info['content']}</li>
+                        </ul>
+                    </div>
+                </div>
+                <h3>订单日志</h3>
+                <ul class="clearfix ddrz">
+                    <li class="fl">时间</li>
+                    <li class="fl">日志信息</li>
+                    <notempty name="info['RepairLog']">
+		              <volist name="info['RepairLog']" id="vo">
+		              	<li class="fl">{$vo['log_time']|date='Y-m-d H:i:s',###}</li>
+                    	<li class="fl">{$vo['log_content']}</li>
+		              </volist>
+		            <else/>
+		            	没有找到相关记录
+		            	<!-- <tr><td colspan="2">没有找到相关记录</td></tr> -->
+		            </notempty>
+                </ul>
+                <h3>维修报价<span style="color: #0D6FB8"><if condition="$info['rp_status'] eq 1 && $member_type eq 1">&nbsp;&nbsp;|<a href="JavaScript:submitRm()">提交报价单</a></if></span></h3>
+                <form class="wxd" id="submitRm" style="margin-bottom: 20px;" method="post">
+                    <ul class="clearfix">
+                        <li class="fl">损坏部位</li>
+                        <li class="fl">维修/更换</li>
+                        <li class="fl">数量</li>
+                        <li class="fl">维修天数</li>
+                        <li class="fl">单价</li>
+                        <li class="fl">备注</li>
+                        <if condition="$info['rp_status'] eq 1 && $member_type eq 1">
+                        <li class="fl">操作</li>
+                        </if>
+                    </ul>
+                    <if condition="$info['rp_status'] eq 1 && $member_type eq 1">
+                    <div class="cloneBox" id="addRmTr">
+                        <volist name="info['RepairMenu']" id="vo">
+                        <ul class="clearfix" id="rm_{$vo['rm_id']}" rm_id="{$vo['rm_id']}">
+                        	<li class="fl"><input type="text" name="rm_{$vo['rm_id']}[name]" value="{$vo['name']}"></li>
+							<li class="fl">
+                                <select name="rm_{$vo['rm_id']}[type]">
+									<option value="0" <eq name="vo['type']" value="0">selected</eq>>维修</option>
+									<option value="1" <eq name="vo['type']" value="1">selected</eq>>更换</option>
+								</select>
+                            </li>
+							<li class="fl"><input type="text" name="rm_{$vo['rm_id']}[num]" value="{$vo['num']}"></li>
+							<li class="fl"><input type="text" name="rm_{$vo['rm_id']}[day]" value="{$vo['day']}"></li>
+							<li class="fl"><input type="text" name="rm_{$vo['rm_id']}[price]" value="{$vo['price']|price_format}"></li>
+							<li class="fl"><input type="text" name="rm_{$vo['rm_id']}[remark]" value="{$vo['remark']}"></li>
+							<li class="fl"><a href="JavaScript:removeRmTr({$vo['rm_id']});">移除</a></li>
+	              		</ul>
+	              		</volist>
+                    </div>
+                    <a href="JavaScript:addRmTr();" class="new">新增</a>
+                    <div class="discover clearfix" style="width:100%">
+                        <div class="discoverL fl">故障原因</div>
+                        <div class="discoverR fl" style="padding:0;width:695px"><textarea name="rp_report" style="width:100%;height:100%">{$info['rp_report']}</textarea></div>
+                    </div>
+                    </div>
+                    <else/>
+                    <div class="cloneBox" id="addRmTr">
+                        <volist name="info['RepairMenu']" id="vo">
+                        <ul class="clearfix" id="rm_{$vo['rm_id']}" rm_id="{$vo['rm_id']}">
+                        	<li class="fl">&nbsp;{$vo['name']}</li>
+							<li class="fl">
+								<if condition="$vo['type'] eq 0">
+								维修
+								<elseif condition="$vo['type'] eq 1"/>
+								更换
+								</if>
+                            </li>
+							<li class="fl">&nbsp;{$vo['num']}</li>
+							<li class="fl">&nbsp;{$vo['day']}</li>
+							<li class="fl">&nbsp;{$vo['price']|price_format}</li>
+							<li class="fl">&nbsp;{$vo['remark']}</li>
+	              		</ul>
+	              		</volist>
+                    </div>
+                    <div class="discover clearfix">
+                        <div class="discoverL fl">故障原因</div>
+                        <div class="discoverR fl">{$info['rp_report']}</div>
+                    </div>
+                    <notempty name="info['remark']">
+                    <div class="discover clearfix">
+                        <div class="discoverL fl">系统备注</div>
+                        <div class="discoverR fl">{$info['remark']}</div>
+                    </div>
+                    </notempty>
+                    </if>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+var i = 1;
+function addRmTr(){
+	var html = '';
+	rm_id = i;
+	html += '<ul class="clearfix" id="rm_'+rm_id+'" rm_id="'+rm_id+'">';
+	html += '<li class="fl"><input type="text" name="rm_'+rm_id+'[name]" value=""></li>';
+	html += '<li class="fl">';
+	html += '<select name="rm_'+rm_id+'[type]">';
+	html += '<option value="0">维修</option>';
+	html += '<option value="1">更换</option>';
+	html += '</select>';
+	html += '</li>';
+	html += '<li class="fl"><input type="text" name="rm_'+rm_id+'[num]" value=""></li>';
+	html += '<li class="fl"><input type="text" name="rm_'+rm_id+'[day]" value="">天</li>';
+	html += '<li class="fl"><input type="text" name="rm_'+rm_id+'[price]" value=""></li>';
+	html += '<li class="fl"><input type="text" name="rm_'+rm_id+'[remark]" value=""></li>';					
+	html += '<li class="fl"><a href="JavaScript:removeRmTr('+rm_id+');">移除</a></li>';
+	html += '</ul>';
+	$('#addRmTr').append(html);
+	i++;
+}
+function removeRmTr(rm_id){
+	$("#rm_"+rm_id).remove();
+}
+function submitRm(){
+	$("#submitRm").submit();
+}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

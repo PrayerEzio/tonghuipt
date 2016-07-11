@@ -1,0 +1,69 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+	
+	<!-- 新增代码 -->
+		<style>
+		.maintain-ban { position: relative; text-align: center;}
+		.maintain-ban .ol { position: absolute; bottom: 33px; left: 46.2%;}
+		.maintain-ban .ol li { width: 11px; height: 11px; float: left; border: 2px solid #fff; border-radius: 50%;  float: left; text-indent: 999px; overflow: hidden; margin-left: 15px; cursor: pointer;}
+		.maintain-ban .ol li.on { background: #fff;}
+		.pos-isng {   width: 200px; height: 55px; position: absolute; left: 853px; bottom: 72px;}
+		.repairE { padding:0; border: 0; }
+		</style>
+
+	<script src="__JS__/jquery.SuperSlide.2.1.1.js"></script>
+<div class="container">
+	<div class="maintain-ban">
+		<div class="bd">
+			<ul>
+				<li><a href="{:U('apply')}"><img src="/Public/Home/images/ban1.jpg" alt="" width="100%"></a></li>
+				<li><a href="{:U('apply')}"><img src="/Public/Home/images/ban2.jpg" alt="" width="100%"></a></li>
+				<li><a href="{:U('apply')}"><img src="/Public/Home/images/ban3.jpg" alt="" width="100%"></a></li>
+			</ul>
+			<ol class="ol">
+				<li></li>
+			</ol>
+		</div>
+			<!-- <a class="pos-isng" href="{:U('apply')}"> </a> -->
+		<script>
+			jQuery(".maintain-ban").slide({mainCell:".bd ul",autoPlay:true,autoPage:true,titCell:".ol",effect:"fold",easing:"easeInBack"});
+		</script>
+	</div>
+</div>
+	<!-- 新增代码 end-->
+
+<div class="main">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>投影机维修</span>
+        </div>
+        <div class="repairE">
+           
+            <!-- 新增代码 -->
+            <div class="mainL fl">
+            	{$info['doc_content']}
+            </div>
+
+            <div class="mainR fr">
+  <style>
+.mainR .slogan a { margin-bottom: 0px;}
+.slogan a { height: 110px;}
+  </style>
+	            <div class="slogan">
+	                <volist name="notice" id="vo">
+			        <a href="{:U('Notice/detail',array('id'=>$vo['notice_id']))}" ><img src="__UPLOADS__/{$vo['notice_pic']}" style="width:200px; height:87px;"></a>
+			        </volist>
+	            </div>
+	        </div>
+                   <!-- 清浮动 -->
+				 <div style="clear:both"></div>
+            <!-- 新增代码 end-->
+        </div>
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

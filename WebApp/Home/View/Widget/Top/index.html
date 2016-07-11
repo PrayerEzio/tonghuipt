@@ -1,0 +1,17 @@
+<div class="top">
+    <div class="container">
+        有任何问题请拨打我们的电话：{:MSC('site_tel_400')}
+        <ul class="fr">
+        	<notempty name="mid">
+            <li <if condition="CONTROLLER_NAME eq 'Member'">class="fl current"<else/>class="fl"</if>><a href="{:U('Member/index')}">我 的 账 户</a></li>
+            </notempty>
+            <li class="fl"><a href="{:U('Cart/index')}">购 物 车</a></li>
+            <empty name="mid">
+            <li <if condition="CONTROLLER_NAME eq 'Login' && ACTION_NAME eq 'index'">class="fl current"<else/>class="fl"</if>><a href="{:U('Login/index')}">登 录</a></li>
+            <li <if condition="CONTROLLER_NAME eq 'Login' && ACTION_NAME eq 'register'">class="fl current"<else/>class="fl"</if>><a href="{:U('Login/register')}">注 册</a></li>
+            <else/>
+        	<li class="fl"><a href="{:U('Member/logout')}">登 出</a></li>
+        	</empty>
+        </ul>
+    </div>
+</div>

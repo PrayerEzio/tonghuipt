@@ -1,0 +1,74 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>我的购物车</span>
+        </div>
+        <form action="{:U('Order/index')}" method="post" id="form">
+            <div class="payBox" style="border-bottom: 1px solid #ccc;">
+                <h3>我的购物车（<span id="goods_count">{:count($list)}</span>）</h3>
+                <ul class="orderItem clearfix rlt">
+                    <li class="fl">商品名称</li>
+                    <li class="fr">小计（元）</li>
+                    <li class="fr">操作</li>
+                    <li class="fr">折扣价</li>
+                    <li class="fr">购买数量</li>
+                    <li class="fr">商品单价</li>
+                    <input type="checkbox" class="allCheck choose abs" style="top: 9px;">
+                </ul>
+                <volist name="list" id="vo">
+                <ul id="detail_{$vo['id']}" class="goods clearfix rlt">
+                    <li class="fl ellipsis"><a href="{:U('Goods/detail',array('goods_id'=>$vo['id']))}"><img src="__UPLOADS__/{$vo['img']}" alt="">{$vo['name']}</a></li>
+                    <li class="fr"><span class="xiaoji">{:price_format($vo['price']*$vo['num']*(get_discount($vo['num'])))}</span>元</li>
+                    <li class="fr"><a href="JavaScript:void(0);" onclick="removeCart({$vo['id']})">删除</a></li>
+                    <li class="fr">{:price_format($vo['price']*(get_discount($vo['num'])))}</li>
+                    <li class="fr">{$vo['num']}</li>
+                    <li class="fr">{$vo['price']}元</li>
+                    <input type="checkbox" name="goods_id[]" value="{$vo['id']}" class="choose abs">
+                </ul>
+                </volist>
+            </div>
+            <div class="payBox" id="totelinfo">
+            	<notempty name="list">
+                <h3 style="opacity: 0">会员留言</h3>
+                <textarea name="" id="" cols="30" rows="10" style="opacity: 0"></textarea>
+                <ul class="calc fr">
+                    <li class="fl">总额：</li>
+                    <li class="fl"><span class="totalBefore">0</span>元</li>
+                    <!-- <li class="fl"><label><input type="checkbox" class="useDikou"> 使用积分抵9.00元：</label></li>
+                    <li class="fl">-<span class="dikou">9.00</span>元</li>
+                    <li class="fl">应付金额：</li>
+                    <li class="fl"><span class="total">0</span>元</li> -->
+                </ul>
+                <div class="checkout-confirm">
+                    <input type="submit" class="btn-primary" value="去结算">
+                </div>
+                <else/>
+                	购物车空空如也哦.
+                </notempty>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+function removeCart(goods_id){
+	var URL = "{:U('Cart/removeCart')}";
+	var data = {"goods_id":goods_id};
+	$.post(URL,data,function(){
+		$("#detail_"+goods_id).remove();
+		var last_count = $("#goods_count").html()*1-1;
+		$("#goods_count").html(last_count);
+		if (last_count == 0){
+			$("#totelinfo").remove();
+			$("#form").append('<div class="payBox" id="totelinfo">购物车空空如也哦.</div>');
+		}
+	});
+}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

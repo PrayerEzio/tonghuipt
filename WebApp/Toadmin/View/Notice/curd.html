@@ -1,0 +1,190 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>展示管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('index')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span><notempty name="info['notice_id']">编辑<else/>添加</notempty></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="notice_form" method="post" name="articleForm" enctype="multipart/form-data">
+    <input name="notice_id" id="notice_id" type="hidden" value="{$info['notice_id']}"/>
+    <input name="ac_type" id="ac_type" type="hidden" value="{$info['ac_type']}"/>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['notice_title']}" name="notice_title" id="notice_title" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <if condition="!empty($info['notice_type']) && $info['notice_type'] neq 1 && $info['notice_type'] neq 4 || empty($info['notice_id'])">
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">所属:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <select name="notice_type">
+          	<option <if condition="$info['notice_type'] eq 2">selected</if> value="2">投影详情</option>
+          	<option <if condition="$info['notice_type'] eq 3">selected</if> value="3">氙灯详情</option>
+          	<option <if condition="$info['notice_type'] eq 5">selected</if> value="5">大屏幕投影</option>
+          	<option <if condition="$info['notice_type'] eq 6">selected</if> value="6">投影机维修</option>
+          </select>
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+        <else/>
+        <input type="hidden" name="notice_type" value="{$info['notice_type']}">
+        </if>
+         <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label>seo标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['notice_title']}" name="notice_title" id="notice_title" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+        <tr class="noborder">
+          <td colspan="2" class="required"><label>关键词:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['notice_keyword']}" name="notice_keyword" id="notice_keyword" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>         
+         <tr class="noborder">
+          <td colspan="2" class="required"><label>描述:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea id="notice_desc" class="tarea" rows="6" name="notice_desc">{$info['notice_desc']}</textarea></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <if condition="$info['notice_type'] neq 4">
+        <tr>
+          <td colspan="2" class="required"><label for="notice_pic">图片:</label></td>
+        </tr>
+        <tr class="noborder">
+         <td class="vatop rowform">  
+            <span class="type-file-show">
+          	<img class="show_image" src="__IMG__/preview.png">
+            <div class="type-file-preview"><img src="__UPLOADS__{$info['notice_pic']}"></div>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_notice_pic' id='txt_notice_pic' class='type-file-text' />
+            <input type='button' name='but_notice_pic' id='but_notice_pic' value='' class='type-file-button' />
+            <input name="notice_pic" type="file" class="type-file-file" id="notice_pic" size="30" hidefocus="true" nc_type="change_notice_pic">
+            </span>
+          </td>
+          <td class="vatop tips"><span class="vatop rowform"></span></td>
+        </tr>
+        </if>
+        <!-- <tr>
+          <td colspan="2" class="required"><label for="articleForm">链接:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['notice_url']}" name="notice_url" id="notice_url" class="txt"></td>
+          <td class="vatop tips">链接格式请以http://开头</td>
+        </tr> -->
+        <tr>
+          <td colspan="2" class="required">排序: </td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['notice_sort']}" name="notice_sort" id="notice_sort" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">文章内容:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="vatop rowform"><?php ueditor('notice_content',$info['notice_content']);?></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label>显示:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff"><label for="notice_status1" class='cb-enable <if condition="$info['notice_status'] eq 1">selected</if>'><span>是</span></label>
+            <label for="notice_status0" class='cb-disable <if condition="$info['notice_status'] eq 0">selected</if>'><span>否</span></label>
+            <input id="notice_status1" name="notice_status" <if condition="$info['notice_status'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="notice_status0" name="notice_status" <if condition="$info['notice_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#notice_form").valid()){
+     $("#notice_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	$('#notice_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            notice_title : {
+                required   : true
+            },
+			notice_url : {
+				url : true
+            },
+			notice_content : {
+                required   : true
+            },
+            notice_sort : {
+                number   : true
+            }
+        },
+        messages : {
+            notice_title : {
+                required   : '请输入标题'
+            },
+			notice_url : {
+				url : '输入错误'
+            },
+			notice_content : {
+                required   : '请输入内容'
+            },
+            notice_sort  : {
+                number   : '输入错误'
+            }
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#notice_pic").change(function(){
+		$("#txt_notice_pic").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

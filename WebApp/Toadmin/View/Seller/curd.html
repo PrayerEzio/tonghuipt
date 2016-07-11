@@ -1,0 +1,226 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>{$title}</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Seller/seller')}"><span>商家</span></a></li>
+        <li><a href="{:U('Member/member')}"><span>会员</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span><notempty name="info['seller_id']">编辑<else/>添加</notempty></span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="article_form" method="post" name="articleForm" enctype="multipart/form-data">
+    <input name="seller_id" id="seller_id" type="hidden" value="{$info['seller_id']}"/>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">真实姓名:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['seller_name']}" name="seller_name" id="seller_name" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+        <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">昵称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['nickname']}" name="nickname" id="nickname" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+        <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">邮箱:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['email']}" name="email" id="email" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">手机号:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['mobile']}" name="mobile" id="mobile" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">QQ:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['qq']}" name="qq" id="qq" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+        <!-- <tr>
+          <td colspan="2" class="required"><label for="id_card">身份证:</label></td>
+        </tr>
+        <tr class="noborder">
+         <td class="vatop rowform">  
+            <span class="type-file-show">
+          	<img class="show_image" src="__IMG__/preview.png">
+            <div class="type-file-preview"><img src="{$info['id_card']}"></div>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_id_card' id='txt_id_card' class='type-file-text' />
+            <input type='button' name='but_id_card' id='but_id_card' value='' class='type-file-button' />
+            <input name="id_card" type="file" class="type-file-file" id="id_card" size="30" hidefocus="true" nc_type="change_id_card">
+            </span>
+          </td>
+          <td class="vatop tips"><span class="vatop rowform"></span></td>
+        </tr> -->
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">预存款:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['predeposit']}" name="predeposit" id="predeposit" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">冻结款:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['frozen']}" name="frozen" id="frozen" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">考试分数:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['score']}" name="score" id="score" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+        <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">积分:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['point']}" name="point" id="point" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+        <tr>
+          <td colspan="2" class="required"><label>状态:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff"><label for="seller_status1" class='cb-enable <if condition="$info['seller_status'] eq 1">selected</if>'><span>正常</span></label>
+            <label for="seller_status0" class='cb-disable <if condition="$info['seller_status'] eq 0">selected</if>'><span>冻结</span></label>
+            <input id="seller_status1" name="seller_status" <if condition="$info['seller_status'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="seller_status0" name="seller_status" <if condition="$info['seller_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="ac_type">关联账户:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          	<ul>
+          		<notempty name="info['Account']">
+          		<volist name="info['Account']" id="vo">
+	          	<li><a href="{:U('authAccount',array('id'=>$vo['account_id']))}">{$vo['pf_id']|get_pf_name}-{$vo['store_name']}</a></li>
+	          	</volist>
+	          	<else/>
+	          	<li>没有相关信息</li>
+	          	</notempty>
+          	</ul>
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="ac_type">Vip日志:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          	<ul>
+          		<notempty name="info['SellerVip']">
+          		<volist name="info['SellerVip']" id="vo">
+	          	<li><a href="{:U('',array('id'=>$vo['id']))}">Vip-{$vo['vip_level']}级 {$vo['start_time']|date='Y-m-d H:i:s',###}{$vo['city_id']|date='Y-m-d H:i:s',###}</a></li>
+	          	</volist>
+	          	<else/>
+	          	<li>没有相关信息</li>
+	          	</notempty>
+          	</ul>
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#article_form").valid()){
+     $("#article_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	$('#article_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            article_title : {
+                required   : true
+            },
+			ac_id : {
+                required   : true
+            },
+			article_url : {
+				url : true
+            },
+			article_content : {
+                required   : true
+            },
+            article_sort : {
+                number   : true
+            }
+        },
+        messages : {
+            article_title : {
+                required   : '请输入标题'
+            },
+			ac_id : {
+                required   : '请选择分类'
+            },
+			article_url : {
+				url : '输入错误'
+            },
+			article_content : {
+                required   : '请输入内容'
+            },
+            article_sort  : {
+                number   : '输入错误'
+            }
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#id_card").change(function(){
+		$("#txt_id_card").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

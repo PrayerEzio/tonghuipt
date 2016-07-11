@@ -1,0 +1,344 @@
+<include file="Public/header" />
+<div class="page">
+  <!--startprint-->
+  <table class="table tb-type2 order">
+    <tbody>
+      <tr class="space">
+        <th colspan="15">订单状态</th>
+      </tr>
+      <tr>
+        <td colspan="2"><ul>
+            <li><strong>维修单号:</strong>{$info['rp_sn']}</li>
+            <li><strong>下单时间:</strong><span>{$info['addtime']|date='Y-m-d H:i:s',###}</span></li>
+            <li><strong>订单状态:</strong>{$info['rp_status']|get_rp_status_name}</li>
+            <li><strong>会员</strong>{$info['member_id']|get_member_nickname}</li>
+          </ul></td>
+      </tr>
+      <tr class="space">
+        <th colspan="2">订单详情</th>
+      </tr>
+      <tr>
+        <th>物流信息</th>
+      </tr>
+      <tr>
+	      <td><ul>
+	            <li id="repair"><strong>快递公司:</strong><notempty name="info['express']">{$info['express']}<else/>无</notempty></li>
+	            <li id="repair"><strong>快递单号:</strong><notempty name="info['express_sn']">{$info['express_sn']}<else/>无</notempty></li>
+	      </ul></td>
+      </tr>
+      <tr>
+        <th>分配维修商信息</th>
+      </tr>
+      <tr>
+        <td><ul>
+            <li id="repair"><strong>维修商:</strong>
+            <if condition="$info['admin_id'] eq 0">
+            <select name="admin_id" id="admin_id">
+            	<option value="0">请分配维修商</option>
+            	<volist name="admin_list" id="vo">
+            	<option value="{$vo['member_id']}">{$vo['member_id']|get_member_nickname}</option>
+            	</volist>
+            </select>
+            <a href="JavaScript:allot('{$info['rp_sn']}');" >分配</a>
+            <else/>
+            {$info['admin_id']|get_member_nickname}
+            </if>
+            </li>
+          </ul></td>
+      </tr>
+      <if condition="$info['rp_status'] gt 1">
+      <tr>
+        <th>报价信息</th>
+      </tr>
+      <tr>
+        <td><ul>
+            <li><strong>维修报价:</strong><span class="red_common">{$info['cost']|price_format}元</span></li>
+            <if condition="$info['rp_status'] gt 2 && $admin_type eq 0">
+            <li><strong>平台报价:</strong><span class="red_common">{$info['price']|price_format}元</span></li>
+            </if>
+          </ul></td>
+      </tr>
+      </if>
+      <tr>
+        <th>故障信息</th>
+      </tr>
+      <tr>
+        <td><table class="table tb-type2 goods ">
+            <tbody>
+              <tr>
+                <th></th>
+                <th class="align-center">商品信息</th>
+                <th class="align-center">机器号</th>
+                <th class="align-center">故障分类</th>
+                <th>故障描述</th>
+              </tr>
+              <tr>
+                <td class="w60 picture"><div class="size-56x56"><span class="thumb size-56x56"><i></i><notempty name="v['goods_pic']"><img src="__IMG__/{$v['goods_pic']}" alt="" width="56" height="56"><else/><img src="__IMG__/nopic.jpg" alt="" width="56" height="56"></notempty></span></div></td>
+                <td class="w96 align-center">
+                	<notempty name="info['Goods']['goods_name']">
+                	{$info['Goods']['goods_name']}的
+                	</notempty>
+                	{$info['spec_name']}
+                </td>
+                <td class="w96 align-center">{$info['machine_code']}</td>
+                <td class="w96 align-center">{$info['Breakdown']['bd_name']}</td>
+                <td class="w50pre">{$info['content']}</td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+      <tr>
+      	<th>订单日志</th>
+      </tr>
+      <tr>
+          <td>
+			<table class="table tb-type2 goods ">
+	            <tbody>
+	              <tr>
+	                <th class="align-center">时间</th>
+	                <th class="align-center">日志信息</th>
+	              </tr>
+	              <notempty name="info['RepairLog']">
+	              <volist name="info['RepairLog']" id="vo">
+	              <tr>
+	                <td class="w96 align-center">{$vo['log_time']|date='Y-m-d H:i:s',###}</td>
+	                <td class="w96 align-center">{$vo['log_content']}</td>
+	              </tr>
+	              </volist>
+	              <else/>
+	              <tr><td colspan="2">没有找到相关记录</td></tr>
+	              </notempty>
+	            </tbody>
+          	</table>
+          </td>
+      </tr>
+      <tr>
+      	<th>维修报价<if condition="$info['rp_status'] eq 1 && $admin_type eq 1"> | <a href="JavaScript:submitRm()">提交报价单</a></if></th>
+      </tr>
+      <tr>
+          <td>
+          	<form id="submitRm" action="" method="post">
+			<table class="table tb-type2 goods ">
+	            <tbody>
+	              <tr>
+	                <th class="align-center">损坏部位</th>
+	                <th class="align-center">维修/更换</th>
+	                <th class="align-center">数量</th>
+	                <th class="align-center">维修天数</th>
+	                <th class="align-center">单价</th>
+	                <th class="align-center">备注</th>
+	                <if condition="$info['rp_status'] eq 1 && $admin_type eq 1">
+	                <th class="align-center">操作</th>
+	                </if>
+	              </tr>
+	              <if condition="$info['rp_status'] eq 1 && $admin_type eq 1">
+	              	<volist name="info['RepairMenu']" id="vo">
+	              		<tr id="rm_{$vo['rm_id']}" rm_id="{$vo['rm_id']}">
+							<td class="w96 align-center"><input type="text" name="rm_{$vo['rm_id']}[name]" value="{$vo['name']}"></td>
+							<td class="w96 align-center">
+								<select name="rm_{$vo['rm_id']}[type]">
+									<option value="0" <eq name="vo['type']" value="0">selected</eq>>维修</option>
+									<option value="1" <eq name="vo['type']" value="1">selected</eq>>更换</option>
+								</select>
+							</td>
+							<td class="w96 align-center"><input type="text" name="rm_{$vo['rm_id']}[num]" value="{$vo['num']}"></td>
+							<td class="w96 align-center"><input type="text" name="rm_{$vo['rm_id']}[day]" value="{$vo['day']}"></td>
+							<td class="w96 align-center"><input type="text" name="rm_{$vo['rm_id']}[price]" value="{$vo['price']|price_format}"></td>
+							<td class="w96 align-center"><input type="text" name="rm_{$vo['rm_id']}[remark]" value="{$vo['remark']}"></td>
+							<td class="w96 align-center"><a href="JavaScript:removeRmTr({$vo['rm_id']});">移除</a></td>
+						</tr>
+	              	</volist>
+	              	<tr id="addRmTr">
+	              		 <td colspan="6" style="text-align:center"><a href="JavaScript:addRmTr();">新增</a></td>
+	              	</tr>
+	              	<tr>
+	              		<textarea name="rp_report">{$info['rp_report']}</textarea>
+	              	</tr>
+	              <else/>
+		              <notempty name="info['RepairMenu']">
+		              <volist name="info['RepairMenu']" id="vo">
+		              <tr>
+		                <td class="w96 align-center">{$vo['name']}</td>
+		                <td class="w96 align-center">
+		                <if condition="$vo['type'] eq 1">
+		                更换
+		                <else/>
+		                维修
+		                </if>
+		                </td>
+		                <td class="w96 align-center">{$vo['num']}</td>
+		                <td class="w96 align-center">{$vo['day']}</td>
+		                <td class="w96 align-center">{$vo['price']}</td>
+		                <td class="w96 align-center">{$vo['remark']}</td>
+		              </tr>
+		              </volist>
+		              <else/>
+		              <tr><td colspan="6" style="text-align:center">没有找到相关记录</td></tr>
+		              </notempty>
+	              </if>
+	              <!-- <tr><td colspan="6" style="text-align:right">总价:<span id="rm_amount">0.00</span>元</td></tr> -->
+	            </tbody>
+          	</table>
+          	</form>
+          </td>
+      </tr>
+      <if condition="$info['rp_status'] eq 2 && $admin_type eq 0">
+      <tr>
+      	<th>实际报价 | <a href="JavaScript:confirmPrice({$info['rp_id']})">提交</a>	</th>
+      </tr>
+      <tr class="pr_hide">
+          <td>
+          	<table class="table tb-type2 goods ">
+          		<tr>
+	          		<td>
+		          		<select id="attitude">
+		          			<option value="0">驳回</option>
+		          			<option value="1">同意</option>
+		          		</select>
+	          		</td>
+	          		<td>
+	          			<div id="price_div">实际报价<input type="text" id="price" value="0"></div>
+	          		</td>
+	          		<td>
+	          			<div id="price_div">备注<input type="text" id="remark" value="0"></div>
+	          		</td>
+				</tr>
+          	</table>
+          </td>
+      </tr>
+      </if>
+    </tbody>
+    <tfoot class="pr_hide">
+      <tr class="tfoot">
+        <td>
+        <a href="JavaScript:void(0);" class="btn" onclick="history.go(-1)"><span>返回</span></a>
+        <a href="JavaScript:void(0);" class="btn" onclick="preview()"><span>预览并打印</span></a>
+        <switch name="info['rp_status']">
+        <case value="4"><a href="JavaScript:void(0);" class="btn" onclick="startRepair({$info['rp_id']})"><span>开始维修</span></a></case>
+        <case value="5">
+        <a dialog_id="edit" class="btn" nc_type="dialog" dialog_title="发货处理" dialog_width="500" uri="{:U('Feedback/deliver',array('rp_id'=>$info['rp_id']))}" href="javascript:void(0);"><span>发货处理</span></a>
+        </case>
+        <case value="6"><a href="JavaScript:void(0);" class="btn" onclick="finishRepair({$info['rp_id']})"><span>完成订单</span></a></case>
+        </switch>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <!--startprint-->
+</div>
+<script>
+$(function(){
+	var attitude = $("#attitude").val();
+	if (attitude == 1){
+		$("#price_div").css('display','');
+	}else {
+		$("#price_div").css('display','none');
+	}
+	$("#attitude").change(function(){
+		var attitude = $("#attitude").val();
+		if (attitude == 1){
+			$("#price_div").css('display','');
+		}else {
+			$("#price_div").css('display','none');
+		}
+	});
+});
+var i = 1;
+function allot(rp_sn){
+	var URL = "{:U('allot')}";
+	var admin_id = $("#admin_id").val();
+	var data = {"rp_sn":rp_sn,"admin_id":admin_id};
+	$.post(URL,data,function(result){
+		if (result.code == '200'){
+			$("#repair").empty();
+			$("#repair").append('<strong>维修商:</strong>'+result.data);
+		}
+	},"json");
+}
+function addRmTr(){
+	var html = '';
+	rm_id = 'n'+i;
+	html = '<tr id="rm_'+rm_id+'" rm_id="'+rm_id+'">';
+	html += '<td class="w96 align-center"><input type="text" name="rm_'+rm_id+'[name]" value=""></td>';
+	html += '<td class="w96 align-center">';
+	html += '<select name="rm_'+rm_id+'[type]">';
+	html += '<option value="0">维修</option>';
+	html += '<option value="1">更换</option>';
+	html += '</select>';
+	html += '</td>';
+	html += '<td class="w96 align-center"><input type="text" name="rm_'+rm_id+'[num]" value=""></td>';
+	html += '<td class="w96 align-center"><input type="text" name="rm_'+rm_id+'[day]" value=""></td>';
+	html += '<td class="w96 align-center"><input type="text" name="rm_'+rm_id+'[price]" value=""></td>';
+	html += '<td class="w96 align-center"><input type="text" name="rm_'+rm_id+'[remark]" value=""></td>';
+	html += '<td class="w96 align-center"><a href="JavaScript:removeRmTr('+rm_id+');">移除</a></td>';
+	html += '</tr>';
+	$('#addRmTr').before(html);
+	i++;
+}
+function removeRmTr(rm_id){
+	$("#rm_"+rm_id).remove();
+}
+function submitRm(){
+	$("#submitRm").submit();
+}
+function confirmPrice(rp_id){
+	var URL = "{:U('confirmPrice')}";
+	var price = $("#price").val();
+	var remark = $("#remark").val();
+	var attitude = $("#attitude").val();
+	var data = {"rp_id":rp_id,"attitude":attitude,"price":price,"remark":remark};
+	$.post(URL,data,function(result){
+		alert(result.msg);
+		window.location.reload();
+	},"json");
+}
+function startRepair(rp_id){
+	var URL = "{:U('startRepair')}";
+	var data = {"rp_id":rp_id};
+	$.post(URL,data,function(result){
+		alert(result.msg);
+		window.location.reload();
+	},"json");
+}
+function deliver(){
+	
+}
+function finishRepair(rp_id){
+	var URL = "{:U('finishRepair')}";
+	var data = {"rp_id":rp_id};
+	$.post(URL,data,function(result){
+		alert(result.msg);
+		window.location.reload();
+	},"json");
+}
+</script>
+<script language="javascript"> 
+function preview() {
+	$(".pr_hide").hide();
+	bdhtml=window.document.body.innerHTML; 
+	sprnstr="<!--startprint-->"; 
+	eprnstr="<!--endprint-->"; 
+	prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17); 
+	prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr)); 
+	window.document.body.innerHTML=prnhtml; 
+	window.print(); 
+}
+</script>
+<script type="text/javascript" src="__STATIC__/common.js"></script>  
+<script language="javascript" src="__STATIC__/dialog/dialog.js"  id="dialog_js" charset="utf-8"> </script> 
+<script type="text/javascript" src="__STATIC__/jquery-ui/jquery.ui.js"></script> 
+<script type="text/javascript" src="__STATIC__/jquery-ui/i18n/zh-CN.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui/themes/ui-lightness/jquery.ui.css"  />
+<link href="__STATIC__/dialog/custom.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__JS__/jquery.editWx.js" charset="utf-8"></script>
+<script type="text/javascript">
+$('a[nc_type="dialog"]').click(function(){
+	var id = $(this).attr('dialog_id');
+	var title = $(this).attr('dialog_title') ? $(this).attr('dialog_title') : '';
+	var url = $(this).attr('uri');
+	var width = $(this).attr('dialog_width');
+	CUR_DIALOG = ajax_form(id, title, url, width,0);
+	return false;
+});
+</script>
+<include file="Public/footer" />

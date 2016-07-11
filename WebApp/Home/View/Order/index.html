@@ -1,0 +1,226 @@
+<include file="Public/header"/>
+<style>
+.pay_fs input[type="radio"]{ display: none;}
+.pay_fs label { margin-left: 20px; cursor: pointer; display: inline-block; border: 1px solid #fff; padding: 3px 5px; border-radius: 3px;} 
+#pay1:checked + label,#pay2:checked + label { border: 2px solid #0D6FB8;}
+
+</style>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>在线支付</span>
+        </div>
+        <form action="{:U('creatOrder')}" method="post" id="form">
+            <div class="payBox clearfix">
+                <h3>收货地址</h3>
+                <volist name="address" id="vo">
+                <div <eq name="vo['def_addr']">class="address fl current"<else/>class="address fl"</eq> addr_id="{$vo['addr_id']}">
+                    <h3>{$vo['name']} <a href="#" class="fr">{$vo['addr_tag']}</a></h3>
+                    <p>{$vo['mobile']}</p>
+                    <p>{$vo['province_id']|getDistrictName} {$vo['city_id']|getDistrictName} {$vo['area_id']|getDistrictName}</p>
+                    <p>{$vo['addr']}({$vo['zip']})</p>
+                </div>
+                </volist>
+                <div id="addressBtn" class="address fl addressBtn">
+                    <img src="__IMG__/add_cart.png" alt="">
+                    <p>使用新地址</p>
+                </div>
+                <input type="hidden" id="addr_id" name="addr_id" value="0"/>
+            </div>
+            <div class="payBox">
+            	<h3>选择支付方式</h3>
+            	<div class="pay_fs">
+            		<input id="pay1" type="radio" name="pay_type" value="1">
+            		<label for="pay1"><img src="__IMG__/zfb_pay.png" alt=""></label>
+
+            		<input id="pay2" type="radio" name="pay_type" value="2">
+            		<label for="pay2"><img src="__IMG__/bd_pay.png" alt=""></label>
+            	</div>
+            </div>
+            <div class="payBox" style="border-bottom: 1px solid #ccc;">
+                <h3>我的购物车（<span id="goods_count">{:count($list)}</span>）</h3>
+                <ul class="orderItem clearfix rlt">
+                    <li class="fl">商品名称</li>
+                    <li class="fr">小计（元）</li>
+                    <li class="fr">折扣价</li>
+                    <li class="fr">购买数量</li>
+                    <li class="fr">商品单价</li>
+                </ul>
+                <volist name="list" id="vo">
+                <ul id="detail_{$vo['id']}" class="goods clearfix rlt">
+                    <li class="fl ellipsis"><a href="{:U('Goods/detail',array('goods_id'=>$vo['goods_id']))}" target="_blank"><img src="__UPLOADS__/{$vo['goods_pic']}" alt="">{$vo['goods_name']}</a></li>
+                    <li class="fr"><span class="xiaoji">{:price_format($vo['goods_price']*$vo['num']*(get_discount($vo['num'])))}</span>元</li>
+                    <li class="fr">{:price_format($vo['goods_price']*(get_discount($vo['num'])))}</li>
+                    <li class="fr">{$vo['num']}</li>
+                    <li class="fr">{$vo['goods_price']}元</li>
+                </ul>
+                </volist>
+            </div>
+            <div class="payBox" id="totelinfo">
+                <h3 style="opacity: 0">会员留言</h3>
+                <textarea name="order_message" id="order_message" cols="30" rows="10" style="opacity: 0"></textarea>
+                <ul class="calc fr">
+                    <li class="fl">订单总额：</li>
+                    <li class="fl"><span class="totalBefore">{$amount}</span>元</li>
+                    <li class="fl"><label><input type="checkbox" class="zk"> 使用{$point}积分抵{:$point/MSC('point_exchange_rate')}元：</label></li>
+                    <li class="fl">-<span class="dikou">{:$point/MSC('point_exchange_rate')}</span>元</li>
+                    <li class="fl">应付金额：</li>
+                    <li class="fl"><span class="total">0</span>元</li>
+                </ul>
+                <div class="checkout-confirm">
+                	<input id="point" type="hidden" name="point" value="0"/>
+                    <a id="form-submit" class="btn-primary">去结算</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--收货地址弹出层-->
+<div class="addressNew hide">
+    <form action="" method="post" class="addressEdit abs">
+    	<input id="addr_id" name="addr_id" type="hidden" value=""/>
+        <input id="addr_name" name="name" type="text" placeholder="收货人姓名">
+        <input id="addr_mobile" name="mobile" type="text" placeholder="11位手机号码">
+        <select name="province" id="province">
+            <option value="">省份/直辖市/自治区</option>
+            <volist name="province" id="vo">
+            <option value="{$vo['id']}">{$vo['name']}</option>
+            </volist>
+        </select>
+        <select name="city" id="city">
+            <option value="">城市/地区/自治州</option>
+        </select>
+        <select name="area" id="area">
+            <option value="">区/县</option>
+        </select>
+        <textarea id="addr" name="addr" placeholder="路名或街道名称，门牌号"></textarea>
+        <input id="zip" type="text" name="zip" placeholder="邮政编码">
+        <input id="addr_tag" type="text" name="addr_tag" placeholder="地址标签：如“家”、“公司”">
+        <a class="btn" href="JavaScript:address();">确认</a>
+        <a href="JavaScript:void(0);" class="close abs">×</a>
+    </form>
+</div>
+<script>
+$(function(){
+	changDistrict();
+	$("#form-submit").click(function(){
+		var addr_id = $("#addr_id").val();
+		var pay_type = $('input[name="pay_type"]:checked').val();
+		if (addr_id == 0){
+			alert('请选择收货地址.');
+			return false;
+		}
+		if (pay_type == null){
+			alert('请选择支付方式.');
+			return false;
+		}
+		$("#form").submit();
+	});
+});
+function address(){
+	var addr_id = $("#addr_id").val();
+	var name = $("#addr_name").val();
+	var mobile = $("#addr_mobile").val();
+	var province = $("#province").val();
+	var city = $("#city").val();
+	var area = $("#area").val();
+	var addr = $("#addr").val();
+	var zip = $("#zip").val();
+	var addr_tag = $("#addr_tag").val();
+	var URL = "{:U('curdAddress')}";
+	var data = {'addr_id':addr_id,'name':name,'mobile':mobile,'province':province,'city':city,'area':area,'addr':addr,'zip':zip,'addr_tag':addr_tag};
+	$.post(URL,data,function(res){
+		$(".address").removeClass('current');
+		var address_html = '<div class="address fl current" addr_id="'+res.addr_id+'">';
+		address_html += '<h3>'+name+' <a href="#" class="fr">'+addr_tag+'</a></h3>';
+		address_html += '<p>'+mobile+'</p>';
+		address_html += '<p>'+res.province+' '+res.city+' '+res.area+'</p>';
+		address_html += '<p>'+addr+'('+zip+')</p>';
+        address_html += '</div>';
+        $("#addr_id").val(res.addr_id);
+		$("#addressBtn").before(address_html);
+		$(".addressNew").slideUp();
+		$(".foot").after("<script src='/zuoxika/Public/Home/js/main.js'>");
+	},"json");
+}
+function getDistrict(id){
+	var data = {"id":id};
+	var URL = "{:U('getDisctrict')}";
+	$.post(URL,data,function(json){
+		if (json.level == 'city'){
+			$("#city").remove();
+			var city_html = '<select name="city" id="city"><option value="">城市/地区/自治州</option>';
+			for (i=0;i<json.city.length;i++){
+				city_html += '<option value="'+json.city[i].id+'">'+json.city[i].name+'</option>';
+			}
+			city_html += '</select>';
+			$("#province").after(city_html);
+			$("#area").remove();
+			var area_html = '<select name="area" id="area"><option value="">区/县</option>';
+			area_html += '</select>';
+			$("#city").after(area_html);
+		}
+		if (json.level == 'area'){
+			$("#area").remove();
+			var area_html = '<select name="area" id="area"><option value="">区/县</option>';
+			for (i=0;i<json.city.length;i++){
+				area_html += '<option value="'+json.city[i].id+'">'+json.city[i].name+'</option>';
+			}
+			area_html += '</select>';
+			$("#city").after(area_html);
+		}
+		changDistrict();
+	},"json");
+}
+function changDistrict(){
+	$("#province").change(function(){
+		getDistrict($(this).val());
+	});
+	$("#city").change(function(){
+		getDistrict($(this).val());
+	});
+}
+function delAddress(id){
+	var data = {"id":id};
+	var URL = "{:U('delAddress')}";
+	$.post(URL,data,function(res){
+		if (res == 1){
+			alert('删除地址成功');
+		}else {
+			alert('删除地址失败');
+		}
+		window.location.reload()
+	});
+}
+</script>
+<script>
+$(function(){
+	var amount = "{$amount}";
+	var lastAmount = amount;
+	if($(".zk").is(":checked")){
+		var dikou = $(".dikou").html();
+		$("#point").val(dikou);
+		lastAmount = amount*1-dikou*1;
+	}
+	$(".total").html(lastAmount);
+	
+	$(".zk").click(function(){
+		if($(".zk").is(":checked")){
+			var dikou = $(".dikou").html();
+			$("#point").val(dikou);
+			lastAmount = amount*1-dikou*1;
+		}else {
+			$("#point").val(0);
+	    	lastAmount = amount;
+		}
+		$(".total").html(lastAmount);
+	});
+});
+</script>
+<!--foot-->
+<include file="Public/footer"/>

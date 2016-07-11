@@ -1,0 +1,94 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main" style="background-color: #f7f7f7">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>会员中心</span>
+        </div>
+        <div class="member">
+            {:W('Menu/index')}
+            <div class="memberR fl">
+                <h3>基础资料</h3>
+                <form action="" method="post" enctype="multipart/form-data">
+                <div class="memberInfo">
+                    <dl class="clearfix">
+                        <dt class="person fl rlt">
+                            <div id="preview">
+                            	<empty name="info['avatar']">
+                                <img id="imghead" src="__IMG__/UserDefaultPic.png" alt="" width="84" height="84">
+                                <else/>
+                                <img id="imghead" src="__UPLOADS__/{$info['avatar']}" alt="" width="84" height="84">
+                                </empty>
+                            </div>
+                            <input type="file" name="avatar" onchange="previewImage(this)" class="upload" id="file">
+                            <a href="javascript:">点击更换头像</a>
+                        </dt>
+                        <dd class="fl">用户名：{$info['member_id']|get_member_nickname}</dd>
+                        <dd class="fl">会员等级：普通会员</dd>
+                        <dd class="fl">可用积分：{$info['point']} <a href="javascript:" class="cash">提现</a></dd>
+                    </dl>
+                        <div class="item clearfix">
+                            <div class="itemL fl">用户名：</div>
+                            <div class="itemR fl"><input type="text" name="nickname" value="{$info['member_id']|get_member_nickname}" disabled class="onlyShow"></div>
+                        </div>
+                        <div class="item clearfix">
+                            <div class="itemL fl">性别：</div>
+                            <div class="itemR fl">
+                                <select name="gender" disabled class="onlyShow">
+                                    <option value="1" <eq name="info['gender']" value="1">selected</eq>>男</option>
+                                    <option value="2" <eq name="info['gender']" value="2">selected</eq>>女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item clearfix">
+                            <div class="itemL fl">年龄：</div>
+                            <div class="itemR fl">
+                                <input type="text" name="age" value="{$info['age']}" disabled class="onlyShow">
+                            </div>
+                        </div>
+                        <div class="item clearfix">
+                            <div class="itemL fl">绑定手机：</div>
+                            <div class="itemR fl">
+                                <input type="text" name="mobile" value="{$info['mobile']}" disabled class="onlyShow" id="mobil">
+                                <input type="button" value="获取短信验证码" name="smscode" id="get" class="hide">
+                            </div>
+                        </div>
+                        <div class="item clearfix yzm hide">
+                            <div class="itemL fl">短信验证码：</div>
+                            <div class="itemR fl"><input type="text" name="smscode_mobile" placeholder="请输入短信验证码"></div>
+                        </div>
+                        <div class="item clearfix">
+                            <div class="itemL fl">绑定邮箱：</div>
+                            <div class="itemR fl">
+                            <input type="text" name="email" value="{$info['email']}" disabled class="onlyShow" id="mobil1">
+                            <input type="button" value="获取邮箱验证码" name="smscode" id="get1" class="hide">
+                            </div>
+                        </div>
+                        <div class="item clearfix yzm1 hide">
+                            <div class="itemL fl">邮箱验证码：</div>
+                            <div class="itemR fl"><input type="text" name="smscode_email" placeholder="请输入邮箱验证码"></div>
+                        </div>
+                        <a href="javascript:" class="editInfo">编辑资料</a>
+                        <input type="submit" value="保存" class="saveInfo hide">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--提现弹出层-->
+<div class="addressNew hide">
+    <form action="{:U('withdraw')}" method="post" class="addressEdit abs" style="height: 200px;margin-top: -120px;">
+        <input type="text" name="amount" placeholder="兑换金额（1人民币消耗{:MSC('point_exchange_rate')}积分，最低兑换{:MSC('withdraw_min_limit')}元）">
+        <input type="text" name="account" placeholder="支付宝账号">
+        <input type="text" name="reaccount" placeholder="确认支付宝账号">
+        <input type="submit" value="确认兑换" class="btn">
+        <a href="JavaScript:void(0);" class="close abs">×</a>
+    </form>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

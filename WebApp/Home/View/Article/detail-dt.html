@@ -1,0 +1,38 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+<style>
+.MapBox { padding: 5px 0;}
+.MapBox a { display: inline-block; width: 110px; font-size: 14px; } 
+</style>
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>{$info['article_title']}</span>
+        </div>
+        <div class="repairE">
+            <h3>站点地图<!-- {$info['article_title']} --></h3>
+             <div class="MapBox">
+             	<volist name="about" id="vo">
+            		 <a href="{:U('Article/detail',array('id'=>$vo['article_id']))}">{$vo['article_title']}</a>
+                </volist>
+             
+             </div><!-- {$info['article_content']} -->
+
+             <div class="MapBox">
+             	<volist name="article_class" id="vo">
+                	<a href="{:U('News/index',array('cate'=>$vo['ac_id']))}">{$vo['ac_name']}</a>
+                	</volist><volist name="service" id="vo"><a href="{:U('Article/detail',array('id'=>$vo['article_id']))}">{$vo['article_title']}</a></volist>
+             </div>
+
+             <div class="MapBox">
+             	    <a href="{:U('Member/index')}">我的账户</a><a href="{:U('Member/order')}">历史订单</a><a href="{:U('Cart/index')}">我的购物车</a><a href="{:U('Member/letter')}">站内信息</a>
+             </div>
+        </div>
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

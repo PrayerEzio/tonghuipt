@@ -1,0 +1,120 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items);
+    }  
+    else {
+        alert('请选择要操作的对象');
+    }
+}
+function submit_delete(id)
+{
+    if(confirm('确认删除?')) 
+	{
+        $('#member_id').val(id);
+        $('#list_form').submit();
+    }
+}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>{$title}</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th>账号名称</th>
+          <td><input type="text" value="{$search['account_name']}" name="account_name" class="txt" ></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <form id="list_form" method="post" >
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w48"></th>
+          <th class="w200">会员</th>
+		  <th class="w48">时间</th>
+		  <th class="w48">状态</th>
+		  <th class="w48 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+        <tr class="hover edit">
+          <td><input type="checkbox" value="{$val['account_id']}" name="del_id" class="checkitem"></td>
+		  <td>{$val['member_id']|get_member_nickname}</td>
+		  <td>{$val['pl_time']|date='Y-m-d H:i:s',###}</td>
+		  <td>
+		  <if condition="$val['pl_status'] eq 0">
+		  待审核
+		  <elseif condition="$val['pl_status'] eq 1"/>
+		  	通过
+		  <elseif condition="$val['pl_status'] eq -1"/>
+		  	不通过
+		  </if>
+		  </td>
+		  <td class='align-center'>
+		  <if condition="$val['pl_status'] eq 0">
+		  <a href="JavaScript:auth({$val['pl_id']},1);">通过</a> |
+		  <a href="JavaScript:auth({$val['pl_id']},-1);">不通过</a>
+		  <elseif condition="$val['pl_status'] eq 1"/>
+		  	通过
+		  <elseif condition="$val['pl_status'] eq -1"/>
+		  	不通过
+		  </if>
+          </td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="5">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <!-- <td><input type="checkbox" class="checkall" id="checkall_1"></td> -->
+          <td id="batchAction" colspan="5">
+<!--             <span class="all_checkbox">
+            <label for="checkall_1">全选</label>
+            </span>&nbsp;&nbsp; <a href="javascript:void(0)" class="btn" onclick="submit_delete_batch();"><span>删除</span></a>
+ -->            <div class="pagination">{$page_show}</div>
+        </tr>
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<script>
+function auth(pl_id,status){
+	var URL = "{:U('authAccount')}";
+	var data = {"pl_id":pl_id,"status":status};
+	$.post(URL,data,function(result){
+		alert(result.msg);
+		window.location.reload();
+	},"json");
+}
+</script>
+<include file="Public/footer" />

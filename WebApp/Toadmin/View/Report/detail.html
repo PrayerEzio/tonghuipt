@@ -1,0 +1,165 @@
+<include file="Public/header" />
+<div class="page">
+  <table class="table tb-type2 order">
+    <tbody>
+      <tr class="space">
+        <th colspan="15">申诉详情</th>
+      </tr>
+      <tr>
+        <td colspan="2"><ul>
+            <li><strong>订单号:</strong>{$info['order_sn']}</li>
+            <li><strong>申诉时间:</strong><span>{$info['addtime']|date='Y-m-d H:i:s',###}</span></li>
+            <eq name="info['from_to']" value="-1">
+            <li><strong>申诉方【商家】:</strong>{$info['seller_id']|get_seller_nickname}</li>
+            <li><strong>被申诉方【会员】:</strong>{$info['member_id']|get_member_nickname}</li>
+            <else/>
+            <li><strong>申诉方【会员】:</strong>{$info['member_id']|get_member_nickname}</li>
+            <li><strong>被申诉方【商家】:</strong>{$info['seller_id']|get_seller_nickname}</li>
+            </eq>
+            <li><strong>申诉理由:</strong>{$info['content']}</li>
+            <li><strong>申诉状态:</strong><span class="red_common">{$info['handle_status']|get_handle_status_name}</span></li>
+          </ul></td>
+      </tr>
+      <tr>
+      	<th>申诉日志</th>
+      </tr>
+      <tr>
+          <td>
+			<table class="table tb-type2 goods ">
+	            <tbody>
+	              <tr>
+	                <th class="align-center">时间</th>
+	                <th>日志图片</th>
+	                <th>日志内容</th>
+	              </tr>
+	              <notempty name="info['Detail']">
+	              <volist name="info['Detail']" id="vo">
+	              <tr>
+	              	<td class="w96 align-center">{$vo['addtime']|date='Y-m-d H:i:s',###}</td>
+	              	<td class="w96"><notempty name="vo['pic']"><img src="__UPLOADS__/{$vo['pic']}" height="50px"/></notempty></td>
+	              	<td class="w96">{$vo['content']}</td>
+	              </tr>
+	              </volist>
+	              <else/>
+	              <tr><td colspan="2">没有找到相关记录</td></tr>
+	              </notempty>
+	            </tbody>
+          	</table>
+          </td>
+      </tr>
+      <tr class="space">
+        <th colspan="2">订单详情</th>
+      </tr>
+      <tr>
+        <th>收货人及发货信息</th>
+      </tr>
+      <tr>
+        <td><ul>
+        	<li><strong>卖家:</strong>{$order['seller_id']|get_seller_nickname}</li>
+            <li><strong>买家:</strong>{$order['member_id']|get_member_nickname}</li>
+            <li><strong>买家账号:</strong>{$order['MemberAccount']['account_name']}</li>
+            <li><strong>支付时间:</strong><if condition="$order['payment_time'] neq 0">{$order['payment_time']|date='Y-m-d H:i:s',###}<else/>未支付</if></li>
+          </ul></td>
+      </tr>
+      <tr>
+        <th>商品信息</th>
+      </tr>
+      <tr>
+        <td><table class="table tb-type2 goods ">
+            <tbody>
+              <tr>
+                <th></th>
+                <th>商品信息</th>
+                <eq name="order['goods_type_id']" value="3">
+                <th class="align-center">分享购底价</th>
+                </eq>
+                <th class="align-center">商品价格</th>
+                <th class="align-center">佣金</th>
+                <th class="align-center">追加赏金</th>
+              </tr>
+              <tr>
+                <td class="w60 picture"><div class="size-56x56"><span class="thumb size-56x56"><i></i><img src="{$order['Goods']['goods_pic']}" width="56" height="56"/></span></div></td>
+                <td class="w50pre">{$order['Goods']['goods_name']}</td>
+                <eq name="order['goods_type_id']" value="3">
+                <td class="w96 align-center">{$order['goods_floor_price']}</td>
+                </eq>
+                <td class="w96 align-center"><span class="red_common">{$order['Goods']['goods_o_price']}</span></td>
+                <td class="w96 align-center"><span class="red_common">{$order['Goods']['goods_price']}</span></td>
+                <td class="w96 align-center"><span class="red_common">{$order['Goods']['add_bounty']}</span></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+      <tr>
+      	<th>订单日志</th>
+      </tr>
+      <tr>
+          <td>
+			<table class="table tb-type2 goods ">
+	            <tbody>
+	              <tr>
+	                <th class="align-center">订单状态</th>
+	                <th>操作截图</th>
+	                <th class="align-center">时间</th>
+	              </tr>
+	              <notempty name="order['OrderLog']">
+	              <volist name="order['OrderLog']" id="vo">
+	              <tr>
+	              	<td class="w96 align-center">{$vo['order_state']}</td>
+	              	<td class="w96">
+						<volist name="vo['pic']" id="v">
+							<img src="__UPLOADS__/{$v['pic_url']}" width="56" height="56"/>
+						</volist>
+					</td>
+	                <td class="w96 align-center">{$vo['log_time']|date='Y-m-d H:i:s',###}</td>
+	              </tr>
+	              </volist>
+	              <else/>
+	              <tr><td colspan="2">没有找到相关记录</td></tr>
+	              </notempty>
+	            </tbody>
+          	</table>
+          </td>
+      </tr>
+      <eq name="order['goods_type_id']" value="3">
+      <tr>
+      	<th>砍价日志</th>
+      </tr>
+      <tr>
+          <td>
+			<table class="table tb-type2 goods ">
+	            <tbody>
+	              <tr>
+	                <th class="align-center">会员名</th>
+	                <th class="align-center">时间</th>
+	              </tr>
+	              <notempty name="order['BargainLog']">
+	              <volist name="order['BargainLog']" id="vo">
+	              <tr>
+	              	<td class="w96 align-center">{$vo['friend_id']|get_member_nickname}</td>
+	                <td class="w96 align-center">{$vo['bargain_time']|date='Y-m-d H:i:s',###}</td>
+	              </tr>
+	              </volist>
+	              <else/>
+	              <tr><td colspan="2">没有找到相关记录</td></tr>
+	              </notempty>
+	            </tbody>
+          	</table>
+          </td>
+      </tr>
+      </eq>
+    </tbody>
+    <tfoot>
+      <tr class="tfoot">
+      	<td>
+      	<if condition="$info['handle_status'] eq 1 or $info['handle_status'] eq 0">
+      	<a href="{:U('dealReport',array('id'=>$info['report_id'],'type'=>1))}" class="btn"><span>申诉成功</span></a>
+      	<a href="{:U('dealReport',array('id'=>$info['report_id'],'type'=>-1))}" class="btn"><span>驳回申诉</span></a>
+      	</if>
+        <a href="JavaScript:void(0);" class="btn" onclick="history.go(-1)"><span>返回</span></a></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<include file="Public/footer" />

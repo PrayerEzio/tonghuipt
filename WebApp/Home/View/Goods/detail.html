@@ -1,0 +1,161 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--main-->
+<div class="main">
+    <div class="container clearfix">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <a href="{:U('Search/index',array('word'=>$goods['GoodsBrand']['brand_name']))}">{$goods['GoodsBrand']['brand_name']}</a> / <span>
+            <if condition="empty($_GET['spec_id'])">
+            {$goods['goods_name']}
+            <else/>
+            {$spec['spec_name']}
+            </if>
+            </span>
+        </div>
+        <div class="mainL fl">
+            <div class="zoom clearfix">
+                <div id="tsShopContainer" class="fl">
+                	<notempty name="goods['goods_pic']">
+                    <div id="tsImgS">
+                        <a href="__UPLOADS__/{$goods['goods_pic']}" title="Images" class="MagicZoom rlt" id="MagicZoom">
+                            <img width="380" height="380" src="__UPLOADS__/{$goods['goods_pic']}" class="clone"/>
+                        </a>
+                    </div>
+                    <else/>
+                    <div id="tsImgS">
+                        <a href="__IMG__/nopic.jpg" title="Images" class="MagicZoom rlt" id="MagicZoom">
+                            <img width="380" height="380" src="__IMG__/nopic.jpg" class="clone"/>
+                        </a>
+                    </div>
+                    </notempty>
+                    <div id="tsPicContainer">
+                        <div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
+                        <div id="tsImgSCon">
+                            <ul>
+                            	<notempty name="goods['goods_pic']">
+                            	<li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="__UPLOADS__/{$goods['goods_pic']}" tsImgS="__UPLOADS__/{$goods['goods_pic']}" /></li>
+                            	<else/>
+                            	<li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="__IMG__/nopic.jpg" tsImgS="__IMG__/nopic.jpg" /></li>
+                            	</notempty>
+                            	<volist name="goods['GoodsPic']" id="vo" key="key">
+                                <li onclick="showPic({$key})" rel="MagicZoom" <if condition="$key eq 0">class="tsSelectImg"</if>><img height="42" width="42" src="__UPLOADS__/{$vo['pic']}" tsImgS="__UPLOADS__/{$vo['pic']}" /></li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <div id="tsImgSArrR" onclick="tsScrollArrRight()"></div>
+                    </div>
+                    <img class="MagicZoomLoading" width="16" height="16" src="__IMG__/loading.gif" alt="Loading..." />
+                </div>
+                <div class="zoomR fr">
+                    <h3 class="ellipsis">
+                    <if condition="empty($_GET['spec_id'])">
+		            佐西卡{$goods['goods_code']}投影机灯泡适用于{$goods['GoodsBrand']['brand_name']} {$goods['goods_name']}
+		            <else/>
+		            佐西卡{$goods['goods_code']}投影机灯泡适用于{$goods['GoodsBrand']['brand_name']} {$spec['spec_name']}
+		            </if>
+		            </h3>
+		            <notempty name="goods['goods_code']">
+                    <div class="review">
+                        <span>产品编码：{$goods['goods_code']}</span>
+                    </div>
+                    </notempty>
+                    <h5 style="font-size:16px;color:#000;">机器信息:</h5>
+                    <p style="text-indent:2em">机器品牌：{$goods['GoodsBrand']['brand_name']}</p>
+                    <!-- <if condition="empty($_GET['spec_id'])">
+                    <p style="text-indent:2em">机器型号：
+                    <volist name="goods['GoodsSpec']" id="vo">
+                    	<a href="{:U('',array('spec_id'=>$vo['spec_id']))}">{$vo['spec_name']}</a>&nbsp;&nbsp;
+                    </volist>
+                    </p>
+                    <else/>
+                    	<a href="{:U('',array('spec_id'=>$_GET['spec_id']))}">{$_GET['spec_id']|get_spec_name}</a>
+                    </if> -->
+                    <p style="text-indent:2em">显示技术：{$goods['display_technique']}</p>
+                    <h5 style="font-size:16px;color:#000;margin-top:20px">灯泡信息:</h5>
+                    <p style="text-indent:2em">灯组型号：{$goods['goods_name']}</p>
+                    <p style="text-indent:2em">灯泡品牌：{$goods['bulb_brand']}</p>
+                    <p style="text-indent:2em">灯泡功率：{$goods['bulb_wattage']}W</p>
+                    <notempty name="discount">
+                    <div class="youhui">
+                    	<volist name="discount" id="vo">
+                        <p><span>【店铺优惠】</span>满{$vo['goods_num']}件单价￥{$goods['goods_price']*$vo['goods_price_rate']}</p>
+                        </volist>
+                    </div>
+                    </notempty>
+                    <div class="price">
+                        <s>￥{$goods['goods_mktprice']}</s>
+                        <span>￥{$goods['goods_price']}</span>
+	                    </div>
+                    <div class="num clearfix">
+                        <span class="fl">数量</span>
+                        <a href="javascript:" class="cut fl">-</a>
+                        <input id="num" type="text" value="1" class="many fl" onkeyup="if(!/^\d+$/.test(this.value)) {this.value=this.value.replace(/[^\d]+/g,'');}" />
+                        <a href="javascript:" class="add fl">+</a>
+                        <span>&nbsp;件，（库存<span id="proNum">{$goods['goods_storage']}</span>件）</span>
+                    </div>
+                    <neq name="goods['goods_storage']" value="0">
+                    <a href="javascript:" class="wanna cart" onclick="addCart({$goods['goods_id']})">加入购物车</a>
+                    <a href="JavaScript:buy({$goods['goods_id']})" class="wanna">立即购买</a>
+                    <else/>
+                    <a href="#" class="wanna cash" style="margin-left: 0;text-decoration: none">库存不足，预约</a>
+                    </neq>
+                </div>
+            </div>
+            <div class="content">
+                <ul class="tab">
+                    <li class="current fl">产品详情</li>
+                </ul>
+                {$goods['goods_body']}
+            </div>
+        </div>
+        <div class="mainR fr">
+  <style>
+.mainR .slogan a { margin-bottom: 0px;}
+.slogan a { height: 110px;}
+  </style>
+            <div class="slogan">
+                <volist name="notice" id="vo">
+		        <a href="{:U('Notice/detail',array('id'=>$vo['notice_id']))}" ><img src="__UPLOADS__/{$vo['notice_pic']}" style="width:200px; height:87px;"></a>
+		        </volist>
+            </div>
+        </div>
+    </div>
+</div>
+<!--提现弹出层-->
+<div class="addressNew hide">
+    <form action="{:U('reserve')}" method="post" class="addressEdit abs" style="height: 80px;margin-top: -40px;">
+        <input type="text" name="num" placeholder="请输入预约数量">
+        <input type="hidden" name="goods_id" value="{$goods['goods_id']}">
+        <input type="hidden" name="spec_id" value="{$spec['spec_id']}">
+        <input type="submit" value="确认预约" class="btn">
+        <a href="#" class="close abs">×</a>
+    </form>
+</div>
+<script src="__JS__/ShopShow.js"></script>
+<script>
+function addCart(goods_id){
+	var num = $("#num").val();
+	var URL= "{:U('Cart/addCart')}";
+	var data = {"goods_id":goods_id,"num":num};
+	$.post(URL,data,function(){
+		
+	});
+}
+function buy(goods_id){
+	var URL= "{:U('buy')}";
+	var goods_num = $("#num").val();
+	var data = {"goods_id":goods_id,"goods_num":goods_num};
+	$.post(URL,data,function(result){
+		if (result.code != 200){
+			alert(result.msg);
+		}else {
+			window.location.href = "/Cart/autoBuy/goods_id/"+goods_id;
+		}
+	},"json");
+}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

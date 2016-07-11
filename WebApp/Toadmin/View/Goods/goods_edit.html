@@ -1,0 +1,594 @@
+<include file="Public/header" />
+<script language="javascript">
+$(document).ready(function(){
+<?php if($rs['goods_type']){ ?>
+	$("#type_title").show();
+	$("#type_vlue").show();
+<?php }else{ ?>	
+	$("#type_title").hide();
+	$("#type_vlue").hide();
+<?php } ?>	
+	$("#gc_id").change(function(){
+		var gc_id=$(this).val();	
+		if(gc_id)
+		{     
+			$.get("__MODULE__/Goods/goods_type_show?gc_id="+gc_id,'',function(json){
+				var oo = eval("("+json+")");	
+				if(oo.done == 1)
+				{
+					$("#type_title").show();
+					$("#type_vlue").show();						
+				}else{
+					$("#type_title").hide();
+					$("#type_vlue").hide();					
+			    }	
+			});			
+			$("#type_info").load("__MODULE__/Goods/get_goods_type?gc_id="+gc_id);
+		}
+	});		
+})
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>商品管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Goods/goods')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="goods_form" method="post" name="goods_form" enctype="multipart/form-data">
+  <input name="goods_id" type="hidden" value="{$rs['goods_id']}"/>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="gc_id">所属分类:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td width="46" class="vatop rowform"><select name="gc_id" id="gc_id">
+              <option value="">请选择...</option>
+ 			  <volist name="class_list" id="v">	
+              <option value="{$v['gc_id']}" <if condition="$rs['gc_id'] eq $v['gc_id']">selected="selected" </if>>{$v['gc_name']}</option>
+			  </volist>
+            </select></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="brand_id">所属品牌:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td width="46" class="vatop rowform"><select name="brand_id" id="brand_id">
+              <option value="">请选择...</option>
+ 			  <volist name="brand_list" id="v">	
+              <option value="{$v['brand_id']}" <if condition="$rs['brand_id'] eq $v['brand_id']">selected="selected" </if>>{$v['brand_name']}</option>
+			  </volist>
+            </select></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">产品名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['goods_name']}" name="goods_name" id="goods_name" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">产品编码:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['goods_code']}" name="goods_code" id="goods_code" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">显示技术:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['display_technique']}" name="display_technique" id="display_technique" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">灯泡品牌:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['bulb_brand']}" name="bulb_brand" id="bulb_brand" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">灯泡型号:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['bulb_code']}" name="bulb_code" id="bulb_code" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">灯泡功率:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['bulb_wattage']}" name="bulb_wattage" id="bulb_wattage" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation">工厂品牌:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['factory_brand']}" name="factory_brand" id="factory_brand" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">工厂国际码:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['factory_code']}" name="factory_code" id="factory_code" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">市场价格:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <input type="text" value="{$rs['goods_mktprice']}" name="goods_mktprice" id="goods_mktprice" class="txt">
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">产品价格:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <input type="text" value="{$rs['goods_price']}" name="goods_price" id="goods_price" class="txt">
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">产品库存:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <input type="text" value="{$rs['goods_storage']}" name="goods_storage" id="goods_storage" class="txt">
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">会员价格:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <input type="text" value="{$rs['member_price']}" name="member_price" id="member_price" class="txt">
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">产品积分:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          <input type="text" value="{$rs['goods_point']}" name="goods_point" id="goods_point" class="txt">
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label>产品规格:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="15"> 
+            <table class="table tb-type2">
+              <thead id="spec_tt">
+                <tr class="noborder">
+                  <th class="w48 sort">排序</th>
+                  <th class="w270 name">规格值</th>
+                  <!-- <th class="w270 price">价格</th> -->
+                  <th class="w150 align-center">操作</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tr_model_spec">
+				<tr></tr>
+               <volist name="spec_list" id="sp"> 
+                <tr class="hover edit">
+                <td class="w48 sort"><input type="text" name="s_value[s_{$i}][sort]" value="{$sp['spec_goods_sort']}" /></td>
+                <td class="w270 name"><input type="text" name="s_value[s_{$i}][name]" value="{$sp['spec_name']}" /></td>
+                <!-- <td class="w270 price"><input type="text" data_type="price" name="s_value[s_{$i}][price]" value="{$sp['spec_goods_price']}" /></td> -->
+                <td class="w150 align-center"><a onclick="remove_tr($(this));" href="JavaScript:void(0);">移除</a></td>
+                <td></td>
+                </tr>      
+              </volist>           
+              </tbody>
+              <tbody>
+                <tr>
+                  <td colspan="15"><a class="btn-add marginleft" id="add_type" href="JavaScript:void(0);" onclick="add_spec()"> <span>添加一个规格值</span> </a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+                
+       <tr>
+          <td colspan="2" class="required"><label for="goods_pic">代表图片:</label></td>
+        </tr>
+        <tr class="noborder">
+         <td class="vatop rowform">  
+            <span class="type-file-show">
+          	<img class="show_image" src="__IMG__/preview.png">
+          	<notempty name="rs['goods_pic']">
+            <div class="type-file-preview"><img src="__UPLOADS__{$rs['goods_pic']}"></div>
+            <else/>
+            <div class="type-file-preview"><img src="__IMG__/nopic.jpg"></div>
+            </notempty>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_goods_pic' id='txt_goods_pic' class='type-file-text' />
+            <input type='button' name='but_goods_pic' id='but_goods_pic' value='' class='type-file-button' />
+            <input name="goods_pic" type="file" class="type-file-file" id="goods_pic" size="30" hidefocus="true" nc_type="change_goods_pic">
+            </span>
+          </td>
+          <td class="vatop tips"><span class="vatop rowform"></span></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label>前台图片:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="15"> 
+            <table class="table tb-type2">
+              <thead id="pic1_tt">
+                <tr class="noborder">
+                  <th class="w48 sort">排序</th>
+                  <th class="w270 name">图片</th>
+                  <th class="w150 align-center">操作</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tr1_model">
+				<tr></tr>
+               <volist name="pic1_list" id="sp"> 
+                <tr class="hover edit">
+                <td class="w48 sort"><input type="text" name="s_pic1[s_{$i}][sort]" value="{$sp['p_sort']}" /></td>
+                <td class="w270 name">           
+                <a href="__UPLOADS__{$sp['pic']}" target="_blank"><img src="__UPLOADS__{$sp['pic']}" width="56" height="25"></a>
+                </td>
+                <td class="w150 align-center"><a onclick="remove_pic($(this),{$sp['id']});" href="JavaScript:void(0);">移除</a></td>
+                <td></td>
+                </tr>      
+              </volist>           
+              </tbody>
+              <tbody>
+                <tr>
+                  <td colspan="15"><a class="btn-add marginleft" id="add_type" href="JavaScript:void(0);" onclick="add_pic1()"> <span>添加图片</span> </a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label>后台图片:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="15"> 
+            <table class="table tb-type2">
+              <thead id="pic2_tt">
+                <tr class="noborder">
+                  <th class="w48 sort">排序</th>
+                  <th class="w270 name">图片</th>
+                  <th class="w150 align-center">操作</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tr2_model">
+				<tr></tr>
+               <volist name="pic2_list" id="sp"> 
+                <tr class="hover edit">
+                <td class="w48 sort"><input type="text" name="s_pic2[s_{$i}][sort]" value="{$sp['p_sort']}" /></td>
+                <td class="w270 name">           
+                <a href="__UPLOADS__{$sp['pic']}" target="_blank"><img src="__UPLOADS__{$sp['pic']}" width="56" height="25"></a>
+                </td>
+                <td class="w150 align-center"><a onclick="remove_pic($(this),{$sp['id']});" href="JavaScript:void(0);">移除</a></td>
+                <td></td>
+                </tr>      
+              </volist>           
+              </tbody>
+              <tbody>
+                <tr>
+                  <td colspan="15"><a class="btn-add marginleft" id="add_type" href="JavaScript:void(0);" onclick="add_pic2()"> <span>添加图片</span> </a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['goods_sort']}" name="goods_sort" id="goods_sort" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>                                   
+        <tr>
+          <td colspan="2" class="required"><label>关键词:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$rs['goods_key']}" name="goods_key" id="goods_key" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>                  
+        <tr class="noborder">
+          <td colspan="2" class="required"><label>产品描述:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea id="goods_desc" class="tarea" rows="3" name="goods_desc">{$rs['goods_desc']}</textarea></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">产品信息:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="vatop rowform">
+          <?php ueditor('goods_body',$rs['goods_body']);?>
+          </td>
+        </tr>  
+        <tr>
+          <td colspan="2" class="required"><label>状态:</label></td>
+        </tr>
+        <notempty name="rs['goods_id']">
+          <td class="vatop rowform onoff"><label for="goods_status1" class='cb-enable <if condition="$rs['goods_status'] eq 1">selected</if>'><span>上架</span></label>
+            <label for="goods_status0" class='cb-disable <if condition="$rs['goods_status'] eq 0">selected</if>'><span>下架</span></label>
+            <input id="goods_status1" name="goods_status" <if condition="$rs['goods_status'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="goods_status0" name="goods_status" <if condition="$rs['goods_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        <else/>
+          <td class="vatop rowform onoff"><label for="goods_status1" class='cb-enable selected'><span>上架</span></label>
+            <label for="goods_status0" class='cb-disable'><span>下架</span></label>
+            <input id="goods_status1" name="goods_status" checked="checked" value="1" type="radio">
+            <input id="goods_status0" name="goods_status" value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </notempty>  
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<!--规格处理-->
+<script type="text/javascript">
+$("#spec_tt").hide();
+var s_l_i=<?php echo $spec_list_i;?>;
+var tr_model_spec = '<tr class="hover edit">'+
+	'<td class="w48 sort"><input type="text" name="s_value[key][sort]" value="0" /></td>'+
+	'<td class="w270 name"><input type="text" name="s_value[key][name]" value="" /></td>'+
+	'<td class="w150 align-center"><a onclick="remove_tr($(this));" href="JavaScript:void(0);">移除</a></td>'+
+	'<td></td>'+
+'</tr>';
+function add_spec()
+{
+	$("#spec_tt").show();
+	$('#tr_model_spec > tr:last').after(tr_model_spec.replace(/key/g,'s_'+s_l_i));
+	$.getScript("__JS__/admincp.js");
+	s_l_i++;
+}
+function remove_tr(o)
+{
+	o.parents('tr:first').remove();
+	var tr_num = $("#tr_model_spec tr").size();
+	//update_price();
+	if(tr_num == 1)
+	{
+		$('input[name="goods_store_price"]').attr('readonly','').css('background','');
+	}	
+}
+function update_price()
+{
+	var max = 0.01;
+	var min = 10000000;	
+	$('input[data_type="price"]').each(function(){
+		if($(this).val() != '')
+		{
+			max = Math.max(max,$(this).val());
+			min = Math.min(min,$(this).val());
+			$('input[name="goods_store_price"]').val(min);
+		}			
+		if($(this).val() == '')
+		{
+			$(this).val($('input[name="goods_store_price"]').val());
+		}
+	});	
+}
+$(document).ready(function(){
+	$('#submitBtn').click(function(){
+		//update_price();
+	});
+});
+</script>
+
+<!--商品图片处理-->
+<script type="text/javascript">
+<?php if($pic1_list_i >1){?>
+$("#pic1_tt").show();
+<?php }else{ ?>
+$("#pic1_tt").hide();
+<?php } ?>
+var i=<?php echo $pic1_list_i;?>;
+var tr1_model = '<tr class="hover edit">'+
+	'<td class="w48 sort"><input type="text" name="s_pic1[key][sort]" value="0" /></td>'+
+	'<td class="w270 name"><input type="file" name="s_pic1_key"/></td>'+
+	'<td class="w150 align-center"><a onclick="remove_pic($(this));" href="JavaScript:void(0);">移除</a></td>'+
+	'<td></td>'+
+'</tr>';
+function add_pic1()
+{
+	$("#pic1_tt").show();
+	$('#tr1_model > tr:last').after(tr1_model.replace(/key/g,'s_'+i));
+	$.getScript("__JS__/admincp.js");
+	i++;
+}
+function remove_pic(o,id)
+{
+	if(id > 0)
+	{
+		var URL = "{:U('Goods/del_pic')}";
+		var data = {'id':id};	
+		$.get(URL,data,function(json){
+			//var oo = eval("("+json+")");		
+		});		    		
+	}
+	o.parents('tr:first').remove();	
+}
+</script>
+
+<!--商品图片处理-->
+<script type="text/javascript">
+<?php if($pic2_list_i >1){?>
+$("#pic2_tt").show();
+<?php }else{ ?>
+$("#pic2_tt").hide();
+<?php } ?>
+var i=<?php echo $pic2_list_i;?>;
+var tr2_model = '<tr class="hover edit">'+
+	'<td class="w48 sort"><input type="text" name="s_pic2[key][sort]" value="0" /></td>'+
+	'<td class="w270 name"><input type="file" name="s_pic2_key"/></td>'+
+	'<td class="w150 align-center"><a onclick="remove_pic($(this));" href="JavaScript:void(0);">移除</a></td>'+
+	'<td></td>'+
+'</tr>';
+function add_pic2()
+{
+	$("#pic2_tt").show();
+	$('#tr2_model > tr:last').after(tr2_model.replace(/key/g,'s_'+i));
+	$.getScript("__JS__/admincp.js");
+	i++;
+}
+</script>
+
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#goods_form").valid()){
+     $("#goods_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	$('#goods_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            gc_id : {
+                required   : true
+            },
+			goods_name : {
+                required   : true
+            },
+            display_technique : {
+                required   : true
+            },
+            bulb_brand : {
+                required   : true
+            },
+            bulb_wattage : {
+                required   : true,
+                number	   : true
+            },
+			goods_desc : {
+				required : true
+            },
+            goods_price : {
+				required   : true,
+				number : true
+			},
+			goods_mktprice : {
+				number : true
+			},
+			goods_storage :{
+				required   : true,
+				number : true,
+				min : 0
+			},
+			goods_point:{
+				required   : true,
+				number : true				
+			},
+			goods_sort : {
+				number : true
+			},			
+			goods_body : {
+                required   : true
+            }
+        },
+        messages : {
+            gc_id : {
+                required   : '请选择分类'
+            },
+			goods_name : {
+                required   : '请输入产品名称'
+            },
+            display_technique : {
+                required   : '请输入显示技术'
+            },
+            bulb_brand : {
+                required   : '请输入灯泡品牌'
+            },
+            bulb_wattage : {
+                required   : '请输入灯泡功率',
+                number	   : '灯泡功率必须为数字'
+            },
+			goods_desc : {
+				required : '输入产品描述'
+            },
+            goods_price : {
+				required   : '请输入产品价格',
+				number : '产品价格输入错误'
+            },
+            goods_mktprice : {
+				number : '产品价格输入错误'
+            },
+            goods_storage :{
+				required   : '请输入商品库存',
+				number : '商品库存输入错误',
+				min : '商品库存不能为负数'
+			},
+            goods_point : {
+				required   : '请输入产品积分',
+				number : '产品积分输入错误'				
+			},
+			goods_sort : {
+				number : '排序格式输入错误'
+            },					
+			goods_body : {
+                required   : '请输入产品信息'
+            }
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#goods_pic").change(function(){
+		$("#txt_goods_pic").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

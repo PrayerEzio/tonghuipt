@@ -1,0 +1,61 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+<style>
+.MapBox { padding: 5px 0;}
+.MapBox a { display: inline-block; width: 110px; font-size: 14px; } 
+.info-conf { font-size: 14px; }
+.info-conf:after { content: ''; clear: both; display: block;}
+.info-conf dl { line-height: 40px; height: 40px;}
+.info-conf dl dt { float: left;}
+.red { color: red;}
+.tick { text-align: center;}
+.tick a{ background-color: #0D6FB8; color: #fff; border-radius: 4px;}
+</style>
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>选择支付方式</span>
+        </div>
+        <div class="repairE">
+            <h3>订单确认<!-- {$info['article_title']} --></h3>
+            <form method="post">
+             <div class="MapBox">
+             	 <div class="info-conf">
+                     <dl>
+                         <dt>订单标题：</dt>
+                         <dd>{$info['title']}</dd>
+                     </dl>
+                     <dl>
+                         <dt>订单描述：</dt>
+                         <dd>{$info['body']}</dd>
+                     </dl>
+                     <dl>
+                         <dt>支付方式：</dt>
+                         <dd>
+                            <select name="pay_type" id="">
+                                <option value="1">支付宝</option>
+                                <option value="2">百度钱包</option>
+                            </select>
+                        </dd>
+                     </dl>
+                     <dl>
+                         <dt>实付金额：</dt>
+                         <dd><b class="red">{$info['total_fee']|price_format}</b></dd>
+                     </dl>
+                     <div class="tick">
+                     <input type="hidden" name="order_sn" value="{$info['order_sn']}">
+                     <input type="hidden" name="rp_sn" value="{$info['rp_sn']}">
+                     <input type="submit" value="确认提交">
+                     </div>
+                 </div>
+              </div>
+             </form>
+        </div>
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

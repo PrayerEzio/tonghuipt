@@ -1,0 +1,23 @@
+<div class="banner">
+    <div class="container">
+        <h3>欢迎来到佐西卡投影机的世界</h3>
+        <p>我们是中国领先的投影灯泡经销商，通过投影机灯泡数据信息，找到您的投影机型号或灯组型号：</p>
+        <div class="select">
+        	<input type="hidden" name="next_value_num" id="next_value_num" value="0"/>
+            <select name="brand" id="brand">
+                <option value="0">请选择品牌</option>
+                <volist name="brand" id="vo">
+                <option value="{$vo['brand_id']}">{$vo['brand_name']}</option>
+                </volist>
+            </select>
+            <p style="color: #999">然后</p>
+            <select name="model" class="next1">
+                <option value="0">请选择型号</option>
+            </select>
+            <span style="color: #999"> 或者 </span>
+            <select name="part" class="next2">
+                <option value="0">请选择灯组</option>
+            </select>
+        </div>
+    </div>
+</div>

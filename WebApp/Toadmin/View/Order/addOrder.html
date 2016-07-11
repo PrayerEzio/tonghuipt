@@ -1,0 +1,139 @@
+<include file="Public/header" />
+
+<div class="page">
+  <form action="" id="form_submit" method="post">
+  <table class="table tb-type2 order">
+    <tbody>
+      <tr class="space">
+        <th colspan="15">订单状态</th>
+      </tr>
+      <tr>
+        <td colspan="2"><ul>
+            <li><strong>外部订单号:</strong><input type="text" name="out_sn"></li>
+            <li><strong>来源:</strong>
+            <select name="source">
+            <option value="国美">国美</option>
+            <option value="京东">京东</option>
+            <option value="天猫">天猫</option>
+            <option value="其他">其他</option>
+            </select>
+            </li>
+            <li><strong>下单时间:</strong><span><input class="txt date" type="text" value="" id="add_time" name="add_time"></span></li>
+            <li><strong>订单折扣:</strong><span><input type="text" name="discount"></span></li>
+            <li><strong>订单总额:</strong><span><input type="text" name="order_amount"></span></li>
+          </ul></td>
+      </tr>
+      <tr class="space">
+        <th colspan="2">订单详情</th>
+      </tr>
+      <tr>
+        <th>收货人及发货信息</th>
+      </tr>
+      <tr>
+        <td><ul>
+            <li><strong>支付时间:</strong><input class="txt date" type="text" value="" id="payment_time" name="payment_time"/></li>
+            <li><strong>收货人姓名:</strong><input type="text" name="true_name"></li>
+            <li><strong>收货地址:</strong>
+            	<select name="province_id" id="province" onchange="getDistrict('province')">
+                    <option value="">请选择</option>
+                    <volist name="province" id="vo">
+                    <option value="{$vo['id']}">{$vo['name']}</option>
+                    </volist>
+                </select>
+                <select name="city_id" id="city" onchange="getDistrict('city')">
+                    <option value="">请选择</option>
+                </select>
+                <select name="area_id" id="area">
+                    <option value="">请选择</option>
+                </select>
+            	<input type="text" name="address">
+            </li>
+            <li><strong>邮政编码:</strong><input type="text" name="zip_code"></li>
+            <li><strong>联系电话:</strong><input type="text" name="mob_phone"></li>
+            <li><strong>邮箱地址:</strong><input type="text" name="email"></li>
+          </ul></td>
+      </tr>
+      <tr>
+        <th>商品信息 | 搜索:<input type="text" id="goods_name"/>&nbsp;<a href="JavaScript:searchGoods();">查询</a></th>
+      </tr>
+      <tr>
+        <td><table class="table tb-type2 goods ">
+            <tbody id="goods_body">
+              <tr>
+                <th></th>
+                <th>商品信息</th>
+                <th class="align-center">商品原价</th>
+                <th class="align-center">购买价格</th>
+                <th class="align-center">购买数量</th>
+                <th class="align-center">操作</th>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="tfoot">
+        <td><a href="JavaScript:void(0);" class="btn" onclick="form_submit()"><span>添加</span></a></td>
+      </tr>
+    </tfoot>
+  </table>
+  </form>
+</div>
+<script type="text/javascript">
+getDistrict('province');
+var i = 0;
+function searchGoods(){
+	var goods_name = $("#goods_name").val();
+	var URL = "{:U('ajaxGetGoodsName')}";
+	var data = {'goods_name':goods_name};
+	$.post(URL,data,function(result){
+		if (result.code == 200){
+			var html = '';
+			html += '<tr><td class="w60 picture"><div class="size-56x56"><span class="thumb size-56x56"><i></i><img src="/Uploads/'+result.data.goods_pic+'" width="56" height="56"/></span></div></td>';
+			html += '<td class="w50pre">'+result.data.goods_name+'</td>';
+			html += '<td class="w96 align-center"><span><input type="text" name="goods['+i+'][goods_mktprice]" value="'+result.data.goods_mktprice+'"></span></td>';
+			html += '<td class="w96 align-center"><span><input type="text" name="goods['+i+'][goods_price]" value="'+result.data.goods_price+'"></span></td>';
+			html += '<td class="w96 align-center"><span><input type="text" name="goods['+i+'][goods_num]" value="1"></span></td>';
+			html += '<td class="w96 align-center"><a sid="test" href="JavaScript:void(0);" onclick="removeTr(this);">移除</a></td>';
+			html += '<input type="hidden" name="goods['+i+'][goods_id]" value="'+result.data.goods_id+'">';
+			html += '</tr>';
+			$("#goods_body").append(html);
+			i++;
+		}else {
+			alert(result.msg);
+		}
+	},"json");
+}
+function removeTr(obj){
+	$(obj).parent().parent().remove();
+}
+function form_submit(){
+	$("#form_submit").submit();
+}
+function getDistrict(level){
+    var id = $("#"+level).val();
+    var URL = "{:U('getDistrict')}";
+    var data = {"id":id};
+    $.post(URL, data, function(info) {
+        if (level == 'province') {
+            $("#city").remove();
+            $("#area").remove();
+            $("#province").after(info);
+        };
+        if (level == 'city'){
+            $("#area").remove();
+            $("#city").after(info);
+        };
+    });
+}
+</script>
+<script type="text/javascript" src="__STATIC__/jquery-ui/jquery.ui.js"></script> 
+<script type="text/javascript" src="__STATIC__/jquery-ui/i18n/zh-CN.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui/themes/ui-lightness/jquery.ui.css"  />
+<script type="text/javascript">
+$(function(){
+    $('#add_time').datepicker({dateFormat: 'yy-mm-dd'});
+    $('#payment_time').datepicker({dateFormat: 'yy-mm-dd'});
+});
+</script> 
+<include file="Public/footer" />

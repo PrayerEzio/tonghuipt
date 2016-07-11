@@ -1,0 +1,31 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--search-->
+<div class="main">
+    <div class="container" style="width:1000px">
+    	<notempty name="list">
+	    	<volist name="list" id="vo">
+		    	<empty name="vo['img']">
+			        <div class="searchT">
+			            <h3 class="ellipsis"><a href="{$vo['url']}">{$vo['title']}</a></h3>
+			            <p>{:cut_str($vo['description'])}</p>
+			        </div>
+		        <else/>
+			        <div class="searchP clearfix">
+			            <h3 class="ellipsis"><a href="{$vo['url']}">{$vo['title']}</a></h3>
+			            <img src="__UPLOADS__/{$vo['img']}" alt="" class="fl">
+			            <p class="fr">{:cut_str($vo['description'])}</p>
+			        </div>
+		        </empty>
+	        </volist>
+	        <div class="black2" style="text-align: left;">{$page}</div>
+        <else/>
+        	<div class="black2" style="text-align: left;">没有找到相关信息.</div>
+        </notempty>
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

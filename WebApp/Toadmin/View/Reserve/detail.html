@@ -1,0 +1,123 @@
+<include file="Public/header" />
+
+<div class="page">
+  <table class="table tb-type2 order">
+    <tbody>
+      <tr class="space">
+        <th colspan="15">订单状态</th>
+      </tr>
+      <tr>
+        <td colspan="2"><ul>
+            <li><strong>订单号:</strong>{$info['order_sn']}</li>
+            <li><strong>外部订单号:</strong>{$info['out_sn']}</li>
+            <li><strong>下单时间:</strong><span>{$info['add_time']|date='Y-m-d H:i:s',###}</span></li>
+            <li><strong>订单状态:</strong>{$info['order_state']|get_order_state_name}</li>
+            <li><strong>订单折扣:</strong><span class="red_common">{$info['discount']}</span></li>
+            <li><strong>订单总额:</strong><span class="red_common">{$info['order_amount']}</span></li>
+          </ul></td>
+      </tr>
+      <tr class="space">
+        <th colspan="2">订单详情</th>
+      </tr>
+      <tr>
+        <th>收货人及发货信息</th>
+      </tr>
+      <tr>
+        <td><ul>
+            <li><strong>买家:</strong>{$info['member_id']|get_member_nickname}</li>
+            <li><strong>支付时间:</strong><if condition="$info['payment_time'] neq 0">{$info['payment_time']|date='Y-m-d H:i:s',###}<else/>未支付</if></li>
+            <li><strong>收货人姓名:</strong>{$info['OrderAddress']['true_name']}</li>
+            <li><strong>收货地址:</strong>{$info['OrderAddress']['prov_id']|getDistrictName}{$info['OrderAddress']['city_id']|getDistrictName}{$info['OrderAddress']['area_id']|getDistrictName}{$info['OrderAddress']['address']}</li>
+            <li><strong>邮政编码:</strong>{$info['OrderAddress']['zip_code']}</li>
+            <li><strong>联系电话:</strong>{$info['OrderAddress']['mob_phone']}</li>
+          </ul></td>
+      </tr>
+      <tr>
+        <th>商品信息</th>
+      </tr>
+      <tr>
+        <td><table class="table tb-type2 goods ">
+            <tbody>
+              <tr>
+                <th></th>
+                <th>商品信息</th>
+                <th class="align-center">商品原价</th>
+                <th class="align-center">购买价格</th>
+                <th class="align-center">购买数量</th>
+              </tr>
+              <volist name="info['OrderGoods']" id="vo">
+              <tr>
+                <td class="w60 picture"><div class="size-56x56"><span class="thumb size-56x56"><i></i><img src="__UPLOADS__/{$vo['goods_image']}" width="56" height="56"/></span></div></td>
+                <td class="w50pre">{$vo['goods_name']}</td>
+                <td class="w96 align-center"><span class="red_common">{$vo['goods_mkprice']}</span></td>
+                <td class="w96 align-center"><span class="red_common">{$vo['goods_price']}</span></td>
+                <td class="w96 align-center"><span class="red_common">{$vo['goods_num']}</span></td>
+              </tr>
+              </volist>
+            </tbody>
+          </table></td>
+      </tr>
+      <tr>
+      	<th>订单日志</th>
+      </tr>
+      <tr>
+          <td>
+			<table class="table tb-type2 goods ">
+	            <tbody>
+	              <tr>
+	                <th class="align-center">时间</th>
+	                <th class="align-center">日志信息</th>
+	                <th class="align-center">操作日</th>
+	                <th class="align-center">订单状态</th>
+	              </tr>
+	              <notempty name="info['OrderLog']">
+	              <volist name="info['OrderLog']" id="vo">
+	              <tr>
+	                <td class="w96 align-center">{$vo['log_time']|date='Y-m-d H:i:s',###}</td>
+	                <td class="w96 align-center">{$vo['state_info']}</td>
+	                <td class="w96 align-center">{$vo['operator']}</td>
+	                <td class="w96 align-center">{$vo['order_state']}</td>
+	              </tr>
+	              </volist>
+	              <else/>
+	              <tr><td colspan="2">没有找到相关记录</td></tr>
+	              </notempty>
+	            </tbody>
+          	</table>
+          </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="tfoot">
+        <td>
+        <a href="JavaScript:void(0);" class="btn" onclick="history.go(-1)"><span>返回</span></a>
+        <if condition="$info['order_state'] neq 50 && $info['order_state'] neq 60">
+        <a href="JavaScript:void(0);" class="btn" onclick="cancelOrder({$info['order_id']})"><span>取消订单</span></a>
+        </if>
+        <if condition="$info['order_state'] eq 20">
+        <a href="JavaScript:void(0);" class="btn" onclick="ajaxDeliver({$info['order_id']})"><span>发货</span></a>
+        </if>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<script>
+function ajaxDeliver(order_id){
+	var URL = "{:U('ajaxDeliver')}";
+	var data = {"order_id":order_id};
+	$.post(URL,data,function(result){
+		alert(result.msg);
+		window.location.reload();
+	},"json");
+}
+function cancelOrder(order_id){
+	var URL = "{:U('cancelOrder')}";
+	var data = {"order_id":order_id};
+	$.post(URL,data,function(result){
+		alert(result.msg);
+		window.location.reload();
+	},"json");
+}
+</script>
+<include file="Public/footer" />

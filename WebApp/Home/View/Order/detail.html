@@ -1,0 +1,110 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main" style="background-color: #f7f7f7">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <a href="{:U('Member/index')}">会员中心</a> / <span>订单管理</span>
+        </div>
+        <div class="member">
+            {:W('Menu/index')}
+            <div class="memberR fl">
+                <h3>订单详情</h3>
+                <div class="wuliu">
+                    <div class="where">
+                        <p>收货地址：{$info['OrderAddress']['true_name']}，{$info['OrderAddress']['mob_phone']}， {$info['OrderAddress']['prov_id']|getDistrictName} {$info['OrderAddress']['city_id']|getDistrictName} {$info['OrderAddress']['area_id']|getDistrictName} {$info['OrderAddress']['address']}，{$info['OrderAddress']['zip_code']}</p>
+                        <notempty name="info['order_message']">
+                        <p>买家留言：{$info['order_message']}</p>
+                        </notempty>
+                    </div>
+                    <ul class="progress">
+                        <li><span class="date">{:get_express_name($info['shipping_express_id'])}</span><span class="week"></span><span class="time">物流单号</span><span class="text">{$info['shipping_code']}</span></li>
+                    </ul>
+                </div>
+                <div class="orderList">
+                    <div class="order">
+                        <div class="orderHeader"><span>{$info['add_time']|date='Y-m-d',###}</span>订单号：{$info['order_sn']} <a href="{:U('Repair/apply')}">申请保修</a>
+                        </div>
+                        <div class="orderBottom clearfix">
+                            <div class="proBox fl">
+                            	<volist name="info['OrderGoods']" id="vo">
+                                <dl class="clearfix">
+                                    <dt class="fl"><a href="#"><img src="__UPLOADS__/{$vo['goods_image']}" alt=""></a></dt>
+                                    <dd class="fl"><a href="{:U('Goods/detail',array('goods_id'=>$vo['goods_id']))}">{$vo['goods_name']}</a></dd>
+                                    <dd class="fl">
+                                        <s>{$vo['goods_mkprice']}</s>
+                                        <p>{$vo['goods_price']}</p>
+                                    </dd>
+                                    <dd class="fl">{$vo['goods_num']}
+                                        <p><a href="JavaScript:get_serial({$vo['goods_id']},{$info['order_id']});">查看系列号</a></p>
+                                    </dd>
+                                </dl>
+                                </volist>
+                            </div>
+                            <div class="priceBox fl">
+                                <ul class="clearfix">
+                                    <li class="fl">{$vo['order_amount']}</li>
+                                    <li class="fl">
+                                        <p>{$info['order_state']|get_order_state_name}</p>
+                                    </li>
+                                    <li class="fl">
+                                        <switch name="info['order_state']">
+                                        <case value="30"><a href="{:U('Order/receipt',array('sn'=>$info['order_sn']))}" class="btn">确认收货</a></case>
+                                        <case value="40"><a href="{:U('Order/finish',array('sn'=>$info['order_sn']))}" class="btn">完成订单</a></case>
+                                        </switch>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.addressEdit h3 { font-size: 17px; text-align: center; padding-bottom: 5px; border-bottom: 1px solid #cfcfcf; margin-bottom: 10px;}
+.addressEdit ul li { font-size: 13px;}
+</style>
+<script>
+    function showb(){
+        $('.addressNew').show();
+    }
+</script>
+<!-- 弹出层 -->
+<div class="addressNew hide" style="display: none;">
+    <div class="addressEdit abs" style="height:auto;margin-top: -100px;">
+        <h3>产品序列号详情</h3>
+        <ul id="serial_url">
+            <li>1235464561121324</li>
+            <li>1235464561121324</li>
+            <li>1235464561121324</li>
+        </ul>
+        <a href="#" class="close abs">×</a>
+    </div>
+</div>
+<script>
+	function get_serial(goods_id,order_id){
+		var URL = "{:U('get_serial')}";
+		var data = {"goods_id":goods_id,"order_id":order_id};
+		$.post(URL,data,function(result){
+			$("#serial_url").empty();
+			var html = "";
+			if (result.data != null){
+				for (i = 0;result.data.length>i;i++){
+					html += "<li>"+result.data[i].serial_number+"</li>";
+				}
+			}else {
+				html += "<li>没有找到相关信息</li>";
+			}
+			$("#serial_url").prepend(html);
+			showb();
+		},"json");
+	}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

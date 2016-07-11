@@ -1,0 +1,25 @@
+<div class="memberL fl">
+	<empty name="member['avatar']">
+    <img src="__IMG__/UserDefaultPic.png" alt="" width="84" height="84">
+    <else/>
+    <img src="__UPLOADS__/{$member['avatar']}" alt="" width="84" height="84">
+    </empty>
+    <p>您好，{$mid|get_member_nickname}</p>
+    <a href="{:U('logout')}" class="loginOut">注销</a>
+    <ul class="memberNav">
+        <li <if condition="CONTROLLER_NAME eq 'Member' && ACTION_NAME eq 'index'">class="current"</if>><a href="{:U('Member/index')}" class="rlt"><i class="iconfont abs">&#xe618;</i>基础资料</a></li>
+        <li <if condition="ACTION_NAME eq 'order' || CONTROLLER_NAME eq 'Order'">class="current"</if>><a href="{:U('Member/order')}" class="rlt"><i class="iconfont abs" style="color: #FF9C00">&#xe611;</i>订单管理</a></li>
+        <li <if condition="ACTION_NAME eq 'repair' || ACTION_NAME eq 'progress'">class="current"</if>><a href="{:U('Member/repair')}" class="rlt"><i class="iconfont abs" style="color: #FE0003">&#xe615;</i>维修列表</a></li>
+        <if condition="$member_type eq 1">
+        <li <if condition="CONTROLLER_NAME eq 'Feedback'">class="current"</if>><a href="{:U('Feedback/index')}" class="rlt"><i class="iconfont abs" style="color: #FE0003">&#xe615;</i>维修处理</a></li>
+        </if>
+        <!-- <if condition="$member_sevice_status eq 1">
+        <li <if condition="ACTION_NAME eq 'member_sevice'">class="current"</if>><a href="{:U('Member/member_sevice')}" class="rlt"><i class="iconfont abs" style="color: #FB9622">&#xe617;</i>会员服务</a></li>
+        </if> -->
+        <li <if condition="ACTION_NAME eq 'message'">class="current"</if>><a href="{:U('Member/message')}" class="rlt"><i class="iconfont abs" style="color: #C4158A">&#xe612;</i>会员留言</a></li>
+        <li <if condition="ACTION_NAME eq 'antiForgery'">class="current"</if>><a href="{:U('Member/antiForgery')}" class="rlt"><i class="iconfont abs" style="color: #229167">&#xe614;</i>防伪查询</a></li>
+        <li <if condition="ACTION_NAME eq 'letter' || ACTION_NAME eq 'letter_detail'">class="current"</if>><a href="{:U('Member/letter')}" class="rlt"><i class="iconfont abs" style="color: #077DF9">&#xe610;</i>站内信息</a></li>
+        <li <if condition="ACTION_NAME eq 'address'">class="current"</if>><a href="{:U('Member/address')}" class="rlt"><i class="iconfont abs" style="color: #7B0285">&#xe616;</i>收货地址</a></li>
+        <li <if condition="ACTION_NAME eq 'resetPassword'">class="current"</if>><a href="{:U('Member/resetPassword')}" class="rlt"><i class="iconfont abs" style="color: #99D03E">&#xe61a;</i>修改密码</a></li>
+    </ul>
+</div>

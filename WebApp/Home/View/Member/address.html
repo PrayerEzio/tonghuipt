@@ -1,0 +1,115 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main" style="background-color: #f7f7f7">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <a href="{:U('Member/index')}">会员中心</a> / <span>收货地址</span>
+        </div>
+        <div class="member">
+            {:W('Menu/index')}
+            <div id="address_div" class="memberR fl">
+                <h3>收货地址</h3>
+                <div class="addresss">
+                	<volist name="list" id="vo">
+                    <div <eq name="vo['def_addr']">class="address fl current"<else/>class="address fl"</eq>>
+                        <h3>{$vo['name']} <a href="#" class="fr">{$vo['addr_tag']}</a></h3>
+                        <p>{$vo['mobile']}</p>
+                        <p>{$vo['province_id']|getDistrictName} {$vo['city_id']|getDistrictName} {$vo['area_id']|getDistrictName}</p>
+                        <p>{$vo['addr']}({$vo['zip']})</p>
+                        <p style="margin-top: 5px;"><a href="JavaScript:void(0);" class="addressBtn">编辑</a><a href="JavaScript:delAddress({$vo['addr_id']});">删除</a></p>
+                    </div>
+                    </volist>
+                    <div class="address fl addressBtn">
+                        <img src="__IMG__/add_cart.png" alt="">
+                        <p>添加新地址</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--收货地址弹出层-->
+<div class="addressNew hide">
+    <form action="" method="post" class="addressEdit abs">
+    	<input id="addr_id" name="addr_id" type="hidden" value=""/>
+        <input id="addr_name" name="name" type="text" placeholder="收货人姓名">
+        <input id="addr_mobile" name="mobile" type="text" placeholder="11位手机号码">
+        <select name="province" id="province">
+            <option value="">省份/直辖市/自治区</option>
+            <volist name="province" id="vo">
+            <option value="{$vo['id']}">{$vo['name']}</option>
+            </volist>
+        </select>
+        <select name="city" id="city">
+            <option value="">城市/地区/自治州</option>
+        </select>
+        <select name="area" id="area">
+            <option value="">区/县</option>
+        </select>
+        <textarea id="addr" name="addr" placeholder="路名或街道名称，门牌号"></textarea>
+        <input id="zip" type="text" name="zip" placeholder="邮政编码">
+        <input id="addr_tag" type="text" name="addr_tag" placeholder="地址标签：如“家”、“公司”">
+        <input type="submit" value="确认" class="btn">
+        <a href="JavaScript:void(0);" class="close abs">×</a>
+    </form>
+</div>
+<script>
+$(function(){
+	changDistrict();
+});
+function getDistrict(id){
+	var data = {"id":id};
+	var URL = "{:U('getDisctrict')}";
+	$.post(URL,data,function(json){
+		if (json.level == 'city'){
+			$("#city").remove();
+			var city_html = '<select name="city" id="city"><option value="">城市/地区/自治州</option>';
+			for (i=0;i<json.city.length;i++){
+				city_html += '<option value="'+json.city[i].id+'">'+json.city[i].name+'</option>';
+			}
+			city_html += '</select>';
+			$("#province").after(city_html);
+			$("#area").remove();
+			var area_html = '<select name="area" id="area"><option value="">区/县</option>';
+			area_html += '</select>';
+			$("#city").after(area_html);
+		}
+		if (json.level == 'area'){
+			$("#area").remove();
+			var area_html = '<select name="area" id="area"><option value="">区/县</option>';
+			for (i=0;i<json.city.length;i++){
+				area_html += '<option value="'+json.city[i].id+'">'+json.city[i].name+'</option>';
+			}
+			area_html += '</select>';
+			$("#city").after(area_html);
+		}
+		changDistrict();
+	},"json");
+}
+function changDistrict(){
+	$("#province").change(function(){
+		getDistrict($(this).val());
+	});
+	$("#city").change(function(){
+		getDistrict($(this).val());
+	});
+}
+function delAddress(id){
+	var data = {"id":id};
+	var URL = "{:U('delAddress')}";
+	$.post(URL,data,function(res){
+		if (res == 1){
+			alert('删除地址成功');
+		}else {
+			alert('删除地址失败');
+		}
+		window.location.reload()
+	});
+}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

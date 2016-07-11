@@ -1,0 +1,33 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+    <div class="map">
+	    <div class="container clearfix">
+	        <h2>网站地图</h2>
+	        <h3><a href="{:U('Index/index')}">网站首页</a></h3>
+	        <h3><a href="/About/index.html">走进美意陶</a></h3>
+	        <ul class="clearfix">
+	            <li class="fl"><a href="/About/index.html">品牌介绍</a></li>
+	            <li class="fl"><a href="/About/index/id/1.html">品牌介绍</a></li><li class="fl"><a href="/About/index/id/2.html">荣誉资质</a></li><li class="fl"><a href="/About/index/id/3.html">展厅功能</a></li><li class="fl"><a href="/About/index/id/4.html">工厂展示</a></li><li class="fl"><a href="/About/index/id/7.html">产品工艺</a></li>        </ul>
+	        <h3><a href="/Product/index.html">产品中心</a></h3>
+	        <ul class="clearfix">
+	        	<li class="fl"><a href="/Product/index/cate/18.html">现代瓷砖背景墙</a></li><li class="fl"><a href="/Product/index/cate/20.html">中式瓷砖背景墙</a></li><li class="fl"><a href="/Product/index/cate/22.html">欧式瓷砖背景墙</a></li><li class="fl"><a href="/Product/index/cate/23.html">3D仿玉背景墙</a></li><li class="fl"><a href="/Product/index/cate/24.html">大板石纹背景墙</a></li><li class="fl"><a href="/Product/index/cate/25.html">山水风景背景墙</a></li><li class="fl"><a href="/Product/index/cate/29.html">新款罗马柱</a></li>            <li class="fl"><a href="product-list.html">瓷砖背景墙</a></li>
+	        </ul>
+	        <h3><a href="{:U('News/index')}">新闻中心</a></h3>
+	        <ul class="clearfix">
+	        	<volist name="article_class" id="vo">
+	        	<li class="fl"><a href="{:U('News/index',array('cate'=>$vo['ac_id']))}">最新动态</a></li>
+	        	</volist>
+	        </ul>
+	        <h3><a href="/Cases/index.html">工程案例</a></h3>
+	        <h3><a href="/Join/index.html">招商加盟</a></h3>
+	        <h3><a href="/Contact/index.html">联系我们</a></h3>
+	    </div>
+	</div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>正在跳转至支付页面</title>
+</head>
+<body onLoad="javascript:document.E_FORM.submit()">
+<!--以下信息为标准的 HTML 格式 + PHP 语言 拼凑而成的 网银在线 支付接口标准演示页面 无需修改onLoad="javascript:document.E_FORM.submit()"-->
+<form method="post" name="E_FORM" action="https://m.jdpay.com/wepay/web/pay">
+	<input type="hidden" name="version" value="{$info['version']}">
+	<input type="hidden" name="token" value="{$info['token']}">
+	<input type="hidden" name="merchantSign" value="{$info['merchantSign']}">
+	<input type="hidden" name="merchantNum" value="{$info['merchantNum']}">
+	<input type="hidden" name="merchantRemark" value="{$info['merchantRemark']}">
+	<input type="hidden" name="tradeNum" value="{$info['tradeNum']}">
+	<input type="hidden" name="tradeDescription" value="{$info['tradeDescription']}">
+	<input type="hidden" name="tradeTime" value="{$info['tradeTime']}">
+	<input type="hidden" name="tradeAmount" value="{$info['tradeAmount']}">
+	<input type="hidden" name="currency" value="{$info['currency']}">
+	<input type="hidden" name="successCallbackUrl" value="{$info['successCallbackUrl']}">
+	<input type="hidden" name="failCallbackUrl" value="{$info['failCallbackUrl']}">
+	<input type="hidden" name="notifyUrl" value="{$info['notifyUrl']}">
+</form>
+</body>
+</html>

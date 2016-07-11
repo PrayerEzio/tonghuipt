@@ -1,0 +1,138 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items);
+    } else {
+        alert('请选择要操作的对象');
+    }
+}
+
+function submit_delete(id){
+    if(confirm('确定要删除？')) {        
+        $('#goods_id').val(id);
+        $('#list_form').submit();
+    }
+}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>商品查询</h3>
+      <ul class="tab-base">
+        <li><a href="javascript:void(0);" class="current"><span>查询</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th>选择条件</th>
+          <td>
+			  <select name="field" id="field" class="">
+			  <option <if condition="$search['field'] eq 'goods_name'">selected</if> value="goods_name">灯组型号</option>
+              <option <if condition="$search['field'] eq 'bulb_code'">selected</if> value="bulb_code">灯泡型号</option>
+              <option <if condition="$search['field'] eq 'spec_name'">selected</if> value="spec_name">机器型号</option>
+              <option <if condition="$search['field'] eq 'factory_brand'">selected</if> value="factory_brand">工厂品牌</option>
+              <option <if condition="$search['field'] eq 'factory_code'">selected</if> value="factory_code">工厂国际码</option>
+            </select>
+          </td>
+          <th>关键字</th>
+          <td><input type="text" value="{$search['words']}" name="words" class="txt" ></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="8" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="align-center">工厂品牌</th>
+          <th class="align-center">工厂国际码</th>
+		  <th class="align-center">品牌</th>
+          <th class="align-center">灯组型号</th>
+          <th class="align-center">机器型号</th>
+          <th class="align-center">灯泡型号</th>
+          <th class="align-center">前台图片</th>
+          <th class="align-center">后台图片</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+	        <tr class="hover edit">
+	        <td class='align-center'>{$val['factory_brand']}</td>
+	        <td class='align-center'>{$val['factory_code']}</td>
+	        <td class='align-center'>{$val['GoodsBrand']['brand_name']}</td>
+	        <td class='align-center'>{$val['goods_name']}</td>
+			<td class='align-center'>
+				<volist name="val['GoodsSpec']" id="vo">
+				<if condition="$key neq 0">,</if>
+				{$vo['spec_name']}
+				</volist>
+			</td>
+			<td class='align-center'>{$val['bulb_code']}</td>
+			<td class='align-center'>
+			<volist name="val['GoodsPic']" id="vo">
+			<if condition="$vo['pic_status'] eq 1">
+			<div class="small_pic">
+	            <a href="#pic_member_{$key}">
+	                <img src="__UPLOADS__/{$vo['pic']}" width="25px"/>
+	            </a>
+	        </div>
+	        <div id="pic_member_{$key}" style="display:none;"><img src="__UPLOADS__/{$vo['pic']}" /></div>
+	        </if>
+	        </volist>
+			</td>
+			<td class='align-center'>
+			<volist name="val['GoodsPic']" id="vo">
+			<if condition="$vo['pic_status'] eq 2">
+			<div class="small_pic">
+	            <a href="#pic_admin_{$key}">
+	                <img src="__UPLOADS__/{$vo['pic']}" width="25px"/>
+	            </a>
+	        </div>
+	        <div id="pic_admin_{$key}" style="display:none;"><img src="__UPLOADS__/{$vo['pic']}" /></div>
+	        </if>
+	        </volist>
+			</td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td id="batchAction" colspan="8">
+            <div class="pagination">{$page}</div>
+        </tr>
+      </tfoot>
+     </notempty>
+    </table>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<script type="text/javascript" src="__JS__/content_zoom.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('div.small_pic a').fancyZoom({scaleImg: true, closeOnClick: true});
+		$('#zoom_word_1').fancyZoom({width:400, height:200});
+		$('#zoom_word_2').fancyZoom();
+		$('#zoom_flash').fancyZoom();
+	});
+</script>
+<include file="Public/footer" />

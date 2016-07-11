@@ -1,0 +1,184 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>vip选项</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('vip_option')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="limit_form" method="post" name="limit_form" enctype="multipart/form-data">
+  <input name="select_id" type="hidden" value="{$info['select_id']}"/>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">选项名:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['select_name']}" name="select_name" id="select_name" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation">选项提示:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['select_tip']}" name="select_tip" id="select_tip" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label>选项值:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="15"> 
+            <table class="table tb-type2">
+              <thead id="spec_tt">
+                <tr class="noborder">
+                  <th class="w48 sort">排序</th>
+                  <th class="w270 name">选项值</th>
+                  <th class="w270 price">价格</th>
+                  <th class="w150 align-center">操作</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tr_model_spec">
+				<tr></tr>
+               <volist name="info['option']" id="sp"> 
+                <tr class="hover edit">
+                <input type="hidden" name="s_value[s_{$i}][option_id]" value="{$sp['option_id']}" />
+                <td class="w48 sort"><input type="text" name="s_value[s_{$i}][option_sort]" value="{$sp['option_sort']}" /></td>
+                <td class="w270 name"><input type="text" name="s_value[s_{$i}][option_name]" value="{$sp['option_name']}" /></td>
+                <td class="w270 price"><input type="text" data_type="price" name="s_value[s_{$i}][option_price]" value="{$sp['option_price']}" /></td>
+                <td class="w150 align-center"><a onclick="remove_tr($(this));" href="JavaScript:void(0);">移除</a></td>
+                <td></td>
+                </tr>      
+              </volist>           
+              </tbody>
+              <tbody>
+                <tr>
+                  <td colspan="15"><a class="btn-add marginleft" id="add_type" href="JavaScript:void(0);" onclick="add_spec()"> <span>添加一个选项值</span> </a></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['select_sort']}" name="select_sort" id="select_sort" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>                       
+        <tr>
+          <td colspan="2" class="required"><label>状态:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff"><label for="select_status1" class='cb-enable <if condition="$info['select_status'] eq 1">selected</if>'><span>开启</span></label>
+            <label for="select_status0" class='cb-disable <if condition="$info['select_status'] eq 0">selected</if>'><span>关闭</span></label>
+            <input id="select_status1" name="select_status" <if condition="$info['select_status'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="select_status0" name="select_status" <if condition="$info['select_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<!--规格处理-->
+<script type="text/javascript">
+var i=<?php echo $option_num+1;?>;
+var tr_model_spec = '<tr class="hover edit">'+
+	'<td class="w48 sort"><input type="text" name="s_value[key][option_sort]" value="0" /></td>'+
+	'<td class="w270 name"><input type="text" name="s_value[key][option_name]" value="" /></td>'+
+	'<td class="w270 price"><input type="text" data_type="price" name="s_value[key][option_price]" value="" /></td>'+
+	'<td class="w150 align-center"><a onclick="remove_tr($(this));" href="JavaScript:void(0);">移除</a></td>'+
+	'<td></td>'+
+'</tr>';
+function add_spec()
+{
+	$('#tr_model_spec > tr:last').after(tr_model_spec.replace(/key/g,'s_'+i));
+	$.getScript("__JS__/admincp.js");
+	i++;
+}
+function remove_tr(o)
+{
+	o.parents('tr:first').remove();
+	var tr_num = $("#tr_model_spec tr").size();
+}
+</script>
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#limit_form").valid()){
+     $("#limit_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	$('#limit_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+        	limit_days : {
+                required   : true,
+                number : true
+            },
+            limit_num : {
+            	required : true,
+            	number : true
+            },
+			sort : {
+				number : true
+			},
+        },
+        messages : {
+        	limit_days : {
+                required   : '请输入天数',
+                number : '天数必须为数字'
+            },
+            limit_num : {
+            	required : '请输入次数',
+            	number : '次数必须为数字'
+            },
+            sort : {
+				number : '排序格式输入错误'
+            },	
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#limit_pic").change(function(){
+		$("#txt_limit_pic").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

@@ -1,0 +1,103 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--banner-->
+<!--氙灯-->
+<div class="theatre">
+    <div class="container clearfix rlt">
+        <img src="__IMG__/xiandeng1.png" alt="" class="abs" style="    right: -96px;top: -43px; width: 1000px;">
+        <h1>专业氙灯 <small>为您的放映机，工程机找到正确的氙灯型号</small></h1>
+        <div class="theatreSearch">
+            <h3>按照投影仪品牌和型号进行匹配</h3>
+            <input type="hidden" name="viewhtml" id="viewhtml" value="theatre"/>
+            <input type="hidden" name="gc" id="gc" value="{$gc}"/>
+            <div class="select">
+                <select name="brand" id="brand" style="width: 379px;">
+                     <option value="0">请选择品牌</option>
+	                 <volist name="brand" id="vo">
+	                 <option value="{$vo['brand_id']}">{$vo['brand_name']}</option>
+	                 </volist>
+                </select>
+                <span style="color: #999"> 然后 </span>
+                <select name="part" class="next2">
+                <option value="0">请选择型号</option>
+            	</select>
+            </div>
+        </div>
+        <notempty name="goods">
+	        <div class="mainL fl">
+	            <div class="zoom clearfix">
+	                <div id="tsShopContainer" class="fl">
+	                	<notempty name="goods['goods_pic']">
+	                    <div id="tsImgS">
+	                        <a href="__UPLOADS__/{$goods['goods_pic']}" title="Images" class="MagicZoom rlt" id="MagicZoom">
+	                            <img width="380" height="380" src="__UPLOADS__/{$goods['goods_pic']}" class="clone"/>
+	                        </a>
+	                    </div>
+	                    <else/>
+	                    <div id="tsImgS">
+	                        <a href="__IMG__/nopic.jpg" title="Images" class="MagicZoom rlt" id="MagicZoom">
+	                            <img width="380" height="380" src="__IMG__/nopic.jpg" class="clone"/>
+	                        </a>
+	                    </div>
+	                    </notempty>
+	                    <div id="tsPicContainer">
+	                        <div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
+	                        <div id="tsImgSCon">
+	                            <ul>
+	                            	<notempty name="goods['goods_pic']">
+	                            	<li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="__UPLOADS__/{$goods['goods_pic']}" tsImgS="__UPLOADS__/{$goods['goods_pic']}" /></li>
+	                            	<else/>
+	                            	<li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="__IMG__/nopic.jpg" tsImgS="__IMG__/nopic.jpg" /></li>
+	                            	</notempty>
+	                            	<volist name="goods['GoodsPic']" id="vo" key="key">
+	                                <li onclick="showPic({$key})" rel="MagicZoom" <if condition="$key eq 0">class="tsSelectImg"</if>><img height="42" width="42" src="__UPLOADS__/{$vo['pic']}" tsImgS="__UPLOADS__/{$vo['pic']}" /></li>
+	                                </volist>
+	                            </ul>
+	                        </div>
+	                        <div id="tsImgSArrR" onclick="tsScrollArrRight()"></div>
+	                    </div>
+	                    <img class="MagicZoomLoading" width="16" height="16" src="__IMG__/loading.gif" alt="Loading..." />
+	                </div>
+	                <div class="zoomR fr">
+	                    <h3 class="ellipsis">
+	                        <if condition="empty($_GET['spec_id'])">
+	                            {$goods['goods_name']}
+	                            <else/>
+	                            {$spec['spec_name']}
+	                        </if>
+	                    </h3>
+	                    <notempty name="goods['goods_code']">
+	                        <div class="review">
+	                            <span>产品编码：{$goods['goods_code']}</span>
+	                        </div>
+	                    </notempty>
+	                    <h5 style="font-size:16px;color:#000;">机器信息:</h5>
+	                    <p style="text-indent:2em">机器品牌：{$goods['GoodsBrand']['brand_name']}</p>
+	                    <p style="text-indent:2em">显示技术：{$goods['display_technique']}</p>
+	                    <h5 style="font-size:16px;color:#000;margin-top:20px">灯泡信息:</h5>
+	                    <p style="text-indent:2em">灯组型号：{$goods['goods_name']}</p>
+	                    <p style="text-indent:2em">灯泡品牌：{$goods['bulb_brand']}</p>
+	                    <p style="text-indent:2em">灯泡功率：{$goods['bulb_wattage']}W</p>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="mainR fr">
+  <style>
+		.mainR .slogan a { margin-bottom: 5px;}
+		.slogan a {height: 110px; } 
+</style>
+	            <div class="slogan">
+	                <volist name="notice" id="vo">
+			        <a href="{:U('Notice/detail',array('id'=>$vo['notice_id']))}"><img src="__UPLOADS__/{$vo['notice_pic']}" style="width:200px; height:87px;"></a>
+			        </volist>
+	            </div>
+	        </div>
+		</notempty>
+    </div>
+</div>
+<script src="__JS__/ShopShow.js"></script>
+<!--foot-->
+<include file="Public/footer"/>

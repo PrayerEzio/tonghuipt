@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/main.css" rel="stylesheet" type="text/css" media="print"/>
+    <link rel="stylesheet" href="css/main.css" >
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.jqprint-0.3.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/upload.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<!--top-->
+<div class="top">
+    <div class="container">
+        有任何问题请拨打我们的电话：4008-552-336
+        <ul class="fr">
+            <li class="fl current"><a href="member.html">我 的 账 户</a></li>
+            <li class="fl"><a href="cart.html">购 物 车</a></li>
+            <li class="fl"><a href="login.html">登 录</a></li>
+            <li class="fl"><a href="regist.html">注 册</a></li>
+        </ul>
+    </div>
+</div>
+<!--nav-->
+<div class="nav">
+    <div class="container">
+        <div class="logo fl">
+            <img src="images/logo.png" alt="">
+        </div>
+        <div class="search fl">
+            <h3 class="fl">欢迎来到佐西卡，您可以 <a href="login.html">登录</a> 或者 <a href="regist.html">注册</a></h3>
+            <ul class="fr">
+                <li><a href="cart.html"> 购物车 ￥99.00</a></li>
+            </ul>
+            <form action="" method="post" class="rlt fr">
+                <input type="text" placeholder="请输入关键词搜索">
+                <input type="submit" class="abs" value="">
+            </form>
+        </div>
+        <div class="navbar fl">
+            <ul>
+                <li class="fl current"><a href="index.html">投影机灯泡</a></li>
+                <li class="fl"><a href="theatre.html">剧院氖灯</a></li>
+                <li class="fl"><a href="fitting.html">大屏幕配件</a></li>
+                <li class="fl"><a href="repair1.html">投影机维修</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--repair-->
+<div class="main" style="background-color: #f7f7f7">
+    <div class="container">
+        <div class="bread">
+            <a href="index.html">首页</a> / <a href="member.html">会员中心</a> / <a href="repair-inquire.html">维修查询</a> / <span>维修报告</span>
+        </div>
+        <div class="member">
+            <div class="memberL fl">
+                <img src="images/UserDefaultPic.png" alt="" width="84" height="84">
+                <p>您好，快到碗里来</p>
+                <a href="#" class="loginOut">注销</a>
+                <ul class="memberNav">
+                    <li><a href="member.html" class="rlt"><i class="iconfont abs">&#xe618;</i>基础资料</a></li>
+                    <li><a href="order.html" class="rlt"><i class="iconfont abs" style="color: #FF9C00">&#xe611;</i>订单管理</a></li>
+                    <li><a href="order-fetch.html" class="rlt"><i class="iconfont abs" style="color: #22C9AD">&#xe613;</i>订单领取</a></li>
+                    <li  class="current"><a href="repair-inquire.html" class="rlt"><i class="iconfont abs" style="color: #FE0003">&#xe615;</i>维修查询</a></li>
+                    <li><a href="#" class="rlt"><i class="iconfont abs" style="color: #FB9622">&#xe617;</i>会员服务</a></li>
+                    <li><a href="#" class="rlt"><i class="iconfont abs" style="color: #C4158A">&#xe612;</i>会员留言</a></li>
+                    <li><a href="security.html" class="rlt"><i class="iconfont abs" style="color: #229167">&#xe614;</i>防伪查询</a></li>
+                    <li><a href="#" class="rlt"><i class="iconfont abs" style="color: #077DF9">&#xe610;</i>站内信息</a></li>
+                    <li><a href="address.html" class="rlt"><i class="iconfont abs" style="color: #7B0285">&#xe616;</i>收货地址</a></li>
+                    <li><a href="change-password.html" class="rlt"><i class="iconfont abs" style="color: #99D03E">&#xe61a;</i>修改密码</a></li>
+                </ul>
+            </div>
+            <div class="memberR fl">
+                <h3>维修报告 <a href="javascript:" class="fr print">打印</a></h3>
+                <div class="report" id="report">
+                    <!--<img src="images/logo.png" alt="" width="100">-->
+                    <h3>佐西卡维修检测报告</h3>
+                    <span style="margin-right: 300px;">日期：2015-11-12</span>
+                    <span>维修单号：20151112021412A</span>
+                    <table border="0" cellspacing="1" cellpadding="0" >
+                        <tbody>
+                            <tr>
+                                <td>会员名</td>
+                                <td>快到碗里来</td>
+                                <td>联系地址</td>
+                                <td colspan="3">珠江广场A1-13B</td>
+                            </tr>
+                            <tr>
+                                <td>联系人</td>
+                                <td>快到碗里来</td>
+                                <td>电话</td>
+                                <td>400-123-4567</td>
+                                <td>手机</td>
+                                <td>18219443899</td>
+                            </tr>
+                            <tr>
+                                <td>送修品牌</td>
+                                <td>索尼</td>
+                                <td>机器型号</td>
+                                <td>MX-4</td>
+                                <td>送检时间</td>
+                                <td>2015-11-12</td>
+                            </tr>
+                            <tr>
+                                <td>机器序列号</td>
+                                <td colspan="3">xxxxxxxxxxxxx</td>
+                                <td>完成时间</td>
+                                <td>2015-11-13</td>
+                            </tr>
+                            <tr>
+                                <td>故障现象</td>
+                                <td colspan="5">故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述故障现象描述</td>
+                            </tr>
+                            <tr>
+                                <td>原因分析</td>
+                                <td colspan="5">原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述原因分析描述</td>
+                            </tr>
+                            <tr>
+                                <td>更换元件</td>
+                                <td colspan="5">灯泡1个</td>
+                            </tr>
+                            <tr>
+                                <td>维修结果</td>
+                                <td colspan="5">维修完成</td>
+                            </tr>
+                            <tr>
+                                <td>维修建议</td>
+                                <td colspan="5">维修建议描述维修建议描述维修建议描述维修建议描述维修建议描述维修建议描述维修建议描述维修建议描述维修建议描述维修建议描述</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!--foot-->
+<div class="foot">
+    <div class="container">
+        <ul class="clearfix">
+            <li class="fl">联系我们
+                <ul>
+                    <li><i class="iconfont">&#xe60c;</i>广东省深圳市龙岗区珠江广场A1</li>
+                    <li><i class="iconfont">&#xe60e;</i>400-123-4567</li>
+                    <li><i class="iconfont">&#xe60b;</i>example@qq.com</li>
+                    <li>
+                        <a href="#"><i class="iconfont weibo" style="font-size: 24px">&#xe601;</i></a>
+                        <a href="#"><i class="iconfont weibo" style="font-size: 27px">&#xe60d;</i></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="fl">相关信息
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">条款及细则</a></li>
+                    <li><a href="#">安全支付</a></li>
+                </ul>
+            </li>
+            <li class="fl">客户服务
+                <ul>
+                    <li><a href="#">退换货说明</a></li>
+                    <li><a href="#">产品维修</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">网站地图</a></li>
+                </ul>
+            </li>
+            <li class="fl">我的服务
+                <ul>
+                    <li><a href="#">我的账户</a></li>
+                    <li><a href="#">历史订单</a></li>
+                    <li><a href="#">我的购物车</a></li>
+                    <li><a href="#">站内信息</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="copyright">
+            Copyright © 2015.Company name All rights reserved.木想到
+            <img src="images/pay.png" alt="" class="fr">
+        </div>
+    </div>
+</div>
+</body>
+</html>

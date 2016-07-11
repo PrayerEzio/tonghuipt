@@ -1,0 +1,59 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+<style>
+.MapBox { padding: 5px 0;}
+.MapBox a { display: inline-block; width: 110px; font-size: 14px; } 
+.info-conf { font-size: 14px; }
+.info-conf:after { content: ''; clear: both; display: block;}
+.info-conf dl { line-height: 40px; height: 40px;}
+.info-conf dl dt { float: left;}
+.red { color: red;}
+.tick { text-align: center;}
+.tick a{ background-color: #0D6FB8; color: #fff; border-radius: 4px;}
+</style>
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>{$info['article_title']}</span>
+        </div>
+        <div class="repairE">
+            <h3>信息确认<!-- {$info['article_title']} --></h3>
+             <div class="MapBox">
+             	 <div class="info-conf">
+                     <dl>
+                         <dt>产品名称：</dt>
+                         <dd>节能灯泡士大夫</dd>
+                     </dl>
+                     <dl>
+                         <dt>产品描述：</dt>
+                         <dd>招贤纳士 联系我们 客服中心 网站合作 用户协议 《未成年人家长监护工程》 《游戏资质信息》 《网络游戏暂行管理办法》</dd>
+                     </dl>
+                     <dl>
+                         <dt>支付方式：</dt>
+                         <dd>
+                            <select name="" id="">
+                                <option value="">支付宝</option>
+                                <option value="">打包宝</option>
+                            </select>
+                        </dd>
+                     </dl>
+                     <dl>
+                         <dt>备注信息：</dt>
+                         <dd>节能士大夫</dd>
+                     </dl>
+                     <dl>
+                         <dt>实付金额：</dt>
+                         <dd><b class="red">200.00</b></dd>
+                     </dl>
+                     <div class="tick"><a href="">确认支付</a></div>
+                 </div>
+             </div>
+        </div>
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

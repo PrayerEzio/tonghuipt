@@ -1,0 +1,62 @@
+<div class="foot">
+    <div class="container">
+        <ul class="clearfix">
+            <li class="fl" style="width: 500px;">联系我们 
+                <ul class="rlt">
+                    <li><i class="iconfont icon-look"><!-- &#xe60e; --></i><a href="{:MSC('gome_web_href')}" target="_blank">佐西卡国美店铺</a></li>
+                    <li><i class="iconfont icon-look"><!-- &#xe60b; --></i><a href="{:MSC('jd_web_href')}" target="_blank">佐西卡京东店铺</a></li>
+                    <li><i class="iconfont icon-look"><!-- &#xe60c; --></i><a href="{:MSC('taobao_web_href')}" target="_blank">佐西卡淘宝企业店</a></li>
+                    <li><i class="iconfont icon-look"><!-- &#xe60c; --></i><a href="{:MSC('mobile_web_href')}" target="_blank">佐西卡官网手机端</a></li>
+                    <li style="padding-top:10px;">
+                        <a href="{:MSC('sina_weibo')}"><i class="iconfont weibo" style="font-size: 40px">&#xe601;</i></a>
+                        <a href="{:MSC('tencent_weibo')}"><i class="iconfont weibo" style="font-size: 47px">&#xe60d;</i></a>
+                    </li>
+                    <li class="abs qrc"><a href=""><img src="__UPLOADS__/common/weixin_qrcode.png" alt=""></a></li>
+                </ul>
+            </li>
+            <li class="fl">相关信息
+                <ul>
+                	<volist name="about" id="vo">
+                		<li><a href="{:U('Article/detail',array('id'=>$vo['article_id']))}">{$vo['article_title']}</a></li>
+                	</volist>
+                </ul>
+            </li>
+            <li class="fl">客户服务
+                <ul>
+                	<volist name="article_class" id="vo">
+                	<li><a href="{:U('News/index',array('cate'=>$vo['ac_id']))}">{$vo['ac_name']}</a></li>
+                	</volist>
+                	<volist name="service" id="vo">
+                		<li><a href="{:U('Article/detail',array('id'=>$vo['article_id']))}">{$vo['article_title']}</a></li>
+                	</volist>
+                        <li><a href="{:U('Article/detail-dt')}">网站地图</a></li>
+                </ul>
+            </li>
+            <li class="fl">我的服务
+                <ul>
+                    <li><a href="{:U('Member/index')}">我的账户</a></li>
+                    <li><a href="{:U('Member/order')}">历史订单</a></li>
+                    <li><a href="{:U('Cart/index')}">我的购物车</a></li>
+                    <li><a href="{:U('Member/letter')}">站内信息</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="copyright">
+            {:MSC('icp_number')}
+            <img src="__IMG__/pay.png" alt="" class="fr">
+        </div>
+    </div>
+</div>
+<!--右侧联系-->
+<div id="top"></div>
+{:MSC('statistics_code')}
+<notempty name="alert">
+<script>
+alert("{$alert['message']}");
+<?php if (!empty($alert['jumpUrl'])) { ?>
+window.location.href = "{$alert['jumpUrl']}";
+<?php } ?>
+</script>
+</notempty>
+</body>
+</html>

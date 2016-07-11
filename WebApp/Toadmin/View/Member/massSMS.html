@@ -1,0 +1,46 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>短信群发</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>短信群发</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="goods_form" method="post" name="goods_form">
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr>
+          <td colspan="2" class="required"><label class="validation" for="contact_source">用户来源:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td width="46" class="vatop rowform">
+          	<select name="contact_source" id="contact_source">
+              <option value="0">全部</option>
+              <option value="注册">注册</option>
+              <option value="订单">订单</option>
+            </select></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea id="content" class="tarea" rows="3" name="content"></textarea></td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>发送</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+$(function(){$("#submitBtn").click(function(){
+     $("#goods_form").submit();
+	});
+});
+</script>
+<include file="Public/footer" />

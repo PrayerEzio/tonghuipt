@@ -1,0 +1,32 @@
+<div class="nav">
+    <div class="container">
+        <div class="logo fl">
+            <a href="{:U('Index/index')}"><img src="__IMG__/logo.png" alt=""></a>
+        </div>
+        <div class="search fl">
+            <h3 class="fl">
+            <empty name="mid">
+           		欢迎来到佐西卡，您可以 <a href="{:U('Login/index')}">登录</a> 或者 <a href="{:U('Login/register')}">注册</a>
+           	<else/>
+           		{$mid|get_member_nickname}，欢迎来到佐西卡。
+           	</empty>
+            </h3>
+            <ul class="fr">
+                <li><a href="{:U('Cart/index')}"> 购物车 ￥{$cart_price}</a></li>
+            </ul>
+            <form action="{:U('Search/index')}" method="get" class="rlt fr">
+                <input type="text" name="word" value="{:$_GET['word']}" placeholder="请输入关键词搜索">
+                <input type="submit" class="abs" value="">
+            </form>
+        </div>
+        <div class="navbar fl">
+            <ul>
+            	<volist name="gc_list" id="vo">
+            	<li <if condition="$gc eq $vo['gc_id']">class="fl current"<else/>class="fl"</if>><a href="{:U('Index/index',array('gc'=>$vo['gc_id']))}">{$vo['gc_name']}</a></li>
+            	</volist>
+            	<li <if condition="CONTROLLER_NAME eq 'Screen'">class="fl current"<else/>class="fl"</if>><a href="{:U('Screen/index')}">大屏幕配件</a></li>
+                <li <if condition="CONTROLLER_NAME eq 'Repair'">class="fl current"<else/>class="fl"</if>><a href="{:U('Repair/index')}">投影机维修</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

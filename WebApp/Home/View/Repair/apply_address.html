@@ -1,0 +1,121 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <a href="{:U('index')}">投影机维修</a> / <span>接收维修品</span>
+        </div>
+        <div class="step-list step-list-num3 _step-2">
+            <div class="step-u active">
+    			<span class="step-i">
+    				<em><i class="step-count">1</i></em>
+    				填写维修资料
+                    <span class="tail tail2"></span>
+    				<span class="tail"></span>
+                </span>
+            </div>
+            <div class="step-u active">
+    			<span class="step-i">
+    				<em><i class="step-count">2</i></em>
+    				接收维修品
+                    <span class="tail tail2"></span>
+    				<span class="tail"></span>
+                </span>
+            </div>
+            <div class="step-u todo">
+    			<span class="step-i">
+    				<em><i class="step-count">3</i></em>
+    				申请完成，等待处理
+                </span>
+            </div>
+        </div>
+        <div class="repairBox">
+            <div class="repairL">
+                <h3>接收维修品<span class="fr"><b class="rlt star">*</b> 为必填项</span></h3>
+                <form action="{:U('apply_success')}" method="post" id="form">
+                    <div class="write clearfix">
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 接收方式：
+                        </div>
+                        <div class="writeR fl">
+                            <label><input type="radio" name="style" class="style" value="1" checked> 物流收货</label>
+                            <label><input type="radio" name="style" class="style" value="2" id="style2"> 送货上门</label>
+                            <p style="margin-top: 10px;">收货地址：广州市天河区天河北路609号华标广场荟华阁2802室 陈先生收 020-38551187</p>
+                        </div>
+                    </div>
+                    <div class="write style1 clearfix" >
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 快递名称：
+                        </div>
+                        <div class="writeR fl">
+                            <select class="delivery" id="express" name="express">
+                            	<volist name="express" id="vo">
+                            		<option value="{$vo['e_name']}">{$vo['e_name']}</option>
+                            	</volist>
+                            </select>
+                            <a href="javascript:" id="noDelivery" class="delivery noDelivery">没有您的快递？</a>
+                            <input type="text" placeholder="请输入您选择的快递" class="other hide" id="express2" name="express2">
+                            <input type="hidden" id="customDelivery" value="0">
+                        </div>
+                    </div>
+                    <div class="write clearfix style1">
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 快递单号：
+                        </div>
+                        <div class="writeR fl">
+                            <input type="text" placeholder="请输入您的快递单号" id="express_sn" name="express_sn">
+                        </div>
+                    </div>
+
+
+                    <div class="write clearfix">
+                        <div class="writeL fl">
+                             留言：
+                        </div>
+                        <div class="writeR fl">
+                            <textarea placeholder="有需要请给我们留言"></textarea>
+                        </div>
+                    </div>
+                    <div class="write clearfix">
+                        <div class="writeL fl" style="opacity: 0">提交
+                        </div>
+                        <div class="writeR fl">
+                            <input type="button" onclick="check_form();" value="提交申请">
+                            <a href="{:U('apply')}" class="back">返回上一步</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+$(function(){
+	$("#customDelivery").val(0);
+});
+function check_form(){
+	var style = $("input[name='style']:checked").val();
+	if (style == 1){
+		var express_sn = $.trim($("#express_sn").val());
+		var express = $("#express").val();
+		var express2 = $("#express2").val();
+		var customDelivery = $("#customDelivery").val();
+		if(customDelivery == 1 && express2 == ''){
+			alert('请填写快递名称.');
+			return false;
+		}
+		if (express_sn == ''){
+			alert('请填写快递单号.');
+			return false;
+		}
+		$("#form").submit();
+	}
+}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

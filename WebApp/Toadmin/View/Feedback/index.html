@@ -1,0 +1,118 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>{$title}</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <if condition="$admin_type eq 1">
+        <li><a href="{:U('Public/logout')}"><span>登出</span></a></li>
+        </if>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th><label for="article_title">维修单号</label></th>
+          <td><input type="text" value="{$search['sn']}" name="sn" id="sn" class="txt"></td>
+          <th><label for="article_title">机身号</label></th>
+          <td><input type="text" value="{$search['machine_code']}" name="machine_code" id="machine_code" class="txt"></td>
+          <th><label for="article_title">会员</label></th>
+          <td>
+          <select name="type">
+          	<option value="mobile" <eq name="search['type']" value="mobile">selected</eq>>手机号</option>
+          	<option value="email" <eq name="search['type']" value="email">selected</eq>>邮箱</option>
+          </select>
+          <input type="text" value="{$search['member_name']}" name="member_name" id="member_name" class="txt">
+          </td>
+          <th><label for="article_title">维修商</label></th>
+          <td>
+          <select name="admin_id">
+          	<option value="0">全部</option>
+          	<option value="-1">未分配</option>
+          	<volist name="admin_list" id="vo">
+          	<option value="{$vo['member_id']}" <eq name="search['admin_id']" value="$vo['member_id']">selected</eq>>{$vo['member_id']|get_member_nickname}</option>
+          	</volist>
+          </select>
+          </td>
+          <th><label for="add_time_from">下单时间</label></th>
+          <td><input class="txt date" type="text" value="{$search['add_time_from']}" id="add_time_from" name="add_time_from">
+            <label for="add_time_to">~</label>
+            <input class="txt date" type="text" value="{$search['add_time_to']}" id="add_time_to" name="add_time_to"/></td>
+          <td>
+            <a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a>
+            <if condition="$search['sn'] neq ''">
+            <a href="{:U('')}" class="btns tooltip" title="取消查询"><span>取消查询</span></a>
+            </if>
+         </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  </table>
+  <form method="post" id="form_article">
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th class="w24"></th>
+          <th class="align-center">维修单号</th>
+          <th class="align-center">会员</th>
+          <th class="align-center">维修商品</th>
+          <th class="align-center">机身号</th>
+          <th class="align-center">分配给</th>
+          <th class="align-center">维修成本</th>
+          <th class="align-center">维修报价</th>
+          <th class="align-center">进展状态</th>
+          <th class="align-center">时间</th>
+          <th class="w60 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="v">
+        <tr class="hover">
+          <td><input type="checkbox" name="del_id[]" value="{$v['rp_id']}" class="checkitem"></td>
+          <td class="align-center">{$v['rp_sn']}</td>
+          <td class="align-center">{$v['member_id']|get_member_nickname}</td>
+          <td class="align-center">{$v['spec_name']}</td>
+          <td class="align-center">{$v['machine_code']}</td>
+          <td class="align-center"><if condition="$v['admin_id'] eq 0">未分配<else/>{$v['admin_id']|get_member_nickname}</if></td>
+          <td class="align-center">{$v['cost']|price_format}</td>
+          <td class="align-center">{$v['price']|price_format}</td>
+          <th class="align-center">{$v['rp_status']|get_rp_status_name}</th>
+          <td class="align-center">{$v['addtime']|date='Y-m-d H:i:s',###}</td>
+          <td class="align-center"><a href="{:U('detail',array('id'=>$v['rp_id']))}">详情</a></td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂时无记录</td>
+        </tr>
+       </notempty>
+      </tbody>
+      <tfoot>
+        <notempty name="list">
+        <tr class="tfoot">
+          <td><input type="checkbox" class="checkall" id="checkallBottom"></td>
+          <td colspan="16"><label for="checkallBottom">全选</label>
+            &nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('你确定要删除？')){$('#form_article').submit();}"><span>删除</span></a>
+            <div class="pagination">{$page}</div></td>
+        </tr>
+        </notempty>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script type="text/javascript" src="__STATIC__/jquery-ui/jquery.ui.js"></script> 
+<script type="text/javascript" src="__STATIC__/jquery-ui/i18n/zh-CN.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui/themes/ui-lightness/jquery.ui.css"  />
+<script type="text/javascript">
+$(function(){
+    $('#add_time_from').datepicker({dateFormat: 'yy-mm-dd'});
+    $('#add_time_to').datepicker({dateFormat: 'yy-mm-dd'});
+});
+</script> 
+<include file="Public/footer" />

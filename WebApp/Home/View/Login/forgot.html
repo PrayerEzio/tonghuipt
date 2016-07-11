@@ -1,0 +1,49 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+
+<div class="main">
+    <div class="container" style="width: 1000px;">
+        <div class="bread">
+            <a href="index.html">首页</a> / <span>找回密码</span>
+        </div>
+        <div class="login clearfix">
+            <div class="loginL fl">
+                <h3>注册新用户</h3>
+                <p>通过创建与我们的商店帐户，您将能够通过移动结帐过程更快，存储多个送货地址，查看在您的帐户，更跟踪您的订单。</p>
+                <a href="{:U('register')}" class="loginBtn">立即注册</a>
+            </div>
+            <form class="loginR fr" action="" method="post">
+                <h3>找回密码</h3>
+                <label class="email">手机号码：<a href="javascript:" class="fr regirstE">邮箱找回</a></label>
+                <input class="email" type="text" id="mobile" name="mobile" placeholder="请输入注册手机号">
+                <label class="mobile hide">邮箱：<a href="javascript:" class="fr regirstM">手机找回</a></label>
+                <input class="mobile hide" id="email" name="email" type="text" placeholder="请输入邮箱">
+                <label>验证码：</label>
+                <input type="text" name="smscode" placeholder="请输入验证码" style="width:120px;"><a href="JavaScript:void(0);" onclick="sendSMS()">获取验证码</a>
+                <label>重置密码：</label>
+                <input type="password" name="pwd" placeholder="请输入密码">
+                <input type="submit" value="确认">
+                <input type="hidden" id="s_class" name="s_class" value="mobile">
+                <a href="{:U('index')}" class="forget">已有账号，登录</a>
+            </form>
+        </div>
+    </div>
+</div>
+<!--foot-->
+<script>
+function sendSMS(){
+	var URL = "{:U('sendSMS')}";
+	var mobile = $("#mobile").val();
+	var email = $("#email").val();
+	var s_class = $("#s_class").val();
+	var type = "forgot";
+	var data = {"mobile":mobile,"type":type,"email":email,"s_class":s_class};
+	$.post(URL,data,function(msg){
+		alert(msg);
+	});
+}
+</script>
+<include file="Public/footer"/>

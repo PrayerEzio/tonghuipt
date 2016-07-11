@@ -1,0 +1,68 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>{$title}</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('curdReportClass')}" ><span>添加</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="post">
+    <table class="table tb-type2">
+      <thead>
+        <tr class="thead">
+          <th class="w48"></th>
+          <th class="w48">排序</th>
+          <th>分类名称</th>
+          <th class="w48 align-center">分类所属</th>
+          <th class="w96 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody id="treet1">
+        <notempty name="list">
+        <volist name="list" id="v">
+        <tr class="hover edit">
+          <td>
+            <input type="checkbox" name="del_id[]" value="{$v['rp_class_id']}" class="checkitem">
+           </td>
+          <td class="sort">
+          	<span title="可编辑" ajax_control="Report" ajax_branch='rp_class_sort' datatype="number" fieldid="{$v['rp_class_id']}" fieldname="rp_class_sort" nc_type="inline_edit" class="editable">{$v['rp_class_sort']}</span>
+          </td>
+          <td class="name">
+         	<span title="可编辑" ajax_control="Report" required="1" fieldid="{$v['rp_class_id']}" ajax_branch="rp_class_name" fieldname="rp_class_name" nc_type="inline_edit" class="editable tooltip">{$v['rp_class_name']}</span>
+          </td>
+          <td class="align-center">
+          <switch name="v['rp_class_belong']">
+          	<case value="1">商家</case>
+          	<case value="2">会员</case>
+          </switch>
+          </td>
+          <td class="align-center"><a href="{:U('curdReportClass',array('id'=>$v['rp_class_id']))}">编辑</a></td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <tfoot>
+        <notempty name="list">
+        <tr>
+          <td><label for="checkall1">
+              <input type="checkbox" class="checkall" id="checkall_2">
+            </label></td>
+          <td colspan="16"><label for="checkall_2">全选</label>
+            &nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('你确定要删除？')){$('form:first').submit();}"><span>删除</span></a>
+          </td>
+        </tr>
+        </notempty>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<include file="Public/footer" />

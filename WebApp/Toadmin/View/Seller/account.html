@@ -1,0 +1,101 @@
+<include file="Public/header" />
+<script type="text/javascript">
+function submit_delete_batch(){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+        items += this.value + ',';
+    });
+    if(items != '') {
+        items = items.substr(0, (items.length - 1));
+        submit_delete(items);
+    }  
+    else {
+        alert('请选择要操作的对象');
+    }
+}
+function submit_delete(id)
+{
+    if(confirm('确认删除?')) 
+	{
+        $('#member_id').val(id);
+        $('#list_form').submit();
+    }
+}
+</script>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>{$title}</h3>
+      <ul class="tab-base">
+      	<li><a href="{:U('Member/account')}"><span>买手</span></a></li>
+        <li><a href="javascript:void(0);" class="current"><span>商家</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th>账号名称</th>
+          <td><input type="text" value="{$search['account_name']}" name="account_name" class="txt" ></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <form id="list_form" method="post" >
+    <table class="table tb-type2">
+      <thead>
+        <tr class="space">
+          <th colspan="15" class="nobg">列表</th>
+        </tr>
+        <tr class="thead">
+          <th class="w48"></th>
+          <th class="w200">账号名称</th>
+		  <th class="w48">所属平台</th>
+		  <th class="w48">所属会员</th>
+		  <th class="w200">地址</th>
+		  <th class="w48">状态</th>
+		  <th class="w48 align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="val">
+        <tr class="hover edit">
+          <td><input type="checkbox" value="{$val['account_id']}" name="del_id" class="checkitem"></td>
+		  <td>{$val['store_name']}</td>
+		  <td>{$val['Platform']['pf_name']}</td>
+		  <td>{$val['Seller']['seller_id']|get_seller_nickname}</td>
+		  <td>{$val['province_id']|getDistrictName}{$val['city_id']|getDistrictName}{$val['area_id']|getDistrictName}{$val['address']}</td>
+		  <td>{$val['status']|get_status_name}</td>
+		  <td class='align-center'>
+		  <a href="{:U('authAccount',array('id'=>$val['account_id']))}">审核</a> |
+		  <a href='javascript:if(confirm("确定要删除？"))window.location ="{:U('account_del',array('id'=>$val['account_id']))}";'>删除</a>
+          </td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+        </notempty>
+      </tbody>
+      <notempty name="list">
+      <tfoot>
+        <tr class="tfoot">
+          <td><input type="checkbox" class="checkall" id="checkall_1"></td>
+          <td id="batchAction" colspan="15">
+            <span class="all_checkbox">
+            <label for="checkall_1">全选</label>
+            </span>&nbsp;&nbsp; <a href="javascript:void(0)" class="btn" onclick="submit_delete_batch();"><span>删除</span></a>
+            <div class="pagination">{$page_show}</div>
+        </tr>
+      </tfoot>
+      </notempty>
+    </table>
+  </form>
+</div>
+<include file="Public/footer" />

@@ -1,0 +1,183 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <a href="{:U('index')}">投影机维修</a> / <span>填写维修资料</span>
+        </div>
+        <div class="step-list step-list-num3 _step-2">
+            <div class="step-u active">
+    			<span class="step-i">
+    				<em><i class="step-count">1</i></em>
+    				填写维修资料
+                    <span class="tail tail2"></span>	
+    				<span class="tail"></span>
+                </span>
+            </div>
+            <div class="step-u todo">
+    			<span class="step-i">
+    				<em><i class="step-count">2</i></em>
+    				接收维修品
+                    <span class="tail tail2"></span>
+    				<span class="tail"></span>
+                </span>
+            </div>
+            <div class="step-u todo">
+    			<span class="step-i">
+    				<em><i class="step-count">3</i></em>
+    				申请完成，等待处理
+                </span>
+            </div>
+        </div>
+        <div class="repairBox">
+            <div class="repairL">
+                <h3>填写维修资料<span class="fr"><b class="rlt star">*</b> 为必填项</span></h3>
+                <form action="{:U('apply_address')}" method="post" id="form">
+                    <div class="write clearfix">
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 品牌：
+                        </div>
+                        <div class="writeR fl">
+                            <select name="bd_id" id="brands">
+                                <option value="0">请选择品牌</option>
+                                <volist name="brand" id="vo">
+                                <option value="{$vo['brand_id']}">{$vo['brand_name']}</option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="write clearfix">
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 型号：
+                        </div>
+                        <div class="writeR fl" id="model_div">
+                            <select name="spec_id" id="model">
+                                <option value="0">请选择型号</option>
+                            </select>&nbsp;&nbsp;或&nbsp;
+                            <input type="text" name="spec_name" id="spec_name" placeholder="自行输入产品型号" style="width: 185px;">
+                        </div>
+                    </div>
+                    <div class="write clearfix">
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 机身号：
+                        </div>
+                        <div class="writeR fl">
+                            <input type="text" id="code" name="code" placeholder="请输入产品唯一机身号">
+                        </div>
+                    </div>
+                    <div class="write clearfix">
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 故障分类：
+                        </div>
+                        <div class="writeR fl">
+                        	<volist name="breakdown" id="vo">
+                            <lable style="display: block"><input type="radio" name="breakdown" class="breakdown" id="breakdown" value="{$vo['bd_id']}"> {$vo['bd_name']}</lable>
+                            </volist>
+                        </div>
+                    </div>
+                    <div class="write clearfix" id="sub_bd">
+                    
+                    </div>
+                    <div class="write clearfix">
+                        <div class="writeL fl">
+                            <b class="star rlt">*</b> 故障描述：
+                        </div>
+                        <div class="writeR fl">
+                            <textarea placeholder="请描述你所需要维修产品的存在故障" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="write clearfix">
+                        <div class="writeL fl" style="opacity: 0">提交
+                        </div>
+                        <div class="writeR fl">
+                            <input type="button" onclick="check_form();" value="下一步">
+                            <a href="{:U('index')}" class="back">返回上一步</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+$(function(){
+	ajaxGetGoodsList();
+	ajaxGetSubBreakdown($('input[name="breakdown"]:checked').val());
+	$("#brands").change(function(){
+		ajaxGetGoodsList();
+	});
+	$(".breakdown").click(function(){
+		ajaxGetSubBreakdown($('input[name="breakdown"]:checked').val());
+	});
+})
+function check_form(){
+	var brand_id = $("#brands").val();
+	var model = $("#model").val();
+	var code = $.trim($("#code").val());
+	var breakdown = $("input[name='breakdown']:checked").val();
+	var bd_id = $("input[name='bd_id']:checked").val();
+	var spec_name = $("#spec_name").val();
+	if (brand_id == 0){
+		alert('请选择品牌');
+		return false;
+	}
+	if (model == 0 && spec_name == null){
+		alert('请选择型号或输入型号');
+		return false;
+	}
+	if (code == ''){
+		alert('请填写机身号');
+		return false;
+	}
+	if (breakdown == undefined || breakdown == ''){
+		alert('请选择故障分类');
+		return false;
+	}
+	if (bd_id == undefined || bd_id == ''){
+		alert('请选择故障子类');
+		return false;
+	}
+	$("#form").submit();
+}
+function ajaxGetGoodsList(){
+	var brand_id = $("#brands").val();
+	if (brand_id > 0){
+		var URL = "{:U('ajaxGetGoodsList')}";
+		var data = {"brand_id":brand_id};
+		$.post(URL,data,function(result){
+			$("#model").empty();
+			var html = '<option value="0">请选择型号</option>';
+			for (var i = 0,l=result.data.length;i<l;i++){
+				html += '<option value="'+result.data[i].spec_id+'">'+result.data[i].spec_name+'</option>';
+			}
+			$("#model").append(html);
+		},"json");
+	}
+}
+function ajaxGetSubBreakdown(bd_id){
+	if (bd_id > 0){
+		var URL = "{:U('ajaxGetSubBreakdown')}";
+		var data = {"bd_id":bd_id};
+		$.post(URL,data,function(result){
+			$("#sub_bd").empty();
+			var html = '<div class="writeL fl">';
+			html += '<b class="star rlt">*</b> 故障子类：';
+			html += '</div>';
+			html += '<div class="writeR fl">';
+			for (var i = 0,l=result.data.length;i<l;i++){
+				html += '<lable style="display: block"><input type="radio" id="bd_id" name="bd_id" value="'+result.data[i].bd_id+'"> '+result.data[i].bd_name+'</lable>';
+			}
+			html += '</div>';
+			$("#sub_bd").append(html);
+		},"json");
+	}
+}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

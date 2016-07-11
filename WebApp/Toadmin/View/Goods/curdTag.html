@@ -1,0 +1,124 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>产品标签</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Goods/goods_tag')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="goods_class_form" method="post" enctype="multipart/form-data" action="{:U('Goods/curdTag')}">
+    <input type="hidden" name="id" value="{$info['tag_id']}" />
+    <table class="table tb-type2">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="tag_name">标签名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['tag_name']}" name="tag_name" id="tag_name" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="tag_pic">图片:</label></td>
+        </tr>
+        <tr class="noborder">
+         <td class="vatop rowform">  
+            <span class="type-file-show">
+          	<img class="show_image" src="__IMG__/preview.png">
+            <div class="type-file-preview"><img src="__UPLOADS__{$info['tag_pic']}"></div>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_tag_pic' id='txt_tag_pic' class='type-file-text' />
+            <input type='button' name='but_tag_pic' id='but_tag_pic' value='' class='type-file-button' />
+            <input name="tag_pic" type="file" class="type-file-file" id="tag_pic" size="30" hidefocus="true" nc_type="change_tag_pic">
+            </span>
+          </td>
+          <td class="vatop tips"><span class="vatop rowform"></span></td>
+        </tr> 
+        
+        <tr>
+          <td colspan="2" class="required"><label>排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['tag_sort']}" name="tag_sort" id="tag_sort" class="txt"></td>
+          <td class="vatop tips">数字范围为0~255，数字越小越靠前</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label>状态:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff"><label for="tag_status1" class='cb-enable <if condition="$info['tag_status'] eq 1">selected</if>'><span>开启</span></label>
+            <label for="tag_status0" class='cb-disable <if condition="$info['tag_status'] eq 0">selected</if>'><span>关闭</span></label>
+            <input id="tag_status1" name="tag_status" <if condition="$info['tag_status'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="tag_status0" name="tag_status" <if condition="$info['tag_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){
+
+	$("#submitBtn").click(function(){
+		if($("#goods_class_form").valid()){
+			$("#goods_class_form").submit();
+		}
+	});
+	
+	$('#goods_class_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            tag_name : {
+                required : true
+            },
+            tag_sort : {
+                number   : true
+            }
+        },
+        messages : {
+            tag_name : {
+                required : '分类名称不能为空'
+			},
+            tag_sort  : {
+                number   : '排序仅能为数字'
+            }
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#tag_pic").change(function(){
+		$("#txt_tag_pic").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

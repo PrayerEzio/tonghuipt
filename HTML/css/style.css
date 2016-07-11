@@ -1,0 +1,77 @@
+﻿@charset "utf-8";
+html { }
+body { background: #efeff4; color: #666; padding:0; margin: 0; font-family: "Microsoft Yahei", Arial; font-size: 16px;    -webkit-tap-highlight-color:transparent;}
+ul, form, p, h1, h2, h3, h4, h5, h6, div, input, text, textarea, dl, dt, dd { padding: 0; margin: 0; }
+ul, ol { list-style: none; }
+img { border: none; vertical-align: top; }
+a { color: #707070; text-decoration: none; -webkit-tap-highlight-color:transparent;}
+a:hover { text-decoration: none; }
+i,em { font-style: normal;}
+table {border-collapse: collapse; border-spacing: 0; }
+caption,th,td {font-weight: normal; vertical-align: middle; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary {display: block }
+input, select, textarea {  outline: none; font-family: "Microsoft YaHei", Verdana, Tahoma; background-color: #FFF; overflow:hidden; 
+-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.clear { clear: both;}
+.member-group header { padding: 50px 0;background: #C81623; color: #fff;}
+.member-group header .pic { float: left; width: 80px; height: 80px; margin: 0 20px; padding: 3px; background: #cfcfcf; border-radius: 50%;}
+header .pic img { width: 100%; border-radius: 50%;}
+header .member-txt { float: left;}
+footer { text-align: center;    padding: 20px 0 70px;}
+.show-money { display:flex; display:-ms-flex; display:-moz-flex; display:-webkit-flex; background: #e4f7ff; box-shadow: 1px 1px 1px #cfcfcf;}
+.show-money .f { text-align: center; -ms-flex:1; -webkit-flex:1; -moz-flex:1; -o-flex:1; padding: 10px 0; }
+i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-block; width: 35px; height: 35px; background-size: 100%; border-radius: 50%; text-align: center; line-height: 35px; color: #fff; font-size: 27px;}
+.ico-m-cation { background: #f39c12; }
+.ico-m-member { background: url(../images/ico_2.png);}
+.ico-right { display: block; width: 10px; height: 10px; border: 1px solid #A9A5A5; border-right: none; border-top: none; transform: rotate(230deg);}
+.m-main .item { line-height: 50px; position: relative; border-bottom: 1px solid #E4E4E4; background-color: #fff;}
+.m-main .item:active { background-color: #ECECEC; }
+.m-main .item .ico-right {     position: absolute; right: 15px; top: 50%; margin-top: -5px;}
+.border { border-bottom: 1px solid #cfcfcf; margin-top: 10px;}
+.flexdNav { position: fixed; width: 100%;  bottom: 0; left: 0; background: rgba(0,0,0,0.5); display: flex; display: -webkit-flex; display: -moz-flex; display: -moz-flex; display: -o-flex;  }
+.flexdNav a { color: #fff; display: block; padding: 5px 0;}
+.flexdNav .item { text-align: center; -ms-flex:1; -webkit-flex:1; -moz-flex:1; -o-flex:1;}
+.flexdNav a span { display: block;}
+.redpacket-group header { padding: 20px; background: #1c5f97; color: #fff; font-size: 40px;}
+.redpacket-group header h2 { font-weight: normal; font-size: 15px; margin-bottom: 15px;}
+.redpacket-group header h3 { font-weight: normal; font-size: 15px; margin-top: 15px;}
+.redpacket-group .container { background-color: #fff; margin-top: 15px; border-top: 1px solid #c8c7cc; border-bottom: 1px solid #c8c7cc;}
+
+.redpacket-group .container ul li { position: relative; color: #000; margin: 0 15px; font-size: 16px; padding: 11px 0; }
+.redpacket-group .container ul li:after {     position: absolute; right: 0; bottom: 0; left: 15px; height: 1px; content: ''; -webkit-transform: scaleY(.5); transform: scaleY(.5); background-color: #c8c7cc; }
+.personal-group .input-group { margin-top: 10px; border-top: 1px solid #E2E2E2;}
+.redpacket-group .container .red { color: red; float: right;}
+.redpacket-group .container .iconfont { font-size: 25px; vertical-align: middle;  color: #F73038; margin-right: 8px;}
+.personal-group .input-style { background: #fff;      border-bottom: 1px solid #E2E2E2;   padding: 5px 15px;} 
+.personal-group .input-style:after { content: ''; display: block; clear: both;}
+.personal-group .input-style label { width: 35%;   font-size: 15px; line-height: 1.9;  text-align: center; float: left;}
+.personal-group .input-style input { border:0; float: right; text-indent: 5px; width: 65%; line-height: 30px; font-size: 15px;}
+.btn_area {     margin: 1.17647059em 15px 0.3em;}
+.btn_primary {   background-color: #1c5f97; display: block; font-size: 18px; text-align: center; text-decoration: none; color: #FFFFFF; line-height: 2.33333333; border-radius: 5px; }
+.btn_primary:active {     background-color: #274A67;}
+.deposit-group nav{position: relative; }
+.deposit-group nav ul { display: flex;display: -o-flex; display: -ms-flex; display: -moz-flex;display: -webkit-flex;  }
+.deposit-group nav ul li { -webkit-flex:1; -moz-flex:1;-ms-flex:1;-o-flex:1; text-align: center; line-height: 45px; border-bottom: 1px solid #cfcfcf; border-right: 1px solid #cfcfcf; }
+.hover-bock { position: absolute; height: 1px; bottom: 0; background: red; }
+.cent{ text-align: center;}
+.font-size10 {font-size: 10rem !important;}
+.deposit-group .container dl {     border-bottom: 1px solid #E0E0E0; padding: 10px 15px; background: #fff;}
+.deposit-group .container dl dt { font-size: 12px;}
+.deposit-group .container dl dd { position: relative;     text-align: right; font-size: 15px;}
+.deposit-group .container dl dd strong { color: #C81623; font-weight: normal;    font-size: 30px; position: absolute; left: 0;}
+.com-header {       border-bottom: 1px solid #E1E1E1;  width: 100%; position: fixed; background: -webkit-linear-gradient(top,#eee, #EFEFEF); height: 44px; line-height: 44px; z-index: 20; text-align: center; }
+.head-icon-back {     font-family: "iconfont"; font-size: 30px; display: block; }
+.back-a { position: absolute; left: 0; top: 0; height: 100%; width: 40px; text-align: center;}
+.dt-top { height: 44px;}
+@font-face {
+	font-family: 'iconfont';
+    src: url('../iconfont/iconfont.eot'); /* IE9*/
+    src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{ 
+	font-family:"iconfont";
+    font-size:16px;
+}

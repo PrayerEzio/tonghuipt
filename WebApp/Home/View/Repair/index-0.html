@@ -1,0 +1,19 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>投影机维修</span>
+        </div>
+        <div class="repairE">
+            <h3>维修说明 <a href="{:U('apply')}" class="fr btn">+申请维修</a></h3>
+            {$info['article_content']}
+        </div>
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

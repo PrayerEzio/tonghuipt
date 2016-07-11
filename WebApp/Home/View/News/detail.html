@@ -1,0 +1,16 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--新闻-->
+<div class="news-center">
+    <div class="container clearfix">
+        <h2>{$info['article_title']}</h2>
+        <h4><span>{$info['article_time']|date='Y-m-d',###}</span></h4>
+        <!-- 新闻-->
+        {$info['article_content']}
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

@@ -1,0 +1,76 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main" style="background-color: #f7f7f7">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <span>会员中心</span>
+        </div>
+        <div class="member">
+            {:W('Menu/index')}
+            <div class="memberR fl">
+                <h3>防伪查询</h3>
+                <div class="securityBox clearfix">
+                    <span class="fl left"></span>
+                    <div class="security clearfix fl">
+                        <div class="securityL fl">
+                            <form action="" method="post">
+                                <label><input type="text" value="产品序列号" disabled>：<input type="text" id="serial_number" name="serial_number" placeholder="请输入产品序列号"></label>
+                                <a href="javascript:void(0);" onclick="antiForgery()" class="btn cash" style="display: block;text-align: center;color: #fff;text-decoration: none">立即查询</a>
+                            </form>
+                        </div>
+                        <div class="securityR fl">
+                            <img src="__IMG__/product1.png" alt="">
+                            <p>产品序列号位置</p>
+                            </notempty>
+                        </div>
+                    </div>
+                    <span class="fl right"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹出层-->
+<div class="addressNew hide" style="display: none;">
+    <form action="" method="post" class="addressEdit abs" style="height: 173px;margin-top: -87px;width: 560px;padding: 20px 0;margin-left: -280px;">
+        <div class="modal-header">
+            <span>&nbsp;</span>
+        </div>
+        <div class="modal-body">
+            <div class="fl">
+                <!--Sidebar content-->
+                <img alt="" src="__IMG__/code_warring.png">
+            </div>
+            <div id="anti_content" class="fr" style="width: 465px;"></div>
+        </div>
+        <div class="modal-footer">
+            <a class="btn" href="{:U('')}"><i class="icon-off"></i>确定</a>
+        </div>
+    </form>
+</div>
+<script>
+function antiForgery(){
+	var URL = "{:U('antiForgery')}";
+	var serial_number = $.trim($("#serial_number").val());
+	if (serial_number == ""){
+		$("#anti_content").html("防伪验证码不能为空");
+		return false;
+	}
+	var data = {'serial_number':serial_number};
+	$.post(URL,data,function(result){
+		$("#anti_content").html(result.msg);
+		if (result.code == 200){
+			$("#anti_content").append('<p>订单号:'+result.data.Order.order_sn+'</p>');
+			$("#anti_content").append('<p>下单时间:'+result.data.Order.order_time+'</p>');
+			$("#anti_content").append('<p>商品名称:'+result.data.Goods.goods_name+'</p>');
+			$("#anti_content").append('<p>商品品牌:'+result.data.Goods.goods_brand+'</p>');
+		}
+	},"json");
+}
+</script>
+<!--foot-->
+<include file="Public/footer"/>

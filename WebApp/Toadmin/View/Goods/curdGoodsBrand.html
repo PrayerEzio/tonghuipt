@@ -1,0 +1,171 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>{$title}</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Goods/goods_brand')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="goods_brand_form" method="post" enctype="multipart/form-data" action="">
+    <input type="hidden" name="brand_id" value="{$info['brand_id']}" />
+    <table class="table tb-type2">
+      <tbody>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="brand_name">分类名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['brand_name']}" name="brand_name" id="brand_name" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation" for="brand_name">所属:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform">
+          	<label><input type="radio" name="gc_id" <if condition="$info['gc_id'] eq 0">checked</if> value="0">公共</label>
+          	<volist name="gc_list" id="vo">
+          	<label><input type="radio" name="gc_id" <if condition="$info['gc_id'] eq $vo['gc_id']">checked</if> value="{$vo['gc_id']}">{$vo['gc_name']}</label>
+          	</volist>
+          </td>
+          <td class="vatop tips"></td>
+        </tr>
+    
+        <!-- <tr class="noborder">
+          <td colspan="2" class="required"><label for="brand_title">SEO标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['brand_title']}" name="brand_title" id="brand_title" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="brand_key">SEO关键词:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['brand_key']}" name="brand_key" id="brand_key" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr class="noborder">
+          <td colspan="2" class="required"><label for="brand_desc">SEO描述:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea name="brand_desc" rows="6" class="w300" id="brand_desc">{$info['brand_desc']}</textarea></td>
+          <td class="vatop tips"></td>
+        </tr> --> 
+
+<!--        <tr>
+          <td colspan="2" class="required"><label for="brand_img">图片:</label></td>
+        </tr>
+        <tr class="noborder">
+         <td class="vatop rowform">  
+            <span class="type-file-show">
+          	<img class="show_image" src="__IMG__/preview.png">
+            <div class="type-file-preview"><img src="__UPLOADS__{$info['brand_img']}"></div>
+            </span>
+            <span class="type-file-box">
+            <input type='text' name='txt_brand_img' id='txt_brand_img' class='type-file-text' />
+            <input type='button' name='but_brand_img' id='but_brand_img' value='' class='type-file-button' />
+            <input name="brand_img" type="file" class="type-file-file" id="brand_img" size="30" hidefocus="true" nc_type="change_brand_img">
+            </span>
+          </td>
+          <td class="vatop tips"><span class="vatop rowform"></span></td>
+        </tr> -->
+        
+        <tr>
+          <td colspan="2" class="required"><label>排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['brand_sort']}" name="brand_sort" id="brand_sort" class="txt"></td>
+          <td class="vatop tips">数字范围为0~255，数字越大越靠前</td>
+        </tr>
+        <tr class="noborder">
+        <tr>
+          <td colspan="2" class="required"><label>状态:</label></td>
+        </tr>
+        <notempty name="info['brand_id']">
+          <td class="vatop rowform onoff"><label for="brand_status1" class='cb-enable <if condition="$info['brand_status'] eq 1">selected</if>'><span>开启</span></label>
+            <label for="brand_status0" class='cb-disable <if condition="$info['brand_status'] eq 0">selected</if>'><span>关闭</span></label>
+            <input id="brand_status1" name="brand_status" <if condition="$info['brand_status'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="brand_status0" name="brand_status" <if condition="$info['brand_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        <else/>
+          <td class="vatop rowform onoff"><label for="brand_status1" class='cb-enable selected'><span>开启</span></label>
+            <label for="brand_status0" class='cb-disable'><span>关闭</span></label>
+            <input id="brand_status1" name="brand_status" checked="checked" value="1" type="radio">
+            <input id="brand_status0" name="brand_status" value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </notempty>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){
+
+	$("#submitBtn").click(function(){
+		if($("#goods_brand_form").valid()){
+			$("#goods_brand_form").submit();
+		}
+	});	
+	$('#goods_brand_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+            brand_name : {
+                required : true
+            },
+            brand_sort : {
+                number   : true,
+                max		 : 255,
+                min		 : 0
+            }
+        },
+        messages : {
+            brand_name : {
+                required : '分类名称不能为空'
+			},
+            brand_sort  : {
+                number   : '排序仅能为数字',
+                max		 : '最大值为255',
+                min		 : '最小值为0'
+            }
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#brand_img").change(function(){
+		$("#txt_brand_img").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

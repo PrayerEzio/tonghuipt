@@ -1,0 +1,66 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>{$title}</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('Goods/curdGoodsDiscount')}" ><span>新增</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form method='post'>
+    <input type="hidden" name="form_submit" value="ok" />
+    <input type="hidden" name="submit_type" id="submit_type" value="" />
+     <table class="table tb-type2">
+          <thead>
+            <tr class="thead">
+              <th></th>
+              <th>折扣数量</th>
+              <th>折扣率</th>
+              <th class="align-center"></th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <notempty name="list">
+            <volist name="list" id="vo">
+            <tr class="hover edit">
+              <td class="w48"><input type="checkbox" name="id[]" value="{$vo['id']}" class="checkitem">
+                <img fieldid="{$vo['id']}" status="close" nc_type="flex" src="__IMG__/tv-item.gif">
+              </td>
+              <td class="w50pre name">
+              <span title="可编辑" required="1" fieldid="{$vo['id']}" ajax_branch="goods_num" ajax_control="Goods" fieldname="goods_num" nc_type="inline_edit" class="editable tooltip">{$vo['goods_num']}</span>
+              <!-- <a class="btn-add-nofloat marginleft" href="{:U('Goods/goods_class_add',array('brand_parent_id'=>$vo['id']))}"><span>新增下级</span></a> -->
+              </td>
+              <td class="w48 sort"><span title="可编辑" ajax_branch="goods_price_rate" datatype="number" fieldid="{$vo['id']}" ajax_control="Goods" fieldname="goods_price_rate" nc_type="inline_edit" class="editable tooltip">{$vo['goods_price_rate']}</span></td>
+              <td class="align-center power-onoff"></td>
+              <td class="w84">
+              <a href="{:U('Goods/curdGoodsDiscount',array('id'=>$vo['id']))}">编辑</a> 
+              | <a href='javascript:if(confirm("您确定要删除？"))window.location ="{:U('Goods/delGoodsDiscount',array('id'=>$vo['id']))}";'>删除</a>
+              </td>
+            </tr>
+            </volist>
+            <else /> 
+            <tr class="no_data">
+              <td colspan="10">暂无记录</td>
+            </tr>
+            </notempty>
+          </tbody>
+           <notempty name="list">
+          <tfoot>
+            <tr class="tfoot">
+              <td><input type="checkbox" class="checkall" id="checkall_1"></td>
+              <td id="batchAction" colspan="15">
+              <span class="all_checkbox"><label for="checkall_2">选择所有</label></span>&nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('您确定要删除？')){$('#submit_type').val('del');$('form:first').submit();}"><span>删除</span></a>
+             </td>
+            </tr>
+          </tfoot>
+          </notempty>
+        </table>   
+  </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<script type="text/javascript" src="__JS__/jquery.goods_class.js" charset="utf-8"></script>
+<include file="Public/footer" />

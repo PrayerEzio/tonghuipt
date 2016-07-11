@@ -1,0 +1,52 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--repair-->
+<div class="main" style="background-color: #f7f7f7">
+    <div class="container">
+        <div class="bread">
+            <a href="{:U('Index/index')}">首页</a> / <a href="{:U('Member/index')}">会员中心</a> / <span>维修查询</span>
+        </div>
+        <div class="member">
+            {:W('Menu/index')}
+            <div class="memberR fl">
+                <h3 style="margin-bottom: 20px;">维修查询</h3>
+                <notempty name="list">
+                <volist name="list" id="vo">
+                <div class="order">
+                    <div class="orderHeader"><span>{$vo['addtime']|date='Y-m-d',###}</span>维修单号：{$vo['rp_sn']}
+                        <ul class="fr">
+                            <li class="fl">品牌</li>
+                            <li class="fl">型号</li>
+                            <li class="fl">序列号</li>
+                            <li class="fl">维修状态</li>
+                        </ul>
+                    </div>
+                    <div class="orderBottom">
+                        <dl class="fl">
+                            <dt>{$vo['content']|cut_str}</dt>
+                        </dl>
+                        <ul class="fr">
+                            <li class="fl">{$vo['Goods']['brand_name']}</li>
+                            <li class="fl">{$vo['Goods']['spec_name']}</li>
+                            <li class="fl">{$vo['machine_code']}</li>
+                            <li class="fl"><h4 class="rlt state">{$vo['rp_status']|get_rp_status_name}</h4><a href="{:U('progress',array('sn'=>$vo['rp_sn']))}" class="btn rlt">查看进度</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </volist>
+                <div class="black2">{$page}</div>
+                <else/>
+                <div class="black2">没有找到相关信息</div>
+                </notempty>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!--foot-->
+<include file="Public/footer"/>

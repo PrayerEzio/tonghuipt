@@ -1,0 +1,62 @@
+<include file="Public/header"/>
+<!--top-->
+{:W('Top/index')}
+<!--nav-->
+{:W('Nav/index')}
+<!--新闻-->
+<div class="news-center">
+    <div class="container clearfix" style="width: 960px;">
+    	<notempty name="ac_list">
+        <div class="newsItem">
+        	<volist name="ac_list" id="vo">
+            <if condition="$_GET['cate'] eq $vo['ac_id']">
+            <a class="newsActive" href="{:U('News/index',array('cate'=>$vo['ac_id']))}">{$vo['ac_name']}</a>
+            <else/>
+            <a href="{:U('News/index',array('cate'=>$vo['ac_id']))}">{$vo['ac_name']}</a>
+            </if>
+            </volist>
+        </div>
+        </notempty>
+        <notempty name="list">
+        <!-- 新闻-->
+        <volist name="list" id="vo">
+        <article class="clearfix">
+            <div class="post-image fl">
+                <a href="{:U('detail',array('id'=>$vo['article_id']))}"><img src="__UPLOADS__/{$vo['article_pic']}" width="300" height="150"></a>
+            </div>
+            <div class="post-content-wrap fr">
+                <header class="post-header">
+                    <div class="post-date">
+                        <a class="date"><strong>{$vo['article_time']|date='d',###}</strong><i>{$vo['article_time']|date='m',###}月</i></a>
+                    </div>
+                    <h3 class="content-title">
+                        <div class="dth"></div>
+                        <a href="{:U('detail',array('id'=>$vo['article_id']))}" class="ellipsis">{$vo['article_title']}</a></h3>
+                    <div class="blog-entry-meta">
+                        <div class="blog-entry-meta-tags">
+                            <i class="iconfont">&#xe61c;</i>
+                            <a href="{:U('detail',array('id'=>$vo['article_id']))}">查看详细</a>
+                        </div>
+                    </div>
+                </header>
+                <div class="post-content">
+                    <p>
+                        {$vo['article_desc']}
+                    </p>
+                </div>
+            </div>
+        </article>
+        </volist>
+        <!-- 分页-->
+        <div class="page clearfix">
+            {$page}
+        </div>
+        <else/>
+        <div class="page clearfix">
+        	没有找到相关信息
+        </div>
+        </notempty>
+    </div>
+</div>
+<!--foot-->
+<include file="Public/footer"/>

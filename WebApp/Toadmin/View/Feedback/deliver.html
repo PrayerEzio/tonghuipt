@@ -1,0 +1,75 @@
+<link href="__STATIC__/dialog/custom.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8" />
+<style>
+*{ margin:0; padding:0;}
+ul{ list-style:none;}
+body{ font-size:12px; color:#333;}
+textarea{display: inline-block; margin-bottom: 0; vertical-align: middle; background-color: #FFF; border: 1px solid #CCC; color: #555; font-size: 14px; line-height: 20px; padding: 8px 6px; -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset; border-radius: 3px; font-size: 12px;}
+.clearFloat{ zoom:1;}
+.clearFloat:after{ clear:both; display:block; content:""; visibility:hidden; height:0;}
+.orange{ color:#ff7900;}
+.blue{ color:#0b73bb;}
+.grey{ color:#999;}
+.arial{ font-family:Arial;}
+.pop_nr{ width:520px; padding:0 10px 10px 10px; border:1px solid #ddd; border-radius:5px;}
+.pop_nr h3{ font-size:12px; font-weight:bold; color:#333; height:30px; line-height:30px; border-bottom:1px dotted #ddd;}
+.pop_list ,.top_radio ,.pop_file{ padding:10px 0;}
+.pop_list li ,.pop_file li{ line-height:26px; padding:0 20px;}
+.pop_list li{ width:200px; float:left;}
+.pop_list_2 ,.top_radio ,.pop_file{ padding:10px 0;}
+.pop_list_2 li ,.pop_file li{ line-height:26px; padding:0 20px;}
+.pop_list_2 li{ width:410px; float:left;}
+.top_radio li{ line-height:24px;}
+.ts_area{ width:500px; height:30px;}
+.confirm_btn{ text-align:center;}
+</style>
+
+<div class="eject_con">
+  <div id="warning"></div>
+  <form id="ex_menu_from" name="ex_menu_from" method="post" action="{:U('Feedback/deliver')}">
+    <input type="hidden" name="id" value="{$rs['id']}" />
+        <div class="pop_nr">
+            <div class="ts_topic">
+                <ul class="top_radio">
+                <li>
+                  	类型：
+                     <label><input name="type" id="type" type="radio" value="0" onclick="show_input(1)" /> 上门自取</label> &nbsp;&nbsp;   
+                     <label><input name="type" id="type" type="radio" value="1" onclick="show_input(2)"  checked="checked"/> 物流发货</label>
+                 </li>
+                 <li id="express_li">
+                  	物流公司：
+                  	<select name="deliver_express" id="express">
+	                  	<volist name="express" id="vo">
+	                  		<option value="{$vo['id']}">{$vo['e_name']}</option>
+	                  	</volist>
+                  	</select>
+                  </li>
+                  <li id="deliver_sn_li">
+                  	物流单号：
+                  	<input class="tooltip editable" style="width:300px; display:block;" name="deliver_sn" value="" placeholder="物流单号">
+                  	<input type="hidden" name="rp_id" value="{$_GET['rp_id']}">
+                  </li>
+                </ul>
+            </div>            
+        </div>
+      <dl class="bottom">
+      <dt>&nbsp;</dt>
+      <dd>
+        <input type="submit" class="submit" id="confirm_button" value="确认提交"/>
+      </dd>
+    </dl>
+  </form>
+</div>
+<script language="javascript">
+function show_input(v)
+{
+	if(v==1)
+	{
+		$('#express_li').css("display","none"); 
+		$('#deliver_sn_li').css("display","none"); 
+	}else{
+		$('#express_li').css("display","block"); 
+		$('#deliver_sn_li').css("display","block"); 
+	}
+}
+</script>

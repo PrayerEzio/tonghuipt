@@ -1,0 +1,118 @@
+<include file="Public/header" />
+
+<div class="page">
+<form action="" method="post" id="form_serial">
+  <table class="table tb-type2 order">
+    <tbody>
+      <tr class="space">
+        <th colspan="15">出货详情</th>
+      </tr>
+      <tr>
+        <td colspan="2"><ul>
+            <li><strong>订单号:</strong>{$info['order_sn']}</li>
+            <li><strong>外部订单号:</strong>{$info['out_sn']}</li>
+            <li><strong>下单时间:</strong><span>{$info['add_time']|date='Y-m-d H:i:s',###}</span></li>
+            <li><strong>订单状态:</strong>{$info['order_state']|get_order_state_name}</li>
+            <li><strong>订单折扣:</strong><span class="red_common">{$info['discount']}</span></li>
+            <li><strong>订单总额:</strong><span class="red_common">{$info['order_amount']}</span></li>
+          </ul></td>
+      </tr>
+      <tr>
+        <th>物流信息</th>
+      </tr>
+      <tr>
+      <td colspan="2">
+      	<ul>
+      		<li><strong>物流公司:</strong>
+	      	<select name="express" id="express">
+	      		<volist name="express" id="vo">
+		      	<option value="{$vo['id']}" <if condition="$info['shipping_express_id'] eq $vo['id']">selected</if>>{$vo['e_name']}</option>
+		      	</volist>
+		    </select>
+      		</li>
+      		<li><strong>物流单号:</strong>
+      		<input type="text" name="express_sn" id="express_sn" value="{$info['shipping_code']}">
+      		&nbsp;&nbsp;&nbsp;<a href="JavaScript:sendExpressSMS('{$info['order_sn']}');">发货提醒</a>
+      		</li>
+      	</ul>
+      </td>
+      </tr>
+      <tr>
+        <th>商品信息</th>
+      </tr>
+      <tr>
+        <td>
+        <table class="table tb-type2 goods ">
+            <tbody>
+              <tr>
+                <th></th>
+                <th>商品信息</th>
+                <th class="align-center">商品数量</th>
+                <th class="align-center">商品序列号</th>
+              </tr>
+              <input type="hidden" name="order_id" value="{$info['order_id']}">
+              <volist name="info['OrderGoods']" id="vo">
+              <tr>
+                <td class="w60 picture"><div class="size-56x56"><span class="thumb size-56x56"><i></i><img src="__UPLOADS__/{$vo['goods_image']}" width="56" height="56"/></span></div></td>
+                <td class="w50pre">{$vo['goods_name']}</td>
+                <td class="w96 align-center"><span class="red_common">{$vo['goods_num']}</span></td>
+                <td class="w96 align-center">
+                <volist name="vo['serial']" id="v">
+                	<input type="text" name="serial[serial_{$vo['goods_id']}_{$key}]" value="{$v}"><br/>
+                </volist>
+                </td>
+              </tr>
+              </volist>
+            </tbody>
+          </table>
+          </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="tfoot">
+        <td>
+        <a href="JavaScript:void(0);" class="btn" onclick="history.go(-1)"><span>返回</span></a>
+        <if condition="$info['order_state'] eq 20">
+        <a href="JavaScript:void(0);" class="btn" onclick="submit_form()"><span>发货</span></a>
+		<else/>
+		<a href="JavaScript:void(0);" class="btn" onclick="submit_form()"><span>修改</span></a>
+        </if>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  </form>
+</div>
+<script>
+function submit_form(){
+	var express = $("#express").val();
+	var express_sn = $.trim($("#express_sn").val());
+	if (express == ''){
+		alert('请选择物流公司');
+		return false;
+	}
+	if (express_sn == ''){
+		alert('请填写物流单号');
+		return false;
+	}
+	$("#form_serial").submit();
+}
+function sendExpressSMS(order_sn){
+	var URL = "{:U(sendExpressSMS)}";
+	var express = $("#express").val();
+	var express_sn = $.trim($("#express_sn").val());
+	var data = {"order_sn":order_sn,"express":express,"express_sn":express_sn};
+	if (express == ''){
+		alert('请选择物流公司');
+		return false;
+	}
+	if (express_sn == ''){
+		alert('请填写物流单号');
+		return false;
+	}
+	$.post(URL,data,function(result){
+		alert(result.msg);
+	},"json");
+}
+</script>
+<include file="Public/footer" />

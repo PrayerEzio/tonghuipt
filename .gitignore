@@ -1,0 +1,5 @@
+WebApp/Common/Conf/
+WebApp/Runtime/
+Uploads/
+*.log
+*.bak

@@ -1,0 +1,161 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>考试管理</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('index')}"><span>管理</span></a></li>
+        <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <form id="exam_form" method="post" name="exam_form" enctype="multipart/form-data">
+  <input name="exam_id" type="hidden" value="{$info['exam_id']}"/>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr>
+          <td colspan="2" class="required"><label class="validation">题目:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_question']}" name="exam_question" id="exam_question" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation">选项A:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_option_a']}" name="exam_option_a" id="exam_option_a" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation">选项B:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_option_b']}" name="exam_option_b" id="exam_option_b" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation">选项C:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_option_c']}" name="exam_option_c" id="exam_option_c" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation">选项D:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_option_d']}" name="exam_option_d" id="exam_option_d" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr>
+          <td colspan="2" class="required"><label class="validation">正确答案:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_answer']}" name="exam_answer" id="exam_answer" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">分值:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_score']}" name="exam_score" id="exam_score" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        
+        <tr class="noborder">
+          <td colspan="2" class="required"><label class="validation">排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input type="text" value="{$info['exam_sort']}" name="exam_sort" id="exam_sort" class="txt"></td>
+          <td class="vatop tips"></td>
+        </tr>                       
+        <!-- <tr>
+          <td colspan="2" class="required"><label>状态:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform onoff"><label for="exam_status1" class='cb-enable <if condition="$info['exam_status'] eq 1">selected</if>'><span>开启</span></label>
+            <label for="exam_status0" class='cb-disable <if condition="$info['exam_status'] eq 0">selected</if>'><span>关闭</span></label>
+            <input id="exam_status1" name="exam_status" <if condition="$info['exam_status'] eq 1">checked="checked"</if> value="1" type="radio">
+            <input id="exam_status0" name="exam_status" <if condition="$info['exam_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+          <td class="vatop tips"></td>
+        </tr> -->
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+<script>
+//按钮先执行验证再提交表单
+$(function(){$("#submitBtn").click(function(){
+    if($("#exam_form").valid()){
+     $("#exam_form").submit();
+	}
+	});
+});
+//
+$(document).ready(function(){
+	$('#exam_form').validate({
+        errorPlacement: function(error, element){
+			error.appendTo(element.parent().parent().prev().find('td:first'));
+        },
+        success: function(label){
+            label.addClass('valid');
+        },
+        rules : {
+        	exam_question : {
+                required   : true
+            },
+			exam_sort : {
+				number : true
+			},
+			exam_score :{
+				number : true
+			},
+        },
+        messages : {
+        	exam_question : {
+                required   : '请输入考试题目'
+            },
+			exam_sort : {
+				number : '排序格式输入错误'
+            },	
+            exam_score : {
+				number : '分值格式输入错误'
+            },	
+        }
+    });
+	
+});
+</script>
+<script type="text/javascript">
+// 模拟网站LOGO上传input type='file'样式
+$(function(){
+	$("#exam_pic").change(function(){
+		$("#txt_exam_pic").val($(this).val());
+	});
+// 上传图片类型
+$('input[class="type-file-file"]').change(function(){
+	var filepatd=$(this).val();	
+	var extStart=filepatd.lastIndexOf(".");
+	var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();		
+		if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+			alert("图片格式错误");
+				$(this).attr('value','');
+			return false;
+		}
+	});
+});
+</script>
+<include file="Public/footer" />

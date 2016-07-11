@@ -1,0 +1,81 @@
+<include file="Public/header" />
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title">
+      <h3>广告管理</h3>
+      <ul class="tab-base">
+        <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
+        <li><a href="{:U('curd')}"><span>添加</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fixed-empty"></div>
+  <!-- 广告查询 -->
+  <form method="get" name="formSearch">
+    <table class="tb-type1 noborder search">
+      <tbody>
+        <tr>
+          <th>名称</th>
+          <td><input type="text" value="{$search['ap_name']}" name="ap_name" class="txt"></td>
+          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  <form method='post' id="form_rec"> 
+    <table class="table tb-type2 nobdb">
+      <thead>
+        <tr class="thead">
+          <th>&nbsp;</th>
+          <th>名称</th>
+          <th>图片</th>
+          <th>链接</th>
+          <th>描述</th>
+          <th class="align-center">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <notempty name="list">
+        <volist name="list" id="v">
+        <tr class="hover edit">
+          <td class="w24"><input type="checkbox" name="del_id[]" value="{$v['ap_id']}" class="checkitem"></td>
+          <td>{$v['ap_name']}</td>
+          <td><img src="__UPLOADS__/{$v['ap_pic']}" height="50px"/></td>
+          <td>{$v['ap_link']}</td>
+          <td>{$v['ap_intro']}</td>
+          <td class="w48 align-center">
+          	<a href="{:U('curd',array('id'=>$v['ap_id']))}">编辑</a>
+          </td>
+        </tr>
+        </volist>
+        <else/>
+        <tr class="no_data">
+          <td colspan="10">暂无记录</td>
+        </tr>
+         </notempty>
+      </tbody>
+      <tfoot>
+        <notempty name="list">
+        <tr class="tfoot" id="dataFuncs">
+          <td><input type="checkbox" class="checkall" id="checkallBottom"></td>
+          <td colspan="16" id="batchAction">
+          	<label for="checkallBottom">全选</label>
+            &nbsp;&nbsp; 
+            <a href="JavaScript:void(0);" class="btn" onclick="javascript:submit_delete_batch();"><span>删除</span></a>
+            <div class="pagination">{$show_page}</div></td>
+        </tr>
+      </tfoot>
+       </notempty>
+    </table>
+  </form>
+</div>
+<script type="text/javascript">
+function submit_delete_batch(id)
+{
+    if(confirm('确定要进行此操作?')) 
+	{
+        $('#form_rec').submit();
+    }
+}
+</script>
+<include file="Public/footer" />
