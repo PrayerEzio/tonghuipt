@@ -80,35 +80,62 @@ class BaseController extends Controller{
 			echo json_encode($data);
 		}
 	}
+
 	/**
-	 * 添加新的收货地址
+	 * 发放分销红包
+	 * @param $child_member_id
+	 * @param $level
 	 */
-	public function curdAddress(){
-		if (IS_POST) {
-			$id = intval($_POST['addr_id']);
-			$data['member_id'] = $this->mid;
-			$data['name'] = str_rp($_POST['name'],1);
-			$data['province_id'] = intval($_POST['province']);
-			$data['city_id'] = intval($_POST['city']);
-			$data['area_id'] = intval($_POST['area']);
-			$data['addr'] = str_rp($_POST['addr'],1);
-			$data['zip'] = intval($_POST['zip']);
-			$data['mobile'] = str_rp($_POST['mobile'],1);
-			$data['addr_tag'] = str_rp($_POST['addr_tag'],1);
-			if ($id) {
-				$rc = M('MemberAddrs')->where(array('addr_id'=>$id))->save($data);
+	private function giveDistributionRedPacket($child_member_id,$level)
+	{
+		$where['reward_type'] = 'distribution';
+		$where['level'] = array('elt',$level);
+		$red_packet_list = M('RedPacket')->where($where)->order('level asc')->select();
+		$mid = $child_member_id;
+		foreach ($red_packet_list as $key => $item) {
+			$member_where['member_id'] = $mid;
+			$member = M('Member')->where($member_where)->field('parent_member_id')->find();
+			if ($member['parent_member_id'])
+			{
+				$res = M('Member')->where(array('member_id'=>$member['parent_member_id']))->setInc('predeposit',$item['reward_price']);
+				if ($res)
+				{
+					//TODO:资金日志
+				}
+				$mid = $member['parent_member_id'];
 			}else {
-				$rc = M('MemberAddrs')->add($data);
+				break;
 			}
 		}
-		if (IS_AJAX) {
-			$res['addr_id'] = $rc;
-			$res['province'] = getDistrictName($data['province_id']);
-			$res['city'] = getDistrictName($data['city_id']);
-			$res['area'] = getDistrictName($data['area_id']);
-			echo json_encode($res);
-		}elseif (IS_POST) {
-			$this->redirect('Member/address');
+	}
+
+	/**
+	 * 发放公牌奖励
+	 */
+	private function giveBoardReward()
+	{
+		$board_reward = MSC('board_reward');
+		$where['board_status'] = 0;
+		$where['differ_num'] = array('neq',0);
+		$where['finish_time'] = 0;
+		$board_info = M('Board')->where($where)->order('create_time')->find();
+		$res = M('Member')->where(array('member_id'=>$board_info['member_id']))->setInc('predeposit',$board_reward);
+		if ($res)
+		{
+			//TODO:资金日志
+			//更新公牌数据库
+			$data['finish_num'] = $board_info['finish_num']++;
+			$data['differ_num'] = $board_info['differ_num']--;
+			if ($board_info['expect_num'] == $data['finish_num'] || $data['differ_num'] == 0)
+			{
+				$data['board_status'] = 1;
+				$data['finish_time'] = time();
+			}
+			$update_res = M('Board')->where(array('board_id'=>$board_info['board_id']))->save($data);
+			if ($update_res)
+			{
+				//TODO:公牌日志
+			}
 		}
 	}
 }
