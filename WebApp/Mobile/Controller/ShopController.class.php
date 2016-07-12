@@ -21,6 +21,11 @@ class ShopController extends BaseController{
 	 */
 	public function index()
 	{
+		$gc_id = intval($_GET['gc']);
+		if ($gc_id)
+		{
+			$where['gc_id'] = $gc_id;
+		}
 		$where['goods_status'] = 1;
 		$count = $this->model->where($where)->count();
 		$page = new Page($count,10);
