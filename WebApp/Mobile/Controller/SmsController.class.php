@@ -31,7 +31,7 @@ class SmsController extends BaseController{
 			$content = '您好,您的短信验证码是:'.$data['code'].',三分钟有效,请不要告诉给别人哦.';
 			sendSMS($data['mobile'],$content);
 			session('sms_code_'.$type,$data);
-			json_return(1,'验证码发送成功',);
+			json_return(1,'验证码发送成功','');
 		}
 	}
 }

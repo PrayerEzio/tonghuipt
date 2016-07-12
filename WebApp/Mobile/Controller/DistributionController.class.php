@@ -21,8 +21,7 @@ class DistributionController extends BaseController{
 	 */
 	public function index()
 	{
-		$user_info = M('member')->where(array('uid'=>$this->mid))->find();
-		$this->user_info = $user_info;
-		$this->display();
+
 	}
+
 }

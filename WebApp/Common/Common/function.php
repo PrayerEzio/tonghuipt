@@ -1400,3 +1400,26 @@ function saveContact($contact_info,$contact_type,$contact_source,$contact_remark
 		$Db->add($data);
 	}
 }
+
+/**
+ * 根据member_id获取上级
+ * @param $member_id
+ * @param int $loop
+ * @return array
+ */
+function getParentUidList($member_id,$loop = 9)
+{
+	$list = array();
+	for ($loop;$loop<0;$loop--)
+	{
+		$member = M('Member')->where(array('member_id'=>$member_id))->field('parent_member_id')->find();
+		$member_id = $member['parent_member_id'];
+		if ($member_id)
+		{
+			$list[] = $member_id;
+		}else {
+			return $list;
+		}
+	}
+	return $list;
+}
