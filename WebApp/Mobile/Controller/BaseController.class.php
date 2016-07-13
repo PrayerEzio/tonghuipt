@@ -134,7 +134,7 @@ class BaseController extends Controller{
 			$update_res = M('Board')->where(array('board_id'=>$board_info['board_id']))->save($data);
 			if ($update_res)
 			{
-				//TODO:公牌日志
+				//TODO:公牌日志.
 			}
 		}
 	}
