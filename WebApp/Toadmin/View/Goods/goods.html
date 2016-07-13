@@ -35,15 +35,9 @@ function submit_delete(id){
   <form method="get" name="formSearch">
     <table class="tb-type1 noborder search">
       <tbody>
-        <tr>
-          <th>工厂国际码</th>
-          <td><input type="text" value="{$search['factory_code']}" name="factory_code" class="txt" ></td>
-          <th>灯组型号</th>
-          <td><input type="text" value="{$search['goods_name']}" name="goods_name" class="txt" ></td>
-          <th>灯泡型号</th>
-          <td><input type="text" value="{$search['bulb_code']}" name="bulb_code" class="txt" ></td>
-       </tr>
        <tr>
+           <th>商品名称</th>
+           <td><input type="text" value="{$search['goods_name']}" name="goods_name" class="txt" ></td>
           <th>产品编码</th>
           <td>
 			  <select name="gc_id" id="gc_id" class="">
@@ -115,7 +109,7 @@ function submit_delete(id){
         <tr class="thead">
           <th class="w24"></th>
           <th class="w72">排序</th>
-          <th colspan="2">灯组型号</th>
+          <th colspan="2">商品名称</th>
           <th class="align-center">产品编码</th>
           <th class="align-center">商品价格</th>
           <th class="align-center">商品库存</th>
