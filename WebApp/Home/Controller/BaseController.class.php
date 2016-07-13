@@ -29,7 +29,7 @@ class BaseController extends Controller{
 		}
 		$this->assign('web_stting',$web_stting);
 		//站点状态判断
-		if($web_stting['site_status'] != 1){
+		if($web_stting['site_status'] != 1 || 1 == 1){
 		   echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		   echo $web_stting['closed_reason'];
 		   exit;	

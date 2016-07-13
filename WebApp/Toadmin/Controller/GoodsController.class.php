@@ -48,7 +48,7 @@ class GoodsController extends GlobalController {
 		if (IS_POST) {
 			$ids = $_POST['id'];
 			foreach ($ids as $key => $val){
-				$this->goodsBrandModel->where(array('brand_id'=>val))->delete();
+				$this->goodsBrandModel->where(array('brand_id'=>$val))->delete();
 			}
 		}
 		$list = $this->goodsBrandModel->order('brand_sort desc')->select();

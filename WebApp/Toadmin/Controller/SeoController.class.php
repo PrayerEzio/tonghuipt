@@ -16,8 +16,8 @@ class SeoController extends GlobalController{
 	
 	public function index(){
 		if (IS_POST) {
-			if (!empty($_POST['del'])) {
-				foreach ($_POST['del'] as $key => $del){
+			if (!empty($_POST['del_id'])) {
+				foreach ($_POST['del_id'] as $key => $del){
 					$this->mod->where(array('id'=>$del))->delete();
 				}
 				$this->success('删除成功');
