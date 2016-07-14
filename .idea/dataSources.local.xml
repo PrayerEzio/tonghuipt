@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="tonghuipt" uuid="96d16eb2-eaaf-4ead-9bd8-dbac8ce44895">
+      <secret-storage>master_key</secret-storage>
+      <user-name>prayer</user-name>
+      <schema-pattern>tonghuipt.*</schema-pattern>
+      <default-schemas>tonghuipt.*</default-schemas>
+    </data-source>
+  </component>
+</project>

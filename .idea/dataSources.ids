@@ -1,0 +1,2713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="tonghuipt" uuid="96d16eb2-eaaf-4ead-9bd8-dbac8ce44895">
+    <database-info product="MySQL" version="5.6.29-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="tonghuipt"/>
+      <table id="2" parent="1" name="mxd_admin">
+        <comment>管理员</comment>
+      </table>
+      <table id="3" parent="1" name="mxd_admin_auth">
+        <comment>管理员权限列表</comment>
+      </table>
+      <table id="4" parent="1" name="mxd_adv_position">
+        <comment>广告表</comment>
+      </table>
+      <table id="5" parent="1" name="mxd_agent">
+        <comment>经销商列表</comment>
+      </table>
+      <table id="6" parent="1" name="mxd_album_class">
+        <comment>相册表</comment>
+      </table>
+      <table id="7" parent="1" name="mxd_album_pic">
+        <comment>相册图片表</comment>
+      </table>
+      <table id="8" parent="1" name="mxd_article">
+        <comment>文章表</comment>
+      </table>
+      <table id="9" parent="1" name="mxd_article_class">
+        <comment>文章分类表</comment>
+      </table>
+      <table id="10" parent="1" name="mxd_beta"/>
+      <table id="11" parent="1" name="mxd_board"/>
+      <table id="12" parent="1" name="mxd_breakdown">
+        <comment>故障分类表</comment>
+      </table>
+      <table id="13" parent="1" name="mxd_discount">
+        <comment>折扣表</comment>
+      </table>
+      <table id="14" parent="1" name="mxd_district">
+        <comment>地区信息表</comment>
+      </table>
+      <table id="15" parent="1" name="mxd_document"/>
+      <table id="16" parent="1" name="mxd_express">
+        <comment>快递公司</comment>
+      </table>
+      <table id="17" parent="1" name="mxd_favorite">
+        <comment>会员收藏表</comment>
+      </table>
+      <table id="18" parent="1" name="mxd_goods">
+        <comment>商品列表</comment>
+      </table>
+      <table id="19" parent="1" name="mxd_goods_brand">
+        <comment>品牌表</comment>
+      </table>
+      <table id="20" parent="1" name="mxd_goods_class">
+        <comment>产品分类表</comment>
+      </table>
+      <table id="21" parent="1" name="mxd_goods_comment">
+        <comment>商品评论</comment>
+      </table>
+      <table id="22" parent="1" name="mxd_goods_pic">
+        <comment>商品图片</comment>
+      </table>
+      <table id="23" parent="1" name="mxd_goods_spec">
+        <comment>商品规格表</comment>
+      </table>
+      <table id="24" parent="1" name="mxd_goods_spec_index">
+        <comment>商品与规格对应表</comment>
+      </table>
+      <table id="25" parent="1" name="mxd_member">
+        <comment>会员表</comment>
+      </table>
+      <table id="26" parent="1" name="mxd_member_addrs">
+        <comment>会员收货地址表</comment>
+      </table>
+      <table id="27" parent="1" name="mxd_member_bill">
+        <comment>商户账单</comment>
+      </table>
+      <table id="28" parent="1" name="mxd_member_letter">
+        <comment>会员站内信</comment>
+      </table>
+      <table id="29" parent="1" name="mxd_message">
+        <comment>留言板(私人定制)</comment>
+      </table>
+      <table id="30" parent="1" name="mxd_notice"/>
+      <table id="31" parent="1" name="mxd_order">
+        <comment>订单列表</comment>
+      </table>
+      <table id="32" parent="1" name="mxd_order_address">
+        <comment>收货信息表</comment>
+      </table>
+      <table id="33" parent="1" name="mxd_order_goods">
+        <comment>订单产品信息</comment>
+      </table>
+      <table id="34" parent="1" name="mxd_order_log">
+        <comment>订单日志表</comment>
+      </table>
+      <table id="35" parent="1" name="mxd_payment">
+        <comment>支付信息表</comment>
+      </table>
+      <table id="36" parent="1" name="mxd_product">
+        <comment>产品表</comment>
+      </table>
+      <table id="37" parent="1" name="mxd_profit">
+        <comment>收益明细表</comment>
+      </table>
+      <table id="38" parent="1" name="mxd_provider_log">
+        <comment>维修商申请日志</comment>
+      </table>
+      <table id="39" parent="1" name="mxd_red_packet"/>
+      <table id="40" parent="1" name="mxd_repair">
+        <comment>维修申请表</comment>
+      </table>
+      <table id="41" parent="1" name="mxd_repair_log">
+        <comment>维修进程日志</comment>
+      </table>
+      <table id="42" parent="1" name="mxd_repair_menu">
+        <comment>维修菜单</comment>
+      </table>
+      <table id="43" parent="1" name="mxd_reserve"/>
+      <table id="44" parent="1" name="mxd_search">
+        <comment>全站搜索</comment>
+      </table>
+      <table id="45" parent="1" name="mxd_seo">
+        <comment>SEO信息表</comment>
+      </table>
+      <table id="46" parent="1" name="mxd_serial"/>
+      <table id="47" parent="1" name="mxd_setting">
+        <comment>站点配置</comment>
+      </table>
+      <table id="48" parent="1" name="mxd_spec">
+        <comment>商品规格表</comment>
+      </table>
+      <table id="49" parent="1" name="mxd_spec_value">
+        <comment>商品规格值表</comment>
+      </table>
+      <table id="50" parent="1" name="mxd_system_article">
+        <comment>文章表</comment>
+      </table>
+      <table id="51" parent="1" name="mxd_withdraw">
+        <comment>提现表</comment>
+      </table>
+      <table id="52" parent="1" name="mxd_wx_menu">
+        <comment>微信服务号菜单</comment>
+      </table>
+      <table id="53" parent="1" name="mxd_wx_msg">
+        <comment>微信回复表</comment>
+      </table>
+      <table id="54" parent="1" name="mxd_wx_setting">
+        <comment>微信公众号设置表</comment>
+      </table>
+      <column id="55" parent="2" name="admin_id">
+        <comment>ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="56" parent="2" name="admin_name">
+        <comment>名称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="57" parent="2" name="admin_pwd">
+        <comment>密码</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="58" parent="2" name="admin_lg_time">
+        <comment>登录时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="59" parent="2" name="admin_lg_oldtime">
+        <comment>上次登录时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="60" parent="2" name="admin_lg_ip">
+        <comment>登录IP</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="61" parent="2" name="admin_lg_oldip">
+        <comment>上次登录IP</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="62" parent="2" name="admin_auth">
+        <comment>权限信息</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="63" parent="2" name="admin_issuper">
+        <comment>1-超级0-普通</comment>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="64" parent="2" name="admin_type">
+        <comment>管理员0维修商1</comment>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="65" parent="2" name="PRIMARY">
+        <columns>admin_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="66" parent="3" name="a_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="67" parent="3" name="a_name">
+        <comment>权限名称</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="68" parent="3" name="a_title">
+        <comment>权限标题</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="69" parent="3" name="a_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="70" parent="3" name="a_show">
+        <comment>1-显示0-隐藏</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="71" parent="3" name="a_default">
+        <comment>1-默认授权</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="72" parent="3" name="PRIMARY">
+        <columns>a_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="73" parent="4" name="ap_id">
+        <comment>广告位置id</comment>
+        <mandatory>1</mandatory>
+        <data-type>mediumint(11) unsigned</data-type>
+      </column>
+      <column id="74" parent="4" name="ap_name">
+        <comment>广告位置名</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="75" parent="4" name="ap_code">
+        <comment>调用代码</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="76" parent="4" name="ap_intro">
+        <comment>广告位简介</comment>
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="77" parent="4" name="ap_class">
+        <comment>广告类别：1文字2图片</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+      </column>
+      <column id="78" parent="4" name="ap_display">
+        <comment>0幻灯片1多广告展示2单广告展示</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+      </column>
+      <column id="79" parent="4" name="is_use">
+        <comment>广告位是否启用：0不启用1启用</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+      </column>
+      <column id="80" parent="4" name="ap_width">
+        <comment>广告位宽度</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="81" parent="4" name="ap_height">
+        <comment>广告位高度</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="82" parent="4" name="ap_price">
+        <comment>广告位单价</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+      </column>
+      <column id="83" parent="4" name="adv_num">
+        <comment>拥有的广告数</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="84" parent="4" name="click_num">
+        <comment>广告位点击率</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="85" parent="4" name="default_content">
+        <comment>广告位默认内容</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="86" parent="4" name="ap_link">
+        <comment>链接</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="87" parent="4" name="ap_pic">
+        <comment>广告图片</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="88" parent="4" name="ap_sort">
+        <comment>排序</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;10&apos;</default-expression>
+      </column>
+      <key id="89" parent="4" name="PRIMARY">
+        <columns>ap_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="90" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="91" parent="5" name="nick_name">
+        <comment>昵称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="92" parent="5" name="true_name">
+        <comment>真实姓名</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="93" parent="5" name="level_name">
+        <comment>级别名称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="94" parent="5" name="address">
+        <comment>地址</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="95" parent="5" name="wexin_id">
+        <comment>微信ID</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="96" parent="5" name="agent_pic">
+        <comment>头像</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="97" parent="5" name="agent_ewm">
+        <comment>二维码</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="98" parent="5" name="agent_zs">
+        <comment>证书图片</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="99" parent="5" name="agent_time">
+        <comment>添加时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="100" parent="5" name="agent_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="101" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="102" parent="6" name="aclass_id">
+        <comment>相册id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="103" parent="6" name="aclass_name">
+        <comment>相册名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="104" parent="6" name="store_id">
+        <comment>所属店铺id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="105" parent="6" name="aclass_des">
+        <comment>相册描述</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="106" parent="6" name="aclass_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(3) unsigned</data-type>
+      </column>
+      <column id="107" parent="6" name="aclass_cover">
+        <comment>相册封面</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="108" parent="6" name="upload_time">
+        <comment>图片上传时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="109" parent="6" name="is_default">
+        <comment>是否为默认相册,1代表默认</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="110" parent="6" name="PRIMARY">
+        <columns>aclass_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="111" parent="7" name="apic_id">
+        <comment>相册图片表id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="112" parent="7" name="apic_name">
+        <comment>图片名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="113" parent="7" name="apic_tag">
+        <comment>图片标签</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="114" parent="7" name="aclass_id">
+        <comment>相册id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="115" parent="7" name="apic_cover">
+        <comment>图片路径</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="116" parent="7" name="apic_size">
+        <comment>图片大小</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="117" parent="7" name="apic_spec">
+        <comment>图片规格</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="118" parent="7" name="store_id">
+        <comment>所属店铺id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="119" parent="7" name="upload_time">
+        <comment>图片上传时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <key id="120" parent="7" name="PRIMARY">
+        <columns>apic_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="121" parent="8" name="article_id">
+        <comment>索引id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="122" parent="8" name="ac_id">
+        <comment>分类id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="123" parent="8" name="article_url">
+        <comment>跳转链接</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="124" parent="8" name="article_key">
+        <comment>关键词</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="125" parent="8" name="article_desc">
+        <comment>描述</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="126" parent="8" name="article_pic">
+        <comment>图片</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="127" parent="8" name="article_show">
+        <comment>是否显示，0为否，1为是，默认为1</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="128" parent="8" name="article_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="129" parent="8" name="article_title">
+        <comment>标题</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="130" parent="8" name="article_content">
+        <comment>内容</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="131" parent="8" name="article_time">
+        <comment>发布时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="132" parent="8" name="article_city_id">
+        <comment>城市ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="133" parent="8" name="search_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <index id="134" parent="8" name="ac_id">
+        <columns>ac_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="135" parent="8" name="PRIMARY">
+        <columns>article_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="136" parent="9" name="ac_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="137" parent="9" name="ac_code">
+        <comment>分类标识码</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="138" parent="9" name="ac_name">
+        <comment>分类名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="139" parent="9" name="ac_parent_id">
+        <comment>父ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="140" parent="9" name="ac_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="141" parent="9" name="ac_title">
+        <comment>标题</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="142" parent="9" name="ac_key">
+        <comment>关键词</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="143" parent="9" name="ac_desc">
+        <comment>描述</comment>
+        <data-type>text</data-type>
+      </column>
+      <index id="144" parent="9" name="ac_parent_id">
+        <columns>ac_parent_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="145" parent="9" name="PRIMARY">
+        <columns>ac_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="146" parent="10" name="beta_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="147" parent="10" name="bulb_brand">
+        <comment>灯泡品牌</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="148" parent="10" name="goods_code">
+        <comment>产品编码</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="149" parent="10" name="bulb_code">
+        <comment>灯泡型号</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="150" parent="10" name="goods_brand">
+        <comment>品牌</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="151" parent="10" name="spec_str">
+        <comment>机器型号</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="152" parent="10" name="display_technique">
+        <comment>显示技术</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="153" parent="10" name="bulb_wattage">
+        <comment>灯泡瓦数(功率)</comment>
+        <data-type>varchar(8)</data-type>
+      </column>
+      <column id="154" parent="10" name="factory_brand">
+        <comment>工厂品牌</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="155" parent="10" name="goods_name">
+        <comment>产品名称(灯组型号)</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="156" parent="10" name="factory_code">
+        <comment>工厂国际码</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="157" parent="10" name="beta_status">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="158" parent="10" name="PRIMARY">
+        <columns>beta_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="159" parent="11" name="board_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="160" parent="11" name="member_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="161" parent="11" name="board_status">
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="162" parent="11" name="expect_num">
+        <data-type>tinyint(4) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="163" parent="11" name="finish_num">
+        <data-type>tinyint(4) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="164" parent="11" name="differ_num">
+        <data-type>varchar(4)</data-type>
+      </column>
+      <column id="165" parent="11" name="create_time">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="166" parent="11" name="finish_time">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="167" parent="11" name="PRIMARY">
+        <columns>board_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="168" parent="12" name="bd_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="169" parent="12" name="bd_name">
+        <comment>故障分类名</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="170" parent="12" name="bd_upid">
+        <comment>父级id</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="171" parent="12" name="bd_sort">
+        <comment>排序</comment>
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="172" parent="12" name="bd_status">
+        <comment>状态</comment>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="173" parent="12" name="PRIMARY">
+        <columns>bd_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="174" parent="13" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="175" parent="13" name="goods_num">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="176" parent="13" name="goods_price_rate">
+        <comment>商品单价折扣率</comment>
+        <data-type>float(3,2) unsigned</data-type>
+        <default-expression>&apos;1.00&apos;</default-expression>
+      </column>
+      <key id="177" parent="13" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="178" parent="14" name="id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="179" parent="14" name="name">
+        <comment>名称</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="180" parent="14" name="first_letter">
+        <comment>首字母</comment>
+        <data-type>varchar(2)</data-type>
+      </column>
+      <column id="181" parent="14" name="level">
+        <comment>级别</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="182" parent="14" name="usetype">
+        <comment>常用城市</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="183" parent="14" name="upid">
+        <comment>父ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="184" parent="14" name="d_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="185" parent="14" name="special">
+        <comment>1直辖/2特殊</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="186" parent="14" name="status">
+        <comment>状态:0关闭1开启</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="187" parent="14" name="displayorder">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <index id="188" parent="14" name="upid">
+        <columns>upid
+d_sort</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="189" parent="14" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="190" parent="15" name="doc_id">
+        <comment>id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="191" parent="15" name="doc_code">
+        <comment>调用标识码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="192" parent="15" name="doc_title">
+        <comment>标题</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="193" parent="15" name="doc_key">
+        <comment>关键词</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="194" parent="15" name="doc_desc">
+        <comment>描述</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="195" parent="15" name="doc_content">
+        <comment>内容</comment>
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="196" parent="15" name="doc_time">
+        <comment>添加时间/修改时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="197" parent="15" name="search_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="198" parent="15" name="doc_pic">
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <index id="199" parent="15" name="doc_code">
+        <columns>doc_code</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="200" parent="15" name="doc_code">
+        <columns>doc_code</columns>
+        <underlying-index>doc_code</underlying-index>
+      </key>
+      <key id="201" parent="15" name="PRIMARY">
+        <columns>doc_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="202" parent="16" name="id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+      </column>
+      <column id="203" parent="16" name="e_name">
+        <comment>公司名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="204" parent="16" name="e_state">
+        <comment>状态</comment>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="205" parent="16" name="e_code">
+        <comment>编号</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="206" parent="16" name="e_letter">
+        <comment>首字母</comment>
+        <mandatory>1</mandatory>
+        <data-type>char(1)</data-type>
+      </column>
+      <column id="207" parent="16" name="e_order">
+        <comment>1常用2不常用</comment>
+        <mandatory>1</mandatory>
+        <data-type>enum(&apos;1&apos;, &apos;2&apos;)</data-type>
+        <default-expression>&apos;2&apos;</default-expression>
+      </column>
+      <column id="208" parent="16" name="e_url">
+        <comment>公司网址</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <index id="209" parent="16" name="id">
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="210" parent="16" name="id">
+        <columns>id</columns>
+        <underlying-index>id</underlying-index>
+      </key>
+      <key id="211" parent="16" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="212" parent="17" name="favorite_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="213" parent="17" name="member_id">
+        <comment>会员ID</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="214" parent="17" name="goods_id">
+        <comment>商品ID</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="215" parent="17" name="add_time">
+        <comment>收藏时间</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <key id="216" parent="17" name="PRIMARY">
+        <columns>favorite_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="217" parent="18" name="goods_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="218" parent="18" name="goods_name">
+        <comment>名称</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="219" parent="18" name="gc_id">
+        <comment>所属分类</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="220" parent="18" name="brand_id">
+        <comment>品牌</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="221" parent="18" name="spec_id">
+        <comment>默认规格ID</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="222" parent="18" name="spec_name">
+        <comment>规格名称</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="223" parent="18" name="goods_spec">
+        <comment>产品规格</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="224" parent="18" name="goods_type_id">
+        <comment>类型ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="225" parent="18" name="goods_type">
+        <comment>商品类型值</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="226" parent="18" name="goods_city_id">
+        <comment>城市ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="227" parent="18" name="goods_col_img">
+        <comment>产品颜色图片</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="228" parent="18" name="goods_storage">
+        <comment>库存</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="229" parent="18" name="goods_freez">
+        <comment>冻结库存</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="230" parent="18" name="goods_serial">
+        <comment>商品货号</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="231" parent="18" name="goods_key">
+        <comment>关键词</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="232" parent="18" name="goods_desc">
+        <comment>产品描述</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="233" parent="18" name="goods_url">
+        <comment>链接地址</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="234" parent="18" name="goods_price">
+        <comment>价格</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="235" parent="18" name="goods_mktprice">
+        <comment>市场价</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="236" parent="18" name="member_price">
+        <comment>会员价</comment>
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="237" parent="18" name="goods_pic">
+        <comment>图片</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="238" parent="18" name="goods_pic_more">
+        <comment>更多图片</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="239" parent="18" name="goods_body">
+        <comment>产品信息</comment>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="240" parent="18" name="goods_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="241" parent="18" name="add_time">
+        <comment>添加时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="242" parent="18" name="store_id">
+        <comment>商铺id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="243" parent="18" name="store_name">
+        <comment>商铺名称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="244" parent="18" name="freight">
+        <comment>运费</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="245" parent="18" name="is_recomm">
+        <comment>推荐1是</comment>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="246" parent="18" name="goods_sales">
+        <comment>销量</comment>
+        <data-type>int(10) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="247" parent="18" name="goods_view">
+        <comment>商品人气</comment>
+        <data-type>int(10) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="248" parent="18" name="goods_status">
+        <comment>商品状态</comment>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="249" parent="18" name="goods_point">
+        <comment>商品积分</comment>
+        <data-type>mediumint(8) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="250" parent="18" name="search_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="251" parent="18" name="display_technique">
+        <comment>显示技术</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="252" parent="18" name="bulb_brand">
+        <comment>灯泡品牌</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="253" parent="18" name="bulb_code">
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="254" parent="18" name="bulb_wattage">
+        <comment>灯泡瓦数</comment>
+        <data-type>varchar(8)</data-type>
+      </column>
+      <column id="255" parent="18" name="factory_code">
+        <comment>工厂国际码</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="256" parent="18" name="factory_brand">
+        <comment>工厂品牌</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="257" parent="18" name="goods_code">
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <key id="258" parent="18" name="PRIMARY">
+        <columns>goods_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="259" parent="19" name="brand_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="260" parent="19" name="brand_name">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="261" parent="19" name="brand_url">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="262" parent="19" name="brand_desc">
+        <data-type>longtext</data-type>
+      </column>
+      <column id="263" parent="19" name="brand_logo">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="264" parent="19" name="brand_keywords">
+        <data-type>longtext</data-type>
+      </column>
+      <column id="265" parent="19" name="ordernum">
+        <data-type>mediumint(8) unsigned</data-type>
+      </column>
+      <column id="266" parent="19" name="brand_sort">
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="267" parent="19" name="brand_status">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="268" parent="19" name="gc_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="269" parent="19" name="PRIMARY">
+        <columns>brand_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="270" parent="20" name="gc_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="271" parent="20" name="gc_name">
+        <comment>分类名称</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="272" parent="20" name="gc_parent_id">
+        <comment>父类ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="273" parent="20" name="gc_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="274" parent="20" name="level">
+        <comment>级别</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="275" parent="20" name="gc_img">
+        <comment>代表图片</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="276" parent="20" name="gc_title">
+        <comment>标题</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="277" parent="20" name="gc_key">
+        <comment>关键词</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="278" parent="20" name="gc_desc">
+        <comment>描述</comment>
+        <data-type>text</data-type>
+      </column>
+      <key id="279" parent="20" name="PRIMARY">
+        <columns>gc_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="280" parent="21" name="comment_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="281" parent="21" name="for_comment_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="282" parent="21" name="goods_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="283" parent="21" name="member_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="284" parent="21" name="contact">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="285" parent="21" name="comment">
+        <data-type>longtext</data-type>
+      </column>
+      <column id="286" parent="21" name="ip">
+        <data-type>varchar(15)</data-type>
+      </column>
+      <column id="287" parent="21" name="time">
+        <mandatory>1</mandatory>
+        <data-type>int(10)</data-type>
+      </column>
+      <key id="288" parent="21" name="PRIMARY">
+        <columns>comment_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="289" parent="22" name="id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="290" parent="22" name="goods_id">
+        <comment>商品ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="291" parent="22" name="pic">
+        <comment>图片信息</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="292" parent="22" name="p_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="293" parent="22" name="pic_status">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="294" parent="22" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="295" parent="23" name="spec_id">
+        <comment>商品规格索引id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="296" parent="23" name="goods_id">
+        <comment>商品id</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="297" parent="23" name="spec_name">
+        <comment>规格名称</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="298" parent="23" name="spec_goods_price">
+        <comment>规格商品价格</comment>
+        <data-type>decimal(10,2)</data-type>
+      </column>
+      <column id="299" parent="23" name="spec_goods_storage">
+        <comment>规格商品库存</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="300" parent="23" name="spec_salenum">
+        <comment>售出数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="301" parent="23" name="spec_goods_color">
+        <comment>规格商品颜色</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="302" parent="23" name="spec_goods_serial">
+        <comment>规格商品编号</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="303" parent="23" name="spec_goods_spec">
+        <comment>商品规格序列化</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="304" parent="23" name="spec_goods_sort">
+        <comment>规格排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <index id="305" parent="23" name="goods_id">
+        <columns>goods_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="306" parent="23" name="PRIMARY">
+        <columns>spec_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="307" parent="24" name="goods_id">
+        <comment>商品id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="308" parent="24" name="gc_id">
+        <comment>商品分类id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="309" parent="24" name="type_id">
+        <comment>类型id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="310" parent="24" name="sp_id">
+        <comment>规格id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="311" parent="24" name="sp_value_id">
+        <comment>规格值id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="312" parent="24" name="sp_value_name">
+        <comment>规格值名称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="313" parent="24" name="PRIMARY">
+        <columns>goods_id
+gc_id
+sp_value_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="314" parent="25" name="member_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="315" parent="25" name="openid">
+        <comment>微信openid</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="316" parent="25" name="unionid">
+        <comment>微信联合ID</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="317" parent="25" name="member_name">
+        <comment>会员账号</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="318" parent="25" name="pwd">
+        <comment>密码</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="319" parent="25" name="nickname">
+        <comment>昵称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="320" parent="25" name="age">
+        <comment>年龄</comment>
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="321" parent="25" name="gender">
+        <comment>性别 0.保密 1.男 2.女</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="322" parent="25" name="email">
+        <comment>邮箱地址</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="323" parent="25" name="mobile">
+        <comment>移动电话</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="324" parent="25" name="zipcode">
+        <comment>邮编</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="325" parent="25" name="shipped_to_name">
+        <comment>收件人</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="326" parent="25" name="address">
+        <comment>地址</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="327" parent="25" name="telephone">
+        <comment>座机</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="328" parent="25" name="usercity">
+        <comment>常居地</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="329" parent="25" name="avatar">
+        <comment>会员头像</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="330" parent="25" name="introduce">
+        <comment>自我介绍</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="331" parent="25" name="login_time">
+        <comment>登陆时间</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="332" parent="25" name="login_num">
+        <comment>登陆次数</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="333" parent="25" name="comment_num">
+        <comment>评论数</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="334" parent="25" name="predeposit">
+        <comment>存款预</comment>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="335" parent="25" name="point">
+        <comment>积分</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="336" parent="25" name="email_code">
+        <comment>找回密码邮箱验证码</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="337" parent="25" name="pay_pwd">
+        <comment>预存款支付密码</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="338" parent="25" name="member_degree">
+        <comment>会员等级</comment>
+        <data-type>tinyint(1) unsigned</data-type>
+      </column>
+      <column id="339" parent="25" name="member_point">
+        <comment>会员积分</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="340" parent="25" name="member_contribution">
+        <comment>会员贡献值</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="341" parent="25" name="country">
+        <comment>国家</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="342" parent="25" name="province">
+        <comment>省</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="343" parent="25" name="city">
+        <comment>市</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="344" parent="25" name="area">
+        <comment>区</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="345" parent="25" name="mall">
+        <comment>商业区</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="346" parent="25" name="register_time">
+        <comment>注册时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="347" parent="25" name="member_status">
+        <comment>状态0冻结1正常</comment>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="348" parent="25" name="member_type">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="349" parent="25" name="distributor">
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="350" parent="25" name="parent_member_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="351" parent="25" name="PRIMARY">
+        <columns>member_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="352" parent="26" name="addr_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="353" parent="26" name="member_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="354" parent="26" name="name">
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="355" parent="26" name="province_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="356" parent="26" name="city_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="357" parent="26" name="area_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="358" parent="26" name="addr">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="359" parent="26" name="zip">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="360" parent="26" name="mobile">
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="361" parent="26" name="def_addr">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="362" parent="26" name="addr_tag">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="363" parent="26" name="PRIMARY">
+        <columns>addr_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="364" parent="27" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="365" parent="27" name="member_id">
+        <comment>会员id</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="366" parent="27" name="bill_log">
+        <comment>账单内容</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="367" parent="27" name="amount">
+        <comment>金额</comment>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="368" parent="27" name="balance">
+        <comment>余额</comment>
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="369" parent="27" name="addtime">
+        <comment>添加时间</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="370" parent="27" name="bill_type">
+        <comment>-2冻结-1支出1收入2解冻</comment>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="371" parent="27" name="channel">
+        <comment>收支渠道1普通任务 2特殊任务 3分享购任务 4浏览收藏任务 11推广商家 12推广会员 31充值</comment>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="372" parent="27" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="373" parent="28" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="374" parent="28" name="member_id">
+        <comment>会员索引id</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="375" parent="28" name="addtime">
+        <comment>添加时间</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="376" parent="28" name="title">
+        <comment>标题</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="377" parent="28" name="content">
+        <comment>内容</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="378" parent="28" name="status">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <key id="379" parent="28" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="380" parent="29" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="381" parent="29" name="name">
+        <comment>姓名</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="382" parent="29" name="mobile">
+        <comment>手机号</comment>
+        <data-type>varchar(16)</data-type>
+      </column>
+      <column id="383" parent="29" name="email">
+        <comment>邮箱</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="384" parent="29" name="content">
+        <comment>其他内容</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="385" parent="29" name="addtime">
+        <comment>添加时间</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="386" parent="29" name="member_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <key id="387" parent="29" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="388" parent="30" name="notice_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="389" parent="30" name="notice_title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="390" parent="30" name="notice_keyword">
+        <data-type>text</data-type>
+      </column>
+      <column id="391" parent="30" name="notice_desc">
+        <data-type>text</data-type>
+      </column>
+      <column id="392" parent="30" name="notice_content">
+        <data-type>text</data-type>
+      </column>
+      <column id="393" parent="30" name="notice_time">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="394" parent="30" name="notice_type">
+        <comment>1投影2投影细节3氙灯细节4会员服务</comment>
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="395" parent="30" name="notice_status">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="396" parent="30" name="notice_pic">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="397" parent="30" name="notice_sort">
+        <data-type>tinyint(3) unsigned</data-type>
+      </column>
+      <column id="398" parent="30" name="search_id">
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="399" parent="30" name="PRIMARY">
+        <columns>notice_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="400" parent="31" name="order_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="401" parent="31" name="order_sn">
+        <comment>订单号</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="402" parent="31" name="out_sn">
+        <comment>外部订单号</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="403" parent="31" name="member_id">
+        <comment>购买人ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="404" parent="31" name="buyer_name">
+        <comment>购买人名称</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="405" parent="31" name="order_type">
+        <comment>类型-1普通2-团购</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="406" parent="31" name="payment_id">
+        <comment>支付方式ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="407" parent="31" name="payment_name">
+        <comment>支付方式名称</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="408" parent="31" name="payment_code">
+        <comment>支付方式编码</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="409" parent="31" name="payment_time">
+        <comment>支付时间</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="410" parent="31" name="shipping_express_id">
+        <comment>物流ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="411" parent="31" name="shipping_code">
+        <comment>物流编码</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="412" parent="31" name="shipping_fee">
+        <comment>物流费用</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="413" parent="31" name="shipping_name">
+        <comment>物流名称</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="414" parent="31" name="shipping_time">
+        <comment>发货时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="415" parent="31" name="order_points">
+        <comment>赠送积分</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="416" parent="31" name="invoice">
+        <comment>发票信息</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="417" parent="31" name="goods_amount">
+        <comment>商品总金额</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="418" parent="31" name="discount">
+        <comment>折扣总金额</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="419" parent="31" name="order_amount">
+        <comment>订单总金额</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="420" parent="31" name="order_message">
+        <comment>订单留言</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="421" parent="31" name="order_state">
+        <comment>状态10-未付款20-已付款30-已发货40-已收货50-已完成60-已取消</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;10&apos;</default-expression>
+      </column>
+      <column id="422" parent="31" name="add_time">
+        <comment>下单时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="423" parent="31" name="mobile">
+        <data-type>varchar(16)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="424" parent="31" name="email">
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="425" parent="31" name="source">
+        <comment>订单来源</comment>
+        <data-type>varchar(255)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <index id="426" parent="31" name="order_sn">
+        <columns>order_sn</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="427" parent="31" name="order_sn">
+        <columns>order_sn</columns>
+        <underlying-index>order_sn</underlying-index>
+      </key>
+      <key id="428" parent="31" name="PRIMARY">
+        <columns>order_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="429" parent="32" name="id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="430" parent="32" name="order_id">
+        <comment>订单ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="431" parent="32" name="buyer_id">
+        <comment>用户ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="432" parent="32" name="true_name">
+        <comment>收货人姓名</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="433" parent="32" name="prov_id">
+        <comment>省份ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="434" parent="32" name="city_id">
+        <comment>城市ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="435" parent="32" name="area_id">
+        <comment>区县ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="436" parent="32" name="shop_id">
+        <comment>商区/乡镇ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="437" parent="32" name="address">
+        <comment>通信地址</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="438" parent="32" name="zip_code">
+        <comment>邮政编码</comment>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="439" parent="32" name="mob_phone">
+        <comment>联系电话</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="440" parent="32" name="add_time">
+        <comment>添加时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="441" parent="32" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="442" parent="33" name="rec_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="443" parent="33" name="order_id">
+        <comment>订单ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="444" parent="33" name="goods_id">
+        <comment>产品ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="445" parent="33" name="goods_name">
+        <comment>产品名称</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="446" parent="33" name="spec_id">
+        <comment>产品规格ID</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="447" parent="33" name="spec_info">
+        <comment>产品规格信息</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="448" parent="33" name="goods_price">
+        <comment>产品价格</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="449" parent="33" name="goods_mkprice">
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="450" parent="33" name="goods_num">
+        <comment>产品数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="451" parent="33" name="goods_image">
+        <comment>产品图片</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="452" parent="33" name="freight">
+        <comment>运费</comment>
+        <mandatory>1</mandatory>
+        <data-type>decimal(10,2)</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="453" parent="33" name="member_id">
+        <data-type>mediumint(8) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="454" parent="33" name="PRIMARY">
+        <columns>rec_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="455" parent="34" name="log_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="456" parent="34" name="order_id">
+        <comment>订单ID</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="457" parent="34" name="order_state">
+        <comment>订单状态</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="458" parent="34" name="change_state">
+        <comment>订单下一状态</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="459" parent="34" name="state_info">
+        <comment>订单状态描述</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="460" parent="34" name="log_time">
+        <comment>日志时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="461" parent="34" name="operator">
+        <comment>操作人</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="462" parent="34" name="PRIMARY">
+        <columns>log_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="463" parent="35" name="payment_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="464" parent="35" name="payment_code">
+        <comment>支付代码名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>char(10)</data-type>
+      </column>
+      <column id="465" parent="35" name="payment_name">
+        <comment>支付名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="466" parent="35" name="payment_config">
+        <comment>支付接口配置信息</comment>
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="467" parent="35" name="payment_state">
+        <comment>状态1-可用2-不可用</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="468" parent="35" name="payment_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <key id="469" parent="35" name="PRIMARY">
+        <columns>payment_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="470" parent="36" name="product_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="471" parent="36" name="goods_id">
+        <comment>商品id</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="472" parent="36" name="product_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="473" parent="36" name="product_sort">
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="474" parent="36" name="product_status">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="475" parent="36" name="PRIMARY">
+        <columns>product_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="476" parent="37" name="profit_id">
+        <comment>收益索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="477" parent="37" name="member_id">
+        <comment>会员id</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="478" parent="37" name="profit_source">
+        <comment>收益来源</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="479" parent="37" name="profit_amount">
+        <comment>收益金额</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="480" parent="37" name="profit_addtime">
+        <comment>收益时间</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <key id="481" parent="37" name="PRIMARY">
+        <columns>profit_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="482" parent="38" name="pl_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="483" parent="38" name="member_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="484" parent="38" name="pl_time">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="485" parent="38" name="pl_status">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="486" parent="38" name="pl_content">
+        <data-type>text</data-type>
+      </column>
+      <key id="487" parent="38" name="PRIMARY">
+        <columns>pl_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="488" parent="39" name="reward_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="489" parent="39" name="level">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4) unsigned</data-type>
+      </column>
+      <column id="490" parent="39" name="reward_price">
+        <mandatory>1</mandatory>
+        <data-type>decimal(8,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="491" parent="39" name="reward_type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(16)</data-type>
+      </column>
+      <index id="492" parent="39" name="level">
+        <columns>level
+reward_type</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="493" parent="39" name="level">
+        <columns>level
+reward_type</columns>
+        <underlying-index>level</underlying-index>
+      </key>
+      <key id="494" parent="39" name="PRIMARY">
+        <columns>reward_id
+reward_type</columns>
+        <primary>1</primary>
+      </key>
+      <column id="495" parent="40" name="rp_id">
+        <mandatory>1</mandatory>
+        <data-type>mediumint(8) unsigned</data-type>
+      </column>
+      <column id="496" parent="40" name="rp_sn">
+        <comment>维修单号</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="497" parent="40" name="member_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="498" parent="40" name="goods_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="499" parent="40" name="bd_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="500" parent="40" name="machine_code">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="501" parent="40" name="content">
+        <data-type>text</data-type>
+      </column>
+      <column id="502" parent="40" name="addtime">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="503" parent="40" name="admin_id">
+        <comment>所属管理员(维修商)</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="504" parent="40" name="cost">
+        <comment>成本价</comment>
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="505" parent="40" name="price">
+        <comment>价格</comment>
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="506" parent="40" name="rp_status">
+        <comment>维修状态</comment>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="507" parent="40" name="order_id">
+        <comment>订单索引</comment>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="508" parent="40" name="rp_report">
+        <comment>维修报告</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="509" parent="40" name="remark">
+        <data-type>text</data-type>
+      </column>
+      <column id="510" parent="40" name="express_style">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="511" parent="40" name="express">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="512" parent="40" name="express_sn">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="513" parent="40" name="PRIMARY">
+        <columns>rp_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="514" parent="41" name="log_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="515" parent="41" name="rp_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="516" parent="41" name="log_content">
+        <comment>日志内容</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="517" parent="41" name="is_view">
+        <comment>前台可看状态</comment>
+        <data-type>tinyint(3) unsigned</data-type>
+      </column>
+      <column id="518" parent="41" name="log_time">
+        <comment>日志时间</comment>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <key id="519" parent="41" name="PRIMARY">
+        <columns>log_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="520" parent="42" name="rm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="521" parent="42" name="rp_id">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="522" parent="42" name="plan">
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="523" parent="42" name="type">
+        <comment>0维修1更换</comment>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="524" parent="42" name="name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="525" parent="42" name="num">
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="526" parent="42" name="price">
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="527" parent="42" name="remark">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="528" parent="42" name="day">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(3)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="529" parent="42" name="PRIMARY">
+        <columns>rm_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="530" parent="43" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="531" parent="43" name="order_sn">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="532" parent="43" name="member_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="533" parent="43" name="order_type">
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="534" parent="43" name="goods_amount">
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="535" parent="43" name="discount">
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="536" parent="43" name="order_amount">
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="537" parent="43" name="order_state">
+        <comment>-2冻结-1已取消0未处理1已处理</comment>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="538" parent="43" name="order_step">
+        <comment>1预订下单2等待支付定金3等待备货4等待支付余款5发货6确认收货7完成</comment>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="539" parent="43" name="add_time">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="540" parent="43" name="goods_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="541" parent="43" name="spec_id">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="542" parent="43" name="reserve_num">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="543" parent="43" name="remark">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="544" parent="43" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="545" parent="44" name="search_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="546" parent="44" name="url">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="547" parent="44" name="title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="548" parent="44" name="keywords">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="549" parent="44" name="description">
+        <data-type>text</data-type>
+      </column>
+      <column id="550" parent="44" name="img">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="551" parent="44" name="remark">
+        <data-type>text</data-type>
+      </column>
+      <column id="552" parent="44" name="addtime">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="553" parent="44" name="tag">
+        <data-type>text</data-type>
+      </column>
+      <column id="554" parent="44" name="table_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="555" parent="44" name="table_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="556" parent="44" name="sort">
+        <data-type>tinyint(3) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="557" parent="44" name="type">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="558" parent="44" name="PRIMARY">
+        <columns>search_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="559" parent="45" name="id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="560" parent="45" name="title">
+        <comment>标题</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="561" parent="45" name="keywords">
+        <comment>关键词</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="562" parent="45" name="description">
+        <comment>描述</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="563" parent="45" name="type">
+        <comment>类型</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="564" parent="45" name="cavalue">
+        <comment>控制器方法值</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="565" parent="45" name="remark">
+        <comment>备注</comment>
+        <data-type>text</data-type>
+      </column>
+      <index id="566" parent="45" name="cavalue">
+        <columns>cavalue</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="567" parent="45" name="cavalue">
+        <columns>cavalue</columns>
+        <underlying-index>cavalue</underlying-index>
+      </key>
+      <key id="568" parent="45" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="569" parent="46" name="ser_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="570" parent="46" name="goods_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="571" parent="46" name="serial_number">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="572" parent="46" name="status">
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="573" parent="46" name="order_id">
+        <data-type>int(1) unsigned</data-type>
+      </column>
+      <key id="574" parent="46" name="PRIMARY">
+        <columns>ser_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="575" parent="47" name="name">
+        <comment>配置键</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="576" parent="47" name="value">
+        <comment>配置值</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="577" parent="47" name="description">
+        <comment>描述</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="578" parent="47" name="PRIMARY">
+        <columns>name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="579" parent="48" name="sp_id">
+        <comment>规格id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="580" parent="48" name="sp_name">
+        <comment>规格名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="581" parent="48" name="sp_format">
+        <comment>显示类型</comment>
+        <mandatory>1</mandatory>
+        <data-type>enum(&apos;text&apos;, &apos;image&apos;)</data-type>
+      </column>
+      <column id="582" parent="48" name="sp_value">
+        <comment>规格值列</comment>
+        <mandatory>1</mandatory>
+        <data-type>text</data-type>
+      </column>
+      <column id="583" parent="48" name="sp_show">
+        <comment>1-启用0-关闭</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="584" parent="48" name="sp_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+      </column>
+      <key id="585" parent="48" name="PRIMARY">
+        <columns>sp_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="586" parent="49" name="sp_value_id">
+        <comment>规格值id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="587" parent="49" name="sp_value_name">
+        <comment>规格值名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="588" parent="49" name="sp_id">
+        <comment>所属规格id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="589" parent="49" name="sp_value_image">
+        <comment>规格图片</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="590" parent="49" name="sp_value_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+      </column>
+      <key id="591" parent="49" name="PRIMARY">
+        <columns>sp_value_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="592" parent="50" name="article_id">
+        <comment>索引id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="593" parent="50" name="article_title">
+        <comment>标题</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="594" parent="50" name="ac_type">
+        <comment>分类标识符</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="595" parent="50" name="article_url">
+        <comment>跳转链接</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="596" parent="50" name="seo_title">
+        <comment>seo标题</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="597" parent="50" name="seo_key">
+        <comment>seo关键词</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="598" parent="50" name="seo_desc">
+        <comment>seo描述</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="599" parent="50" name="article_pic">
+        <comment>图片</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="600" parent="50" name="article_show">
+        <comment>是否显示，0为否，1为是，默认为1</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1) unsigned</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="601" parent="50" name="article_sort">
+        <comment>排序</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="602" parent="50" name="article_content">
+        <comment>内容</comment>
+        <data-type>text</data-type>
+      </column>
+      <column id="603" parent="50" name="article_time">
+        <comment>发布时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="604" parent="50" name="search_id">
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <index id="605" parent="50" name="ac_id">
+        <columns>ac_type</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="606" parent="50" name="PRIMARY">
+        <columns>article_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="607" parent="51" name="wd_id">
+        <mandatory>1</mandatory>
+        <data-type>mediumint(8) unsigned</data-type>
+      </column>
+      <column id="608" parent="51" name="member_id">
+        <data-type>mediumint(8) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="609" parent="51" name="wd_account">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="610" parent="51" name="wd_amount">
+        <data-type>decimal(10,2) unsigned</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="611" parent="51" name="wd_time">
+        <data-type>int(11) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="612" parent="51" name="wd_status">
+        <comment>状态</comment>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="613" parent="51" name="wd_remark">
+        <comment>备注</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="614" parent="51" name="wd_log">
+        <comment>日志</comment>
+        <data-type>text</data-type>
+      </column>
+      <key id="615" parent="51" name="PRIMARY">
+        <columns>wd_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="616" parent="52" name="id">
+        <comment>索引</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="617" parent="52" name="p_id">
+        <comment>父ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="618" parent="52" name="name">
+        <comment>菜单名称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="619" parent="52" name="type">
+        <comment>菜单类型</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="620" parent="52" name="key_url">
+        <comment>返回数据源</comment>
+        <data-type>varchar(300)</data-type>
+      </column>
+      <column id="621" parent="52" name="level">
+        <comment>级别</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="622" parent="52" name="sort">
+        <comment>排序</comment>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="623" parent="52" name="is_show">
+        <comment>是否显示</comment>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <key id="624" parent="52" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="625" parent="53" name="id">
+        <comment>索引id</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="626" parent="53" name="msg_key">
+        <comment>关键词</comment>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="627" parent="53" name="msg_type">
+        <comment>类型1-文本 2-图片 3-语音 4-视频 5-音乐 6-图文</comment>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="628" parent="53" name="body">
+        <comment>内容</comment>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="629" parent="53" name="show">
+        <comment>1-显示0-不显示</comment>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="630" parent="53" name="msg_title">
+        <comment>信息标题</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="631" parent="53" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="632" parent="54" name="wx_id">
+        <comment>索引ID</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="633" parent="54" name="wx_gzh_name">
+        <comment>公众号名称</comment>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="634" parent="54" name="wx_appid">
+        <comment>APPID</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="635" parent="54" name="wx_secret">
+        <comment>SECRET</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="636" parent="54" name="wx_token">
+        <comment>TOKEN</comment>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="637" parent="54" name="wx_mch_id">
+        <comment>商户号</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="638" parent="54" name="wx_api_url">
+        <comment>API_URL</comment>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="639" parent="54" name="PRIMARY">
+        <columns>wx_id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
