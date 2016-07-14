@@ -134,11 +134,7 @@ class BaseController extends Controller{
 			$update_res = M('Board')->where(array('board_id'=>$board_info['board_id']))->save($data);
 			if ($update_res)
 			{
-<<<<<<< HEAD
 				//TODO:公牌日志
-=======
-				//TODO:公牌日志.
->>>>>>> a4f8b91265a06179c658f6a0b128a34bb05da76b
 			}
 		}
 	}
