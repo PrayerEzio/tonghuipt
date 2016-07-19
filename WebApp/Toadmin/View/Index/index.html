@@ -140,9 +140,8 @@ $(function(){
               <li onclick="javascript:openItem('goods');"><i class="i02" ></i><a href="javascript:void(0);" id='nav_goods' onclick="javascript:openItem('goods');"><span>商品</span></a> </li>
               <li onclick="javascript:openItem('member');"><i class="i03" ></i><a href="javascript:void(0);" id='nav_member' onclick="javascript:openItem('member');"><span>会员</span></a> </li>
               <li onclick="javascript:openItem('order');"><i class="i08"></i><a href="javascript:void(0);" id='nav_order' onclick="javascript:openItem('order');"><span>交易</span></a></li>
-              <!--<li onclick="javascript:openItem('coupon');"><i class="i07"></i><a href="javascript:void(0);" id='nav_coupon' onclick="javascript:openItem('coupon');"><span>优惠管理</span></a> </li>-->
-              <!-- <li onclick="javascript:openItem('report')"><i class="i05"></i><a href="javascript:void(0);" id='nav_report' onclick="javascript:openItem('report')">申诉</a></li> -->
-              <li onclick="javascript:openItem('feedback')"><i class="i01"></i><a href="javascript:void(0);" id='nav_feedback' onclick="javascript:openItem('feedback')">维修</a></li>
+              <li onclick="javascript:openItem('distribution')"><i class="i05"></i><a href="javascript:void(0);" id='nav_distribution' onclick="javascript:openItem('distribution')">分销</a></li>
+              <!--<li onclick="javascript:openItem('feedback')"><i class="i01"></i><a href="javascript:void(0);" id='nav_feedback' onclick="javascript:openItem('feedback')">维修</a></li>-->
               <li onclick="javascript:openItem('website')"><i class="i10"></i><a href="javascript:void(0);" id='nav_website' onclick="javascript:openItem('website')">网站</a></li>
               <li onclick="javascript:openItem('circle')"><i class="i04"></i><a href="javascript:void(0);" id='nav_circle' onclick="javascript:openItem('circle')">数据</a></li>
               <li onclick="javascript:openItem('weixin')"><i class="i09"></i><a href="javascript:void(0);" id='nav_weixin' onclick="javascript:openItem('weixin')">微信</a></li>
@@ -181,7 +180,7 @@ $(function(){
 			<li><a href="javascript:void(0);" id="item_goods_brandGoods" name="item_goods_brandGoods" onclick="javascript:openItem('goods_brand,Goods,goods');">商品品牌</a></li>
             <li><a href="javascript:void(0);" id="item_goodsGoods" name="item_goodsGoods" onclick="javascript:openItem('goods,Goods,goods');" >商品管理</a></li>
             <li><a href="javascript:void(0);" id="item_goods_discountGoods" name="item_goods_discountGoods" onclick="javascript:openItem('goods_discount,Goods,goods');">商品折扣</a></li>
-          	<li><a href="javascript:void(0);" id="item_goods_queryGoods" name="item_goods_queryGoods" onclick="javascript:openItem('goods_query,Goods,goods');" >商品查询</a></li>
+          	<!--<li><a href="javascript:void(0);" id="item_goods_queryGoods" name="item_goods_queryGoods" onclick="javascript:openItem('goods_query,Goods,goods');" >商品查询</a></li>-->
           </ul>
           <ul id='sort_publish' style="display:none;">
             <li><a href="javascript:void(0);" id="item_goods_limitGoods" name="item_goods_limitGoods" onclick="javascript:openItem('goods_limit,Goods,publish');" class="selected">购买限制</a></li>
@@ -207,8 +206,9 @@ $(function(){
             <li><a href="javascript:void(0);" id="item_coupon_downloadCoupon" name="item_coupon_downloadCoupon" onclick="javascript:openItem('coupon_download,Coupon,coupon');">优惠券下载</a></li>
           </ul>
           
-          <ul id='sort_exam' style="display:none;">
-            <li><a href="javascript:void(0);" class="selected" id="item_indexExam" name="item_indexExam" onclick="javascript:openItem('index,Exam,exam');">考试题目</a></li>
+          <ul id='sort_distribution' style="display:none;">
+            <li><a href="javascript:void(0);" class="selected" id="item_indexDistribution" name="item_indexDistribution" onclick="javascript:openItem('index,Distribution,distribution');">公排管理</a></li>
+            <li><a href="javascript:void(0);" id="item_agentDistribution" name="item_agentDistribution" onclick="javascript:openItem('agent,Distribution,distribution');">代理管理</a></li>
           </ul>
           
           <ul id='sort_report' style="display:none;">
