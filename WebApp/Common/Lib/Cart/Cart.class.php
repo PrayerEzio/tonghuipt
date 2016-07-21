@@ -22,11 +22,12 @@ class Cart{
      * @param float $price 商品价格
      * @param int $num 购物数量
      * @param string $img 商品图片
+     * @param int $spec_id 规格id
      */
-    public function addItem($id,$name,$price,$num,$img) {
+    public function addItem($id,$name,$price,$num,$img,$spec_id = 0) {
         //如果该商品已存在则直接加其数量
-        if (isset($_SESSION['cart'][$id])) {
-            $this->incNum($id,$num);
+        if (isset($_SESSION['cart'][$id][$spec_id])) {
+            $this->incNum($id,$spec_id,$num);
             return;
         }
         $item = array();
@@ -35,7 +36,8 @@ class Cart{
         $item['price'] = $price;
         $item['num'] = $num;
         $item['img'] = $img;
-        $_SESSION['cart'][$id] = $item;
+        $item['spec_id'] = $spec_id;
+        $_SESSION['cart'][$id][$spec_id] = $item;
     }
  
     /**
@@ -44,11 +46,11 @@ class Cart{
      * @param int $num 某商品修改后的数量，即直接把某商品的数量改为$num
      * @return boolean
      */
-    public function modNum($id,$num=1) {
-        if (!isset($_SESSION['cart'][$id])) {
+    public function modNum($id,$spec_id = 0,$num=1) {
+        if (!isset($_SESSION['cart'][$id][$spec_id])) {
             return false;
         }
-        $_SESSION['cart'][$id]['num'] = $num;
+        $_SESSION['cart'][$id][$spec_id]['num'] = $num;
     }
  
     /**
@@ -56,9 +58,9 @@ class Cart{
      * @param int $id 商品主键
      * @param number $num 增加数量,默认为1
      */
-    public function incNum($id,$num=1) {
-        if (isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id]['num'] += $num;
+    public function incNum($id,$spec_id = 0,$num=1) {
+        if (isset($_SESSION['cart'][$id][$spec_id])) {
+            $_SESSION['cart'][$id][$spec_id]['num'] += $num;
         }
     }
  
@@ -67,13 +69,13 @@ class Cart{
      * @param int $id 商品主键
      * @param number $num 减少数量,默认为1
      */
-    public function decNum($id,$num=1) {
-        if (isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id]['num'] -= $num;
+    public function decNum($id,$spec_id = 0,$num=1) {
+        if (isset($_SESSION['cart'][$id][$spec_id])) {
+            $_SESSION['cart'][$id][$spec_id]['num'] -= $num;
         }
         //如果减少后，数量为0，则把这个商品删掉
-        if ($_SESSION['cart'][$id]['num'] <1) {
-            $this->delItem($id);
+        if ($_SESSION['cart'][$id][$spec_id]['num'] <1) {
+            $this->delItem($id,$spec_id);
         }
     }
  
@@ -81,8 +83,12 @@ class Cart{
      * 删除商品
      * @param int $id 商品主键
      */
-    public function delItem($id) {
-        unset($_SESSION['cart'][$id]);
+    public function delItem($id,$spec_id) {
+        unset($_SESSION['cart'][$id][$spec_id]);
+        if (empty($_SESSION['cart'][$id]))
+        {
+            unset($_SESSION['cart'][$id]);
+        }
     }
     /**
      * 获取购物车所有商品
@@ -95,8 +101,13 @@ class Cart{
      * 获取单个商品
      * @param int $id 商品主键
      */
-    public function getItem($id) {
-        return $_SESSION['cart'][$id];
+    public function getItem($id,$spec_id = 0) {
+        if (is_int($spec_id))
+        {
+            return $_SESSION['cart'][$id][$spec_id];
+        }else {
+            return $_SESSION['cart'][$id];
+        }
     }
  
     /**
@@ -120,7 +131,10 @@ class Cart{
         $sum = 0;
         $data = $_SESSION['cart'];
         foreach ($data as $item) {
-            $sum += $item['num'];
+            foreach ($item as $value)
+            {
+                $sum += $value['num'];
+            }
         }
         return $sum;
     }
@@ -137,7 +151,10 @@ class Cart{
         $price = 0.00;
         $data = $_SESSION['cart'];
         foreach ($data as $item) {
-            $price += $item['num'] * $item['price'];
+            foreach ($item as $value)
+            {
+                $price += $value['num'] * $value['price'];
+            }
         }
         return sprintf("%01.2f", $price);
     }

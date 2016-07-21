@@ -28,13 +28,7 @@ function submit_delete(id)
     <div class="item-title">
       <h3>会员管理</h3>
       <ul class="tab-base">
-      	<if condition="empty($search['type'])">
         <li><a href="javascript:void(0);" class="current"><span>会员</span></a></li>
-        <li><a href="{:U('',array('type'=>1))}"><span>维修商</span></a></li>
-        <else/>
-        <li><a href="{:U('')}"><span>会员</span></a></li>
-        <li><a href="javascript:void(0);" class="current"><span>维修商</span></a></li>
-        </if>
       </ul>
     </div>
   </div>
@@ -43,8 +37,8 @@ function submit_delete(id)
     <table class="tb-type1 noborder search">
       <tbody>
         <tr>
-          <th>会员名称</th>
-          <td><input type="text" value="{$search['nickname']}" name="nickname" class="txt" ></td>
+          <th>手机号</th>
+          <td><input type="text" value="{$search['mobile']}" name="mobile" class="txt" ></td>
           <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
         </tr>
       </tbody>
@@ -59,7 +53,8 @@ function submit_delete(id)
         </tr>
         <tr class="thead">
           <!--<th class="w48"></th>-->
-          <th class="w200">名称</th>
+          <th class="w48">id</th>
+          <th class="w48">名称</th>
 		  <th class="w48">手机号</th>
 		  <th class="w48">邮箱</th>
 		  <th class="w48">注册时间</th>
@@ -71,6 +66,7 @@ function submit_delete(id)
         <volist name="list" id="val">
         <tr class="hover edit">
           <!--<td><input type="checkbox" value="{$val['member_id']}" class="checkitem"></td>-->
+          <td>{$val['member_id']}</td>
 		  <td>{$val['nickname']}</td>
 		  <td>{$val['mobile']}</td>
 		  <td>{$val['email']}</td>

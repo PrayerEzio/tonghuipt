@@ -18,8 +18,8 @@ class MemberController extends GlobalController {
 	public function member()
 	{
 		$map = array();
-		$member_name = trim($_GET['nickname']);
-		if($member_name)$map['nickname'] = array('eq',$member_name);
+		$mobile = trim($_GET['mobile']);
+		if($mobile)$map['mobile'] = array('eq',$mobile);
 		$map['member_type'] = I('get.type',0,'int');
 		$totalRows = $this->model->where($map)->count();
 		$page = new Page($totalRows,10);	
@@ -38,9 +38,8 @@ class MemberController extends GlobalController {
 			$data['mobile'] = str_rp(trim($_POST['mobile']));
 			$data['predeposit'] = floatval($_POST['predeposit']);
 			$data['point'] = intval($_POST['point']);
-			$data['member_type'] = intval($_POST['member_type']);
 			$data['member_status'] = intval($_POST['member_status']);
-			$data['distributor'] = intval($_POST['distributor']);
+			$data['parent_member_id'] = intval($_POST['parent_member_id']);
 			$member_id = intval($_POST['member_id']);
 			//图片上传
 			if($_FILES['id_card']['size']){
