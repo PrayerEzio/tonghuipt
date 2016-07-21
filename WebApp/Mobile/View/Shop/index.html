@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+{$seo}
+<link rel="stylesheet" href="__CSS__/style.css">
+<link rel="stylesheet" href="__CSS__/swiper.min.css">
+<script src="__JS__/jquery-1.11.3.min.js"></script>
+<body>
+<div class="index-group">
+	<div class="brand-intro">
+		<!-- 焦点图 -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img src="__IMG__/150.jpg" alt=""></div>
+				<div class="swiper-slide"><img src="__IMG__/151.jpg" alt=""></div>
+				<div class="swiper-slide"><img src="__IMG__/150.jpg" alt=""></div>
+			</div>
+			<!-- 分页器 -->
+			<div class="swiper-pagination"></div>
+		</div>
+		<!-- 焦点图 end-->
+	  	<!--  产品内容 -->
+		<div class="goods-group">
+			<volist name="list" id="vo">
+				<a class="brand-item" href="{:U('Shop/detail',array('id'=>$vo['goods_id']))}">
+					<div class="pr">
+						<img src="__UPLOADS__/{$vo['goods_pic']}" alt="">
+						<span class="sales">销量：{$vo['goods_sales']}</span>
+					</div>
+					<div class="goods-name">{$vo['goods_name']}</div>
+					<div class="goods-price">￥<em>{$vo['goods_price']|price_format}</em><del>原价:99.80</del></div>
+				</a>
+			</volist>
+		</div>
+		<!-- 加载中 -->
+		<!--<div class="load-box"><i class="loading rotateflash">&#xe60b;</i></div>-->
+	</div>
+	<!-- flexd nav -->
+	<div class="flexdNav">
+		<div class='item'><a href="{:U('Index/index')}"><i class="iconfont">&#xe600;</i><span>首页</span></a></div>
+		<div class='item'><a href=""><i class="iconfont">&#xe601;</i><span>分类</span></a></div>
+		<div class='item'><a href="{:U('Cart/index')}"><i class="iconfont">&#xe602;</i><span>购物车</span></a></div>
+		<div class='item'><a href="{:U('Order/index')}"><i class="iconfont">&#xe603;</i><span>我的订单</span></a></div>
+		<div class='item'><a href="{:U('Member/index')}"><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
+	</div>
+</div>
+<script src="__JS__/main.js"></script>
+<script src="__JS__/swiper.min.js"></script>
+<script>
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop:'true'
+      })
+</script>
+<include file="Public:footer"/>

@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+{$seo}
+<link rel="stylesheet" href="__CSS__/style.css">
+<link rel="stylesheet" href="__CSS__/swiper.min.css">
+<link rel="stylesheet" href="__CSS__/mui.min.css">
+<link rel="stylesheet" href="__CSS__/weui.css">
+
+<script src="__JS__/jquery-1.11.3.min.js"></script>
+<body>
+<div class="index-group">
+  <div class="header-all">
+    <div class="com-header">
+      <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+    </div>
+    <div class="dt-top"></div>
+  </div>
+
+	<div class="brand-intro">
+		<!-- 焦点图 -->
+		<div class="swiper-container">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="__UPLOADS__/{$info['goods_pic']}" alt=""></div>
+                  <volist name="info['GoodsPic']" id="vo">
+                      <div class="swiper-slide"><img src="__UPLOADS__/{$vo['pic']}" alt=""></div>
+                  </volist>
+              </div>
+              <!-- 分页器 -->
+              <div class="swiper-pagination"></div>
+    </div>
+		<!-- 焦点图 end-->
+	</div>
+
+<!-- 商品详情 -->
+  <div class="commodityDetails">
+        <div class="title">{$info['goods_name']}</div>
+        <div class="parameter">
+            <div class="item"><span>会员价</span><em class="f-red">￥{$info['goods_price']|price_format}</em></div>
+            <div class="item"><span>原价</span><em>￥{$info['goods_mktprice']|price_format}</em></div>
+            <div class="item"><span>已售</span><em>{$info['goods_sales']}</em></div>
+            <div class="item"><span>库存</span><em>{$info['goods_storage']}</em></div>
+            <div class="item"><span>数量</span><div class="mui-numbox" data-numbox-min="1">
+                  <button class="mui-btn mui-btn-numbox-minus" type="button" disabled="">-</button>
+                  <input id="test" class="mui-input-numbox" type="number" value="1">
+                  <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+                </div>
+           </div>
+           <!--<div>
+            <h5 class="mui-content-padded">选择口味</h5>
+             <form class="mui-input-group">
+              <div class="mui-input-row mui-radio">
+                <label>辣</label>
+                <input name="style" type="radio" value="left-none">
+              </div>
+              <div class="mui-input-row mui-radio">
+                <label>微辣</label>
+                <input name="style" type="radio" checked="" value="left-icon">
+              </div>
+              <div class="mui-input-row mui-radio">
+                <label>特辣</label>
+                <input name="style" type="radio" value="left-btn">
+              </div>
+            </form>
+           </div>-->
+           <!-- 产品图片 -->
+           <div class="custommodule-item">
+               {$info['goods_body']}
+           </div>
+        </div>
+  </div>
+ 
+<section class="actionBar-container">
+    <div class="cell collect"><a href="">收藏</a></div>
+    <div class="cell add"><a href="">加入购物车</a></div>
+    <div class="cell once"><a href="">立即购买</a></div>
+    <div class="cell collect"><a href="{:U('Cart/index')}">购物车</a></div>
+</section>
+</div>	 
+
+ 
+
+<script src="__JS__/main.js"></script>
+<script src="__JS__/mui.js"></script>
+<script src="__JS__/swiper.min.js"></script>
+<script>
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop:'true'
+      })
+</script>
+<include file="Public:footer"/>

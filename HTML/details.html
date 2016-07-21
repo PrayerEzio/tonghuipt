@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>三级分销系统</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<link rel="stylesheet" href="css/mui.min.css">
+<link rel="stylesheet" href="css/weui.css">
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<body>
+<div class="index-group">
+  <div class="header-all">
+    <div class="com-header">
+      <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+    </div>
+    <div class="dt-top"></div>
+  </div>
+
+	<div class="brand-intro">
+		<!-- 焦点图 -->
+		<div class="swiper-container">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="images/1051.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="images/1051.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="images/1051.jpg" alt=""></div>
+              </div>
+              <!-- 分页器 -->
+              <div class="swiper-pagination"></div>
+    </div>
+		<!-- 焦点图 end-->
+	</div>
+
+<!-- 商品详情 -->
+  <div class="commodityDetails">
+        <div class="title">加多宝凉茶</div>
+        <div class="parameter">
+            <div class="item"><span>价格</span><em class="f-red">￥89.00</em></div>
+            <div class="item"><span>市场价</span><em>￥89.00</em></div>
+            <div class="item"><span>已售</span><em>18120</em></div>
+            <div class="item"><span>数量</span><div class="mui-numbox" data-numbox-min="1">
+                  <button class="mui-btn mui-btn-numbox-minus" type="button" disabled="">-</button>
+                  <input id="test" class="mui-input-numbox" type="number" value="1">
+                  <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+                </div>
+           </div>
+
+           <div>
+            <h5 class="mui-content-padded">选择口味</h5>
+             <form class="mui-input-group">
+              <div class="mui-input-row mui-radio">
+                <label>辣</label>
+                <input name="style" type="radio" value="left-none">
+              </div>
+              <div class="mui-input-row mui-radio">
+                <label>微辣</label>
+                <input name="style" type="radio" checked="" value="left-icon">
+              </div>
+              <div class="mui-input-row mui-radio">
+                <label>特辣</label>
+                <input name="style" type="radio" value="left-btn">
+              </div>
+            </form>
+           </div>
+<!-- 产品图片 -->
+           <div class="custommodule-item">
+             <img src="images/7500.jpg" alt="">
+           </div>
+            
+        </div>
+  </div>
+ 
+ <section class="actionBar-container">
+    <div class="cell collect"><a href="">收藏</a></div>
+     <div class="cell add"><a href="javascript:">加入购物车</a></div>
+      <div class="cell once"><a href="order.html">立即购买</a></div>
+       <div class="cell collect"><a href="shoppingCart.html">购物车</a></div>
+ </section>
+</div>	 
+
+ 
+
+<script src="js/main.js"></script>
+<script src="js/mui.js"></script>
+<script src="js/swiper.min.js"></script>
+<script> 
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop:'true'
+      })
+</script> 
+</body>
+</html>
