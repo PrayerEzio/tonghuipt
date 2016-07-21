@@ -1,18 +1,41 @@
 <include file="Public/header" />
+<script type="text/javascript">
+  function submit_delete_batch(){
+    /* 获取选中的项 */
+    var items = '';
+    $('.checkitem:checked').each(function(){
+      items += this.value + ',';
+    });
+    if(items != '') {
+      items = items.substr(0, (items.length - 1));
+      submit_delete(items);
+    } else {
+      alert('请选择要操作的对象');
+    }
+  }
+
+  function submit_delete(id){
+    if(confirm('确定要删除？')) {
+      $('#del_id').val(id);
+      $('#list_form').submit();
+    }
+  }
+</script>
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
       <h3>商品分类</h3>
       <ul class="tab-base">
         <li><a href="JavaScript:void(0);" class="current"><span>管理</span></a></li>
-        <!-- <li><a href="{:U('Goods/goods_class_add')}" ><span>新增</span></a></li> -->
+        <li><a href="{:U('Goods/goods_class_add')}" ><span>新增</span></a></li>
       </ul>
     </div>
   </div>
   <div class="fixed-empty"></div>
-  <form method='post'>
-    <input type="hidden" name="form_submit" value="ok" />
-    <input type="hidden" name="submit_type" id="submit_type" value="" />
+  <form id="list_form" method='post' action="{:U('Goods/goods_class_del')}">
+     <input type="hidden" name="del_id" value="ok" />
+     <input type="hidden" name="form_submit" value="ok" />
+     <input type="hidden" name="submit_type" id="submit_type" value="" />
      <table class="table tb-type2">
           <thead>
             <tr class="thead">
@@ -57,14 +80,16 @@
             </notempty>
           </tbody>
            <notempty name="class_list">
-          <tfoot>
-            <tr class="tfoot">
-              <td><!--<input type="checkbox" class="checkall" id="checkall_1">--></td>
-              <td id="batchAction" colspan="15">
-              <!--<span class="all_checkbox"><label for="checkall_2">选择所有</label></span>&nbsp;&nbsp;<a href="JavaScript:void(0);" class="btn" onclick="if(confirm('您确定要删除？')){$('#submit_type').val('del');$('form:first').submit();}"><span>删除</span></a>-->
-             </td>
-            </tr>
-          </tfoot>
+           <tfoot>
+           <tr class="tfoot">
+             <td><input type="checkbox" class="checkall" id="checkall_1"></td>
+             <td id="batchAction" colspan="15">
+                <span class="all_checkbox">
+                    <label for="checkall_1">全选</label>
+                    <a href="javascript:void(0)" class="btn" onclick="submit_delete_batch();"><span>删除</span></a>
+                </span>
+           </tr>
+           </tfoot>
           </notempty>
         </table>   
   </form>

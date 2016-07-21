@@ -5,54 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>三级分销系统</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/swiper.min.css">
 <script src="js/jquery-1.11.3.min.js"></script>
 <body>
-	<header>
-		<div class="pic">
-			<img src="images/i.png" alt="">
-		</div>
-		<div class="member-txt">
-			<p>会员ID：<em>53014</em></p>
-			<p>会员昵称：<em>LWX</em></p>
-			<p>会员等级：<em>普通</em></p>
-			<p>关注时间：<em>2016-06-21</em></p>
-		</div>
-		<div class="clear"></div>
-	</header>
+<div class="index-group">
+	<div class="brand-intro">
+		<!-- 焦点图 -->
+		<div class="swiper-container">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide"><img src="images/150.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="images/151.jpg" alt=""></div>
+                  <div class="swiper-slide"><img src="images/150.jpg" alt=""></div>
+              </div>
+              <!-- 分页器 -->
+              <div class="swiper-pagination"></div>
+        </div>
+		<!-- 焦点图 end-->
 
-		<div class="show-money">
-			 <div class="f">佣金:￥<em>10.00</em></div>
-			 <div class="f">红包:￥<em>10.00</em></div>
-		</div>
+          <!--  产品内容 -->
+              <div class="goods-group">
+              		<a class="brand-item" href="details.html"><div class="pr"><img src="images/750.jpg" alt=""><span class="sales">销量：25025</span></div><div class="goods-name">高级原装红酒</div><div class="goods-price">￥<em>89.00</em></div></a>
 
-		
-		<div class="m-main">
-			<div class="border"></div>
-			<a href=""><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>购买资格 <em class="ico-right"></em></div></a>
-			<a href=""><div class="item"><i class="ico-m-member"></i>我的会员 <em class="ico-right"></em></div></a>
-			<a href=""><div class="item"><i class="ico-m-cation"></i>购买资格 <em class="ico-right"></em></div></a>
-			<a href=""><div class="item"><i class="ico-m-member"></i>我的会员 <em class="ico-right"></em></div></a>
-			<div class="border"></div>
-			<a href=""><div class="item"><i class="ico-m-cation"></i>购买资格 <em class="ico-right"></em></div></a>
-			<a href=""><div class="item"><i class="ico-m-member"></i>我的会员 <em class="ico-right"></em></div></a>
-			<a href=""><div class="item"><i class="ico-m-cation"></i>购买资格 <em class="ico-right"></em></div></a>
-			<a href=""><div class="item"><i class="ico-m-member"></i>我的会员 <em class="ico-right"></em></div></a>
- 		</div>
+              	 <a class="brand-item" href=""><div class="pr"><img src="images/750.jpg" alt=""><span class="sales">销量：25025</span></div><div class="goods-name">高级原装红酒</div><div class="goods-price">￥<em>89.00</em></div></a>
+
+              		<a class="brand-item" href=""><div class="pr"><img src="images/750.jpg" alt=""><span class="sales">销量：25025</span></div><div class="goods-name">高级原装红酒</div><div class="goods-price">￥<em>89.00</em></div></a>
+
+              		<a class="brand-item" href=""><div class="pr"><img src="images/750.jpg" alt=""><span class="sales">销量：25025</span></div><div class="goods-name">高级原装红酒</div><div class="goods-price">￥<em>89.00</em></div></a>
+
+              		<a class="brand-item" href=""><div class="pr"><img src="images/750.jpg" alt=""><span class="sales">销量：25025</span></div><div class="goods-name">高级原装红酒</div><div class="goods-price">￥<em>89.00</em></div></a>
+
+              		<a class="brand-item" href=""><div class="pr"><img src="images/750.jpg" alt=""><span class="sales">销量：25025</span></div><div class="goods-name">高级原装红酒</div><div class="goods-price">￥<em>89.00</em></div></a>
+
+              </div>
+              <!-- 加载中 -->
+              		<div class="load-box"><i class="loading rotateflash">&#xe60b;</i></div>
+
+
+	</div>
 
 
 <!-- flexd nav -->
 <div class="flexdNav">
 	<div class='item'><a href=""><i class="iconfont">&#xe600;</i><span>首页</span></a></div>
 	<div class='item'><a href=""><i class="iconfont">&#xe601;</i><span>分类</span></a></div>
-	<div class='item'><a href=""><i class="iconfont">&#xe602;</i><span>购物车</span></a></div>
+	<div class='item'><a href="shopcart.html"><i class="iconfont">&#xe602;</i><span>购物车</span></a></div>
 	<div class='item'><a href=""><i class="iconfont">&#xe603;</i><span>我的订单</span></a></div>
-	<div class='item'><a href=""><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
+	<div class='item'><a href="member.html"><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
 </div>
-<!-- footer -->
- 	<footer>
-			共有165132人关注我们
- 	</footer>
- 	 
+ 
+</div>	 
 
+<script src="js/main.js"></script>
+<script src="js/swiper.min.js"></script>
+<script> 
+      var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop:'true'
+      })
+</script> 
 </body>
 </html>

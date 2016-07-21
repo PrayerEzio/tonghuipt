@@ -5,7 +5,7 @@
  * @copyright  Copyright (c) 2014-2030 muxiangdao-cn Inc.(http://www.muxiangdao.cn)
  * @license    http://www.muxiangdao.cn
  * @link       http://www.muxiangdao.cn
- * @author	   muxiangdao-cn Team
+ * @author	   muxiangdao-cn Team.
  */
 namespace Mobile\Controller;
 use Think\Controller;
@@ -34,13 +34,8 @@ class BaseController extends Controller{
 		   echo $web_stting['closed_reason'];
 		   exit;	
 		}else {
-			/* $link = M('Link')->where(array('status'=>1))->order('sort DESC')->select();
-			$this->assign('link',$link); */
 			$this->mid = session('member_id');
 			$this->assign('seo',seo());
-			$this->about = M('SystemArticle')->where(array('ac_type'=>'about'))->order('article_sort desc')->select();
-			$this->service = M('SystemArticle')->where(array('ac_type'=>'service'))->order('article_sort desc')->select();
-			$this->article_class = M('ArticleClass')->where(array('ac_parent_id'=>0))->order('ac_sort desc')->select();
 		}
 	}
 
@@ -49,14 +44,18 @@ class BaseController extends Controller{
 		{
 			$this->mid = session('member_id');
 			$member = M('Member')->where(array('member_id'=>$this->mid))->find();
+			if ($member['member_status'] != 1)
+			{
+				$this->error('抱歉,您的账户已被锁定,请联系网站管理员解锁.');
+			}
 			$this->assign('member',$member);
 			if (CONTROLLER_NAME == 'Login') {
-				$this->redirect('Member/index',$_GET);//已经登录直接跳转会员中心
+				$this->redirect('/Mobile/Member/index',$_GET);//已经登录直接跳转会员中心
 				exit();
 			}
 		}else {
 			if (CONTROLLER_NAME != 'Login') {
-				$this->error('您还未登录,请先进行登录操作.',U('Login/index'));
+				$this->error('您还未登录,请先进行登录操作.',U('Mobile/Login/index'));
 // 				$this->redirect('Index/index',$_GET);//已经登录直接跳转会员中心
 				exit();
 			}

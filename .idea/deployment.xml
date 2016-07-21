@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" promptOnLocalOverwrite="false" uploadOnCheckin="9f8d2514-8769-4c71-b8c9-c3f2bdf4d1c3">
+  <component name="PublishConfigData" serverName="tonghuipt" promptOnLocalOverwrite="false">
     <serverData>
-      <paths name="meiyitao">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="tonghuipt">
         <serverdata>
           <mappings>
             <mapping deploy="/default" local="$PROJECT_DIR$" web="/" />
-            <mapping local="" />
           </mappings>
         </serverdata>
       </paths>
     </serverData>
-    <option name="myUploadOnCheckinName" value="tonghuipt" />
   </component>
 </project>

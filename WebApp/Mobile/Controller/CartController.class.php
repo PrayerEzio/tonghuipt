@@ -24,11 +24,6 @@ class CartController extends BaseController{
 			;
 		}elseif (IS_GET) {
 			$list = $this->Cart->getList();
-			if (get_distributor($this->mid)) {
-				foreach ($list as $key => $val){
-					$list[$key]['price'] = MSC('distributor_discount')*$val['price'];
-				}
-			}
 			$this->list = $list;
 			$this->display();
 		}

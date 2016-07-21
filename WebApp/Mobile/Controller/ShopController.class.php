@@ -7,13 +7,12 @@
  * @author     muxiangdao-cn Team Prayer (283386295@qq.com)
  */
 namespace Mobile\Controller;
-use Mobile\Controller\BaseController;
 use Think\Page;
 use Muxiangdao\DesUtils;
 class ShopController extends BaseController{
 	public function __construct(){
 		parent::__construct();
-		$this->model = M('Goods');
+		$this->model = D('Goods');
 	}
 
 	/**
@@ -21,27 +20,99 @@ class ShopController extends BaseController{
 	 */
 	public function index()
 	{
+		$order = 'goods_sort desc';
+		$where['goods_status'] = 1;
 		$gc_id = intval($_GET['gc']);
 		if ($gc_id)
 		{
 			$where['gc_id'] = $gc_id;
 		}
-		$where['goods_status'] = 1;
 		$count = $this->model->where($where)->count();
 		$page = new Page($count,10);
-		$order = 'goods_sort desc';
 		$list = $this->model->where($where)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
 		$this->list = $list;
 		$this->page = $page->show();
 		$this->display();
 	}
 
+	public function ajaxGetGoodsList()
+	{
+		if (IS_AJAX)
+		{
+			$order = 'goods_sort desc';
+			$where['goods_status'] = 1;
+			$gc_id = intval($_POST['gc']);
+			$page = intval($_POST['page']);
+			$limit = intval($_POST['limit']);
+			if (!$page)
+			{
+				$page = 1;
+			}
+			if ($gc_id)
+			{
+				$where['gc_id'] = $gc_id;
+			}
+			if (!$limit)
+			{
+				$limit = 10;
+			}
+			$fields = 'goods_id,goods_pic,goods_sales,goods_name,goods_price';
+			$count = $this->model->where($where)->count();
+			$list = $this->model->where($where)->order($order)->field($fields)->limit(($page-1)*$limit.','.$limit)->select();
+			json_return(1,'success',$list);die;
+		}
+	}
+
 	public function detail()
 	{
 		$goods_id = intval($_GET['id']);
 		$where['goods_id'] = $goods_id;
-		$goods_info = $this->model->where($where)->find();
+		$goods_info = $this->model->relation(true)->where($where)->find();
+		if (empty($goods_info))
+		{
+			$this->error('没有找到相关信息');
+		}
 		$this->info = $goods_info;
 		$this->display();
+	}
+
+	public function collectionGoods()
+	{
+		$Model = M('Favorite');
+		if (IS_AJAX)
+		{
+			$goods_id = intval($_POST['goods_id']);
+			$uid = $this->mid;
+			if (empty($goods_id))
+			{
+				json_return(-2,'商品id不能为空');die;
+			}
+			if (empty($uid))
+			{
+				json_return(-1,'请先登陆');die;
+			}
+			$data['goods_id'] = $goods_id;
+			$data['member_id'] = $uid;
+			$count = $Model->where($data)->count();
+			if ($count)
+			{
+				$res = $Model->where($data)->delete();
+				if ($res)
+				{
+					json_return(1,'取消收藏成功');die;
+				}else {
+					json_return(0,'取消收藏失败,请重试');die;
+				}
+			}else {
+				$data['add_time'] = time();
+				$res = $Model->add($data);
+				if ($res)
+				{
+					json_return(1,'收藏成功');die;
+				}else {
+					json_return(0,'收藏失败,请重试');die;
+				}
+			}
+		}
 	}
 }

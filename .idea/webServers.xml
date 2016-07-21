@@ -2,10 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="9f8d2514-8769-4c71-b8c9-c3f2bdf4d1c3" name="tonghuipt" url="http://120.24.168.80">
+      <webServer id="3800abbd-de84-4e42-8c5b-f91c116031c9" name="tonghuipt" url="http://120.24.168.80">
         <fileTransfer host="120.24.168.80" port="21" password="dfcbdfc8dfd9dfc3dfc4dfdedfc2dfcf" username="prayer">
           <advancedOptions>
-            <advancedOptions controlEncoding="UTF-8" dataProtectionLevel="Private" />
+            <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

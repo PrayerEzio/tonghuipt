@@ -7,8 +7,6 @@
  * @author     muxiangdao-cn Team Prayer (283386295@qq.com)
  */
 namespace Mobile\Controller;
-use Mobile\Controller\BaseController;
-use Think\Page;
 use Muxiangdao\DesUtils;
 class MemberController extends BaseController{
 	public function __construct(){
@@ -17,11 +15,12 @@ class MemberController extends BaseController{
 	}
 
 	/**
-	 * 会员中心
+	 * 会员中心.
 	 */
 	public function index()
 	{
-		$user_info = M('member')->where(array('uid'=>$this->mid))->find();
+		$where['member_id'] = $this->mid;
+		$user_info = M('Member')->where($where)->find();
 		$this->user_info = $user_info;
 		$this->display();
 	}
@@ -32,7 +31,7 @@ class MemberController extends BaseController{
 		{
 
 		}elseif (IS_GET) {
-			$user_info = M('member')->where(array('uid'=>$this->mid))->find();
+			$user_info = M('Member')->where(array('uid'=>$this->mid))->find();
 			$this->user_info = $user_info;
 			$this->display();
 		}

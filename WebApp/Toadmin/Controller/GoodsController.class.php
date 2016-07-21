@@ -15,6 +15,7 @@ class GoodsController extends GlobalController {
 		$this->model = D('Goods');
 		$this->goodsBrandModel = M("GoodsBrand");
 		$this->goodsDiscountModel = M('Discount');
+		$this->goodsClassModel = M('GoodsClass');
 		$this->goods_class = M('goods_class')->order('gc_sort desc')->select();
 	}
 	//分类
@@ -501,35 +502,70 @@ class GoodsController extends GlobalController {
 	public function goods_class_del()
 	{
 		$GoodsClass = M("GoodsClass");
-		$gc_id = intval($_GET['gc_id']);	
-		if($gc_id)
+		if (IS_POST)
 		{
-			$map = array();
-			$all_next_gc_id='';
-			$in_arr = get_all_gc_id($gc_id); //该分类下的所有分类
-			$all_next_gc_id='';
-			$map['gc_id'] = array('in',$in_arr);
-			$gc_list = $GoodsClass->where($map)->select();
-			if(is_array($gc_list) && !empty($gc_list))
+			$gc_id_list = $_POST['check_gc_id'];
+			foreach ($gc_id_list as $key => $gc_id)
 			{
-				foreach($gc_list as $gc)
+				if($gc_id)
 				{
-					if($gc['gc_img'])
+					$map = array();
+					$array = $GoodsClass->select();
+					$in_arr = getChildsId ($array, $gc_id, 'gc_id', 'gc_parent_id'); //该分类下的所有分类
+					$in_arr[] = $gc_id;
+					$map['gc_id'] = array('in',$in_arr);
+					$gc_list = $GoodsClass->where($map)->select();
+					if(is_array($gc_list) && !empty($gc_list))
 					{
-						//删除图片
-						@unlink(BasePath.'/Uploads/'.$gc['gc_img']);	
+						foreach($gc_list as $gc)
+						{
+							if($gc['gc_img'])
+							{
+								//删除图片
+								@unlink(BasePath.'/Uploads/'.$gc['gc_img']);
+							}
+						}
 					}
-				}	
-			}			
-			$delnum = $GoodsClass->where($map)->delete(); 
-			if($delnum)
+				}
+			}
+			$res = $GoodsClass->where(array('gc_id'=>array('in',$gc_id_list)))->delete();
+			if($res)
 			{
 				$this->success('操作成功！', U('goods_class'));
 			}else{
 				$this->error('操作失败！');
 			}
+		}elseif (IS_GET){
+			$gc_id = intval($_GET['gc_id']);
+			if($gc_id)
+			{
+				$map = array();
+				$all_next_gc_id='';
+				$in_arr = get_all_gc_id($gc_id); //该分类下的所有分类
+				$all_next_gc_id='';
+				$map['gc_id'] = array('in',$in_arr);
+				$gc_list = $GoodsClass->where($map)->select();
+				if(is_array($gc_list) && !empty($gc_list))
+				{
+					foreach($gc_list as $gc)
+					{
+						if($gc['gc_img'])
+						{
+							//删除图片
+							@unlink(BasePath.'/Uploads/'.$gc['gc_img']);
+						}
+					}
+				}
+				$delnum = $GoodsClass->where($map)->delete();
+				if($delnum)
+				{
+					$this->success('操作成功！', U('goods_class'));
+				}else{
+					$this->error('操作失败！');
+				}
+			}
 		}
-	}	
+	}
 			
 	//管理
 	public function goods()
@@ -614,6 +650,7 @@ class GoodsController extends GlobalController {
 			$data['goods_storage'] = intval($_POST['goods_storage']);
 			$data['goods_serial'] = str_rp(trim($_POST['goods_serial']));
 			$data['store_name'] = str_rp(trim($_POST['store_name']));
+			$data['goods_cost'] = price_format($_POST['goods_cost']);
 			$data['goods_price'] = price_format($_POST['goods_price']);
 			$data['goods_mktprice'] = price_format($_POST['goods_mktprice']);
 			$data['member_price'] = price_format($_POST['member_price']);
@@ -806,6 +843,7 @@ class GoodsController extends GlobalController {
 			$data['goods_storage'] = intval($_POST['goods_storage']);
 			$data['goods_serial'] = str_rp(trim($_POST['goods_serial']));
 			$data['store_name'] = str_rp(trim($_POST['store_name']));
+			$data['goods_cost'] = price_format($_POST['goods_cost']);
 			$data['goods_price'] = price_format($_POST['goods_price']);
 			$data['goods_mktprice'] = price_format($_POST['goods_mktprice']);
 			$data['member_price'] = price_format($_POST['member_price']);
@@ -1052,6 +1090,19 @@ class GoodsController extends GlobalController {
 		$this->success("操作成功",U('goods'));  	
 		exit;			
 	}
+
+	public function class_del()
+	{
+		if (IS_POST)
+		{
+			$map = array();
+			$map['gc_id'] = array('in',$_POST['del_id']);
+			$this->goodsClassModel->where($map)->delete();
+			$this->model->where($map)->setField('gc_id',0);
+		}
+		$this->success("操作成功",U('goods_class'));
+	}
+
 	public function goods_query(){
 		$words = trim($_GET['words']);
 		$field = trim($_GET['field']);
