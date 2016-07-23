@@ -30,37 +30,33 @@
             <div class="item"><span>库存</span><em>{$info['goods_storage']}</em></div>
             <div class="item"><span>数量</span><div class="mui-numbox" data-numbox-min="1">
                   <button class="mui-btn mui-btn-numbox-minus" type="button" disabled="">-</button>
-                  <input id="test" class="mui-input-numbox" type="number" value="1">
+                  <input id="num" class="mui-input-numbox" type="number" value="1">
                   <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
                 </div>
-           </div>
-           <!--<div>
-            <h5 class="mui-content-padded">选择口味</h5>
-             <form class="mui-input-group">
-              <div class="mui-input-row mui-radio">
-                <label>辣</label>
-                <input name="style" type="radio" value="left-none">
-              </div>
-              <div class="mui-input-row mui-radio">
-                <label>微辣</label>
-                <input name="style" type="radio" checked="" value="left-icon">
-              </div>
-              <div class="mui-input-row mui-radio">
-                <label>特辣</label>
-                <input name="style" type="radio" value="left-btn">
-              </div>
-            </form>
-           </div>-->
-           <!-- 产品图片 -->
-           <div class="custommodule-item">
+            </div>
+            <notempty name="info['GoodsSpec']">
+                <div>
+                    <h5 class="mui-content-padded">选择规格</h5>
+                    <form class="mui-input-group">
+                        <volist name="info['GoodsSpec']" id="vo">
+                            <div class="mui-input-row mui-radio">
+                                <label>{$vo['spec_name']}</label>
+                                <input name="style" type="radio" value="{$vo['spec_id']}">
+                            </div>
+                        </volist>
+                    </form>
+                </div>
+            </notempty>
+            <!-- 产品图片 -->
+            <div class="custommodule-item">
                {$info['goods_body']}
-           </div>
+            </div>
         </div>
     </div>
  
     <section class="actionBar-container">
-        <div class="cell collect"><a href="">收藏</a></div>
-        <div class="cell add"><a href="">加入购物车</a></div>
+        <div class="cell collect"><a href="JavaScript:collectionGoods({$info['goods_id']});">收藏</a></div>
+        <div class="cell add"><a href="JavaScript:addCart({$info['goods_id']});">加入购物车</a></div>
         <div class="cell once"><a href="">立即购买</a></div>
         <div class="cell collect"><a href="{:U('Cart/index')}">购物车</a></div>
     </section>
@@ -73,6 +69,23 @@
         autoplay: 5000,
         pagination: '.swiper-pagination',
         loop:'true'
-    })
+    });
+    function collectionGoods(goods_id)
+    {
+        var URL = "{:U('Shop/collectionGoods')}";
+        var data = {'goods_id':goods_id};
+        $.post(URL,data,function(){
+            //收藏商品动画
+        },'json');
+    }
+    function addCart(goods_id)
+    {
+        var num = $('#num').val();
+        var URL = "{:U('Cart/addCart')}";
+        var data = {'goods_id':goods_id,'num':num};
+        $.post(URL,data,function(){
+            //加入购物车动画
+        },'json');
+    }
 </script>
 <include file="Public:footer"/>

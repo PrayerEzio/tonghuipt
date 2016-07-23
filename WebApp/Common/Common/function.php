@@ -1253,7 +1253,12 @@ function get_member_nickname($member_id){
 	}
 }
 function get_spec_name($spec_id){
-	$spec_name = M('GoodsSpec')->where(array('spec_id'=>$spec_id))->getField('spec_name');
+	if ($spec_id)
+	{
+		$spec_name = M('GoodsSpec')->where(array('spec_id'=>$spec_id))->getField('spec_name');
+	}else {
+		$spec_name = '';
+	}
 	return $spec_name;
 }
 function get_goods_status_name($goods_status){

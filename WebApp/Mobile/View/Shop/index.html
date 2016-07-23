@@ -21,7 +21,7 @@
 						<span class="sales">销量：{$vo['goods_sales']}</span>
 					</div>
 					<div class="goods-name">{$vo['goods_name']}</div>
-					<div class="goods-price">￥<em>{$vo['goods_price']|price_format}</em><del>原价:99.80</del></div>
+					<div class="goods-price">￥<em>{$vo['goods_price']|price_format}</em><del>原价:{$vo['goods_mktprice']|price_format}</del></div>
 				</a>
 			</volist>
 		</div>

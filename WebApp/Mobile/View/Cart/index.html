@@ -9,24 +9,28 @@
 	</div>
 	<!--  头部导航-->
 	<div class="shopCart-list">
-		<volist name="list" id="vo">
-			<div class="item">
-				<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
-				<div class="product-img">
-					<img src="__IMG__/shop.png" alt="">
+		<volist name="list" id="item">
+			<volist name="item" id="vo">
+				<div class="item">
+					<a class="close" href="JavaScript:removeCart({$vo['id']},{$vo['spec_id']});"><i class="iconfont">&#xe60a;</i></a>
+					<div class="product-img">
+						<img src="__UPLOADS__/{$vo['img']}" alt="">
+					</div>
+					<dl>
+						<dt>
+							{$vo['name']}
+						</dt>
+						<dd>
+							<notempty name="vo['spec_id']">
+							<p>规格：<em>{$vo['spec_id']|get_spec_name}</em></p>
+							</notempty>
+							<p>单价：<em>{$vo['price']|price_format}</em>元</p>
+							<p>数量：<em>{$vo['num']}</em>个</p>
+							<p>小计：<em>{$vo['price']*$vo['num']|price_format}</em>元</p>
+						</dd>
+					</dl>
 				</div>
-				<dl>
-					<dt>
-						加多宝啊胶糕
-					</dt>
-					<dd>
-						<p>规格：<em>玫瑰</em></p>
-						<p>单价：<em>89.00</em>元</p>
-						<p>数量：<em>12</em>个</p>
-						<p>小计：<em>267.00</em>元</p>
-					</dd>
-				</dl>
-			</div>
+			</volist>
 		</volist>
 	</div>
 	<div class="flexdNav">
@@ -37,4 +41,14 @@
 		<div class='item'><a href="{:U('Member/index')}"><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
 	</div>
 </div>
+<script>
+	function removeCart(goods_id,spec_id)
+	{
+		var URL = "{:U('Cart/removeCart')}";
+		var data = {'goods_id':goods_id,'spec_id':spec_id};
+		$.post(URL,data,function(result){
+			//移除购物车动画
+		},'json');
+	}
+</script>
 <include file="Public:footer"/>

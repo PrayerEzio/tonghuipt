@@ -33,6 +33,7 @@ class CartController extends BaseController{
 	 */
 	public function addCart(){
 		if (IS_AJAX) {
+			$spec_id = intval($_POST['spec_id']);
 			$where['goods_id'] = intval($_POST['goods_id']);
 			$where['goods_status'] = 1;
 			$num = intval($_POST['num']);
@@ -40,7 +41,7 @@ class CartController extends BaseController{
 				$goods = $this->model->where($where)->find();
 				if ($goods['goods_storage'] >= $num) {
 					$this->Cart = new Cart();
-					$this->Cart->addItem($goods['goods_id'], $goods['goods_name'], $goods['goods_price'], $num, $goods['goods_pic']);
+					$this->Cart->addItem($goods['goods_id'], $goods['goods_name'], $goods['goods_price'], $num, $goods['goods_pic'], $spec_id);
 				}
 			}
 		}
@@ -51,7 +52,8 @@ class CartController extends BaseController{
 	public function removeCart(){
 		if (IS_AJAX) {
 			$goods_id = intval($_POST['goods_id']);
-			$this->Cart->delItem($goods_id);
+			$spec_id = intval($_POST['spec_id']);
+			$this->Cart->delItem($goods_id,$spec_id);
 		}
 	}
 }
