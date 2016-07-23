@@ -1,0 +1,77 @@
+﻿<include file="Public:header"/>
+<div class="personal-group">
+	<div class="header-all">
+		<div class="com-header">
+			<a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+		</div>
+		<div class="dt-top"></div>
+	</div>
+	<form method="post" id="mainForm">
+		<div class="input-group">
+			<div class="input-style"><label>昵称</label><input type="text" name="nickname" value="{$info['nickname']}" placeholder="请输入您的昵称"></div>
+			<div class="input-style"><label>密码</label><input type="password" name="pwd" value="{$info['pwd']}" placeholder="请输入密码"></div>
+			<div class="input-style"><label>性别</label>
+				<input type="radio" name="gender" value="{$info['gender']}">男
+				<input type="radio" name="gender" value="{$info['gender']}">女
+				<input type="radio" name="gender" value="{$info['gender']}">保密
+			</div>
+			<div class="input-style"><label>选择省</label>
+				<select name="province">
+					<option value="{$info['province']}">广东</option>
+					<option>湖南</option>
+					<option>湖北</option>
+					<option>水电费</option>
+				</select>
+			</div>
+
+			<div class="input-style"><label>选择市</label>
+				<!-- <input type="text" name="city" value="{$info['city']}" placeholder="请输入您的名字"> -->
+				<select>
+					<option>收到</option>
+					<option>水电费</option>
+					<option>水电费</option>
+				</select>	
+			</div>
+
+			<div class="input-style"><label>选择区</label>
+				<!-- <input type="text" name="area" value="{$info['area']}" placeholder="请输入您的名字"> -->
+				<select>
+					<option>收到</option>
+					<option>水电费</option>
+					<option>水电费</option>
+				</select>	
+			</div>
+			<div class="input-style"><label>头像</label><input type="file" name="avatar" value="{$info['avatar']}"></div>
+			<div class="input-style"><label>微信</label><input type="text" name="wechat_account" value="{$info['wechat_account']}" placeholder="请输入您的名字"></div>
+			<div class="input-style"><label>支付宝</label><input type="text" name="alipay_account" value="{$info['alipay_account']}" placeholder="请输入您的名字"></div>
+			<div class="btn_area">
+				 <a class="btn_primary" href="JavaScript:submitForm();">保存资料</a>
+			</div>
+		</div>
+	</form>
+<style>
+</style>
+	<!-- flexd nav -->
+	<div class="flexdNav">
+		<div class='item'><a href="{:U('Index/index')}"><i class="iconfont">&#xe600;</i><span>首页</span></a></div>
+		<div class='item'><a href=""><i class="iconfont">&#xe601;</i><span>分类</span></a></div>
+		<div class='item'><a href="{:U('Cart/index')}"><i class="iconfont">&#xe602;</i><span>购物车</span></a></div>
+		<div class='item'><a href="{:U('Order/index')}"><i class="iconfont">&#xe603;</i><span>我的订单</span></a></div>
+		<div class='item'><a href="{:U('Member/index')}"><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
+	</div>
+</div>
+<script>
+function submitForm()
+{
+	//验证
+	var account = $.trim($('#account').val());
+	var pwd = $.trim($('#pwd').val());
+	if (account == '' || pwd == '')
+	{
+		alert('请填写必填信息');
+		return false;
+	}
+	$('#mainForm').submit();
+}
+</script>
+<include file="Public:footer"/>

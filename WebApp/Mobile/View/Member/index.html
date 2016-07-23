@@ -1,20 +1,11 @@
-﻿<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-{$seo}
-<link rel="stylesheet" href="__CSS__/style.css">
-<script src="__JS__/jquery-1.11.3.min.js"></script>
-<body>
+﻿<include file="Public:header"/>
 <div class="member-group">
-
-<div class="header-all">
-	<div class="com-header">
-		<a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+	<div class="header-all">
+		<div class="com-header">
+			<a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+		</div>
+		<div class="dt-top"></div>
 	</div>
-	<div class="dt-top"></div>
-</div>
 	<header>
 		<div class="pic">
 			<img src="__UPLOADS__/{$member['avatar']}" alt="">
@@ -36,14 +27,14 @@
 
 	<div class="m-main">
 		<div class="border"></div>
-		<!-- <a href=""><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>购买资格<em class="ico-right"></em></div></a>
-		<a href=""><div class="item"><i class="iconfont ico-m-member">&#xe605;</i>我的会员<em class="ico-right"></em></div></a> -->
+		<!-- <a href=""><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>购买资格<em class="ico-right"></em></div></a> -->
+		<a href="{:U('Member/branch')}"><div class="item"><i class="iconfont ico-m-member">&#xe605;</i>我的团队<em class="ico-right"></em></div></a>
 		<a href=""><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>我的红包<em class="ico-right"></em></div></a>
 		<!-- <a href=""><div class="item"><i class="iconfont ico-m-member">&#xe605;</i>红包排行<em class="ico-right"></em></div></a> -->
 		<div class="border"></div>
 		<a href=""><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>我的佣金<em class="ico-right"></em></div></a>
 		<a href=""><div class="item"><i class="iconfont ico-m-member">&#xe605;</i>我的提现<em class="ico-right"></em></div></a>
-		<a href=""><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>个人资料<em class="ico-right"></em></div></a>
+		<a href="{:U('Member/info')}"><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>个人资料<em class="ico-right"></em></div></a>
 		<a href=""><div class="item"><i class="iconfont ico-m-member">&#xe605;</i>帮助说明<em class="ico-right"></em></div></a>
 	</div>
 	<!-- flexd nav -->
