@@ -41,6 +41,12 @@ class MemberController extends GlobalController {
 			$data['member_status'] = intval($_POST['member_status']);
 			$data['parent_member_id'] = intval($_POST['parent_member_id']);
 			$member_id = intval($_POST['member_id']);
+			$pwd = $_POST['pwd'];
+			$member_info = M('Member')->where(array('member_id'=>$member_id))->find();
+			if ($member_info['pwd'] != $pwd)
+			{
+				$data['pwd'] = re_md5($pwd);
+			}
 			//图片上传
 			if($_FILES['id_card']['size']){
 				$arc_img = 'idcard_'.$member_id;
