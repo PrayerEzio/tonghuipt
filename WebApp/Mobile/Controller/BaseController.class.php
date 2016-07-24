@@ -70,11 +70,10 @@ class BaseController extends Controller{
 			$where['upid'] = intval($_POST['id']);
 			$where['status'] = 1;
 			$list = M('District')->where($where)->order('d_sort')->select();
-			$data['city'] = $list;
 			if ($list[0]['level'] == 2) {
-				$data['level'] = 'city';
+				$data['city'] = $list;
 			}elseif ($list[0]['level'] == 3){
-				$data['level'] = 'area';
+				$data['area'] = $list;
 			}
 			echo json_encode($data);
 		}

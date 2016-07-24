@@ -14,7 +14,17 @@
 	<div class="container">
 		<ul>
 			<volist name="list" id="vo">
-				<li><i class="iconfont">&#xe606;</i>{$vo['mobile']} <em class="red">{$vo['branch_num']}</em></li>
+				<li><i class="iconfont">&#xe606;</i>
+					<notempty name="vo['wechat']">{$vo['wechat']}
+						<else/>
+						<notempty name="vo['nickname']">
+							{$vo['nickname']}
+						<else/>
+							{$vo['mobile']}
+						</notempty>
+					</notempty>
+					<em class="red">{$vo['branch_num']}</em>
+				</li>
 			</volist>
 		</ul>
 	</div>

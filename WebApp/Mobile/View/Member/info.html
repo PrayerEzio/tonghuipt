@@ -1,4 +1,4 @@
-﻿<include file="Public:header"/>
+﻿﻿<include file="Public:header"/>
 <div class="personal-group">
 	<div class="header-all">
 		<div class="com-header">
@@ -8,42 +8,37 @@
 	</div>
 	<form method="post" id="mainForm">
 		<div class="input-group">
-			<div class="input-style"><label>昵称</label><input type="text" name="nickname" value="{$info['nickname']}" placeholder="请输入您的昵称"></div>
-			<div class="input-style"><label>密码</label><input type="password" name="pwd" value="{$info['pwd']}" placeholder="请输入密码"></div>
+			<div class="input-style"><label>昵称</label><input type="text" name="nickname" value="{$user_info['nickname']}" placeholder="请输入您的昵称"></div>
+			<!--<div class="input-style"><label>密码</label><input type="password" name="pwd" value="{$user_info['pwd']}" placeholder="请输入密码"></div>-->
 			<div class="input-style"><label>性别</label>
-				<input type="radio" name="gender" value="{$info['gender']}">男
-				<input type="radio" name="gender" value="{$info['gender']}">女
-				<input type="radio" name="gender" value="{$info['gender']}">保密
+				<input type="radio" name="gender" <if condition="$user_info['gender'] == 1">checked="checked"</if> value="1">男
+				<input type="radio" name="gender" <if condition="$user_info['gender'] == 2">checked="checked"</if> value="2">女
+				<input type="radio" name="gender" <if condition="$user_info['gender'] == 0">checked="checked"</if> value="0">保密
 			</div>
-			<div class="input-style"><label>选择省</label>
-				<select name="province">
-					<option value="{$info['province']}">广东</option>
-					<option>湖南</option>
-					<option>湖北</option>
-					<option>水电费</option>
+			<div class="input-style">
+				<label>选择省</label>
+				<select name="province" id="province" onchange="getDistrict($('#province').val())">
+					<option value="">请选择</option>
+					<volist name="province" id="vo">
+						<option value="{$vo['id']}">{$vo['name']}</option>
+					</volist>
 				</select>
 			</div>
-
-			<div class="input-style"><label>选择市</label>
-				<!-- <input type="text" name="city" value="{$info['city']}" placeholder="请输入您的名字"> -->
-				<select>
-					<option>收到</option>
-					<option>水电费</option>
-					<option>水电费</option>
-				</select>	
+			<div class="input-style">
+				<label>选择市</label>
+				<select name="city" id="city" onchange="getDistrict($('#city').val())">
+					<option value="">请选择</option>
+				</select>
 			</div>
-
-			<div class="input-style"><label>选择区</label>
-				<!-- <input type="text" name="area" value="{$info['area']}" placeholder="请输入您的名字"> -->
-				<select>
-					<option>收到</option>
-					<option>水电费</option>
-					<option>水电费</option>
-				</select>	
+			<div class="input-style">
+				<label>选择区</label>
+				<select name="area" id="area" onchange="getDistrict($('#area').val())">
+					<option value="">请选择</option>
+				</select>
 			</div>
-			<div class="input-style"><label>头像</label><input type="file" name="avatar" value="{$info['avatar']}"></div>
-			<div class="input-style"><label>微信</label><input type="text" name="wechat_account" value="{$info['wechat_account']}" placeholder="请输入您的名字"></div>
-			<div class="input-style"><label>支付宝</label><input type="text" name="alipay_account" value="{$info['alipay_account']}" placeholder="请输入您的名字"></div>
+			<div class="input-style"><label>头像</label><input type="file" name="avatar" value="{$user_info['avatar']}"></div>
+			<div class="input-style"><label>微信</label><input type="text" name="wechat" value="{$user_info['wechat']}" placeholder="请输入您的名字"></div>
+			<div class="input-style"><label>支付宝</label><input type="text" name="alipay" value="{$user_info['alipay']}" placeholder="请输入您的名字"></div>
 			<div class="btn_area">
 				 <a class="btn_primary" href="JavaScript:submitForm();">保存资料</a>
 			</div>
@@ -63,15 +58,24 @@
 <script>
 function submitForm()
 {
-	//验证
-	var account = $.trim($('#account').val());
-	var pwd = $.trim($('#pwd').val());
-	if (account == '' || pwd == '')
-	{
-		alert('请填写必填信息');
-		return false;
-	}
 	$('#mainForm').submit();
 }
+
+$("#province").change(function(){
+	var id = $("#province").val()
+	getDisctrict(id);
+});
+
+function getDisctrict(id){
+	var URL="{:U('getDisctrict')}";
+	var data={"id":id};
+	$.post(URL,data,function(res){
+		var html = '';
+
+	},"json");
+}
+
+getCity();
+
 </script>
 <include file="Public:footer"/>

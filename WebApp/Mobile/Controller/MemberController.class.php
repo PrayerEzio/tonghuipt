@@ -46,8 +46,8 @@ class MemberController extends BaseController{
 					$data['avatar'] = $up_return;
 				}
 			}
-			$data['wechat_account'] = trim($_POST['wechat_account']);
-			$data['alipay_account'] = trim($_POST['alipay_account']);
+			$data['wechat'] = trim($_POST['wechat']);
+			$data['alipay'] = trim($_POST['alipay']);
 			$res = M('Member')->where(array('member_id'=>$this->mid))->save($data);
 			if ($res)
 			{
@@ -57,6 +57,8 @@ class MemberController extends BaseController{
 			}
 		}elseif (IS_GET) {
 			$user_info = M('Member')->where(array('uid'=>$this->mid))->find();
+			$province = M('District')->where(array('level'=>1,'status'=>1))->order('d_sort')->select();
+			$this->province = $province;
 			$this->user_info = $user_info;
 			$this->display();
 		}
