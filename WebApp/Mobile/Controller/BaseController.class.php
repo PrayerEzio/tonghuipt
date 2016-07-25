@@ -66,17 +66,17 @@ class BaseController extends Controller{
 	 * 获取下级城市
 	 */
 	public function getDisctrict(){
-		if (IS_AJAX) {
-			$where['upid'] = intval($_POST['id']);
-			$where['status'] = 1;
-			$list = M('District')->where($where)->order('d_sort')->select();
-			if ($list[0]['level'] == 2) {
-				$data['city'] = $list;
-			}elseif ($list[0]['level'] == 3){
-				$data['area'] = $list;
-			}
-			echo json_encode($data);
+		$where['upid'] = intval(I('id'));//intval($_POST['id']);
+		$where['status'] = 1;
+		$list = M('District')->where($where)->order('d_sort')->select();
+		if ($list[0]['level'] == 2) {
+			$data['city'] = $list;
+		}elseif ($list[0]['level'] == 3){
+			$data['area'] = $list;
+		}else {
+			$data['province'] = $list;
 		}
+		echo json_encode($data);
 	}
 
 	/**

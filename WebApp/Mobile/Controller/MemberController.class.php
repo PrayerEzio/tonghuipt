@@ -76,17 +76,45 @@ class MemberController extends BaseController{
 		{
 
 		}elseif (IS_GET){
+			$all_list = M('Member')->select();
 			$where['parent_member_id'] = $this->mid;
 			$list = M('Member')->where($where)->order('register_time')->select();
-			$all_list = M('Member')->order('register_time')->select();
+			$field = 'member_id,parent_member_id';
+			$loop = 9;
 			foreach ($list as $key => $item)
 			{
-				$list[$key]['branch_num'] = count(getChildsId($all_list, $item['member_id'], 'member_id', 'parent_member_id'));
+				$list[$key]['branch_num'] = count(getChildsId($all_list,$item['member_id'],'member_id','parent_member_id',$loop));//count($this->getChildsMemberId($item['member_id'],$field,$loop));
 			}
-			$this->branch_num = count(getChildsId($all_list, $this->mid, 'member_id', 'parent_member_id'));
+			$this->branch_num = count(getChildsId($all_list,$this->mid,'member_id','parent_member_id',$loop));//count($this->getChildsMemberId($this->mid,$field,$loop));
 			$this->list = $list;
 			$this->display();
 		}
 	}
 
+	public function test()
+	{
+		$mid = I('mid');
+		$loop = I('loop');
+		$field = 'member_id,parent_member_id';
+		$list = $this->getChildsMemberId($mid,$field,$loop);
+		p($list);
+	}
+
+	private function getChildsMemberId($parent_member_id,$field = '*',$loop = 9999)
+	{
+		$array = array();
+		if (!$loop)
+		{
+			return $array;
+		}
+		$loop--;
+		$array = M('Member')->where(array('parent_member_id'=>$parent_member_id))->field($field)->select();
+		if (!empty($array))
+		{
+			foreach ($array as $v){
+				$array = array_merge($array, $this->getChildsMemberId($v['member_id'],$field,$loop));
+			}
+		}
+		return $array;
+	}
 }

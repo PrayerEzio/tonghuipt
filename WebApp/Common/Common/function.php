@@ -620,12 +620,17 @@ function utf8_strlen($string = null) {
  * @param string $pidKey 父级关联键名
  * @return Ambigous <multitype:, multitype:unknown >
  */
-function getChildsId ($array, $pid, $idKey, $pidKey){
+function getChildsId ($array, $pid, $idKey, $pidKey ,$loop = 999999){
 	$arr = array();
+	if (!$loop)
+	{
+		return $arr;
+	}
+	$loop--;
 	foreach ($array as $v){
 		if ($v[$pidKey] == $pid) {
 			$arr[] = $v[$idKey];
-			$arr = array_merge($arr, getChildsId($array, $v[$idKey], $idKey, $pidKey));
+			$arr = array_merge($arr, getChildsId($array, $v[$idKey], $idKey, $pidKey,$loop));
 		}
 	}
 	return $arr;

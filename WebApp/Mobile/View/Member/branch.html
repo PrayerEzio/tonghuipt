@@ -1,40 +1,65 @@
 ﻿<include file="Public:header"/>
+
 <div class="redpacket-group">
+
 	<div class="header-all">
+
 		<div class="com-header">
+
 			<a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>我的团队
+
 		</div>
+
 		<div class="dt-top"></div>
+
 	</div>
+
 	<header>
+
 		<h2><i class="iconfont">&#xe607;</i>我的团队</h2>
+
 		<em>{$branch_num}</em>人
+
 	</header>
 
+
+
 	<div class="container">
+
 		<ul>
+
 			<volist name="list" id="vo">
-				<li><i class="iconfont">&#xe606;</i>
-					<notempty name="vo['wechat']">{$vo['wechat']}
-						<else/>
-						<notempty name="vo['nickname']">
-							{$vo['nickname']}
-						<else/>
-							{$vo['mobile']}
-						</notempty>
-					</notempty>
+				<!-- 新增 -->
+				<li>
+					<i class="iconfont">&#xe606;</i>
+					<p>昵称：<span>{:$vo['nickname'] ? $vo['nickname'] : '未填写'}</span></p>
+					<p>手机号码：<span>{:$vo['mobile'] ? $vo['mobile'] : '未填写'}</span></p>
+					<p>微信号：<span>{:$vo['wechat'] ? $vo['wechat'] : '未填写'}</span></p>
 					<em class="red">{$vo['branch_num']}</em>
 				</li>
+
 			</volist>
+
 		</ul>
+
 	</div>
+
 	<!-- flexd nav -->
+
 	<div class="flexdNav">
+
 		<div class='item'><a href="{:U('Index/index')}"><i class="iconfont">&#xe600;</i><span>首页</span></a></div>
+
 		<div class='item'><a href=""><i class="iconfont">&#xe601;</i><span>分类</span></a></div>
+
 		<div class='item'><a href="{:U('Cart/index')}"><i class="iconfont">&#xe602;</i><span>购物车</span></a></div>
+
 		<div class='item'><a href="{:U('Order/index')}"><i class="iconfont">&#xe603;</i><span>我的订单</span></a></div>
+
 		<div class='item'><a href="{:U('Member/index')}"><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
+
 	</div>
+
 </div>
+
 <include file="Public:footer"/>
