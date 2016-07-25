@@ -25,12 +25,18 @@ class MemberController extends BaseController{
 		$this->display();
 	}
 
+	public function logout()
+	{
+		session('member_id',null);
+		redirect(U('Index/index'));
+	}
+
 	public function info()
 	{
 		if (IS_POST)
 		{
 			$data['nickname'] = trim($_POST['nickname']);
-			$data['pwd'] = re_md5($_POST['pwd']);
+			$data['member_name'] = trim($_POST['member_name']);
 			$data['gender'] = intval($_POST['gender']);
 			$data['province'] = intval($_POST['province']);
 			$data['city'] = intval($_POST['city']);
@@ -56,7 +62,7 @@ class MemberController extends BaseController{
 				$this->error('网络繁忙,请重试.');
 			}
 		}elseif (IS_GET) {
-			$user_info = M('Member')->where(array('uid'=>$this->mid))->find();
+			$user_info = M('Member')->where(array('member_id'=>$this->mid))->find();
 			$province = M('District')->where(array('level'=>1,'status'=>1))->order('d_sort')->select();
 			$this->province = $province;
 			$this->user_info = $user_info;

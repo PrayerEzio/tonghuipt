@@ -17,7 +17,7 @@ input, select, textarea {  outline: none; font-family: "Microsoft YaHei", Verdan
 }
 .clear { clear: both;}
 .member-group header { padding: 50px 0;background: #C81623; color: #fff;}
-.member-group header .pic { float: left; width: 80px; height: 80px; margin: 0 10px; padding: 3px; background: #cfcfcf; border-radius: 50%;}
+.member-group header .pic { float: left; width: 80px; height: 80px; margin: 0 10px; padding: 0px; background: #cfcfcf; border-radius: 50%;}
 header .pic img { width: 100%; border-radius: 50%;}
 header .member-txt { float: left;}
 header .member-txt p{ color: #fff;}

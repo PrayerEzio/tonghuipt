@@ -4,7 +4,9 @@
 alert("{$alert['message']}");
 <?php if (!empty($alert['jumpUrl'])) { ?>
 window.location.href = "{$alert['jumpUrl']}";
-<?php } ?>
+<?php }else { ?>
+location.reload();
+ <?php } ?>
 </script>
 </notempty>
 </body>
