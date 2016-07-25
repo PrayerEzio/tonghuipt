@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>三级分销系统</title>
 <link rel="stylesheet" href="css/style.css">
+ 
 <script src="js/jquery-1.11.3.min.js"></script>
+
 <body>
 	<div class="shopCart-group">
 		<!--  头部导航-->
@@ -18,7 +20,9 @@
  	<!--  头部导航-->
 			<div class="shopCart-list">
 				<div class="item">
-					<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
+					
+					<a class="close" href="javascript:" onclick="remov(this)"><i class="iconfont">&#xe60a;</i></a>
+					<div class="check-box"><input type="checkbox"></div>
 					<div class="product-img">
 						<img src="images/shop.png" alt="">
 					</div>
@@ -27,15 +31,18 @@
 							加多宝啊胶糕
 						</dt>
 						<dd>
-							<p>规格：<em>玫瑰</em></p>
-							<p>单价：<em>89.00</em>元</p>
-							<p>小计：<em>267.00</em>元</p>
+							<div>规格：<em>玫瑰</em></div>
+							<div>单价：<em>89.00</em>  <del>原价<em>999.00</em></del></div>
+							<div>数量：<em>8</em></div>
+							<div>小计：<em>267.00</em>元</div>
 						</dd>
 					</dl>
 				</div>
 
 				<div class="item">
-					<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
+					
+					<a class="close" href="javascript:" onclick="remov(this)"><i class="iconfont">&#xe60a;</i></a>
+					<div class="check-box"><input type="checkbox"></div>
 					<div class="product-img">
 						<img src="images/shop.png" alt="">
 					</div>
@@ -44,31 +51,18 @@
 							加多宝啊胶糕
 						</dt>
 						<dd>
-							<p>规格：<em>玫瑰</em></p>
-							<p>单价：<em>89.00</em>元</p>
-							<p>小计：<em>267.00</em>元</p>
-						</dd>
-					</dl>
-				</div>
-				<div class="item">
-					<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
-					<div class="product-img">
-						<img src="images/shop.png" alt="">
-					</div>
-					<dl>
-						<dt>
-							加多宝啊胶糕
-						</dt>
-						<dd>
-							<p>规格：<em>玫瑰</em></p>
-							<p>单价：<em>89.00</em>元</p>
-							<p>小计：<em>267.00</em>元</p>
+							<div>规格：<em>玫瑰</em></div>
+							<div>单价：<em>89.00</em>  <del>原价<em>999.00</em></del></div>
+							<div>数量：<em>8</em></div>
+							<div>小计：<em>267.00</em>元</div>
 						</dd>
 					</dl>
 				</div>
 
 				<div class="item">
-					<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
+					
+					<a class="close" href="javascript:" onclick="remov(this)"><i class="iconfont">&#xe60a;</i></a>
+					<div class="check-box"><input type="checkbox"></div>
 					<div class="product-img">
 						<img src="images/shop.png" alt="">
 					</div>
@@ -77,82 +71,95 @@
 							加多宝啊胶糕
 						</dt>
 						<dd>
-							<p>规格：<em>玫瑰</em></p>
-							<p>单价：<em>89.00</em>元</p>
-							<p>小计：<em>267.00</em>元</p>
+							<div>规格：<em>玫瑰</em></div>
+							<div>单价：<em>89.00</em>  <del>原价<em>999.00</em></del></div>
+							<div>数量：<em>8</em></div>
+							<div>小计：<em>267.00</em>元</div>
 						</dd>
 					</dl>
 				</div>
 
-				<div class="item">
-					<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
-					<div class="product-img">
-						<img src="images/shop.png" alt="">
-					</div>
-					<dl>
-						<dt>
-							加多宝啊胶糕
-						</dt>
-						<dd>
-							<p>规格：<em>玫瑰</em></p>
-							<p>单价：<em>89.00</em>元</p>
-							<p>小计：<em>267.00</em>元</p>
-						</dd>
-					</dl>
-				</div>
+ 
 
-				<div class="item">
-					<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
-					<div class="product-img">
-						<img src="images/shop.png" alt="">
-					</div>
-					<dl>
-						<dt>
-							加多宝啊胶糕
-						</dt>
-						<dd>
-							<p>规格：<em>玫瑰</em></p>
-							<p>单价：<em>89.00</em>元</p>
-							<p>小计：<em>267.00</em>元</p>
-						</dd>
-					</dl>
-				</div>
-
-				<div class="item">
-					<a class="close" href=""><i class="iconfont">&#xe60a;</i></a>
-					<div class="product-img">
-						<img src="images/shop.png" alt="">
-					</div>
-					<dl>
-						<dt>
-							加多宝啊胶糕
-						</dt>
-						<dd>
-							<p>规格：<em>玫瑰</em></p>
-							<p>单价：<em>89.00</em>元</p>
-							<p>小计：<em>267.00</em>元</p>
-						</dd>
-					</dl>
-				</div>
+ 
 
 			</div>
 
 
-
+<!--  -->
 		<!-- flexd nav -->
-		<div class="flexdNav">
+<!-- 		<div class="flexdNav">
 			<div class='item'><a href=""><i class="iconfont">&#xe600;</i><span>首页</span></a></div>
 			<div class='item'><a href=""><i class="iconfont">&#xe601;</i><span>分类</span></a></div>
 			<div class='item'><a href=""><i class="iconfont">&#xe602;</i><span>购物车</span></a></div>
 			<div class='item'><a href=""><i class="iconfont">&#xe603;</i><span>我的订单</span></a></div>
 			<div class='item'><a href="member.html"><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
-		</div>
+		</div> -->
 <!-- footer -->
- 	<footer>
+<!--  	<footer>
 			共有165132人关注我们
- 	</footer>
+ 	</footer> -->
+
+		<section class="actionBar-container">
+		    <div class="cell collect"><label><input id="call-check" type="checkbox">全选</label></div>
+		    <div class="cell add" style="color:#fff;">合计：<span>￥<em>455</em></span></div>
+		    <div class="cell once"><a href="order.html">结算(<span id="sum">0</span>)</a></div>
+		</section>
+
 	</div>
 
 <script src="js/main.js"></script>
+ 
+ <script>
+ 	
+ 	var arr=[];
+ 	var callBut=$("#call-check");
+ 	var che = $(".item input[type='checkbox']");
+ 	che.click(function(){
+ 		Total();
+ 	});
+
+ 	callBut.click(function(){
+ 		if($(this).is(":checked"))
+ 		{
+ 			for(var i=0;i<che.length;i++)
+ 			{
+ 				che.eq(i).prop("checked", true);
+ 			}
+ 		}
+ 		else
+ 		{
+ 			for(var i=0;i<che.length;i++)
+ 			{
+ 				che.eq(i).prop("checked", false);
+ 			}
+ 		}
+ 		Total();
+ 	});
+
+// 统计结算数量
+function Total(){
+	var s=0;
+	for(var i=0;i<che.length;i++)
+	{
+		if(che.eq(i).is(":checked"))
+		{
+			s++;	
+		}
+
+	}
+	$("#sum").text(s);
+}
+
+//  移除父节点
+function remov(obj){
+	$(obj).parent().remove();
+}
+
+
+
+
+ </script>
+
 </body>
 </html>

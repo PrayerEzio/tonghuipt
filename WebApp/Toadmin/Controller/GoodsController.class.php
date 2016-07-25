@@ -643,7 +643,7 @@ class GoodsController extends GlobalController {
 			$data['goods_code'] = str_rp(trim($_POST['goods_code']));
 			$data['goods_type'] = str_rp(trim($_POST['goods_type']));
 			$data['goods_type_id'] = get_goods_type_id($data['gc_id']);
-			$data['goods_city_id'] = intval(trim($_POST['goods_city_id']));			
+			$data['goods_city_id'] = intval(trim($_POST['goods_city_id']));
 			$data['goods_key'] = str_rp(trim($_POST['goods_key']));
 			$data['goods_desc'] = str_rp(trim($_POST['goods_desc']));
 			$data['goods_url'] = str_rp(trim($_POST['goods_url']));
@@ -654,17 +654,13 @@ class GoodsController extends GlobalController {
 			$data['goods_price'] = price_format($_POST['goods_price']);
 			$data['goods_mktprice'] = price_format($_POST['goods_mktprice']);
 			$data['member_price'] = price_format($_POST['member_price']);
+			$data['freight'] = price_format($_POST['freight']);
 			$data['goods_point'] = intval($_POST['goods_point']);
 			$data['goods_sort'] = intval($_POST['goods_sort']);
 			$data['goods_body'] = str_replace('\'','&#39;',$_POST['goods_body']);
 			$data['goods_status'] = intval($_POST['goods_status']);
 			$data['add_time'] = NOW_TIME;
-			$data['display_technique'] = str_rp($_POST['display_technique'],1);
-			$data['bulb_brand'] = str_rp($_POST['bulb_brand'],1);
-			$data['bulb_wattage'] = str_rp($_POST['bulb_wattage'],1);
-			$data['factory_code'] = str_rp($_POST['factory_code'],1);
-			$data['factory_brand'] = str_rp($_POST['factory_brand'],1);
-					
+
 			//图片上传
 			if(!empty($_FILES['goods_pic']['name']))
 			{
@@ -847,18 +843,12 @@ class GoodsController extends GlobalController {
 			$data['goods_price'] = price_format($_POST['goods_price']);
 			$data['goods_mktprice'] = price_format($_POST['goods_mktprice']);
 			$data['member_price'] = price_format($_POST['member_price']);
+			$data['freight'] = price_format($_POST['freight']);
 			$data['goods_point'] = intval($_POST['goods_point']);
 			$data['goods_sort'] = intval($_POST['goods_sort']);
 			$data['goods_body'] = str_replace('\'','&#39;',$_POST['goods_body']);
 			$data['goods_status'] = intval($_POST['goods_status']);
 			$data['add_time'] = NOW_TIME;
-			$data['display_technique'] = str_rp($_POST['display_technique'],1);
-			$data['bulb_brand'] = str_rp($_POST['bulb_brand'],1);
-			$data['bulb_wattage'] = str_rp($_POST['bulb_wattage'],1);
-			$data['bulb_code'] = str_rp($_POST['bulb_code'],1);
-			$data['factory_code'] = str_rp($_POST['factory_code'],1);
-			$data['factory_brand'] = str_rp($_POST['factory_brand'],1);
-			
 			//图片上传
 			if(!empty($_FILES['goods_pic']['name']))
 			{

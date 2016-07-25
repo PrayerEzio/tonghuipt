@@ -10,6 +10,7 @@ namespace Toadmin\Controller;
 use Think\Page;
 class SeoController extends GlobalController{
 	public function _initialize(){
+		parent::_initialize();
 		$this->mod = M('Seo');
 		$this->local = 'seo设置';
 	}
