@@ -24,10 +24,16 @@ function submit_delete(id){
 <div class="page">
   <div class="fixed-bar">
     <div class="item-title">
-      <h3>商品管理</h3>
+      <h3>
+          <if condition="ACTION_NAME == 'point_goods'">
+              积分商品
+              <else/>
+              商品管理
+          </if>
+      </h3>
       <ul class="tab-base">
         <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
-        <li><a href="{:U('Goods/goods_add')}"><span>新增</span></a></li>
+        <li><a href="{:U('Goods/goods_add',array('goods_type'=>ACTION_NAME))}"><span>新增</span></a></li>
       </ul>
     </div>
   </div>
@@ -36,8 +42,12 @@ function submit_delete(id){
     <table class="tb-type1 noborder search">
       <tbody>
        <tr>
-           <th>商品名称</th>
-           <td><input type="text" value="{$search['goods_name']}" name="goods_name" class="txt" ></td>
+          <th>商品名称</th>
+          <td><input type="text" value="{$search['goods_name']}" name="goods_name" class="txt" ></td>
+          <if condition="ACTION_NAME == 'point_goods'">
+              <th>会员ID</th>
+              <td><input type="text" value="{$search['member_id']}" name="member_id" class="txt" ></td>
+          </if>
           <th>商品分类</th>
           <td>
 			  <select name="gc_id" id="gc_id" class="">
@@ -76,7 +86,9 @@ function submit_delete(id){
               <option <if condition="$search['order'] eq 'goods_price-desc'">selected='selected'</if> value="goods_price-desc">价格降序</option>
             </select>          
           </td>
-          <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a></td>
+          <td>
+              <a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a>
+          </td>
         </tr>
       </tbody>
     </table>

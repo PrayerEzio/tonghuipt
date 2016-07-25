@@ -572,15 +572,11 @@ class GoodsController extends GlobalController {
 	{
 		$map = array();
 		$goods_name = trim($_GET['goods_name']);
-		$display_technique = trim($_GET['display_technique']);
-		$bulb_brand = trim($_GET['bulb_brand']);
-		$bulb_code = trim($_GET['bulb_code']);
-		$factory_code = trim($_GET['factory_code']);
-		$factory_brand = trim($_GET['factory_brand']);
 		$gc_id = intval($_GET['gc_id']);
 		$goods_status = intval($_GET['goods_status']);
 		$brand_id = intval($_GET['brand_id']);
 		$goods_id = intval($_GET['goods_id']);
+		$map['member_id'] = 0;
 		if($goods_id){
 			$map['goods_id'] = $goods_id;
 		}
@@ -593,11 +589,6 @@ class GoodsController extends GlobalController {
 			$map['goods_status'] = 0;
 		}
 		if($goods_name)$map['goods_name'] = array('like','%'.$goods_name.'%');
-		if($display_technique)$map['display_technique'] = array('like','%'.$display_technique.'%');
-		if($bulb_brand)$map['bulb_brand'] = array('like','%'.$bulb_brand.'%');
-		if($bulb_code)$map['bulb_code'] = array('like','%'.$bulb_code.'%');
-		if($factory_code)$map['factory_code'] = array('like','%'.$factory_code.'%');
-		if($factory_brand)$map['factory_brand'] = array('like','%'.$factory_brand.'%');
 		if(intval($_GET['goods_type_id'])) $map['goods_type_id'] = array('eq',intval($_GET['goods_type_id']));
 		if(!empty($gc_id))
 		{
@@ -632,11 +623,75 @@ class GoodsController extends GlobalController {
 		$this->assign('class_list', $class_list);	
 		$this->display();
 	}
+
+	//管理
+	public function point_goods()
+	{
+		$map = array();
+		$goods_name = trim($_GET['goods_name']);
+		$gc_id = intval($_GET['gc_id']);
+		$goods_status = intval($_GET['goods_status']);
+		$brand_id = intval($_GET['brand_id']);
+		$goods_id = intval($_GET['goods_id']);
+		$member_id = intval($_GET['member_id']);
+		$map['member_id'] = array('neq',0);
+		if ($member_id)
+		{
+			$map['member_id'] = $member_id;
+		}
+		if($goods_id){
+			$map['goods_id'] = $goods_id;
+		}
+		if ($brand_id) {
+			$map['brand_id'] = $brand_id;
+		}
+		if($goods_status == 1){
+			$map['goods_status'] = 1;
+		}elseif ($goods_status == -1){
+			$map['goods_status'] = 0;
+		}
+		if($goods_name)$map['goods_name'] = array('like','%'.$goods_name.'%');
+		if(intval($_GET['goods_type_id'])) $map['goods_type_id'] = array('eq',intval($_GET['goods_type_id']));
+		if(!empty($gc_id))
+		{
+			/* 			$all_next_gc_id='';
+                        $in_arr = getChildsId($this->goods_class,$gc_id,'gc_id','gc_parent_id'); //该分类下的所有分类
+                        $all_next_gc_id=''; */
+			$map['gc_id'] = array('eq',$gc_id);
+		}
+		$order_post = I('get.order','goods_sort-desc');
+		$order = explode('-', $order);
+		if (!empty($order)) {
+			$order = $order[0].' '.$order[1];
+		}
+		$totalRows = $this->model->where($map)->count();
+		$page = new Page($totalRows,10);
+		$list = $this->model->relation('GoodsClass')->where($map)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();
+		$this->assign('list',$list);
+		$search = $_GET;
+		$search['order'] = $order_post;
+		$this->assign('search',$search);
+		$this->assign('page_show',$page->show());
+		$this->brand_list = M('GoodsBrand')->where(array('brand_status'=>1))->order('brand_sort desc')->select();
+		/**
+		 * 父类列表，只取到第二级
+		 */
+		$class_list = getTreeClassList(3);
+		if (is_array($class_list)){
+			foreach ($class_list as $k => $v){
+				$class_list[$k]['gc_name'] = str_repeat("&nbsp;",$v['deep']*2).'├ '.$v['gc_name'];
+			}
+		}
+		$this->assign('class_list', $class_list);
+		$this->display('goods');
+	}
+
 	//添加
 	public function goods_add()
 	{
 		if(IS_POST){
 			$data = array();
+			$data['member_id'] = intval($_POST['member_id']);
 			$data['gc_id'] = intval($_POST['gc_id']);
 			$data['brand_id'] = intval($_POST['brand_id']);
 			$data['goods_name'] = str_rp(trim($_POST['goods_name']));
@@ -826,6 +881,7 @@ class GoodsController extends GlobalController {
 		$goods_id = intval($_REQUEST['goods_id']);
 		if(IS_POST){
 			$data = array();
+			$data['member_id'] = intval($_POST['member_id']);
 			$data['gc_id'] = intval($_POST['gc_id']);
 			$data['brand_id'] = intval($_POST['brand_id']);
 			$data['goods_name'] = str_rp(trim($_POST['goods_name']));
