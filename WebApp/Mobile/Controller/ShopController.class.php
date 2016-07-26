@@ -35,6 +35,17 @@ class ShopController extends BaseController{
 		$this->display();
 	}
 
+	/**
+	 * 商品分类页
+	 */
+	public function category()
+	{
+		$list = M('GoodsClass')->order('gc_sort desc')->select();
+		$list = unlimitedForLayer($list,'child','gc_parent_id','gc_id');
+		$this->list = $list;
+		$this->display();
+	}
+
 	public function ajaxGetGoodsList()
 	{
 		if (IS_AJAX)

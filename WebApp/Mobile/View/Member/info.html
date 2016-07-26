@@ -55,16 +55,8 @@
 			</div>
 		</div>
 	</form>
-<style>
-</style>
 	<!-- flexd nav -->
-	<div class="flexdNav">
-		<div class='item'><a href="{:U('Index/index')}"><i class="iconfont">&#xe600;</i><span>首页</span></a></div>
-		<div class='item'><a href=""><i class="iconfont">&#xe601;</i><span>分类</span></a></div>
-		<div class='item'><a href="{:U('Cart/index')}"><i class="iconfont">&#xe602;</i><span>购物车</span></a></div>
-		<div class='item'><a href="{:U('Order/index')}"><i class="iconfont">&#xe603;</i><span>我的订单</span></a></div>
-		<div class='item'><a href="{:U('Member/index')}"><i class="iconfont">&#xe604;</i><span>个人中心</span></a></div>
-	</div>
+	{:W('Menu/footer_nav')}
 </div>
 <script>
 function submitForm()
@@ -73,20 +65,44 @@ function submitForm()
 }
 
 $("#province").change(function(){
-	var id = $("#province").val()
+	var id = $("#province option:selected").val();
+	getCity(id); //  获取城市数据
+});
+
+$("#city").change(function(){
+	var id = $("#city option:selected").val();
 	getDisctrict(id);
 });
 
-function getDisctrict(id){
+function getCity(id){
 	var URL="{:U('getDisctrict')}";
 	var data={"id":id};
 	$.post(URL,data,function(res){
-		var html = '';
-
+		$("#city option").remove();
+		for(var i=0; i<res.city.length;i++)
+		{
+			var c = $("<option value="+res.city[i].id+">"+res.city[i].name+"</option>");
+			$("#city").append(c);
+		}
 	},"json");
 }
 
-getCity();
+function getDisctrict(id){
+    var URL="{:U('getDisctrict')}";
+	var data={"id":id};
+	$.post(URL,data,function(res){
+		$("#area option").remove();
+		for(var i=0; i<res.area.length;i++)
+		{
+			var c = $("<option value="+res.area[i].id+">"+res.area[i].name+"</option>");
+			$("#area").append(c);
+		}
+	},"json");
+}
+
+
+
+// getCity();
 
 </script>
 <include file="Public:footer"/>

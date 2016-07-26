@@ -9,7 +9,7 @@
 namespace Mobile\Widget;
 use Mobile\Controller\WechatController;
 class MenuWidget extends WechatController{
-	public function index(){
-		$this->display('Widget:Menu:index');
+	public function footer_nav(){
+		$this->display('Widget:Menu:footer_nav');
 	}
 }

@@ -1,0 +1,20 @@
+﻿<include file="Public:header"/>
+<div class="weui_cells_title">商品分类</div>
+    <div class="weui_cells weui_cells_access">
+        <volist name="list" id="vo">
+            <a class="weui_cell" href="{:U('Shop/index',array('gc'=>$vo['gc_id']))}">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>{$vo['gc_name']}</p>
+                </div>
+                <div class="weui_cell_ft">
+                </div>
+            </a>
+        </volist>
+    </div>
+
+    <!-- flexd nav -->
+    {:W('Menu/footer_nav')}
+</div>
+<script src="__JS__/main.js"></script>
+<script src="__JS__/swiper.min.js"></script>
+<include file="Public:footer"/>
