@@ -29,6 +29,10 @@ class ShopController extends BaseController{
 		}
 		$count = $this->model->where($where)->count();
 		$page = new Page($count,10);
+		$page->rollPage = 3;
+		$page->setConfig('prev','上一页');
+		$page->setConfig('next','下一页');
+		$page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
 		$list = $this->model->where($where)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
 		$ad_where['is_use'] = 1;
 		$this->banner = M('AdvPosition')->where($ad_where)->order('ap_sort desc')->select();

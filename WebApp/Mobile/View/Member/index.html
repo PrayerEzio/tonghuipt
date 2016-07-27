@@ -32,11 +32,15 @@
 		<a href=""><div class="item"><i class="iconfont ico-m-commis">&#xe60f;</i>我的佣金<em class="ico-right"></em></div></a>
 		<a href=""><div class="item"><i class="iconfont ico-m-deposit">&#xe610;</i>我的提现<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/info')}"><div class="item"><i class="iconfont ico-m-info">&#xe60c;</i>个人资料<em class="ico-right"></em></div></a>
-		<a href="{:U('Member/logout')}"><div class="item"><i class="iconfont ico-m-help">&#xe60d;</i>退出登录<em class="ico-right"></em></div></a>
-		<a href="{:U('Member/logout')}"><div class="item"><i class="iconfont ico-m-help">&#xe60d;</i>退出登录<em class="ico-right"></em></div></a>
+		<div class="weui_btn_area">
+        <a class="weui_btn weui_btn_primary" href="{:U('Member/logout')}">退出</a>
+        </div>
 	</div>
 	<!-- flexd nav -->
 	{:W('Menu/footer_nav')}
 </div>
+<style>
+	.weui_btn_primary{     background-color: #007AFF;}
+</style>
 <script src="__JS__/main.js"></script>
 <include file="Public:footer"/>

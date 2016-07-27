@@ -67,6 +67,7 @@ $(document).ready(function(){
             </select></td>
           <td class="vatop tips"></td>
         </tr>
+        <if condition="$_GET['goods_type'] == 'point_goods'">
         <tr>
             <td colspan="2" class="required"><label class="validation">会员ID:</label></td>
         </tr>
@@ -74,6 +75,7 @@ $(document).ready(function(){
             <td class="vatop rowform"><input type="text" value="{$rs['member_id']}" name="member_id" id="member_id" class="txt"></td>
             <td class="vatop tips"></td>
         </tr>
+        </if>
         <tr>
           <td colspan="2" class="required"><label class="validation">产品名称:</label></td>
         </tr>
