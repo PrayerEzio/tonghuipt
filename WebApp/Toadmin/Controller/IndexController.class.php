@@ -16,5 +16,10 @@ class IndexController extends GlobalController {
 	{
 		$this->display();
     }
+
+	public function welcome()
+	{
+		redirect(U('Index/index'));
+	}
 	
 }

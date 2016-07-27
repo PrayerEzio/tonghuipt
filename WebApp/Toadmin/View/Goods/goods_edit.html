@@ -33,7 +33,7 @@ $(document).ready(function(){
     <div class="item-title">
       <h3>商品管理</h3>
       <ul class="tab-base">
-        <li><a href="{:U('Goods/goods')}"><span>管理</span></a></li>
+        <li><a href="{:U('Goods/goods',array('goods_type'=>$_GET['goods_type']))}"><span>管理</span></a></li>
         <li><a href="JavaScript:void(0);" class="current"><span>编辑</span></a></li>
       </ul>
     </div>
@@ -68,6 +68,13 @@ $(document).ready(function(){
           <td class="vatop tips"></td>
         </tr>
         <tr>
+            <td colspan="2" class="required"><label class="validation">会员ID:</label></td>
+        </tr>
+        <tr class="noborder">
+            <td class="vatop rowform"><input type="text" value="{$rs['member_id']}" name="member_id" id="member_id" class="txt"></td>
+            <td class="vatop tips"></td>
+        </tr>
+        <tr>
           <td colspan="2" class="required"><label class="validation">产品名称:</label></td>
         </tr>
         <tr class="noborder">
@@ -81,7 +88,7 @@ $(document).ready(function(){
           <td class="vatop rowform"><input type="text" value="{$rs['goods_code']}" name="goods_code" id="goods_code" class="txt"></td>
           <td class="vatop tips"></td>
         </tr>
-
+        <if condition="$_GET['goods_type'] != 'point_goods'">
         <tr class="noborder">
           <td colspan="2" class="required"><label class="validation">市场价格:</label></td>
         </tr>
@@ -118,6 +125,7 @@ $(document).ready(function(){
             </td>
             <td class="vatop tips"></td>
         </tr>
+        </if>
         <tr class="noborder">
           <td colspan="2" class="required"><label class="validation">产品库存:</label></td>
         </tr>
@@ -136,16 +144,28 @@ $(document).ready(function(){
           </td>
           <td class="vatop tips"></td>
         </tr>-->
-        
-        <tr class="noborder">
-          <td colspan="2" class="required"><label class="validation">产品积分:</label></td>
-        </tr>
-        <tr class="noborder">
-          <td class="vatop rowform">
-          <input type="text" value="{$rs['goods_point']}" name="goods_point" id="goods_point" class="txt">
-          </td>
-          <td class="vatop tips"></td>
-        </tr>
+
+        <if condition="$_GET['goods_type'] != 'point_goods'">
+            <tr class="noborder">
+              <td colspan="2" class="required"><label class="validation">产品积分:</label></td>
+            </tr>
+            <tr class="noborder">
+              <td class="vatop rowform">
+              <input type="text" value="{$rs['goods_point']}" name="goods_point" id="goods_point" class="txt">
+              </td>
+              <td class="vatop tips"></td>
+            </tr>
+        <else/>
+            <tr class="noborder">
+                <td colspan="2" class="required"><label class="validation">所需积分:</label></td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform">
+                    <input type="text" value="{$rs['cost_point']}" name="cost_point" id="cost_point" class="txt">
+                </td>
+                <td class="vatop tips"></td>
+            </tr>
+        </if>
         
         <tr class="noborder">
           <td colspan="2" class="required"><label>产品规格:</label></td>
@@ -464,16 +484,6 @@ $(document).ready(function(){
 			goods_name : {
                 required   : true
             },
-            display_technique : {
-                required   : true
-            },
-            bulb_brand : {
-                required   : true
-            },
-            bulb_wattage : {
-                required   : true,
-                number	   : true
-            },
 			goods_desc : {
 				required : true
             },
@@ -506,16 +516,6 @@ $(document).ready(function(){
             },
 			goods_name : {
                 required   : '请输入产品名称'
-            },
-            display_technique : {
-                required   : '请输入显示技术'
-            },
-            bulb_brand : {
-                required   : '请输入灯泡品牌'
-            },
-            bulb_wattage : {
-                required   : '请输入灯泡功率',
-                number	   : '灯泡功率必须为数字'
             },
 			goods_desc : {
 				required : '输入产品描述'

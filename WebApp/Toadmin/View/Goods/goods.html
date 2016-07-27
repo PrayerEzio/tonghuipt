@@ -138,7 +138,7 @@ function submit_delete(id){
           <td class="w48 sort"><span title="可编辑" ajax_branch="goods_sort" datatype="number" fieldid="{$val['goods_id']}" ajax_control="Goods" fieldname="goods_sort" nc_type="inline_edit" class="editable tooltip">{$val['goods_sort']}</span></td>
           <td class="w60 picture">
           	<div class="size-56x56"><span class="thumb size-56x56"><i></i>
-          	<notempty name="goods_pic">
+          	<notempty name="val['goods_pic']">
           	<img src="__UPLOADS__/{$val['goods_pic']}" width="56" height="56"/>
           	<else/>
           	<img src="__IMG__/nopic.jpg" width="56" height="56"/>
@@ -154,7 +154,7 @@ function submit_delete(id){
           <td class="align-center">{$val['goods_status']|get_goods_status_name}</td>
 		  <td class="align-center">{$val['add_time']|date='Y-m-d H:i:s',###}</td>
 		  <td class='w72 align-center'>
-		  <a href="{:U('Goods/goods_edit',array('goods_id'=>$val['goods_id']))}">编辑</a> | <a href='javascript:if(confirm("确定要删除？"))window.location = "{:U('Goods/goods_del',array('goods_id'=>$val['goods_id']))}";'>删除</a>
+		  <a href="{:U('Goods/goods_edit',array('goods_id'=>$val['goods_id'],'goods_type'=>ACTION_NAME))}">编辑</a> | <a href='javascript:if(confirm("确定要删除？"))window.location = "{:U('Goods/goods_del',array('goods_id'=>$val['goods_id']))}";'>删除</a>
 		  </td>
         </tr>
         </volist>

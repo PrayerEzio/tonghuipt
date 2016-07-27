@@ -30,6 +30,8 @@ class ShopController extends BaseController{
 		$count = $this->model->where($where)->count();
 		$page = new Page($count,10);
 		$list = $this->model->where($where)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
+		$ad_where['is_use'] = 1;
+		$this->banner = M('AdvPosition')->where($ad_where)->order('ap_sort desc')->select();
 		$this->list = $list;
 		$this->page = $page->show();
 		$this->display();

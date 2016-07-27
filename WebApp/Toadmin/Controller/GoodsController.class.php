@@ -711,6 +711,7 @@ class GoodsController extends GlobalController {
 			$data['member_price'] = price_format($_POST['member_price']);
 			$data['freight'] = price_format($_POST['freight']);
 			$data['goods_point'] = intval($_POST['goods_point']);
+			$data['cost_point'] = intval($_POST['cost_point']);
 			$data['goods_sort'] = intval($_POST['goods_sort']);
 			$data['goods_body'] = str_replace('\'','&#39;',$_POST['goods_body']);
 			$data['goods_status'] = intval($_POST['goods_status']);
@@ -901,6 +902,7 @@ class GoodsController extends GlobalController {
 			$data['member_price'] = price_format($_POST['member_price']);
 			$data['freight'] = price_format($_POST['freight']);
 			$data['goods_point'] = intval($_POST['goods_point']);
+			$data['cost_point'] = intval($_POST['cost_point']);
 			$data['goods_sort'] = intval($_POST['goods_sort']);
 			$data['goods_body'] = str_replace('\'','&#39;',$_POST['goods_body']);
 			$data['goods_status'] = intval($_POST['goods_status']);

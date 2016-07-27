@@ -4,9 +4,9 @@
 		<!-- 焦点图 -->
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide"><img src="__IMG__/150.jpg" alt=""></div>
-				<div class="swiper-slide"><img src="__IMG__/151.jpg" alt=""></div>
-				<div class="swiper-slide"><img src="__IMG__/150.jpg" alt=""></div>
+				<volist name="banner" id="vo">
+					<div class="swiper-slide"><img src="__UPLOADS__/{$vo['ap_pic']}" alt=""></div>
+				</volist>
 			</div>
 			<!-- 分页器 -->
 			<div class="swiper-pagination"></div>

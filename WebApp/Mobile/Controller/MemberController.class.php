@@ -55,12 +55,7 @@ class MemberController extends BaseController{
 			$data['wechat'] = trim($_POST['wechat']);
 			$data['alipay'] = trim($_POST['alipay']);
 			$res = M('Member')->where(array('member_id'=>$this->mid))->save($data);
-			if ($res)
-			{
-				$this->success('修改资料成功');
-			}else {
-				$this->error('网络繁忙,请重试.');
-			}
+			$this->success('修改资料成功');
 		}elseif (IS_GET) {
 			$user_info = M('Member')->where(array('member_id'=>$this->mid))->find();
 			$province = M('District')->where(array('level'=>1,'status'=>1))->order('d_sort')->select();
@@ -83,9 +78,9 @@ class MemberController extends BaseController{
 			$loop = 9;
 			foreach ($list as $key => $item)
 			{
-				$list[$key]['branch_num'] = count(getChildsId($all_list,$item['member_id'],'member_id','parent_member_id',$loop));//count($this->getChildsMemberId($item['member_id'],$field,$loop));
+				$list[$key]['branch_num'] = count($this->getChildsMemberId($item['member_id'],$field,$loop));//count(getChildsId($all_list,$item['member_id'],'member_id','parent_member_id',$loop));//
 			}
-			$this->branch_num = count(getChildsId($all_list,$this->mid,'member_id','parent_member_id',$loop));//count($this->getChildsMemberId($this->mid,$field,$loop));
+			$this->branch_num = count($this->getChildsMemberId($this->mid,$field,$loop));//count(getChildsId($all_list,$this->mid,'member_id','parent_member_id',$loop));//
 			$this->list = $list;
 			$this->display();
 		}
@@ -97,6 +92,7 @@ class MemberController extends BaseController{
 		$loop = I('loop');
 		$field = 'member_id,parent_member_id';
 		$list = $this->getChildsMemberId($mid,$field,$loop);
+		p(count($list));
 		p($list);
 	}
 
@@ -111,10 +107,18 @@ class MemberController extends BaseController{
 		$array = M('Member')->where(array('parent_member_id'=>$parent_member_id))->field($field)->select();
 		if (!empty($array))
 		{
+			$child_array = array();
 			foreach ($array as $v){
-				$array = array_merge($array, $this->getChildsMemberId($v['member_id'],$field,$loop));
+				$child = $this->getChildsMemberId($v['member_id'],$field,$loop);
+				if ($child)
+				{
+					$child_array = array_merge($child_array,$child);
+				}
 			}
+			$array = array_merge($array, $child_array);
+			return $array;
+		}else {
+			return $array;
 		}
-		return $array;
 	}
 }
