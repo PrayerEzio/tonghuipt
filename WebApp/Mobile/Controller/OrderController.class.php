@@ -19,35 +19,38 @@ class OrderController extends BaseController{
 	 */
 	public function index(){
 		if (IS_POST) {
+			p($_POST);die;
 			//处理获取的商品
 			if (empty($_POST['goods_id'])) {
 				$this->error('没有选中相关商品');
 			}
 			$goods_ids = $_POST['goods_id'];
-			
+
+			foreach ($goods_ids as $key => $goods_str)
+			{
+				$a = explode('-',$goods_str);
+				$cart[$key]['goods_id'] = $a[0];
+				$cart[$key]['spec_id'] = $a[1];
+			}
+			$goods_ids = $cart;
 			$goods_id_str = '';
-			foreach ($goods_ids as $key => $goods_id){
-				$goods_id_str .= $goods_id.',';
+			foreach ($goods_ids as $key => $value){
+				$goods_id_str .= $value[0].',';
 			}
 			$goods_id_str = substr($goods_id_str, 0, -1);
 			$list = D('Goods')->where(array('goods_id'=>array('IN',$goods_id_str)))->select();
 			$Cart = new Cart();
 			$cartList = $Cart->getList();
 			$amount = 0;
-			M('OrderGoods')->where(array('order_id'=>0,'member_id'=>$this->mid))->delete();
+			//M('OrderGoods')->where(array('order_id'=>0,'member_id'=>$this->mid))->delete();
 			foreach ($list as $key => $val){
 				if (!empty($cartList[$val['goods_id']]['num'])) {
-					if (get_distributor($this->mid)) {
-						$cdisc = MSC('distributor_discount');
-					}else {
-						$cdisc = 1;
-					}
 					$list[$key]['num'] = $cartList[$val['goods_id']]['num'];
-					$list[$key]['goods_price'] = $cdisc*$val['goods_price'];
-					$amount += $cdisc*get_discount($cartList[$val['goods_id']]['num'])*$cartList[$val['goods_id']]['num']*$val['goods_price'];
+					$list[$key]['goods_price'] = $val['goods_price'];
+					$amount += get_discount($cartList[$val['goods_id']]['num'])*$cartList[$val['goods_id']]['num']*$val['goods_price'];
 					$order_goods['goods_id'] = $val['goods_id'];
 					$order_goods['goods_name'] = $val['goods_name'];
-					$order_goods['goods_price'] = $cdisc*$val['goods_price']*get_discount($cartList[$val['goods_id']]['num']);
+					$order_goods['goods_price'] = $val['goods_price']*get_discount($cartList[$val['goods_id']]['num']);
 					$order_goods['goods_mkprice'] = $val['goods_price'];
 					$order_goods['goods_num'] = $cartList[$val['goods_id']]['num'];
 					$order_goods['goods_image'] = $val['goods_pic'];

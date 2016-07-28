@@ -24,6 +24,18 @@ class CartController extends BaseController{
 			;
 		}elseif (IS_GET) {
 			$list = $this->Cart->getList();
+			$field = 'goods_id,member_id,goods_name,goods_price,goods_mktprice,goods_pic,goods_point,cost_point,freight,goods_storage';
+			foreach ($list as $key => $item)
+			{
+				foreach ($item as $k => $value)
+				{
+					$list[$key][$k]['Goods'] = M('Goods')->where(array('goods_id'=>$value['id'],'goods_status'=>1))->field($field)->find();
+					if ($item['spec_id'])
+					{
+						$list[$key][$k]['GoodsSpec'] = M('GoodsSpec')->where(array('spec_id'=>$value['spec_id']))->find();
+					}
+				}
+			}
 			$this->list = $list;
 			$this->display();
 		}
