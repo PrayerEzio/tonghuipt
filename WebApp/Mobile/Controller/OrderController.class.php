@@ -19,7 +19,6 @@ class OrderController extends BaseController{
 	 */
 	public function index(){
 		if (IS_POST) {
-			p($_POST);die;
 			//处理获取的商品
 			if (empty($_POST['goods_id'])) {
 				$this->error('没有选中相关商品');
@@ -29,45 +28,52 @@ class OrderController extends BaseController{
 			foreach ($goods_ids as $key => $goods_str)
 			{
 				$a = explode('-',$goods_str);
-				$cart[$key]['goods_id'] = $a[0];
-				$cart[$key]['spec_id'] = $a[1];
+				$cart_array[$key]['goods_id'] = $a[0];
+				$cart_array[$key]['spec_id'] = $a[1];
 			}
-			$goods_ids = $cart;
-			$goods_id_str = '';
-			foreach ($goods_ids as $key => $value){
-				$goods_id_str .= $value[0].',';
-			}
-			$goods_id_str = substr($goods_id_str, 0, -1);
-			$list = D('Goods')->where(array('goods_id'=>array('IN',$goods_id_str)))->select();
 			$Cart = new Cart();
 			$cartList = $Cart->getList();
 			$amount = 0;
-			//M('OrderGoods')->where(array('order_id'=>0,'member_id'=>$this->mid))->delete();
-			foreach ($list as $key => $val){
-				if (!empty($cartList[$val['goods_id']]['num'])) {
-					$list[$key]['num'] = $cartList[$val['goods_id']]['num'];
-					$list[$key]['goods_price'] = $val['goods_price'];
-					$amount += get_discount($cartList[$val['goods_id']]['num'])*$cartList[$val['goods_id']]['num']*$val['goods_price'];
-					$order_goods['goods_id'] = $val['goods_id'];
-					$order_goods['goods_name'] = $val['goods_name'];
-					$order_goods['goods_price'] = $val['goods_price']*get_discount($cartList[$val['goods_id']]['num']);
-					$order_goods['goods_mkprice'] = $val['goods_price'];
-					$order_goods['goods_num'] = $cartList[$val['goods_id']]['num'];
-					$order_goods['goods_image'] = $val['goods_pic'];
+			M('OrderGoods')->where(array('order_id'=>0,'member_id'=>$this->mid))->delete();
+			foreach ($cart_array as $key => $val){
+				$where['goods_id'] = $val['goods_id'];
+				$where['goods_status'] = 1;
+				$goods = M('Goods')->where($where)->find();
+				if (!empty($cartList[$val['goods_id']][$val['spec_id']]['num']) && !empty($goods)) {
+					$cart_array[$key]['Goods'] = $goods;
+					if ($val['spec_id'])
+					{
+						$spec_where['spec_id'] = $val['spec_id'];
+						$spec_where['goods_id'] = $val['goods_id'];
+						$goods_spec = M('Goods')->where($spec_where)->find();
+						$cart_array[$key]['GoodsSpec'] = $goods_spec;
+					}else {
+						$goods_spec = '';
+					}
+					$price = $goods['goods_price'];
+					$num = $cartList[$val['goods_id']][$val['spec_id']]['num'];
+					$discount = get_discount($cartList[$val['goods_id']][$val['spec_id']]['num']);
+					$amount += $discount*$num*$price;
+					$cart_array[$key]['num'] = $num;
+					$order_goods['goods_id'] = $goods['goods_id'];
+					if ($val['spec_id'] && $goods_spec['spec_id'])
+					{
+						$order_goods['spec_id'] = $goods_spec['spec_id'];
+					}
+					$order_goods['goods_name'] = $goods['goods_name'];
+					$order_goods['goods_price'] = $price*get_discount($num);
+					$order_goods['goods_mkprice'] = $price;
+					$order_goods['goods_num'] = $num;
+					$order_goods['goods_image'] = $goods['goods_pic'];
 					$order_goods['member_id'] = $this->mid;
 					M('OrderGoods')->add($order_goods);
+					unset($order_goods);
 				}else {
-					unset($list[$key]);
+					unset($cart_array[$key]);
 				}
 			}
-			$this->list = $list;
+			$this->list = $cart_array;
 			$this->amount = $amount;
-			$point = M('Member')->where(array('member_id'=>$this->mid))->getField('point');
-			$use_max_point = $amount*MSC('point_exchange_rate');
-			if ($point >=$use_max_point) {
-				$point = $use_max_point;
-			}
-			$this->point = $point;
 			//收货地址
 			$where['member_id'] = $this->mid;
 			$address = M('MemberAddrs')->where($where)->select();

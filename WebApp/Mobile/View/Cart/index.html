@@ -10,42 +10,40 @@
 	<!--  头部导航-->
 	<form method="POST" action="{:U('Order/index')}" id="mainForm">
 		<div class="shopCart-list">
-			<volist name="list" id="item">
-				<volist name="item" id="vo">
-					<div class="item">
-						<a class="close" href="javascript:" onclick="remov(this);removeCart({$vo['id']},{$vo['spec_id']});"><i class="iconfont">&#xe60a;</i></a>
-						<div class="check-box"><input type="checkbox" name="goods_id[]" value="{$vo['Goods']['goods_id']}-{$vo['spec_id']}"></div>
-						<div class="product-img">
-							<notempty name="vo['img']">
-								<img src="__UPLOADS__/{$vo['img']}" alt="">
-								<else/>
-								<img src="__UPLOADS__/{$vo['Goods']['goods_pic']}" alt="">
-							</notempty>
-						</div>
-						<dl>
-							<dt>
-								<notempty name="vo['name']">
-									{$vo['name']}
-									<else/>
-									{$vo['Goods']['goods_name']}
-								</notempty>
-							</dt>
-							<dd>
-								<notempty name="spec_id">
-									<div>规格：<em>{$vo['GoodsSpec']['spec_name']}</em></div>
-								</notempty>
-								<div>单价：<em>{$vo['Goods']['goods_price']|price_format}</em>  <del>原价<em>{$vo['Goods']['goods_mktprice']|price_format}</em></del></div>
-								<div>数量：<em>{$vo['num']}</em></div>
-								<div>小计：<em>{$vo['Goods']['goods_price']*$vo['num']|price_format}</em>元</div>
-							</dd>
-						</dl>
+			<volist name="list" id="vo">
+				<div class="item">
+					<a class="close" href="javascript:" onclick="remov(this);removeCart({$vo['id']},{$vo['spec_id']});"><i class="iconfont">&#xe60a;</i></a>
+					<div class="check-box"><input id="c_{$key}" type="checkbox" name="goods_id[]" value="{$vo['Goods']['goods_id']}-{$vo['spec_id']}"></div>
+					<div class="product-img">
+						<notempty name="vo['img']">
+							<img src="__UPLOADS__/{$vo['img']}" alt="">
+							<else/>
+							<img src="__UPLOADS__/{$vo['Goods']['goods_pic']}" alt="">
+						</notempty>
 					</div>
-				</volist>
+					<dl>
+						<dt>
+							<notempty name="vo['name']">
+								{$vo['name']}
+								<else/>
+								{$vo['Goods']['goods_name']}
+							</notempty>
+						</dt>
+						<dd>
+							<notempty name="spec_id">
+								<div>规格：<em>{$vo['GoodsSpec']['spec_name']}</em></div>
+							</notempty>
+							<div>单价：<em>{$vo['Goods']['goods_price']|price_format}</em>  <del>原价<em>{$vo['Goods']['goods_mktprice']|price_format}</em></del></div>
+							<div>数量：<em>{$vo['num']}</em></div>
+							<div>小计：<em class="subtotal">{$vo['Goods']['goods_price']*$vo['num']|price_format}</em>元</div>
+						</dd>
+					</dl>
+				</div>
 			</volist>
 		</div>
 		<section class="actionBar-container">
 			<div class="cell collect"><label><input id="call-check" type="checkbox">全选</label></div>
-			<div class="cell add" style="color:#fff;">合计：<span>￥<em>0</em></span></div>
+			<div class="cell add" style="color:#fff;">合计：<span>￥<em id="totals">0</em></span></div>
 			<div class="cell once"><a href="JavaScript:submitOrder();">结算(<span id="sum">0</span>)</a></div>
 		</section>
 </div>
@@ -56,7 +54,9 @@
 	var che = $(".item input[type='checkbox']");
 	che.click(function(){
 		Total();
-	});
+        totalPrice($(this));
+        
+    });
 
 	callBut.click(function(){
 		if($(this).is(":checked"))
@@ -76,6 +76,7 @@
 		Total();
 	});
 
+
 	// 统计结算数量
 	function Total(){
 		var s=0;
@@ -85,10 +86,28 @@
 			{
 				s++;
 			}
-
 		}
 		$("#sum").text(s);
 	}
+
+    // 统计总价
+    var sumtotal =0;
+    function totalPrice(obj){
+
+         var t=obj.attr("id").substring(2);
+         var p = parseInt($(".subtotal").eq(t).text());
+
+        if(obj.is(":checked"))
+        {
+            sumtotal = sumtotal + p;
+        }
+        else
+        {
+            sumtotal = sumtotal - p;
+        }
+        $("#totals").text(sumtotal);
+        
+    }
 
 	//  移除父节点
 	function remov(obj){
@@ -109,5 +128,6 @@
 		//判断商品是否有被选中
 		$("#mainForm").submit();
 	}
+
 </script>
 <include file="Public:footer"/>
