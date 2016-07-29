@@ -28,40 +28,19 @@ class PayController extends Controller{
 				}else {
 					$alipay_data['total_fee'] = $order['order_amount'];//订单总金额
 					$alipay_data['out_trade_no'] = $order['order_sn'];//商户订单ID
-					$alipay_data['subject'] = '佐西卡购物支付';//订单商品标题
+					$alipay_data['subject'] = '通汇大商圈购物支付';//订单商品标题
 					$alipay_data['body'] = '订单号:'.$order['order_sn'];//订单商品描述
 					$alipay_data['show_url'] = 'http://'.$_SERVER['SERVER_NAME'].U('Member/order',array('sn'=>$order['order_sn']));//订单商品地址
-					$alipay_data['notify_url'] = U('Home/Pay/alipayNotify', '', true, true);
-					$alipay_data['return_url'] = U('Home/Pay/alipayReturn', '', true, true);
+					$alipay_data['notify_url'] = U('Mobile/Pay/alipayNotify', '', true, true);
+					$alipay_data['return_url'] = U('Mobile/Pay/alipayReturn', '', true, true);
 					$alipay = new Alipay();
 					$alipay->toAlipay($alipay_data);
 				}
 			}else {
 				$this->error('非法操作');
 			}
-		}elseif (trim($_GET['rp_sn'])) {
-			$rp_sn = trim($_GET['rp_sn']);
-			$member_id = $this->mid;
-			$where['rp_sn'] = $rp_sn;
-			$where['member_id'] = $member_id;
-			$order = M('Repair')->where($where)->find();
-			if (is_array($order) && !empty($order)) {
-				if ($order['rp_status'] != 3) {
-					$this->error('该订单号无法进行支付,请联系客服.');
-				}else {
-					$alipay_data['total_fee'] = $order['price'];//订单总金额
-					$alipay_data['out_trade_no'] = $order['rp_sn'];//商户订单ID
-					$alipay_data['subject'] = '佐西卡维修支付';//订单商品标题
-					$alipay_data['body'] = '订单号:'.$order['rp_sn'];//订单商品描述
-					$alipay_data['show_url'] = 'http://'.$_SERVER['SERVER_NAME'].U('Member/progress',array('sn'=>$order['rp_sn']));//订单商品地址
-					$alipay_data['notify_url'] = U('Home/Pay/alipayNotify', array('type'=>'repair'), true, true);
-					$alipay_data['return_url'] = U('Home/Pay/alipayReturn', array('type'=>'repair'), true, true);
-					$alipay = new Alipay();
-					$alipay->toAlipay($alipay_data);
-				}
-			}else {
-				$this->error('非法操作');
-			}
+		}else {
+			$this->error('订单不存在.');
 		}
 	}
 	/**

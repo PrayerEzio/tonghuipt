@@ -52,9 +52,10 @@ class OrderController extends BaseController{
 					}
 					$price = $goods['goods_price'];
 					$num = $cartList[$val['goods_id']][$val['spec_id']]['num'];
-					$discount = get_discount($cartList[$val['goods_id']][$val['spec_id']]['num']);
+					$discount = get_discount($num);
 					$amount += $discount*$num*$price;
 					$cart_array[$key]['num'] = $num;
+					$cart_array[$key]['price'] = $price*$discount;
 					$order_goods['goods_id'] = $goods['goods_id'];
 					if ($val['spec_id'] && $goods_spec['spec_id'])
 					{
@@ -62,7 +63,8 @@ class OrderController extends BaseController{
 					}
 					$order_goods['goods_name'] = $goods['goods_name'];
 					$order_goods['goods_price'] = $price*get_discount($num);
-					$order_goods['goods_mkprice'] = $price;
+					$order_goods['goods_mkprice'] = $goods['goods_mktprice'];
+					$order_goods['freight'] = $goods['freight'];
 					$order_goods['goods_num'] = $num;
 					$order_goods['goods_image'] = $goods['goods_pic'];
 					$order_goods['member_id'] = $this->mid;
@@ -82,7 +84,7 @@ class OrderController extends BaseController{
 			$this->address = $address;
 			$this->display();
 		}else {
-			$this->error('非法操作');
+			$this->error('非法操作',U('Index/index'));
 		}
 	}
 	/**
@@ -138,8 +140,21 @@ class OrderController extends BaseController{
 	 * 生成订单
 	 */
 	public function creatOrder(){
-		$addr_id = intval($_POST['addr_id']);
-		$addr_info = M('MemberAddrs')->where(array('addr_id'=>$addr_id))->find();
+		//$addr_id = intval($_POST['addr_id']);
+		//$addr_info = M('MemberAddrs')->where(array('addr_id'=>$addr_id))->find();
+		$addr_info['name'] = trim($_POST['name']);
+		$addr_info['province_id'] = 19;//intval($_POST['province']);
+		$addr_info['city_id'] = 291;//intval($_POST['city']);
+		$addr_info['area_id'] = 3572;//intval($_POST['area']);
+		$addr_info['mobile'] = trim($_POST['mobile']);
+		$addr_info['addr'] = trim($_POST['address']);
+		foreach ($addr_info as $check_info)
+		{
+			if (empty($check_info))
+			{
+				$this->error('请完整填写收货信息.');die;
+			}
+		}
 		$goods_list = M('OrderGoods')->where(array('order_id'=>0,'member_id'=>$this->mid))->select();
 		if (!empty($addr_info)) {
 			$data['order_sn'] = order_sn();
@@ -165,12 +180,13 @@ class OrderController extends BaseController{
 					$goods_price = $goods_price*MSC('distributor_discount');
 				}
 				$data['goods_amount'] += $goods_price*$val['goods_num'];
+				$data['shipping_fee'] += $val['freight']*$val['goods_num'];
 				$data['discount'] += $data['goods_amount']*(1-get_discount($val['goods_num']));
 				//冻结库存
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setDec('goods_storage',$val['goods_num']);
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setInc('goods_freez',$val['goods_num']);
 			}
-			$data['order_amount'] = $data['goods_amount']-$data['discount'];
+			$data['order_amount'] = $data['goods_amount']-$data['discount']+$data['shipping_fee'];
 			$data['order_message'] = str_rp($_POST['order_message'],1);
 			$member = M('Member')->where(array('member_id'=>$this->mid))->field('mobile,email')->find();
 			$data['mobile'] = $member['mobile'];
