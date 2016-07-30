@@ -2,18 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1de074bf-16af-419b-b0f0-69e7cbb5dc4c" name="默认的" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTML/css/style.css" afterPath="$PROJECT_DIR$/HTML/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTML/order.html" afterPath="$PROJECT_DIR$/HTML/order.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTML/shopcart.html" afterPath="$PROJECT_DIR$/HTML/shopcart.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/BoardController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/BoardController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/DistributionController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/DistributionController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/LoginController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/LoginController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/SmsController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/SmsController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/WechatController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/WechatController.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Login/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Login/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Login/register.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Login/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/branch.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/branch.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/info.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/category.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Widget/Menu/footer_nav.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Widget/Menu/footer_nav.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Order/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Order/index.html" />
     </list>
     <ignored path="tonghuipt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,7 +48,7 @@
       <file leaf-file-name="CartController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.923077">
+            <state vertical-scroll-proportion="0.0">
               <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding />
             </state>
@@ -55,18 +58,38 @@
       <file leaf-file-name="OrderController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.0">
-              <caret line="36" column="91" selection-start-line="36" selection-start-column="91" selection-end-line="36" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.875">
-              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+            <state vertical-scroll-proportion="-10.384615">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebApp/Common/Conf/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.1538463">
+              <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoardController.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BoardController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,6 +128,7 @@
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Common/Conf/config.php" />
       </list>
     </option>
   </component>
@@ -198,28 +222,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonghuipt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonghuipt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -258,6 +260,120 @@
       <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Member" />
       <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="片刻 之前" ActionInfo="更新 (_U)">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="从服务器更新" />
+        <option name="myStatusName" value="在服务器上已改变" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已更新" />
+          <option name="myStatusName" value="已改变" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/HTML/order.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已创建" />
+          <option name="myStatusName" value="已创建" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/View/Order/index.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已删除" />
+          <option name="myStatusName" value="已删除" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已恢复" />
+          <option name="myStatusName" value="将被恢复" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已修改" />
+        <option name="myStatusName" value="已修改" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已跳过" />
+        <option name="myStatusName" value="已跳过" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="合并冲突" />
+        <option name="myStatusName" value="将被合并冲突" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已合并树冲突" />
+        <option name="myStatusName" value="已合并树冲突" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已合并属性冲突" />
+        <option name="myStatusName" value="将被合并属性冲突" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已合并" />
+        <option name="myStatusName" value="将被合并" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="在库里没有" />
+        <option name="myStatusName" value="在库里没有" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="本地已添加" />
+        <option name="myStatusName" value="本地已添加" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="本地已移除" />
+        <option name="myStatusName" value="本地已移除" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已切换" />
+        <option name="myStatusName" value="已切换" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -360,7 +476,13 @@
       <option name="project" value="LOCAL" />
       <updated>1469464517018</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="2016-7-29 00:37:44">
+      <created>1469723874914</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1469723874914</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -368,14 +490,14 @@
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.258547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1965812" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19871795" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29822618" sideWeight="0.42948717" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29822618" sideWeight="0.57051283" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29822618" sideWeight="0.42574787" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29822618" sideWeight="0.5742521" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.4764957" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.47435898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.4679487" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.46153846" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -421,13 +543,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -673,13 +788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BoardController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/json.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34835356">
@@ -763,7 +871,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.923077">
+        <state vertical-scroll-proportion="0.0">
           <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
           <folding />
         </state>
@@ -771,16 +879,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.0">
-          <caret line="36" column="91" selection-start-line="36" selection-start-column="91" selection-end-line="36" selection-end-column="91" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="54" selection-start-line="38" selection-start-column="54" selection-end-line="38" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.875">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+        <state vertical-scroll-proportion="-10.384615">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1538463">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BoardController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
