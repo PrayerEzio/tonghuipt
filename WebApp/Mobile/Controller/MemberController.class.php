@@ -8,6 +8,8 @@
  */
 namespace Mobile\Controller;
 use Muxiangdao\DesUtils;
+use Think\Page;
+
 class MemberController extends BaseController{
 	public function __construct(){
 		parent::__construct();
@@ -25,12 +27,14 @@ class MemberController extends BaseController{
 		$this->display();
 	}
 
+	//登出
 	public function logout()
 	{
 		session('member_id',null);
 		redirect(U('Index/index'));
 	}
 
+	//个人资料
 	public function info()
 	{
 		if (IS_POST)
@@ -65,6 +69,7 @@ class MemberController extends BaseController{
 		}
 	}
 
+	//我的团队
 	public function branch()
 	{
 		if (IS_POST)
@@ -78,25 +83,16 @@ class MemberController extends BaseController{
 			$loop = 9;
 			foreach ($list as $key => $item)
 			{
-				$list[$key]['branch_num'] = count($this->getChildsMemberId($item['member_id'],$field,$loop));//count(getChildsId($all_list,$item['member_id'],'member_id','parent_member_id',$loop));//
+				$list[$key]['branch_num'] = count($this->getChildsMember($item['member_id'],$field,$loop));//count(getChildsId($all_list,$item['member_id'],'member_id','parent_member_id',$loop));//
 			}
-			$this->branch_num = count($this->getChildsMemberId($this->mid,$field,$loop));//count(getChildsId($all_list,$this->mid,'member_id','parent_member_id',$loop));//
+			$this->branch_num = count($this->getChildsMember($this->mid,$field,$loop));//count(getChildsId($all_list,$this->mid,'member_id','parent_member_id',$loop));//
 			$this->list = $list;
 			$this->display();
 		}
 	}
 
-	public function test()
-	{
-		$mid = I('mid');
-		$loop = I('loop');
-		$field = 'member_id,parent_member_id';
-		$list = $this->getChildsMemberId($mid,$field,$loop);
-		p(count($list));
-		p($list);
-	}
-
-	private function getChildsMemberId($parent_member_id,$field = '*',$loop = 9999)
+	//获取子级id
+	private function getChildsMember($parent_member_id,$field = '*',$loop = 9999)
 	{
 		$array = array();
 		if (!$loop)
@@ -109,7 +105,7 @@ class MemberController extends BaseController{
 		{
 			$child_array = array();
 			foreach ($array as $v){
-				$child = $this->getChildsMemberId($v['member_id'],$field,$loop);
+				$child = $this->getChildsMember($v['member_id'],$field,$loop);
 				if ($child)
 				{
 					$child_array = array_merge($child_array,$child);
@@ -120,5 +116,29 @@ class MemberController extends BaseController{
 		}else {
 			return $array;
 		}
+	}
+
+	//账单
+	public function bill()
+	{
+		$bill_type = intval($_GET['type']);
+		$where['bill_type'] = $bill_type;
+		$where['member_id'] = $this->mid;
+		$count = M('MemberBill')->where($where)->count();
+		$page = new Page($count,10);
+		$list = M('MemberBill')->where($where)->limit($page->firstRow.','.$page->listRows)->order('addtime desc')->select();
+		$this->list = $list;
+		$this->display();
+	}
+
+	//站内信
+	public function letter()
+	{
+		$where['member_id'] = $this->mid;
+		$count = M('MemberLetter')->where($where)->count();
+		$page = new Page($count,10);
+		$list = M('MemberLetter')->where($where)->limit($page->firstRow.','.$page->listRows)->order('addtime desc')->select();
+		$this->list = $list;
+		$this->display();
 	}
 }

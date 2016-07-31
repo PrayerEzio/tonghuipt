@@ -28,7 +28,7 @@ class PayController extends Controller{
 				}else {
 					$alipay_data['total_fee'] = $order['order_amount'];//订单总金额
 					$alipay_data['out_trade_no'] = $order['order_sn'];//商户订单ID
-					$alipay_data['subject'] = '通汇大商圈购物支付';//订单商品标题
+					$alipay_data['subject'] = '通汇大商圈订单支付';//订单商品标题
 					$alipay_data['body'] = '订单号:'.$order['order_sn'];//订单商品描述
 					$alipay_data['show_url'] = 'http://'.$_SERVER['SERVER_NAME'].U('Member/order',array('sn'=>$order['order_sn']));//订单商品地址
 					$alipay_data['notify_url'] = U('Mobile/Pay/alipayNotify', '', true, true);

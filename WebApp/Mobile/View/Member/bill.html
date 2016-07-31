@@ -1,0 +1,32 @@
+﻿<include file="Public:header"/>
+<div class="deposit-group">
+    <div class="header-all">
+        <div class="com-header">
+            <a class="back-a" href="{:U('Member/index')}"><i class="head-icon-back">&#xe609;</i></a>个人中心
+        </div>
+        <div class="dt-top"></div>
+    </div>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="{:U('',array('bill_type'=>1))}">收入</a></li>
+                <li><a href="{:U('',array('bill_type'=>-1))}">支出</a></li>
+            </ul>
+            <span class="hover-bock"></span>
+        </nav>
+    </div>
+    <div class="container">
+        <volist name="list" id="vo">
+            <dl>
+                <dt>{$vo['channel']}</dt>
+                <dd>
+                    <strong>￥{$vo['amount']|price_format}</strong>
+                    <p>{$vo['bill_log']}</p>
+                    <span>{$vo['addtime']|date='Y-m-d H:i:s',###}</span>
+                </dd>
+            </dl>
+        </volist>
+    </div>
+    {:W('Menu/footer_nav')}
+</div>
+<include file="Public:footer"/>

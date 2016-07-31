@@ -65,9 +65,9 @@ function price_format($price)
 	}
 }
 //订单号生成
-function order_sn() 
+function order_sn($prefix = '')
 {
-	$order_sn = 'ZXK'.date('Ymd').substr( implode(NULL,array_map('ord',str_split(substr(uniqid(),7,13),1))) , -8 , 8);
+	$order_sn = $prefix.date('Ymd').substr( implode(NULL,array_map('ord',str_split(substr(uniqid(),7,13),1))) , -8 , 8);
 	return $order_sn;
 }
 /**

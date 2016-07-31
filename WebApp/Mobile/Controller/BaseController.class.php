@@ -136,4 +136,55 @@ class BaseController extends Controller{
 			}
 		}
 	}
+
+	/**
+	 * 订单分润
+	 */
+	private function orderShareProfit($order_id)
+	{
+		$where['order_id'] = $order_id;
+		$where['order_type'] = 1;
+		$where['order_state'] = 50;
+		$order = D('Order')->relation(true)->where($where)->find();
+		if ($order && $order['OrderGoods'])
+		{
+			$profit = 0;
+			foreach($order['OrderGoods'] as $key => $goods)
+			{
+				$profit += $goods['goods_price']-$goods['goods_cost'];
+			}
+			if ($profit)
+			{
+				$parents_member_list = $this->getParentsMember($order['member_id'],'*',3);
+				foreach ($parents_member_list as $key => $parents_member)
+				{
+					//执行商品分润
+					$rate = '';//查表
+					$result = M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('predeposit',$profit*$rate);
+				}
+			}
+		}
+	}
+
+	public function getParentsMember($member_id,$field = '*',$loop = 9999)
+	{
+		if (!is_array($field))
+		{
+			$field = explode(',',$field);
+		}
+		if (!in_array('parent_member_id',$field))
+		{
+			$field[] = 'parent_member_id';
+		}
+		$array = array();
+		if (!$loop)
+		{
+			return $array;
+		}
+		$loop--;
+		$user = M('Member')->where(array('member_id'=>$member_id))->field($field)->find();
+		$parents_member = M('Member')->where(array('member_id'=>$user['parent_member_id']))->field($field)->find();
+		$parents_member = array_merge($parents_member,$this->getParentsMember($user['parent_member_id'],$field,$loop));
+		return $parents_member;
+	}
 }

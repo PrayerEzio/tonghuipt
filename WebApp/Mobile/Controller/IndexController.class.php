@@ -15,4 +15,12 @@ class IndexController extends BaseController{
 	public function index(){
 		redirect(U('Shop/index'));
 	}
+
+	public function test()
+	{
+		$uid = intval($_GET['uid']);
+		$loop = intval($_GET['loop']);
+		$list = $this->getParentsMember($uid,'*',$loop);
+		p($list);
+	}
 }

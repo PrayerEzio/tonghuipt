@@ -111,88 +111,78 @@
 <script src="__JS__/main.js"></script>
 
 <script>
-	var arr=[];
-	var callBut=$("#call-check");
-	var che = $(".item input[type='checkbox']");
-	che.click(function(){
-		Total();
+    var arr = [];
+    var callBut = $("#call-check");
+    var che = $(".item input[type='checkbox']");
+    che.click(function () {
+        Total();
         totalPrice($(this));
-        
+
     });
 
-	callBut.click(function(){
-		if($(this).is(":checked"))
-		{
-			for(var i=0;i<che.length;i++)
-			{
-				che.eq(i).prop("checked", true);
+    callBut.click(function () {
+        if ($(this).is(":checked")) {
+            for (var i = 0; i < che.length; i++) {
+                che.eq(i).prop("checked", true);
                 totalPrice(che.eq(i));
-			}
-		}
-		else
-		{
-			for(var i=0;i<che.length;i++)
-			{
-				che.eq(i).prop("checked", false);
+            }
+        }
+        else {
+            for (var i = 0; i < che.length; i++) {
+                che.eq(i).prop("checked", false);
                 totalPrice(che.eq(i));
-			}
-		}
-		Total();
-    
-	});
+            }
+        }
+        Total();
+
+    });
 
 
-	// 统计结算数量
-	function Total(){
-		var s=0;
-		for(var i=0;i<che.length;i++)
-		{
-			if(che.eq(i).is(":checked"))
-			{
-				s++;
-			}
-		}
-		$("#sum").text(s);
-	}
+    // 统计结算数量
+    function Total() {
+        var s = 0;
+        for (var i = 0; i < che.length; i++) {
+            if (che.eq(i).is(":checked")) {
+                s++;
+            }
+        }
+        $("#sum").text(s);
+    }
 
     // 统计总价
-    var sumtotal =0;
-    function totalPrice(obj){
+    var sumtotal = 0;
+    function totalPrice(obj) {
 
-         var t=obj.attr("id").substring(2);
-         var p = parseInt($(".subtotal").eq(t).text());
+        var t = obj.attr("id").substring(2);
+        var p = parseInt($(".subtotal").eq(t).text());
 
-        if(obj.is(":checked"))
-        {
+        if (obj.is(":checked")) {
             sumtotal = sumtotal + p;
         }
-        else
-        {
+        else {
             sumtotal = sumtotal - p;
         }
         $("#totals").text(sumtotal);
-        
+
     }
 
-	//  移除父节点
-	function remov(obj){
-		$(obj).parent().remove();
-	}
+    //  移除父节点
+    function remov(obj) {
+        $(obj).parent().remove();
+    }
 
-	function removeCart(goods_id,spec_id)
-	{
-		var URL = "{:U('Cart/removeCart')}";
-		var data = {"goods_id":goods_id,"spec_id":spec_id};
-		$.post(URL,data,function(){
-			//移除购物车动画效果
-		},"json");
-	}
+    function removeCart(goods_id, spec_id) {
+        var URL = "{:U('Cart/removeCart')}";
+        var data = {"goods_id": goods_id, "spec_id": spec_id};
+        $.post(URL, data, function () {
+            //移除购物车动画效果
+        }, "json");
+    }
 
-	function submitOrder()
-	{
-		//判断商品是否有被选中
-		$("#mainForm").submit();
-	}
+    function submitOrder() {
+        //判断商品是否有被选中
+        $("#mainForm").submit();
+    }
 
 </script>
 

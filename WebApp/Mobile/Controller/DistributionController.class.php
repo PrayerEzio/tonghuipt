@@ -24,4 +24,12 @@ class DistributionController extends BaseController{
 
 	}
 
+	/**
+	 * 购买代理
+	 */
+	public function pay()
+	{
+		order_sn();
+	}
+
 }
