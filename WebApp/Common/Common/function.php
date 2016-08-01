@@ -1433,3 +1433,35 @@ function getParentUidList($member_id,$loop = 9)
 	}
 	return $list;
 }
+
+function qrcode($url,$logo = './Public/Mobile/images/logo.jpg')
+{
+	$name = md5($url);
+	if (!file_exists('./Uploads/qrcode/'.$name.'.png'))
+	{
+		$QR = './Uploads/qrcode/'.$name.'.png';
+		$errorCorrectionLevel = 'L';//容错级别
+		$matrixPointSize = 6;//生成图片大小
+		vendor('phpqrcode.phpqrcode');
+		$qrcode = new \QRcode();
+		$qrcode->png($url, $QR,$errorCorrectionLevel,$matrixPointSize,2);
+		if ($logo !== FALSE) {
+			$QR = imagecreatefromstring(file_get_contents($QR));
+			$logo = imagecreatefromstring(file_get_contents($logo));
+			$QR_width = imagesx($QR);//二维码图片宽度
+			$QR_height = imagesy($QR);//二维码图片高度
+			$logo_width = imagesx($logo);//logo图片宽度
+			$logo_height = imagesy($logo);//logo图片高度
+			$logo_qr_width = $QR_width / 5;
+			$scale = $logo_width/$logo_qr_width;
+			$logo_qr_height = $logo_height/$scale;
+			$from_width = ($QR_width - $logo_qr_width) / 2;
+			//重新组合图片并调整大小
+			imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,
+				$logo_qr_height, $logo_width, $logo_height);
+		}
+		//输出图片
+		imagepng($QR, './Uploads/qrcode/'.$name.'.png');
+	}
+	return __ROOT__.'/Uploads/qrcode/'.$name.'.png';
+}

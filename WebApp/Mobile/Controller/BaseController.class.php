@@ -159,8 +159,16 @@ class BaseController extends Controller{
 				foreach ($parents_member_list as $key => $parents_member)
 				{
 					//执行商品分润
-					$rate = '';//查表
+					$where['level'] = $key+1;
+					$where['status'] = 1;
+					$OrderShareProfit = M('OrderShareProfit')->where($where)->find();
+					$rate = $OrderShareProfit['profit_rate']/100;
+					//执行分润
 					$result = M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('predeposit',$profit*$rate);
+					if ($result)
+					{
+						//写入资金日志
+					}
 				}
 			}
 		}
@@ -168,6 +176,12 @@ class BaseController extends Controller{
 
 	public function getParentsMember($member_id,$field = '*',$loop = 9999)
 	{
+		$array = array();
+		if (!$loop)
+		{
+			return $array;
+		}
+		$loop--;
 		if (!is_array($field))
 		{
 			$field = explode(',',$field);
@@ -176,15 +190,10 @@ class BaseController extends Controller{
 		{
 			$field[] = 'parent_member_id';
 		}
-		$array = array();
-		if (!$loop)
-		{
-			return $array;
-		}
-		$loop--;
 		$user = M('Member')->where(array('member_id'=>$member_id))->field($field)->find();
-		$parents_member = M('Member')->where(array('member_id'=>$user['parent_member_id']))->field($field)->find();
-		$parents_member = array_merge($parents_member,$this->getParentsMember($user['parent_member_id'],$field,$loop));
-		return $parents_member;
+		$parents_member[] = M('Member')->where(array('member_id'=>$user['parent_member_id']))->field($field)->find();
+		$next_parents_member = $this->getParentsMember($user['parent_member_id'],$field,$loop);
+		$array = array_merge($parents_member,$next_parents_member);
+		return $array;
 	}
 }

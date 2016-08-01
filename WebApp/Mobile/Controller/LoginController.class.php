@@ -143,6 +143,7 @@ class LoginController extends BaseController{
 			}
 		}elseif (IS_GET){
 			$this->check_login();
+			$this->invite_phone = trim($_GET['invite_phone']);
 			$this->display();
 		}
 	}
