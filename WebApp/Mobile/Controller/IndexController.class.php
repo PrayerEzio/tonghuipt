@@ -7,7 +7,6 @@
  * @author     muxiangdao-cn Team Prayer (283386295@qq.com)
  */
 namespace Mobile\Controller;
-use Mobile\Controller\BaseController;
 class IndexController extends BaseController{
 	public function __construct(){
 		parent::__construct();
@@ -22,5 +21,16 @@ class IndexController extends BaseController{
 		$loop = intval($_GET['loop']);
 		$list = $this->getParentsMember($uid,'*',$loop);
 		p($list);
+	}
+
+	public function qrcode()
+	{
+		$value = 'http://www.zhihu.com?from=tonghui'; //二维码内容
+		$errorCorrectionLevel = 'L';//容错级别
+		$matrixPointSize = 6;//生成图片大小
+		vendor('phpqrcode.phpqrcode');
+		$qrcode = new \QRcode();
+		$qrcode->png($value,'./Uploads/qrcode/'.md5($value).'.png',$errorCorrectionLevel,$matrixPointSize,2);
+		echo '<img src="'.__ROOT__.'/Uploads/qrcode/'.md5($value).'.png'.'">';
 	}
 }

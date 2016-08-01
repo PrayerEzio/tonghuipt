@@ -1,19 +1,434 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1de074bf-16af-419b-b0f0-69e7cbb5dc4c" name="默认的" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/bill.html" />
+    <list default="true" id="1de074bf-16af-419b-b0f0-69e7cbb5dc4c" name="默认的" comment="2016-7-27 18:51:15">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_10.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_11.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_12.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_12.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_13.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_13.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_14.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_15.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_15.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_16.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_16.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_17.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_17.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_18.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_18.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_19.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_19.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_20.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_21.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_21.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_22.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_22.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_23.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_23.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_24.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_25.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_25.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_26.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_26.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_27.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_27.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_28.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_28.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_29.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_29.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_30.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_31.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_31.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_32.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_33.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_33.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_34.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_34.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_35.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_35.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_36.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_36.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_37.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_37.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_38.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_38.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_39.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_39.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_40.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_40.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_8.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_9.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/frame_9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_101_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_105_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_109_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_113_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_117_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_121_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_125_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_129_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_133_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_137_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_141_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_145_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_149_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_153_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_157_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_161_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_165_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_169_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_173_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_177_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_21_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_25_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_29_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_33_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_37_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_41_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_45_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_49_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_53_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_57_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_61_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_65_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_69_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_73_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_77_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_81_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_85_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_89_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_93_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_0/mask_97_0.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_101_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_105_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_109_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_113_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_117_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_121_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_125_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_129_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_133_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_137_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_141_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_145_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_149_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_153_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_157_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_161_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_165_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_169_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_173_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_177_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_21_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_25_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_29_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_33_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_37_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_41_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_45_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_49_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_53_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_57_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_61_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_65_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_69_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_73_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_77_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_81_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_85_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_89_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_93_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_1/mask_97_1.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_101_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_105_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_109_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_113_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_117_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_121_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_125_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_129_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_133_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_137_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_141_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_145_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_149_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_153_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_157_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_161_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_165_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_169_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_173_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_177_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_21_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_25_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_29_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_33_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_37_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_41_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_45_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_49_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_53_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_57_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_61_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_65_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_69_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_73_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_77_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_81_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_85_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_89_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_93_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_2/mask_97_2.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_101_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_105_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_109_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_113_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_117_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_121_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_125_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_129_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_133_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_137_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_141_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_145_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_149_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_153_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_157_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_161_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_165_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_169_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_173_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_177_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_21_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_25_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_29_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_33_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_37_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_41_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_45_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_49_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_53_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_57_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_61_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_65_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_69_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_73_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_77_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_81_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_85_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_89_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_93_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_3/mask_97_3.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_101_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_105_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_109_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_113_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_117_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_121_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_125_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_129_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_133_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_137_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_141_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_145_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_149_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_153_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_157_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_161_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_165_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_169_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_173_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_177_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_21_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_25_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_29_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_33_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_37_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_41_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_45_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_49_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_53_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_57_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_61_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_65_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_69_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_73_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_77_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_81_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_85_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_89_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_93_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_4/mask_97_4.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_101_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_105_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_109_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_113_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_117_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_121_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_125_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_129_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_133_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_137_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_141_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_145_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_149_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_153_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_157_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_161_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_165_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_169_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_173_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_177_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_21_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_25_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_29_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_33_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_37_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_41_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_45_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_49_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_53_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_57_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_61_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_65_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_69_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_73_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_77_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_81_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_85_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_89_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_93_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_5/mask_97_5.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_101_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_105_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_109_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_113_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_117_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_121_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_125_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_129_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_133_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_137_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_141_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_145_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_149_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_153_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_157_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_161_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_165_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_169_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_173_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_177_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_21_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_25_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_29_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_33_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_37_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_41_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_45_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_49_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_53_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_57_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_61_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_65_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_69_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_73_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_77_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_81_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_85_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_89_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_93_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_6/mask_97_6.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_101_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_105_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_109_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_113_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_117_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_121_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_125_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_129_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_133_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_137_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_141_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_145_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_149_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_153_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_157_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_161_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_165_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_169_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_173_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_177_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_21_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_25_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_29_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_33_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_37_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_41_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_45_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_49_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_53_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_57_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_61_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_65_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_69_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_73_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_77_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_81_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_85_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_89_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_93_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/cache/mask_7/mask_97_7.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/CHANGELOG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/INSTALL" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/VERSION" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/bindings/tcpdf/qrcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/phpqrcode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrbitstream.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrconfig.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrconst.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrencode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrimage.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrinput.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrlib.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrmask.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrrscode.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrspec.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrsplit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/qrtools.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/tools/merge.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/tools/merge.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/tools/merge.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/tools/merged_config.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/tools/merged_header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Common/Common/function.php" afterPath="$PROJECT_DIR$/WebApp/Common/Common/function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/DistributionController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/DistributionController.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/branch.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/branch.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/info.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/info.html" />
     </list>
     <ignored path="tonghuipt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,33 +457,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MemberController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.307692">
-              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-              <folding>
-                <element signature="e#275#299#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IndexController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.461538">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.83219177">
+              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="phpqrcode.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/phpqrcode.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="9.153846">
+              <caret line="3089" column="31" selection-start-line="3089" selection-start-column="31" selection-end-line="3089" selection-end-column="31" />
+              <folding>
+                <marker date="1470019993848" expanded="true" signature="9713:9881" placeholder="..." />
+                <marker date="1470019993848" expanded="false" signature="9753:9783" placeholder="..." />
+                <marker date="1470019993848" expanded="false" signature="9808:9825" placeholder="..." />
+                <marker date="1470019993848" expanded="true" signature="10030:10046" placeholder="..." />
+                <marker date="1470019993848" expanded="true" signature="10356:10531" placeholder="..." />
+                <marker date="1470019993848" expanded="false" signature="10385:10411" placeholder="..." />
+                <marker date="1470019993848" expanded="false" signature="10424:10440" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46875">
-              <caret line="160" column="28" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
+            <state vertical-scroll-proportion="-19.23077">
+              <caret line="185" column="23" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -76,9 +497,17 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="PrayerEzio &lt;prayer@aeilyo.com&gt;" />
         <option value="PrayerEzio &lt;283386295@qq.com&gt;" />
       </list>
     </option>
@@ -87,31 +516,40 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Public/footer.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/LoginController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Member/member.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Login/register.html" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/MemberController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Public/header.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Login/index.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Shop/detail.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
-        <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/MemberController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Common/Conf/config.php" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/DistributionController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Common/Common/function.php" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/bill.html" />
+        <option value="$PROJECT_DIR$/Public/Mobile/css/style.css" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Public/footer.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Widget/MenuWidget.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Widget/Menu/footer_nav.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/branch.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/info.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Shop/category.html" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Index/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/GoodsController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Goods/goods.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Login/register.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Goods/goods_edit.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Order/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Common/Common/function.php" />
+        <option value="$PROJECT_DIR$/WebApp/Common/Lib/phpqrcode/phpqrcode.php" />
+        <option value="$PROJECT_DIR$/WebApp/Common/Conf/config.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php" />
       </list>
     </option>
   </component>
@@ -128,7 +566,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="添加" />
@@ -155,10 +593,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="问题" />
-      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -227,16 +662,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="Conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.vagrant" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
@@ -244,30 +680,139 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="51" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="51" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="64" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="611" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="52" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="43" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="65" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="617" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../xiaoweifeng" />
+    <property name="last_opened_file_path" value="D:/www/trunk" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Member" />
+      <recent name="D:\wamp\www\tonghuipt\ThinkYun\Library\Vendor" />
+      <recent name="D:\wamp\www\tonghuipt\WebApp\Common\Lib" />
+      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Order" />
+      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Shop" />
       <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Cart" />
-      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="片刻 之前" ActionInfo="更新 (_U)">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="从服务器更新" />
+        <option name="myStatusName" value="在服务器上已改变" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已更新" />
+          <option name="myStatusName" value="已改变" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/deployment.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Common/Common/function.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/Controller/DistributionController.class.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/View/Member/branch.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/View/Member/info.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已创建" />
+          <option name="myStatusName" value="已创建" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/WebApp/Mobile/View/Member/bill.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已删除" />
+          <option name="myStatusName" value="已删除" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="已恢复" />
+          <option name="myStatusName" value="将被恢复" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已修改" />
+        <option name="myStatusName" value="已修改" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已跳过" />
+        <option name="myStatusName" value="已跳过" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="合并冲突" />
+        <option name="myStatusName" value="将被合并冲突" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已合并树冲突" />
+        <option name="myStatusName" value="已合并树冲突" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已合并属性冲突" />
+        <option name="myStatusName" value="将被合并属性冲突" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已合并" />
+        <option name="myStatusName" value="将被合并" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="在库里没有" />
+        <option name="myStatusName" value="在库里没有" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="本地已添加" />
+        <option name="myStatusName" value="本地已添加" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="本地已移除" />
+        <option name="myStatusName" value="本地已移除" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="已切换" />
+        <option name="myStatusName" value="已切换" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -340,76 +885,84 @@
       <option name="project" value="LOCAL" />
       <updated>1469265281610</updated>
     </task>
-    <task id="LOCAL-00006" summary="2016-7-25 07:45:03">
-      <created>1469403915459</created>
+    <task id="LOCAL-00006" summary="2016-7-25 12:05:22">
+      <created>1469419537020</created>
       <option name="number" value="00006" />
       <option name="project" value="LOCAL" />
-      <updated>1469403915459</updated>
+      <updated>1469419537020</updated>
     </task>
-    <task id="LOCAL-00007" summary="2016-7-25 07:45:03">
-      <created>1469404262110</created>
+    <task id="LOCAL-00007" summary="2016-7-25 16:46:35">
+      <created>1469436402185</created>
       <option name="number" value="00007" />
       <option name="project" value="LOCAL" />
-      <updated>1469404262110</updated>
+      <updated>1469436402185</updated>
     </task>
-    <task id="LOCAL-00008" summary="2016-7-25 07:56:05">
-      <created>1469404569424</created>
+    <task id="LOCAL-00008" summary="2016-7-25 18:58:16">
+      <created>1469444303130</created>
       <option name="number" value="00008" />
       <option name="project" value="LOCAL" />
-      <updated>1469404569424</updated>
+      <updated>1469444303130</updated>
     </task>
-    <task id="LOCAL-00009" summary="2016-7-25 07:58:24">
-      <created>1469404707243</created>
+    <task id="LOCAL-00009" summary="2016-7-26 10:57:44">
+      <created>1469501866336</created>
       <option name="number" value="00009" />
       <option name="project" value="LOCAL" />
-      <updated>1469404707243</updated>
+      <updated>1469501866337</updated>
     </task>
-    <task id="LOCAL-00010" summary="2016-7-26 00:35:05">
-      <created>1469464517018</created>
+    <task id="LOCAL-00010" summary="2016-7-27 14:08:41">
+      <created>1469599727879</created>
       <option name="number" value="00010" />
       <option name="project" value="LOCAL" />
-      <updated>1469464517018</updated>
+      <updated>1469599727879</updated>
     </task>
-    <task id="LOCAL-00011" summary="2016-7-29 00:37:44">
-      <created>1469723874914</created>
+    <task id="LOCAL-00011" summary="2016-7-27 18:51:15">
+      <created>1469616682119</created>
       <option name="number" value="00011" />
       <option name="project" value="LOCAL" />
-      <updated>1469723874914</updated>
+      <updated>1469616682119</updated>
     </task>
-    <task id="LOCAL-00012" summary="2016-7-30 10:43:28">
-      <created>1469846616131</created>
+    <task id="LOCAL-00012" summary="2016-7-28 19:02:11">
+      <created>1469703737619</created>
       <option name="number" value="00012" />
       <option name="project" value="LOCAL" />
-      <updated>1469846616131</updated>
+      <updated>1469703737619</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="2016-7-29 18:58:37">
+      <created>1469789922592</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1469789922592</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.258547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20299146" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23290598" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29822618" sideWeight="0.42094016" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29822618" sideWeight="0.57905984" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28139013" sideWeight="0.3696581" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28139013" sideWeight="0.6303419" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847533" sideWeight="0.43376067" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.46153846" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847533" sideWeight="0.45726496" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.4722222" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -431,93 +984,25 @@
     <MESSAGE value="2016-7-22 00:39:29" />
     <MESSAGE value="2016-7-23 16:28:07" />
     <MESSAGE value="2016-7-23 17:14:37" />
-    <MESSAGE value="2016-7-25 07:45:03" />
-    <MESSAGE value="2016-7-25 07:56:05" />
-    <MESSAGE value="2016-7-25 07:58:24" />
-    <MESSAGE value="2016-7-26 00:35:05" />
-    <MESSAGE value="2016-7-29 00:37:44" />
-    <MESSAGE value="2016-7-30 10:43:28" />
-    <option name="LAST_COMMIT_MESSAGE" value="2016-7-30 10:43:28" />
+    <MESSAGE value="2016-7-25 12:05:22" />
+    <MESSAGE value="2016-7-25 16:46:35" />
+    <MESSAGE value="2016-7-25 18:58:16" />
+    <MESSAGE value="2016-7-26 10:57:44" />
+    <MESSAGE value="2016-7-27 14:08:41" />
+    <MESSAGE value="2016-7-27 18:51:15" />
+    <MESSAGE value="2016-7-28 19:02:11" />
+    <MESSAGE value="2016-7-29 18:58:37" />
+    <option name="LAST_COMMIT_MESSAGE" value="2016-7-29 18:58:37" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="7" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html">
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/WechatController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="131" selection-start-line="23" selection-start-column="131" selection-end-line="23" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/MemberController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/member.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/MemberController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/member.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="88" selection-start-line="47" selection-start-column="88" selection-end-line="47" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Think/Controller.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0">
-          <caret line="209" column="23" selection-start-line="209" selection-start-column="23" selection-end-line="209" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -535,10 +1020,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Home/Controller/MemberController.class.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/member.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34835356">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="35" selection-end-column="13" />
+        <state vertical-scroll-proportion="-0.1559792">
+          <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -549,59 +1041,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18717505">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24956672">
-          <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Common/Lib/Cart/Cart.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33275563">
           <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13138686">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Login/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Login/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="107" selection-start-line="1" selection-start-column="107" selection-end-line="1" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6923077">
-          <caret line="33" column="19" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -619,173 +1062,257 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34982333">
+          <caret line="11" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55467194">
+          <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/LoginController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57712305">
-          <caret line="38" column="54" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.8268551">
+          <caret line="109" column="56" selection-start-line="109" selection-start-column="24" selection-end-line="109" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/json.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Home/Controller/MemberController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34835356">
-          <caret line="88" column="9" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.7632509">
+          <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/member.html">
+    <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Think/Controller.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.692308">
-          <caret line="40" column="56" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.34805652">
+          <caret line="201" column="23" selection-start-line="201" selection-start-column="23" selection-end-line="201" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Goods/goods.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3396881">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87348354">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Goods/goods_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.82669">
-          <caret line="109" column="40" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/MemberController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7746966">
-          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/GoodsController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6239168">
-          <caret line="710" column="55" selection-start-line="710" selection-start-column="55" selection-end-line="710" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BoardController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53125">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Common/Conf/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1875">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.90625">
-          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03125">
-          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03125">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/DistributionController.class.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Conf/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="16" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Common/Common/function.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/footer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
-          <folding>
-            <marker date="1469850345808" expanded="true" signature="12663:12729" placeholder="..." />
-            <marker date="1469850345808" expanded="true" signature="12690:12719" placeholder="{...}" />
-          </folding>
+        <state vertical-scroll-proportion="0.22261484">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php">
+    <entry file="file://$PROJECT_DIR$/HTML/category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="54" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
-          <folding />
+        <state vertical-scroll-proportion="0.7632509">
+          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Member/bill.html">
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Widget/Menu/footer_nav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-          <folding />
+        <state vertical-scroll-proportion="0.06360424">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="49" selection-end-line="2" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Widget/MenuWidget.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19081272">
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Login/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6923077">
+          <caret line="1" column="107" selection-start-line="1" selection-start-column="107" selection-end-line="1" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12720849">
+          <caret line="4" column="65" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2508834">
+          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Member/branch.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6819788">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/IndexController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50373137">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="231" column="163" selection-start-line="231" selection-start-column="163" selection-end-line="231" selection-end-column="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8461537">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Think/Page.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7632509">
+          <caret line="32" column="68" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Login/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19081272">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Goods/goods_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9717314">
+          <caret line="62" column="46" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Goods/goods.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.9611306">
+          <caret line="156" column="196" selection-start-line="156" selection-start-column="187" selection-end-line="156" selection-end-column="196" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/GoodsController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03180212">
+          <caret line="1137" column="38" selection-start-line="1137" selection-start-column="38" selection-end-line="1137" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/MemberController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.215754">
+          <caret line="305" column="73" selection-start-line="305" selection-start-column="73" selection-end-line="305" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.7636986">
+          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43150684">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.6164383">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Member/info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        <state vertical-scroll-proportion="2.958904">
+          <caret line="96" column="59" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/WechatController.class.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Order/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="43.615383">
-          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+        <state vertical-scroll-proportion="1.6643835">
+          <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Common/Model/OrderModel.class.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.461538">
-          <caret line="24" column="19" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="19" />
+        <state vertical-scroll-proportion="1.849315">
+          <caret line="67" column="30" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Common/Model/GoodsModel.class.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.510274">
+          <caret line="86" column="46" selection-start-line="86" selection-start-column="46" selection-end-line="86" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40068492">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.34417808">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="e#276#305#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Lib/Alipay/Alipay.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.030821918">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.23077">
+          <caret line="185" column="23" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Muxiangdao/Emoji.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -793,28 +1320,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
+    <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Vendor/Smarty/Smarty.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.307692">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        <state vertical-scroll-proportion="-43.660957">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Vendor/phpRPC/bigint.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1849315">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34760273">
+          <caret line="528" column="4" selection-start-line="528" selection-start-column="4" selection-end-line="528" selection-end-column="4" />
           <folding>
-            <element signature="e#275#299#0#PHP" expanded="true" />
+            <marker date="1470018228382" expanded="true" signature="12663:12729" placeholder="..." />
+            <marker date="1470018228382" expanded="true" signature="12690:12719" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/phpqrcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.153846">
+          <caret line="3089" column="31" selection-start-line="3089" selection-start-column="31" selection-end-line="3089" selection-end-column="31" />
+          <folding>
+            <marker date="1470019993848" expanded="true" signature="9713:9881" placeholder="..." />
+            <marker date="1470019993848" expanded="false" signature="9753:9783" placeholder="..." />
+            <marker date="1470019993848" expanded="false" signature="9808:9825" placeholder="..." />
+            <marker date="1470019993848" expanded="true" signature="10030:10046" placeholder="..." />
+            <marker date="1470019993848" expanded="true" signature="10356:10531" placeholder="..." />
+            <marker date="1470019993848" expanded="false" signature="10385:10411" placeholder="..." />
+            <marker date="1470019993848" expanded="false" signature="10424:10440" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1849315">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/IndexController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.461538">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46875">
-          <caret line="160" column="28" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.83219177">
+          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
           <folding />
         </state>
       </provider>
