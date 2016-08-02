@@ -121,6 +121,7 @@ class BaseController extends Controller{
 		if ($res)
 		{
 			//TODO:资金日志
+
 			//更新公牌数据库
 			$data['finish_num'] = $board_info['finish_num']++;
 			$data['differ_num'] = $board_info['differ_num']--;
@@ -167,7 +168,7 @@ class BaseController extends Controller{
 					$result = M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('predeposit',$profit*$rate);
 					if ($result)
 					{
-						//写入资金日志
+						//TODO:写入资金日志
 					}
 				}
 			}

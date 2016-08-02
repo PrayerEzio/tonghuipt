@@ -1284,6 +1284,35 @@ function get_express_name($express_id){
 	}
 	return $name;
 }
+
+function get_board_status_name($board_status){
+	switch ($board_status){
+		case -1:
+			$name = '已取消';break;
+		case 0:
+			$name = '进行中';break;
+		case 1:
+			$name = '已完成';break;
+		default:
+			$name = '未知状态';
+	}
+	return $name;
+}
+
+function get_agent_level($agent_level){
+	switch ($agent_level){
+		case 3:
+			$name = '市级代理';break;
+		case 6:
+			$name = '省级代理';break;
+		case 9:
+			$name = '全国代理';break;
+		default:
+			$name = '未知';
+	}
+	return $name;
+}
+
 function get_rp_status_name($rp_status){
 	switch ($rp_status){
 		case -1:
