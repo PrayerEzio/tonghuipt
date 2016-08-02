@@ -141,7 +141,7 @@ class BaseController extends Controller{
 	/**
 	 * 订单分润
 	 */
-	private function orderShareProfit($order_id)
+	protected function orderShareProfit($order_id)
 	{
 		$where['order_id'] = $order_id;
 		$where['order_type'] = 1;

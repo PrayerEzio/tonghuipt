@@ -126,8 +126,19 @@ class OrderController extends BaseController{
 		$where['order_state'] = 40;
 		$count = M('Order')->where($where)->count();
 		if ($count == 1) {
+			$order = M('Order')->where($where)->find();
 			$res = M('Order')->where($where)->setField('order_state',50);
 			if ($res) {
+				//订单日志
+				$log_data['order_id'] = $order['order_id'];
+				$log_data['order_state'] = get_order_state_name(40);
+				$log_data['change_state'] = get_order_state_name(50);
+				$log_data['state_info'] = '会员完成订单';
+				$log_data['log_time'] = NOW_TIME;
+				$log_data['operator'] = '会员';
+				M('OrderLog')->add($log_data);
+				//进行三级分润
+				$this->orderShareProfit($order['order_id']);
 				$this->success('完成订单成功',U('Order/detail',array('sn'=>$sn)));
 			}else {
 				$this->error('完成订单失败');
