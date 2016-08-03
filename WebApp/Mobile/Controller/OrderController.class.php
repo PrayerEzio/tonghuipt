@@ -24,7 +24,7 @@ class OrderController extends BaseController{
 		$where['member_id'] = $this->mid;
 		$count = D('Order')->where($where)->count();
 		$page = new Page($count,10);
-		$list = D('Order')->where($where)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();
+		$list = D('Order')->relation(true)->where($where)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();
 		$this->list = $list;
 		$this->page = $page->show();
 		$this->display();
@@ -35,7 +35,9 @@ class OrderController extends BaseController{
 	 */
 	public function detail(){
 		$order_sn = str_rp($_GET['sn'],1);
-		$info = D('Order')->relation(true)->where(array('order_sn'=>$order_sn))->find();
+		$where['order_sn'] = $order_sn;
+		$where['member_id'] = $this->mid;
+		$info = D('Order')->relation(true)->where($where)->find();
 		$this->assign('info',$info);
 		$this->display();
 	}
@@ -144,9 +146,20 @@ class OrderController extends BaseController{
 		$where['order_state'] = 40;
 		$count = M('Order')->where($where)->count();
 		if ($count == 1) {
-			$order = M('Order')->where($where)->find();
+			$order = D('Order')->relation('OrderGoods')->where($where)->find();
 			$res = M('Order')->where($where)->setField('order_state',50);
 			if ($res) {
+				//赠送商品积分 扣除所需积分
+				$get_point_amount = 0;
+				$cost_point_amount = 0;
+				foreach ($order['OrderGoods'] as $k => $goods)
+				{
+					$get_point_amount += $goods['goods_point'];
+					$cost_point_amount += $goods['cost_point'];
+				}
+				M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$get_point_amount);
+				M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$cost_point_amount);
+				//TODO:积分日志
 				//订单日志
 				$log_data['order_id'] = $order['order_id'];
 				$log_data['order_state'] = get_order_state_name(40);
@@ -204,14 +217,20 @@ class OrderController extends BaseController{
 				//计算价格同时清除购物车里的商品
 				$Cart = new Cart();
 				$Cart->delItem($val['goods_id']);
-				$goods_price = M('Goods')->where(array('goods_id'=>$val['goods_id']))->getField('goods_price');
+				$goods = M('Goods')->where(array('goods_id'=>$val['goods_id']))->find();
+				$goods_price = $goods['goods_price'];
 				if (get_distributor($this->mid)) {
 					$goods_price = $goods_price*MSC('distributor_discount');
 				}
 				$data['goods_amount'] += $goods_price*$val['goods_num'];
 				$data['shipping_fee'] += $val['freight']*$val['goods_num'];
 				$data['discount'] += $data['goods_amount']*(1-get_discount($val['goods_num']));
-				//冻结库存
+				if ($goods['goods_storage'] < $val['goods_num'])
+				{
+					$this->error('抱歉,订单商品库存已不足,无法生成订单.');
+				}
+			}
+			foreach ($goods_list as $key => $val){
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setDec('goods_storage',$val['goods_num']);
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setInc('goods_freez',$val['goods_num']);
 			}
@@ -250,6 +269,7 @@ class OrderController extends BaseController{
 				switch (trim($_POST['pay_type'])){
 					case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$data['order_sn'])));break;
 					case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$data['order_sn'])));break;
+					case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$data['order_sn'])));break;
 				}
 			}
 		}else {
@@ -304,6 +324,7 @@ class OrderController extends BaseController{
 			switch ($pay_type){
 				case 1:$url = U('Pay/alipay',array($field=>$sn));break;
 				case 2:$url = U('Pay/bdpay',array($field=>$sn));break;
+				case 3:$url = U('Pay/wxpay',array($field=>$sn));break;
 				default:$url = U('Pay/alipay',array($field=>$sn));break;
 			}
 			redirect($url);

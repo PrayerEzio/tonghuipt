@@ -28,6 +28,7 @@ class BaseController extends Controller{
 			$web_stting = F('setting');
 		}
 		$this->assign('web_stting',$web_stting);
+		$this->autoCancelOvertimeOrder();
 		//站点状态判断
 		if($web_stting['site_status'] != 1){
 		   echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
@@ -197,4 +198,36 @@ class BaseController extends Controller{
 		$array = array_merge($parents_member,$next_parents_member);
 		return $array;
 	}
+
+	//取消超时订单
+	private function autoCancelOvertimeOrder()
+	{
+		//取消未支付的超时订单
+		$where['order_state'] = 10;
+		$where['add_time'] = array('lt',time()-MSC('nopay_order_overtime'));
+		$list = D('Order')->relation(true)->where($where)->select();
+		foreach ($list as $key => $order)
+		{
+			//订单取消
+			$res = M('Order')->where(array('order_id'=>$order['order_id']))->setField('order_state',60);
+			if ($res)
+			{
+				//写入订单日志
+				$log_data['order_id'] = $order['order_id'];
+				$log_data['order_state'] = get_order_state_name(10);
+				$log_data['change_state'] = get_order_state_name(60);
+				$log_data['state_info'] = '订单超时未支付,系统自动取消.';
+				$log_data['log_time'] = time()-MSC('nopay_order_overtime');//NOW_TIME;
+				$log_data['operator'] = '系统';
+				M('OrderLog')->add($log_data);
+				//商品回库存
+				foreach ($order['OrderGoods'] as $good)
+				{
+					M('Goods')->where(array('goods_id'=>$good['goods_id']))->setDec('goods_storage',$good['goods_num']);
+					M('Goods')->where(array('goods_id'=>$good['goods_id']))->setInc('goods_freez',$good['goods_num']);
+				}
+			}
+		}
+	}
+
 }

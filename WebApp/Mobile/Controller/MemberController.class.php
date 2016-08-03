@@ -68,15 +68,15 @@ class MemberController extends BaseController{
 					$data = array();
 					//转义emoji
 					$emoji = new Emoji();
-					$data['nickname'] = $data['nickname'] ? $data['nickname'] : $emoji->emoji_unified_to_html($user->nickname);
-					$data['wechat'] = $data['wechat'] ? $data['wechat'] : $emoji->emoji_unified_to_html($user->nickname);
+					$data['nickname'] = $member['nickname'] ? $member['nickname'] : $emoji->emoji_unified_to_html($user->nickname);
+					$data['wechat'] = $member['wechat'] ? $member['wechat'] : $emoji->emoji_unified_to_html($user->nickname);
 					$data['openid'] = $user->openid;
-					$data['gender'] = $data['gender'] ? $data['gender'] : $user->sex;
-					$data['country'] = $data['country'] ? $data['country'] : $user->country;
-					$data['province'] = $data['province'] ? $data['province'] : $user->province;
-					$data['city'] = $data['city'] ? $data['city'] : $user->city;
-					$data['usercity'] = $data['usercity'] ? $data['usercity'] : $user->city;
-					$data['avatar'] = $data['avatar'] ? $data['avatar'] : $user->headimgurl;
+					$data['gender'] = $member['gender'] ? $member['gender'] : $user->sex;
+					$data['country'] = $member['country'] ? $member['country'] : $user->country;
+					$data['province'] = $member['province'] ? $member['province'] : $user->province;
+					$data['city'] = $member['city'] ? $member['city'] : $user->city;
+					$data['usercity'] = $member['usercity'] ? $member['usercity'] : $user->city;
+					$data['avatar'] = $member['avatar'] ? $member['avatar'] : $user->headimgurl;
 					$data['unionid'] = $user->unionid;
 					$data['web_token'] = $web_token;
 					$data['refresh_token'] = $refresh_token;
@@ -126,9 +126,9 @@ class MemberController extends BaseController{
 			$data['nickname'] = trim($_POST['nickname']);
 			$data['member_name'] = trim($_POST['member_name']);
 			$data['gender'] = intval($_POST['gender']);
-			$data['province'] = intval($_POST['province']);
-			$data['city'] = intval($_POST['city']);
-			$data['area'] = intval($_POST['area']);
+			$data['province'] = trim($_POST['province']);
+			$data['city'] = trim($_POST['city']);
+			$data['area'] = trim($_POST['area']);
 			if(!empty($_FILES['avatar']['size'])){
 				$arc_img = 'mid_avatar_'.$this->mid;
 				$param = array('savePath'=>'member/','subName'=>'','files'=>$_FILES['avatar'],'saveName'=>$arc_img,'saveExt'=>'');
@@ -137,7 +137,7 @@ class MemberController extends BaseController{
 					$this->error('图片上传失败');
 					exit;
 				}else{
-					$data['avatar'] = $up_return;
+					$data['avatar'] = C('SiteUrl').'/Uploads/'.$up_return;
 				}
 			}
 			$data['wechat'] = trim($_POST['wechat']);
@@ -244,16 +244,29 @@ class MemberController extends BaseController{
 		$order_list = M('Order')->where($where)->select();
 		foreach ($order_list as $key => $order)
 		{
+			$where['order_id'] = $order['order_id'];
+			$order = D('Order')->relation('OrderGoods')->where($where)->find();
 			//变更交易状态
 			$res = M('Order')->where($where)->setField('order_state',50);
 			if ($res)
 			{
+				//赠送商品积分 扣除所需积分
+				$get_point_amount = 0;
+				$cost_point_amount = 0;
+				foreach ($order['OrderGoods'] as $k => $goods)
+				{
+					$get_point_amount += $goods['goods_point'];
+					$cost_point_amount += $goods['cost_point'];
+				}
+				M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$get_point_amount);
+				M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$cost_point_amount);
+				//TODO:积分日志
 				//订单日志
 				$log_data['order_id'] = $order['order_id'];
 				$log_data['order_state'] = get_order_state_name(40);
 				$log_data['change_state'] = get_order_state_name(50);
 				$log_data['state_info'] = '系统自动完成订单';
-				$log_data['log_time'] = NOW_TIME;
+				$log_data['log_time'] = $order['auto_finish_time'];//NOW_TIME;
 				$log_data['operator'] = '系统';
 				M('OrderLog')->add($log_data);
 				//进行三级分润
