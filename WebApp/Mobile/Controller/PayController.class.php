@@ -306,4 +306,43 @@ class PayController extends Controller{
 			redirect(U('Order/detail',array('sn'=>$_GET['order_no'])));
 		}
 	}
+
+	/**
+	 * 微信支付
+	 */
+	public function wxpay()
+	{
+		$order_sn = trim($_GET['order_sn']);
+		if ($order_sn) {
+			$member_id = $this->mid;+
+			$open_id = M('Member')->where(array('member_id'=>$member_id))->getField('openid');
+			$where['order_sn'] = $order_sn;
+			$where['member_id'] = $member_id;
+			$order = $this->mod->where($where)->find();
+			if (is_array($order) && !empty($order)) {
+				if ($order['order_state'] != 10) {
+					$this->error('该订单号无法进行支付,请联系客服.');
+				}else {
+					$wxpay_date['openid'] = $open_id;
+					$wxpay_date['body'] = '订单号:'.$order['order_sn'];//订单商品描述
+					$wxpay_date['total_fee'] = $order['order_amount'];//订单总金额
+					$wxpay_date['out_trade_no'] = $order['order_sn'];//商户订单ID
+					$wxpay_date['notify_url'] = U('Mobile/Pay/wxpayNotify', '', true, true);
+					jsapi_pay($wxpay_date);
+				}
+			}else {
+				$this->error('非法操作');
+			}
+		}else {
+			$this->error('订单不存在.');
+		}
+	}
+
+	/**
+	 * 微信支付异步通知
+	 */
+	public function wxpayNotify()
+	{
+
+	}
 }

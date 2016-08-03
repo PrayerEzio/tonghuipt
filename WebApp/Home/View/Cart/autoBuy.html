@@ -6,7 +6,7 @@
 </head>
 <body onLoad="javascript:document.E_FORM.submit()">
 <!--以下信息为标准的 HTML 格式 + PHP 语言 拼凑而成的 网银在线 支付接口标准演示页面 无需修改onLoad="javascript:document.E_FORM.submit()"-->
-<form method="post" name="E_FORM" action="{:U('Order/index')}">
+<form method="post" name="E_FORM" action="{:U('Order/confirm')}">
 	<input type="hidden" name="goods_id[]" value="{$_GET['goods_id']}">
 	<!-- <input type="submit"> -->
 </form>

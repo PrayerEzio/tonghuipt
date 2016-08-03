@@ -9,15 +9,41 @@
 namespace Mobile\Controller;
 use Mobile\Controller\BaseController;
 use Common\Lib\Cart\Cart;
+use Think\Page;
+
 class OrderController extends BaseController{
 	public function __construct(){
 		parent::__construct();
 		$this->check_login();
 	}
 	/**
+	 * 订单列表
+	 */
+	public function index()
+	{
+		$where['member_id'] = $this->mid;
+		$count = D('Order')->where($where)->count();
+		$page = new Page($count,10);
+		$list = D('Order')->where($where)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();
+		$this->list = $list;
+		$this->page = $page->show();
+		$this->display();
+	}
+
+	/**
+	 * 订单详情
+	 */
+	public function detail(){
+		$order_sn = str_rp($_GET['sn'],1);
+		$info = D('Order')->relation(true)->where(array('order_sn'=>$order_sn))->find();
+		$this->assign('info',$info);
+		$this->display();
+	}
+
+	/**
 	 * 订单确认
 	 */
-	public function index(){
+	public function confirm(){
 		if (IS_POST) {
 			//处理获取的商品
 			if (empty($_POST['goods_id'])) {
@@ -87,15 +113,7 @@ class OrderController extends BaseController{
 			$this->error('非法操作',U('Index/index'));
 		}
 	}
-	/**
-	 * 订单详情
-	 */
-	public function detail(){
-		$order_sn = str_rp($_GET['sn'],1);
-		$info = D('Order')->relation(true)->where(array('order_sn'=>$order_sn))->find();
-		$this->assign('info',$info);
-		$this->display();
-	}
+
 	/**
 	 * 确认收货
 	 */

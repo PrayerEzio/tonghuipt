@@ -8,13 +8,21 @@
  */
 namespace Mobile\Controller;
 use Muxiangdao\DesUtils;
+use Muxiangdao\Emoji;
 use Think\Page;
 
 class MemberController extends BaseController{
 	public function __construct(){
 		parent::__construct();
 		$this->check_login();
-		$this->autoFinishOrder();
+        //检查登录
+        //session('wechat_openid',null);
+        if(!session('wechat_openid'))
+        {
+            $this->wx_auto_login(); //自动登录
+        }
+        $this->m_info = M('Member')->where('member_id='.$this->mid)->find();
+        $this->autoFinishOrder();
 	}
 
 	//检查微信自动登录
@@ -30,6 +38,7 @@ class MemberController extends BaseController{
 			$web_token = $info->access_token;
 			$refresh_token = $info->refresh_token;
 			$openid = $info->openid;
+            session('wechat_openid',encrypt($openid));
 			$unionid = $info->unionid;
 
 			//检查此用户是否已经注册过
@@ -55,7 +64,7 @@ class MemberController extends BaseController{
 
 				if($user->nickname)
 				{
-					$member = M('Memeber')->where(array('member_id'=>$this->mid))->find();
+					$member = M('Member')->where(array('member_id'=>$this->mid))->find();
 					$data = array();
 					//转义emoji
 					$emoji = new Emoji();
@@ -79,20 +88,6 @@ class MemberController extends BaseController{
 					{
 						session('wechat',true);
 					}
-					/*if($return)
-					{
-						//推广日志
-						if (!empty($inviter)) {
-							$spread_log['inviter_id'] = $data['inviter_id'];
-							$spread_log['invited_id'] = $return;
-							$spread_log['inviter_type'] = 2;
-							$spread_log['invited_type'] = $data['inviter_type'];
-							$spread_log['spread_stage'] = 0;
-							$spread_log['spread_time'] = NOW_TIME;
-							M('SpreadLog')->add($spread_log);
-						}
-						session('member_id',$return);
-					}*/
 				}
 			}
 		}else{

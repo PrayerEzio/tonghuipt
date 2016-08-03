@@ -533,7 +533,7 @@ function jsapi_pay($param)
 	$unifiedOrder->setParameter("body",$param['body']);//商品描述				
 	$unifiedOrder->setParameter("out_trade_no",$param['out_trade_no']);//商户订单号 
 	$unifiedOrder->setParameter("total_fee",$param['total_fee']);     //总金额
-	$unifiedOrder->setParameter("notify_url",C('SiteUrl')."/Payment/paynotify");//通知地址 
+	$unifiedOrder->setParameter("notify_url",$param['notify_url']);//通知地址 C('SiteUrl')."/Payment/paynotify"
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型				
 
 	$prepay_id = $unifiedOrder->getPrepayId();			

@@ -9,7 +9,7 @@
         <div class="bread">
             <a href="{:U('Index/index')}">首页</a> / <span>我的购物车</span>
         </div>
-        <form action="{:U('Order/index')}" method="post" id="form">
+        <form action="{:U('Order/confirm')}" method="post" id="form">
             <div class="payBox" style="border-bottom: 1px solid #ccc;">
                 <h3>我的购物车（<span id="goods_count">{:count($list)}</span>）</h3>
                 <ul class="orderItem clearfix rlt">
