@@ -5,3 +5,5 @@ Uploads/
 *.bak
 .idea/
 ThinkYun/Library/Vendor/WxPayPubHelper/WxPay.pub.config.php
+*.pem
+/ThinkYun/Library/Vendor/WxPayPubHelper/cacert/apiclient_cert.p12
