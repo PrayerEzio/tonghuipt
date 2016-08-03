@@ -50,10 +50,11 @@ class LoginController extends BaseController{
 					session('login_referer',null);
 					$domain = get_host_domain($login_referer_url);
 					if ($domain == $_SERVER['SERVER_NAME']) {
-						$this->success("登录成功！",$login_referer_url);
+						$url = $login_referer_url;
 					}else {
-						$this->success("登录成功！",U('Member/index'));
+						$url = U('Member/index');
 					}
+					$this->success("登录成功！",$url);
 					exit;
 				}else{
 					$this->error("不存在此用户！");
@@ -66,6 +67,7 @@ class LoginController extends BaseController{
 			$this->display();
 		}
 	}
+
 	/**
 	 * 注册
 	 */

@@ -17,16 +17,15 @@ class MemberController extends BaseController{
 		$this->check_login();
         //检查登录
         //session('wechat_openid',null);
-        if(!session('wechat_openid'))
-        {
-            $this->wx_auto_login(); //自动登录
-        }
         $this->m_info = M('Member')->where('member_id='.$this->mid)->find();
+		if (empty($this->m_info['openid']))
+		{
+			$this->getWechatInfo();
+		}
         $this->autoFinishOrder();
 	}
 
-	//检查微信自动登录
-	public function wx_auto_login()
+	public function getWechatInfo()
 	{
 		$code = trim($_GET['code']);
 		$state = trim($_GET['state']);
@@ -84,10 +83,7 @@ class MemberController extends BaseController{
 					//$return = M('Member')->add($data);
 					$return = M('Member')->where(array('member_id'=>$this->mid))->save($data);
 					session('member_id',$member['member_id']);
-					if ($return)
-					{
-						session('wechat',true);
-					}
+					session('wechat',true);
 				}
 			}
 		}else{
@@ -115,6 +111,8 @@ class MemberController extends BaseController{
 	public function logout()
 	{
 		session('member_id',null);
+		session('wechat_openid',null);
+		session('wechat',null);
 		redirect(U('Index/index'));
 	}
 
@@ -272,6 +270,30 @@ class MemberController extends BaseController{
 				//进行三级分润
 				$this->orderShareProfit($order['order_id']);
 			}
+		}
+	}
+	
+	//充值
+	public function recharge()
+	{
+		if(IS_POST)
+		{
+
+		}elseif (IS_GET)
+		{
+			$this->display();
+		}
+	}
+
+	//提现
+	public function withdraw()
+	{
+		if(IS_POST)
+		{
+
+		}elseif (IS_GET)
+		{
+			$this->display();
 		}
 	}
 }

@@ -534,7 +534,10 @@ function jsapi_pay($param)
 	$unifiedOrder->setParameter("out_trade_no",$param['out_trade_no']);//商户订单号 
 	$unifiedOrder->setParameter("total_fee",$param['total_fee']);     //总金额
 	$unifiedOrder->setParameter("notify_url",$param['notify_url']);//通知地址 C('SiteUrl')."/Payment/paynotify"
-	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型				
+	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
+	$unifiedOrder->setParameter("spbill_create_ip",get_client_ip());
+	$unifiedOrder->setParameter("time_start",date('YmdHis',time()));
+	$unifiedOrder->setParameter("time_expire",date('YmdHis',strtotime('+'.MSC('nopay_order_overtime').'s')));
 
 	$prepay_id = $unifiedOrder->getPrepayId();			
 	//使用jsapi调起支付

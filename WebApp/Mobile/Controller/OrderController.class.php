@@ -205,6 +205,8 @@ class OrderController extends BaseController{
 			switch (trim($_POST['pay_type'])){
 				case 1:$data['payment_name'] = 'alipay';break;
 				case 2:$data['payment_name'] = 'bdpay';break;
+				case 3:$data['payment_name'] = 'wxpay';break;
+				default : $data['payment_name'] = 'undefine';break;
 			}
 			$data['shipping_fee'] = 0;
 			$data['goods_amount'] = 0;
@@ -216,7 +218,7 @@ class OrderController extends BaseController{
 			foreach ($goods_list as $key => $val){
 				//计算价格同时清除购物车里的商品
 				$Cart = new Cart();
-				$Cart->delItem($val['goods_id']);
+				$Cart->delItem($val['goods_id'],$val['spec_id']);
 				$goods = M('Goods')->where(array('goods_id'=>$val['goods_id']))->find();
 				$goods_price = $goods['goods_price'];
 				if (get_distributor($this->mid)) {

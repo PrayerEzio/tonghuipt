@@ -41,7 +41,7 @@ class BaseController extends Controller{
 	}
 
 	public function check_login(){
-		if(session('member_id') || cookie('autologin'))
+		if(session('member_id'))
 		{
 			$this->mid = session('member_id');
 			$member = M('Member')->where(array('member_id'=>$this->mid))->find();
@@ -55,11 +55,48 @@ class BaseController extends Controller{
 				exit();
 			}
 		}else {
+			$this->wx_auto_login();
 			if (CONTROLLER_NAME != 'Login') {
 				$this->error('您还未登录,请先进行登录操作.',U('Mobile/Login/index'));
 // 				$this->redirect('Index/index',$_GET);//已经登录直接跳转会员中心
 				exit();
 			}
+		}
+	}
+
+	//检查微信自动登录
+	public function wx_auto_login()
+	{
+		$code = trim($_GET['code']);
+		$state = trim($_GET['state']);
+		if($code && $state)
+		{
+			//通过code获取用户信息
+			$url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.Wx_C('wx_appid').'&secret='.Wx_C('wx_secret').'&code='.$code.'&grant_type=authorization_code';
+			$info = json_decode(get_url($url));
+			$web_token = $info->access_token;
+			$refresh_token = $info->refresh_token;
+			$openid = $info->openid;
+			session('wechat_openid',encrypt($openid));
+			$unionid = $info->unionid;
+
+			//检查此用户是否已经注册过
+			$member_data = M('Member')->where('openid=\''.$openid.'\'')->find();
+			if(is_array($member_data) && !empty($member_data))
+			{
+				//更新用户微信网页授权access_token
+				M('Member')->where('member_id='.$member_data['member_id'])->save(array('web_token'=>$web_token,'refresh_token'=>$refresh_token));
+				//授权
+				session('member_id',$member_data['member_id']);
+				redirect(U('Member/index'));
+			}
+		}else{
+			$c_url = U('',$_GET,'',true); //当前地址  ERROR:该地址没有生成当前地址的参数项   导致授权之后跳转页面没有传参 已解决:2015-6-27 17:35:58
+			$scope = 'snsapi_userinfo';
+			$re_url = urlencode($c_url);
+			$sq_url ='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.Wx_C('wx_appid').'&redirect_uri='.$re_url.'&response_type=code&scope='.$scope.'&state=STATEuserinfo#wechat_redirect';
+			redirect($sq_url);
+			//get_url($sq_url);
 		}
 	}
 

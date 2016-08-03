@@ -314,7 +314,7 @@ class PayController extends Controller{
 	{
 		$order_sn = trim($_GET['order_sn']);
 		if ($order_sn) {
-			$member_id = $this->mid;+
+			$member_id = $this->mid;
 			$open_id = M('Member')->where(array('member_id'=>$member_id))->getField('openid');
 			$where['order_sn'] = $order_sn;
 			$where['member_id'] = $member_id;
@@ -328,7 +328,10 @@ class PayController extends Controller{
 					$wxpay_date['total_fee'] = $order['order_amount'];//订单总金额
 					$wxpay_date['out_trade_no'] = $order['order_sn'];//商户订单ID
 					$wxpay_date['notify_url'] = U('Mobile/Pay/wxpayNotify', '', true, true);
-					jsapi_pay($wxpay_date);
+					$jsApiParameters = jsapi_pay($wxpay_date);
+					p($jsApiParameters);die;
+					$this->assign('jsApiParameters',$jsApiParameters);
+					$this->display();
 				}
 			}else {
 				$this->error('非法操作');

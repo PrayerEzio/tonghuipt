@@ -1,0 +1,46 @@
+﻿<include file="Public:header"/>
+<div class="index-group">
+    <div class="header-all">
+        <div class="com-header">
+            <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>订单详情
+        </div>
+        <div class="dt-top"></div>
+    </div>
+    <div class="order-details">
+        <div class="input_group">
+            <p class="clear"><label>收货人：</label><em class="tx">{$info['OrderAddress']['true_name']}</em></p>
+        </div>
+        <div class="input_group">
+            <p class="clear"><label>联系电话：</label><em class="tx">{$info['OrderAddress']['mob_phone']}</em></p>
+        </div>
+        <div class="input_group">
+            <p class="clear"><label>收货地址：</label>
+                <em class="tx">
+                    {$info['OrderAddress']['prov_id']|getDistrictName}
+                    {$info['OrderAddress']['city_id']|getDistrictName}
+                    {$info['OrderAddress']['area_id']|getDistrictName}
+                    {$info['OrderAddress']['address']}
+                </em>
+            </p>
+        </div>
+
+        <div class="container">
+            <volist name="info['OrderGoods']" id="vo">
+                <div class="product-details clear">
+                    <div class="pro_item"><img class="product-img" src="__UPLOADS__/{$vo['goods_image']}" width="60" height="60" alt="">
+                    </div>
+                    <div><p class="product-ms">{$vo['goods_name']}</p></div>
+                    <div class="Pricebox"><p><em class="red">￥{$vo['goods_pirce']|price_format}</em></p>
+                        <p>
+                            <del>￥{$vo['goods_mkpirce']|price_format}</del>
+                        </p>
+                        <p>数量：<em>{$vo['goods_num']}</em></p></div>
+                </div>
+            </volist>
+            <div class="Statistic">共<em>1</em>件商品 合计￥<em>{$info['order_amount']|price_format}</em> <em>（{$info['order_state']|get_order_state_name}）</em></div>
+        </div>
+    </div>
+</div>
+<script src="__JS__/main.js"></script>
+<script src="__JS__/mui.js"></script>
+<include file="Public/footer"/>
