@@ -4,3 +4,4 @@ Uploads/
 *.log
 *.bak
 .idea/
+ThinkYun/Library/Vendor/WxPayPubHelper/WxPay.pub.config.php
