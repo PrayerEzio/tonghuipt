@@ -1,73 +1,146 @@
 ﻿<!doctype html>
+
 <html>
+
 <head>
+
 	<meta charset="utf-8">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 	{$seo}
+
 	<link rel="stylesheet" href="__CSS__/style.css">
+
 	<link rel="stylesheet" href="__CSS__/swiper.min.css">
+
 	<link rel="stylesheet" href="__CSS__/weui.css">
 	<script src="__JS__/jquery-1.11.3.min.js"></script>
+	<script src="__JS__/main.js"></script>
 <body>
+
 <div class="personal-group">
-	<div class="header-all">
+
+<!-- 	<div class="header-all">
+
 		<div class="com-header">
+
 			<a class="back-a" href="{:U('Member/index')}"><i class="head-icon-back">&#xe609;</i></a>个人中心
+
 		</div>
+
 		<div class="dt-top"></div>
-	</div>
+
+	</div> -->
+
 	<form method="post" id="mainForm">
-		<div class="input-group">
-			<img src="{$qrcode_img}">
+
+		<div class="myqrcode-box">
+
+			<img class="ercodeback" src="/Public/Mobile/images/ercode.jpg" width="100%" alt="">
+			<img class="ercodetext" src="/Public/Mobile/images/poc1.png" alt="">
+			<img class="ercode" src="{$qrcode_img}">
+
 			<!--<div class="btn_area">
+
 				 <a class="btn_primary" href="JavaScript:submitForm();">保存资料</a>
+
 			</div>-->
+
 		</div>
+
 	</form>
+
 	<!-- flexd nav -->
-	{:W('Menu/footer_nav')}
+
+	<!-- {:W('Menu/footer_nav')} -->
+
 </div>
+
 <script>
+
 function submitForm()
+
 {
+
 	$('#mainForm').submit();
+
 }
+
+
 
 $("#province").change(function(){
+
 	var id = $("#province option:selected").val();
+
 	getCity(id); //  获取城市数据
+
 });
+
+
 
 $("#city").change(function(){
+
 	var id = $("#city option:selected").val();
+
 	getDisctrict(id);
+
 });
 
+
+
 function getCity(id){
+
 	var URL="{:U('getDisctrict')}";
+
 	var data={"id":id};
+
 	$.post(URL,data,function(res){
+
 		$("#city option").remove();
+
 		for(var i=0; i<res.city.length;i++)
+
 		{
+
 			var c = $("<option value="+res.city[i].id+">"+res.city[i].name+"</option>");
+
 			$("#city").append(c);
+
 		}
+
 	},"json");
+
 }
 
+
+
 function getDisctrict(id){
+
     var URL="{:U('getDisctrict')}";
+
 	var data={"id":id};
+
 	$.post(URL,data,function(res){
+
 		$("#area option").remove();
+
 		for(var i=0; i<res.area.length;i++)
+
 		{
+
 			var c = $("<option value="+res.area[i].id+">"+res.area[i].name+"</option>");
+
 			$("#area").append(c);
+
 		}
+
 	},"json");
+
 }
+
 // getCity();
+
 </script>
-<include file="Public:footer"/>
+<!-- 
+<include file="Public:footer"/> -->

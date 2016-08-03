@@ -225,14 +225,14 @@ class MemberController extends BaseController{
 	}
 
 	//二维码
-	public function myqrcode()
+	/*public function myqrcode()
 	{
 		$user = M('Member')->where(array('member_id'=>$this->mid))->field('mobile')->find();
 		$phone = $user['mobile'];
 		$url = U('Login/register',array('invite_phone'=>$phone),true,true); //二维码内容
 		$this->qrcode_img = qrcode($url,'./Public/Mobile/images/logo.jpg');
 		$this->display();
-	}
+	}*/
 
 	//订单自动完成
 	private function autoFinishOrder()

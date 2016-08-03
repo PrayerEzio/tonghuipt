@@ -23,14 +23,20 @@ class IndexController extends BaseController{
 		p($list);
 	}
 
-	public function qrcode()
+	//二维码
+	public function myqrcode()
 	{
-		$value = 'http://www.zhihu.com?from=tonghui'; //二维码内容
-		$errorCorrectionLevel = 'L';//容错级别
-		$matrixPointSize = 6;//生成图片大小
-		vendor('phpqrcode.phpqrcode');
-		$qrcode = new \QRcode();
-		$qrcode->png($value,'./Uploads/qrcode/'.md5($value).'.png',$errorCorrectionLevel,$matrixPointSize,2);
-		echo '<img src="'.__ROOT__.'/Uploads/qrcode/'.md5($value).'.png'.'">';
+		$phone = trim($_GET['phone']);
+		if (empty($phone))
+		{
+			$where['member_id'] = $this->mid;
+		}else {
+			$where['phone'] = $phone;
+		}
+		$user = M('Member')->where($where)->field('mobile')->find();
+		$phone = $user['mobile'];
+		$url = U('Login/register',array('invite_phone'=>$phone),true,true); //二维码内容
+		$this->qrcode_img = qrcode($url,'');
+		$this->display();
 	}
 }
