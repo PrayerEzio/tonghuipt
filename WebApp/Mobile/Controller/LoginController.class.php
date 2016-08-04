@@ -84,6 +84,11 @@ class LoginController extends BaseController{
 			/*if (empty($smscode)) {
 				$this->error('验证码为空');
 			}*/
+			$count = M('Member')->count();
+			if ($count <= 500)
+			{
+				$data['point'] = 30;
+			}
 			if ($_POST['s_class'] == 'mobile') {
 				$data['mobile'] = str_rp(trim($_POST['mobile']));
 				if (!empty($data['mobile'])) {//$smscode == session('smscode') && session('codetype') == 'register' && session('mobile') == $data['mobile'] &&

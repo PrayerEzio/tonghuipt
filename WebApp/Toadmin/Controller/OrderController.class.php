@@ -170,6 +170,10 @@ class OrderController extends GlobalController {
 			$where['order_state'] = 20;
 			$res = $this->model->where($where)->setField('order_state',30);
 			if ($res) {
+				if (MSC('auto_finish_order_day'))
+				{
+					$this->model->where($where)->setField('auto_finish_time',strtotime('+'.MSC('auto_finish_order_day').'days'));
+				}
 				$order_goods = M('OrderGoods')->where(array('order_id'=>$order_id))->select();
 				foreach ($order_goods as $key => $val){
 					M('Goods')->where(array('goods_id'=>$val['goods_id']))->setDec('goods_freez',$val['goods_num']);

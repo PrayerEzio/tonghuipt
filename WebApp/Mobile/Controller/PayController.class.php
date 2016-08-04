@@ -325,12 +325,12 @@ class PayController extends Controller{
 				}else {
 					$wxpay_date['openid'] = $open_id;
 					$wxpay_date['body'] = '订单号:'.$order['order_sn'];//订单商品描述
-					$wxpay_date['total_fee'] = $order['order_amount'];//订单总金额
+					$wxpay_date['total_fee'] = intval($order['order_amount']*100);//订单总金额
 					$wxpay_date['out_trade_no'] = $order['order_sn'];//商户订单ID
 					$wxpay_date['notify_url'] = U('Mobile/Pay/wxpayNotify', '', true, true);
 					$jsApiParameters = jsapi_pay($wxpay_date);
-					p($jsApiParameters);die;
 					$this->assign('jsApiParameters',$jsApiParameters);
+					$this->url = U('Mobile/Order/detail', array('sn'=>$order_sn));
 					$this->display();
 				}
 			}else {
@@ -346,6 +346,74 @@ class PayController extends Controller{
 	 */
 	public function wxpayNotify()
 	{
+		Vendor('WxPayPubHelper.WxPayPubHelper');
+		//使用通用通知接口
+		$notify = new \Notify_pub();
+		//存储微信的回调
+		$xml = $GLOBALS['HTTP_RAW_POST_DATA'];
+		$notify->saveData($xml);
+		//验证签名，并回应微信。
+		//对后台通知交互时，如果微信收到商户的应答不是成功或超时，微信认为通知失败，
+		//微信会通过一定的策略（如30分钟共8次）定期重新发起通知，
+		//尽可能提高通知的成功率，但微信不保证通知最终能成功。
+		if($notify->checkSign() == FALSE){
+			$notify->setReturnParameter("return_code","FAIL");//返回状态码
+			$notify->setReturnParameter("return_msg","签名失败");//返回信息
+			system_log('微信支付异步接口验证签名失败',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,2,'WechatPay');
+		}else{
+			$notify->setReturnParameter("return_code","SUCCESS");//设置返回码
+			system_log('微信支付异步接验证签名成功',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,0,'WechatPay');
+		}
+		$returnXml = $notify->returnXml();
+		//==商户根据实际情况设置相应的处理流程，此处仅作举例=======
+		system_log('接受到微信notify通知',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,0,'WechatPay');
 
+		if($notify->checkSign() == TRUE)
+		{
+			if ($notify->data["return_code"] == "FAIL") {
+				//此处应该更新一下订单状态，商户自行增删操作
+				system_log('微信notify通信出错',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,1,'WechatPay');
+			}
+			elseif($notify->data["result_code"] == "FAIL"){
+				//此处应该更新一下订单状态，商户自行增删操作
+				system_log('微信notify业务出错',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,1,'WechatPay');
+			}
+			else{
+				//此处应该更新一下订单状态，商户自行增删操作
+				system_log('微信notify支付成功',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,0,'WechatPay');
+				$result_info = xmlToArray($xml);
+				$where['order_sn'] = $result_info['out_trade_no'];
+				$order = M('Order')->where($where)->find();
+				if ($order['order_state'] == 10){
+					//更改订单状态
+					$res = $this->mod->where($where)->setField('order_state',20);
+					$this->mod->where($where)->setField('payment_time',time());
+					//订单日志
+					$log_data['order_id'] = $order['order_id'];
+					$log_data['order_state'] = get_order_state_name(20);
+					$log_data['change_state'] = get_order_state_name(30);
+					$log_data['state_info'] = '会员已支付订单';
+					$log_data['log_time'] = NOW_TIME;
+					$log_data['operator'] = '会员';
+					M('OrderLog')->add($log_data);
+				}else {
+					//订单日志
+					$log_data['order_id'] = $order['order_id'];
+					$log_data['order_state'] = get_order_state_name(0);
+					$log_data['change_state'] = get_order_state_name(0);
+					$log_data['state_info'] = '客户支付完成.但订单状态异常.异常状态为'.$order['order_state'].':'.get_order_state_name($order['order_state']);
+					$log_data['log_time'] = NOW_TIME;
+					$log_data['operator'] = '会员';
+					M('OrderLog')->add($log_data);
+				}
+				//推送支付完成信息
+			}
+			//商户自行增加处理流程,
+			//例如：更新订单状态
+			//例如：数据库操作
+			//例如：推送支付完成信息
+			//return $returnXml;
+			echo 'SUCCESS';
+		}
 	}
 }

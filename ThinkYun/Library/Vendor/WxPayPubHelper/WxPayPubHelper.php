@@ -359,8 +359,8 @@ class UnifiedOrder_pub extends Wxpay_client_pub
 	{
 		$this->postXml();
 		$this->result = $this->xmlToArray($this->response);
-		$prepay_id = $this->result["prepay_id"];
-		return $prepay_id;
+		$result = $this->result;
+		return $result;
 	}
 	
 }

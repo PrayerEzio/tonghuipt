@@ -27,6 +27,10 @@ class ShopController extends BaseController{
 		{
 			$where['gc_id'] = $gc_id;
 		}
+		if ($gc_id != 47)
+		{
+			$where['gc_id'] = array('neq',47);
+		}
 		$count = $this->model->where($where)->count();
 		$page = new Page($count,10);
 		$page->rollPage = 3;
@@ -46,7 +50,8 @@ class ShopController extends BaseController{
 	 */
 	public function category()
 	{
-		$list = M('GoodsClass')->order('gc_sort desc')->select();
+		$where['gc_id'] = array('neq',47);
+		$list = M('GoodsClass')->where($where)->order('gc_sort desc')->select();
 		$list = unlimitedForLayer($list,'child','gc_parent_id','gc_id');
 		$this->list = $list;
 		$this->display();

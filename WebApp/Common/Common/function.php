@@ -537,13 +537,17 @@ function jsapi_pay($param)
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 	$unifiedOrder->setParameter("spbill_create_ip",get_client_ip());
 	$unifiedOrder->setParameter("time_start",date('YmdHis',time()));
-	$unifiedOrder->setParameter("time_expire",date('YmdHis',strtotime('+'.MSC('nopay_order_overtime').'s')));
+	$unifiedOrder->setParameter("time_expire",date('YmdHis',time()+MSC('nopay_order_overtime')));
 
-	$prepay_id = $unifiedOrder->getPrepayId();			
+	$result = $unifiedOrder->getPrepayId();
+	if (empty($result['prepay_id']))
+	{
+		p($result);
+	}
 	//使用jsapi调起支付
-	$jsApi->setPrepayId($prepay_id);
+	$jsApi->setPrepayId($result['prepay_id']);
 	$jsApiParameters = $jsApi->getParameters();	
-	return $jsApiParameters;		
+	return $jsApiParameters;
 }
 //返回订单状态名称
 function get_order_state_name($order_state)
@@ -1441,6 +1445,22 @@ function saveContact($contact_info,$contact_type,$contact_source,$contact_remark
 		$data['contact_type'] = $contact_type;
 		$Db->add($data);
 	}
+}
+
+/**
+ * 系统日志
+ */
+function system_log($title,$content,$type,$level,$operator_type='system',$operator_id=0)
+{
+	$data['log_type'] = $type;
+	$data['log_level'] = $level;
+	$data['log_title'] = $title;
+	$data['log_content'] = $content;
+	$data['log_time'] = time();
+	$data['operator_type'] = $operator_type;
+	$data['operator_id'] = $operator_id;
+	$log_id = M('SystemLog')->add($data);
+	return $log_id;
 }
 
 /**
