@@ -560,7 +560,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
     height: 100%;
 }
 .ercodeback {
-     width: 100%;
+     width: 10rem;
 }
 .ercode {
        position: absolute;

@@ -30,8 +30,11 @@ class IndexController extends BaseController{
 		if (empty($phone))
 		{
 			$where['member_id'] = $this->mid;
+			$user = M('Member')->where($where)->field('mobile')->find();
+			$phone = $user['mobile'];
+			redirect(U('',array('phone'=>$phone)));
 		}else {
-			$where['phone'] = $phone;
+			$where['mobile'] = $phone;
 		}
 		$user = M('Member')->where($where)->field('mobile')->find();
 		$phone = $user['mobile'];
