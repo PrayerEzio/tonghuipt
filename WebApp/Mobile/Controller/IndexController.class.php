@@ -15,14 +15,6 @@ class IndexController extends BaseController{
 		redirect(U('Shop/index'));
 	}
 
-	public function test()
-	{
-		$uid = intval($_GET['uid']);
-		$loop = intval($_GET['loop']);
-		$list = $this->getParentsMember($uid,'*',$loop);
-		p($list);
-	}
-
 	//二维码
 	public function myqrcode()
 	{
@@ -41,5 +33,16 @@ class IndexController extends BaseController{
 		$url = U('Login/register',array('invite_phone'=>$phone),true,true); //二维码内容
 		$this->qrcode_img = qrcode($url,'');
 		$this->display();
+	}
+
+	public function test()
+	{
+		for($i=0;$i<9;$i++)
+		{
+			$member['member_id'] = $i+1;
+			$member['member_status'] = 1;
+			$member['parent_member_id'] = $i;
+			M('Member')->add($member);
+		}
 	}
 }

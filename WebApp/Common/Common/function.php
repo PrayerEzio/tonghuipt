@@ -1309,11 +1309,11 @@ function get_board_status_name($board_status){
 function get_agent_level($agent_level){
 	switch ($agent_level){
 		case 3:
-			$name = '市级代理';break;
+			$name = '三星会员';break;
 		case 6:
-			$name = '省级代理';break;
+			$name = '六星会员';break;
 		case 9:
-			$name = '全国代理';break;
+			$name = '九星会员';break;
 		default:
 			$name = '未知';
 	}

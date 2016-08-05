@@ -13,7 +13,7 @@
 		<div class="member-txt">
 			<p>会员ID：<em>{$user_info['member_id']}</em></p>
 			<p>会员昵称：<em><notempty name="user_info['nickname']">{$user_info['nickname']}<else/>未填写</notempty></em></p>
-			<p>会员等级：<em><notempty name="user_info['AgentInfo']">{$user_info['AgentInfo']['agent_name']}<else/>普通会员</notempty></em></p>
+			<p>会员等级：<em><notempty name="user_info['AgentInfo']">{$user_info['AgentInfo']['agent_level']|get_agent_level}<else/>普通会员</notempty></em></p>
 			<p>注册时间：<em>{$user_info['register_time']|date="Y-m-d H:i:s",###}</em></p>
 		</div>
 		<div class="clear"></div>

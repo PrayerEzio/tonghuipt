@@ -126,17 +126,22 @@ class BaseController extends Controller{
 	{
 		$where['reward_type'] = 'distribution';
 		$where['level'] = array('elt',$level);
-		$red_packet_list = M('RedPacket')->where($where)->order('level asc')->select();
+		$red_packet_list = M('RedPacket')->where($where)->order('level desc')->select();
 		$mid = $child_member_id;
 		foreach ($red_packet_list as $key => $item) {
 			$member_where['member_id'] = $mid;
 			$member = M('Member')->where($member_where)->field('parent_member_id')->find();
 			if ($member['parent_member_id'])
 			{
-				$res = M('Member')->where(array('member_id'=>$member['parent_member_id']))->setInc('predeposit',$item['reward_price']);
-				if ($res)
+				$agent_id = M('Member')->where(array('member_id'=>$member['parent_member_id']))->getField('agent_id');
+				$agent_level = M('AgentInfo')->where(array('agent_id'=>intval($agent_id)))->getField('agent_level');
+				if ($key < intval($agent_level))
 				{
-					//TODO:资金日志
+					$res = M('Member')->where(array('member_id'=>$member['parent_member_id']))->setInc('predeposit',$item['reward_price']);
+					if ($res)
+					{
+						//TODO:资金日志
+					}
 				}
 				$mid = $member['parent_member_id'];
 			}else {
@@ -148,7 +153,7 @@ class BaseController extends Controller{
 	/**
 	 * 发放公牌奖励
 	 */
-	protected function giveBoardReward()
+	/*protected function giveBoardReward()
 	{
 		$board_reward = MSC('board_reward');
 		$where['board_status'] = 0;
@@ -174,7 +179,7 @@ class BaseController extends Controller{
 				//TODO:公牌日志
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * 订单分润

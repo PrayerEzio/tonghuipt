@@ -251,6 +251,10 @@ class MemberController extends BaseController{
 				{
 					$this->error('您不能购买更低级的代理级别.');
 				}
+				if ($my_max_level == $max_level && $my_max_level > $agent_info['agent_level'])
+				{
+					$this->error('您不能购买更低级的代理级别.');
+				}
 			}
 			if ($agent_info)
 			{
