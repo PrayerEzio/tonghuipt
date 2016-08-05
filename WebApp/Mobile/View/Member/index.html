@@ -13,7 +13,7 @@
 		<div class="member-txt">
 			<p>会员ID：<em>{$user_info['member_id']}</em></p>
 			<p>会员昵称：<em><notempty name="user_info['nickname']">{$user_info['nickname']}<else/>未填写</notempty></em></p>
-			<p>会员等级：<em><notempty name="user_info['member_degree']">{$user_info['member_degree']}<else/>普通会员</notempty></em></p>
+			<p>会员等级：<em><notempty name="user_info['AgentInfo']">{$user_info['AgentInfo']['agent_name']}<else/>普通会员</notempty></em></p>
 			<p>注册时间：<em>{$user_info['register_time']|date="Y-m-d H:i:s",###}</em></p>
 		</div>
 		<div class="clear"></div>
@@ -32,6 +32,7 @@
 		<div class="border"></div>
 		<a href="{:U('Member/recharge')}"><div class="item"><i class="iconfont ico-m-commis">&#xe60f;</i>我要充值<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/withdraw')}"><div class="item"><i class="iconfont ico-m-deposit">&#xe610;</i>我要提现<em class="ico-right"></em></div></a>
+		<a href="{:U('Member/agent')}"><div class="item"><i class="iconfont ico-m-deposit">&#xe610;</i>成为代理商<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/info')}"><div class="item"><i class="iconfont ico-m-info">&#xe60c;</i>个人资料<em class="ico-right"></em></div></a>
 		<a href="{:U('Index/myqrcode',array('phone'=>$user_info['mobile']))}"><div class="item"><i class="iconfont ico-m-info">&#xe60c;</i>我的二维码<em class="ico-right"></em></div></a>
 		<div class="weui_btn_area">

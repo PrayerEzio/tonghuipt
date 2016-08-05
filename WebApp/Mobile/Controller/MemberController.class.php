@@ -102,7 +102,7 @@ class MemberController extends BaseController{
 	public function index()
 	{
 		$where['member_id'] = $this->mid;
-		$user_info = M('Member')->where($where)->find();
+		$user_info = D('Member')->relation(true)->where($where)->find();
 		$this->user_info = $user_info;
 		$this->display();
 	}
@@ -228,30 +228,51 @@ class MemberController extends BaseController{
 	{
 		if (IS_POST)
 		{
+			if ($this->mid != 36 && $this->mid != 37)
+			{
+				$this->error('公排系统即将开放,敬请期待.'.$this->mid);
+			}
 			$where['agent_id'] = intval($_POST['radio1']);
 			$where['agent_status'] = 1;
 			$agent_info = M('AgentInfo')->where($where)->find();
+			$max_level = M('AgentInfo')->Max('agent_level');
+			//加入判断
+			if ($agent_info['agent_level'] == $max_level)
+			{
+				$count = M('Board')->where(array('board_status'=>0,'member_id'=>$this->mid))->count();
+				if ($count)
+				{
+					$this->error('您的公排系统还在结算,请勿重复购买.');
+				}
+			}else {
+				$my_max_level_where['member_id'] = $this->mid;
+				$my_max_level = M('Agent')->where($my_max_level_where)->Max('agent_level');
+				if ($my_max_level != $max_level && $my_max_level >= $agent_info['agent_level'])
+				{
+					$this->error('您不能购买更低级的代理级别.');
+				}
+			}
 			if ($agent_info)
 			{
 				//生成订单并跳转
 				$order['order_sn'] = order_sn();
 				$order['member_id'] = $this->mid;
 				$order['order_type'] = 4;
-				$order['order_param'] = intval($_POST['radio1']);
+				$order['order_param'] = $agent_info['agent_id'];
 				$order['payment_id'] = 4;
 				switch (intval($_POST['pay_type'])){
-					case 1:$data['payment_name'] = 'alipay';break;
-					case 2:$data['payment_name'] = 'bdpay';break;
-					case 3:$data['payment_name'] = 'wxpay';break;
-					default : $data['payment_name'] = 'undefine';break;
+					case 1:$order['payment_name'] = 'alipay';break;
+					case 2:$order['payment_name'] = 'bdpay';break;
+					case 3:$order['payment_name'] = 'wxpay';break;
+					default : $order['payment_name'] = 'undefine';break;
 				}
 				$order['order_points'] = $agent_info['get_points'];
 				$order['cost_points'] = $agent_info['cost_points'];
-				$order['goods_amount'] = $agent_info['price'];
+				$order['goods_amount'] = 0.01;//$agent_info['price'];
 				$order['discount'] = 0;
-				$order['order_amount'] = $agent_info['price'];
+				$order['order_amount'] = 0.01;//$agent_info['price'];
 				$order['order_state'] = 10;
-				$order['add_time'] = NOT_TIME;
+				$order['add_time'] = NOW_TIME;
 				$res = M('Order')->add($order);
 				if ($res)
 				{
@@ -269,9 +290,9 @@ class MemberController extends BaseController{
 			}
 		}elseif (IS_GET)
 		{
-			$where['member_id'] = $this->mid;
-			$user_info = M('Member')->where($where)->find();
 			$this->list = M('AgentInfo')->where(array('agent_status'=>1))->order('agent_sort desc,agent_level desc')->select();
+			$where['member_id'] = $this->mid;
+			$user_info = D('Member')->relation(true)->where($where)->find();
 			$this->user_info = $user_info;
 			$this->display();
 		}

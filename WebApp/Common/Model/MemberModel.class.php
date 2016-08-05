@@ -1,6 +1,6 @@
 <?php
 /**
- * 代理商模型
+ * 会员模型
  * @copyright  Copyright (c) 2014-2015 muxiangdao-cn Inc.(http://www.muxiangdao.cn)
  * @license    http://www.muxiangdao.cn
  * @link       http://www.muxiangdao.cn
@@ -8,14 +8,8 @@
  */
 namespace Common\Model;
 use Think\Model\RelationModel;
-class AgentModel extends RelationModel{
+class MemberModel extends RelationModel{
 	protected $_link = array(
-		'Member' => array(
-				'mapping_type' => self::BELONGS_TO,
-				'class_name' => 'Member',
-				'mapping_name' => 'Member',
-				'foreign_key' => 'member_id',
-		),
 		'AgentInfo' => array(
 			'mapping_type' => self::BELONGS_TO,
 			'class_name' => 'AgentInfo',

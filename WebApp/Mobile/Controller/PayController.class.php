@@ -9,7 +9,7 @@
 namespace Mobile\Controller;
 use Common\Lib\Alipay\Alipay;
 use Think\Controller;
-class PayController extends Controller{
+class PayController extends BaseController{
 	public function __construct(){
 		parent::__construct();
 		$this->mod = D('Order');
@@ -330,7 +330,14 @@ class PayController extends Controller{
 					$wxpay_date['notify_url'] = U('Mobile/Pay/wxpayNotify', '', true, true);
 					$jsApiParameters = jsapi_pay($wxpay_date);
 					$this->assign('jsApiParameters',$jsApiParameters);
-					$this->url = U('Mobile/Order/detail', array('sn'=>$order_sn));
+					switch ($order['order_type'])
+					{
+						case 1 : $this->url = U('Mobile/Order/detail', array('sn'=>$order_sn));break;
+						case 2 : $this->url = U('Mobile/Member/index');break;
+						case 3 : $this->url = U('Mobile/Member/index');break;
+						case 4: $this->url = U('Mobile/Member/index');break;
+						default: $this->url = U('Mobile/Order/detail', array('sn'=>$order_sn));break;
+					}
 					$this->display();
 				}
 			}else {
@@ -385,8 +392,81 @@ class PayController extends Controller{
 				$where['order_sn'] = $result_info['out_trade_no'];
 				$order = M('Order')->where($where)->find();
 				if ($order['order_state'] == 10){
+					switch ($order['order_type'])
+					{
+						case 1:
+							$res = $this->mod->where($where)->setField('order_state',20);
+							break;
+						case 2:
+							//充值
+							$s = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('predeposit',$order['goods_amount']);
+							if ($s)
+							{
+								$res = $this->mod->where($where)->setField('order_state',50);
+							}
+							break;
+						case 3:
+							//TODO:购买vip
+							$res = $this->mod->where($where)->setField('order_state',50);
+							break;
+						case 4:
+							//购买代理商
+							$agent_info = M('AgentInfo')->where(array('agent_id'=>$order['order_param']))->find();
+							if ($agent_info)
+							{
+								$s = M('Member')->where(array('member_id'=>$order['member_id']))->setField('agent_id',$agent_info['agent_id']);
+								if ($s)
+								{
+									$agent['member_id'] = $order['member_id'];
+									$agent['create_time'] = NOW_TIME;
+									$agent['status'] = 1;
+									$agent['agent_id'] = $agent_info['agent_id'];
+									$agent['agent_level'] = $agent_info['agent_level'];
+									M('Agent')->add($agent);
+									$this->giveDistributionRedPacket($order['member_id'],$agent_info['agent_level']);
+									if ($agent_info['agent_level'] == 9)
+									{
+										//加入公排
+										$board['member_id'] = $order['member_id'];
+										$board['board_status'] = 0;
+										$board['expect_num'] = MSC('board_expect_num');
+										$board['differ_num'] = MSC('board_expect_num');
+										$board['finish_num'] = 0;
+										$board['create_time'] = NOW_TIME;
+ 										M('Board')->add($board);
+										//给公排收益
+										$active_board_where['board_status'] = 0;
+										$active_board_where['differ_num'] = array('gt',0);
+										$active_board_where['finish_time'] = 0;
+										$active_board = M('Board')->where($active_board_where)->order('create_time asc,id asc')->find();
+										if ($active_board)
+										{
+											//更新公排数据
+											$update_board['differ_num'] = $active_board['differ_num']-1;
+											$update_board['finish_num'] = $active_board['finish_num']+1;
+											if ($update_board['differ_num'] == 0)
+											{
+												$update_board['finish_time'] = NOW_TIME;
+												$update_board['board_status'] = 1;
+											}
+											$update_board_result = M('Board')->where(array('board_id'=>$active_board['board_id']))->save($update_board);
+											if ($update_board_result)
+											{
+												$board_reward_result = M('Member')->where(array('member_id'=>$active_board['member_id']))->setInc('predeposit',MSC('board_reward'));
+												if ($board_reward_result)
+												{
+													//TODO:写入资金日志
+												}
+											}
+										}
+									}
+									$res = $this->mod->where($where)->setField('order_state',50);
+								}
+							}
+							break;
+						default :break;
+					}
 					//更改订单状态
-					$res = $this->mod->where($where)->setField('order_state',20);
 					$this->mod->where($where)->setField('payment_time',time());
 					//订单日志
 					$log_data['order_id'] = $order['order_id'];
@@ -396,6 +476,17 @@ class PayController extends Controller{
 					$log_data['log_time'] = NOW_TIME;
 					$log_data['operator'] = '会员';
 					M('OrderLog')->add($log_data);
+					if ($order['order_type'] != 1)
+					{
+						//订单日志
+						$log_data['order_id'] = $order['order_id'];
+						$log_data['order_state'] = get_order_state_name(30);
+						$log_data['change_state'] = get_order_state_name(50);
+						$log_data['state_info'] = '系统已完成订单';
+						$log_data['log_time'] = NOW_TIME;
+						$log_data['operator'] = '系统';
+						M('OrderLog')->add($log_data);
+					}
 				}else {
 					//订单日志
 					$log_data['order_id'] = $order['order_id'];

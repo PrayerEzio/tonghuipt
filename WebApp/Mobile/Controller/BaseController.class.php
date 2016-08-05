@@ -122,7 +122,7 @@ class BaseController extends Controller{
 	 * @param $child_member_id
 	 * @param $level
 	 */
-	private function giveDistributionRedPacket($child_member_id,$level)
+	protected function giveDistributionRedPacket($child_member_id,$level)
 	{
 		$where['reward_type'] = 'distribution';
 		$where['level'] = array('elt',$level);
@@ -148,7 +148,7 @@ class BaseController extends Controller{
 	/**
 	 * 发放公牌奖励
 	 */
-	private function giveBoardReward()
+	protected function giveBoardReward()
 	{
 		$board_reward = MSC('board_reward');
 		$where['board_status'] = 0;
