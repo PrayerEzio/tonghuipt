@@ -224,15 +224,58 @@ class MemberController extends BaseController{
 		$this->display();
 	}
 
-	//二维码
-	/*public function myqrcode()
+	public function agent()
 	{
-		$user = M('Member')->where(array('member_id'=>$this->mid))->field('mobile')->find();
-		$phone = $user['mobile'];
-		$url = U('Login/register',array('invite_phone'=>$phone),true,true); //二维码内容
-		$this->qrcode_img = qrcode($url,'./Public/Mobile/images/logo.jpg');
-		$this->display();
-	}*/
+		if (IS_POST)
+		{
+			$where['agent_id'] = intval($_POST['radio1']);
+			$where['agent_status'] = 1;
+			$agent_info = M('AgentInfo')->where($where)->find();
+			if ($agent_info)
+			{
+				//生成订单并跳转
+				$order['order_sn'] = order_sn();
+				$order['member_id'] = $this->mid;
+				$order['order_type'] = 4;
+				$order['order_param'] = intval($_POST['radio1']);
+				$order['payment_id'] = 4;
+				switch (intval($_POST['pay_type'])){
+					case 1:$data['payment_name'] = 'alipay';break;
+					case 2:$data['payment_name'] = 'bdpay';break;
+					case 3:$data['payment_name'] = 'wxpay';break;
+					default : $data['payment_name'] = 'undefine';break;
+				}
+				$order['order_points'] = $agent_info['get_points'];
+				$order['cost_points'] = $agent_info['cost_points'];
+				$order['goods_amount'] = $agent_info['price'];
+				$order['discount'] = 0;
+				$order['order_amount'] = $agent_info['price'];
+				$order['order_state'] = 10;
+				$order['add_time'] = NOT_TIME;
+				$res = M('Order')->add($order);
+				if ($res)
+				{
+					//进行支付跳转
+					switch (intval($_POST['pay_type'])){
+						case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
+						case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
+						case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
+					}
+				}else {
+
+				}
+			}else {
+				//报错
+			}
+		}elseif (IS_GET)
+		{
+			$where['member_id'] = $this->mid;
+			$user_info = M('Member')->where($where)->find();
+			$this->list = M('AgentInfo')->where(array('agent_status'=>1))->order('agent_sort desc,agent_level desc')->select();
+			$this->user_info = $user_info;
+			$this->display();
+		}
+	}
 
 	//订单自动完成
 	private function autoFinishOrder()

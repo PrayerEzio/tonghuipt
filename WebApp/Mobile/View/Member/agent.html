@@ -1,0 +1,78 @@
+﻿<include file="Public:header"/>
+<div class="member-group">
+    <div class="header-all">
+        <div class="com-header">
+            <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+        </div>
+        <div class="dt-top"></div>
+    </div>
+    <header>
+        <div class="pic">
+            <img src="{$member['avatar']}" alt="">
+        </div>
+        <div class="member-txt">
+            <p>会员ID：<em>{$user_info['member_id']}</em></p>
+            <p>会员昵称：<em>
+                <notempty name="user_info['nickname']">{$user_info['nickname']}
+                    <else/>
+                    未填写
+                </notempty>
+            </em></p>
+            <p>会员等级：<em>
+                <notempty name="user_info['member_degree']">{$user_info['member_degree']}
+                    <else/>
+                    普通会员
+                </notempty>
+            </em></p>
+            <p>注册时间：<em>{$user_info['register_time']|date="Y-m-d H:i:s",###}</em></p>
+        </div>
+        <div class="clear"></div>
+    </header>
+    <div class="show-money">
+        <div class="f">余额:￥<em>{$user_info['predeposit']|price_format}</em></div>
+        <div class="f">积分:<em>{$user_info['point']}</em></div>
+    </div>
+    <style>
+        p {
+            margin-bottom: 0px;
+        }
+    </style>
+    <form action="" method="post" id="mainForm">
+        <div class="cds">
+            <div class="weui_cells weui_cells_radio">
+                <volist name="list" id="vo">
+                    <label class="weui_cell weui_check_label" for="x{$key}">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p><i class="iconfont red">&#xe613;</i>{$vo['agent_name'}({$vo['price']|price_format}元)</p>
+                        </div>
+                        <div class="weui_cell_ft">
+                            <input type="radio" class="weui_check" name="radio1" id="x{$key}" value="{$vo['id']}">
+                            <span class="weui_icon_checked"></span>
+                        </div>
+                    </label>
+                </volist>
+            </div>
+            <div class="weui_btn_area">
+                <input type="hidden" id="pay_type" name="pay_type" value="1">
+                <a class="weui_btn weui_btn_primary" href="javascript:submitForm(3);">微信购买</a>
+            </div>
+        </div>
+    </form>
+    <!-- flexd nav -->
+    {:W('Menu/footer_nav')}
+</div>
+<script src="__JS__/main.js"></script>
+<script>
+    function submitForm(pay_type)
+    {
+        $("#pay_type").val(pay_type);
+        var radio1 = $('input[name="radio1"]:checked ').val();
+        if (typeof(radio1) == 'undefined')
+        {
+            alert('请选择代理等级');
+            return false;
+        }
+        $('#mainForm').submit();
+    }
+</script>
+<include file="Public:footer"/>
