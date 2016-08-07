@@ -228,10 +228,6 @@ class MemberController extends BaseController{
 	{
 		if (IS_POST)
 		{
-			if ($this->mid != 36 && $this->mid != 37)
-			{
-				$this->error('公排系统即将开放,敬请期待.'.$this->mid);
-			}
 			$where['agent_id'] = intval($_POST['radio1']);
 			$where['agent_status'] = 1;
 			$agent_info = M('AgentInfo')->where($where)->find();
@@ -272,9 +268,9 @@ class MemberController extends BaseController{
 				}
 				$order['order_points'] = $agent_info['get_points'];
 				$order['cost_points'] = $agent_info['cost_points'];
-				$order['goods_amount'] = 0.01;//$agent_info['price'];
+				$order['goods_amount'] = $agent_info['price'];
 				$order['discount'] = 0;
-				$order['order_amount'] = 0.01;//$agent_info['price'];
+				$order['order_amount'] = $agent_info['price'];
 				$order['order_state'] = 10;
 				$order['add_time'] = NOW_TIME;
 				$res = M('Order')->add($order);

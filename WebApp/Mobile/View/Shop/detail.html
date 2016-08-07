@@ -57,7 +57,7 @@
     <section class="actionBar-container">
         <div class="cell collect"><a href="JavaScript:collectionGoods({$info['goods_id']});">收藏</a></div>
         <div class="cell add"><a href="JavaScript:addCart({$info['goods_id']});">加入购物车</a></div>
-        <div class="cell once"><a href="">立即购买</a></div>
+        <div class="cell once"><a href="JavaScript:quickBuy({$info['goods_id']});">立即购买</a></div>
         <div class="cell collect"><a href="{:U('Cart/index')}">购物车</a></div>
     </section>
 </div>	 
@@ -77,6 +77,11 @@
         $.post(URL,data,function(){
             //收藏商品动画
         },'json');
+    }
+    function quickBuy(goods_id)
+    {
+        addCart(goods_id);
+        window.location.href = "{:U('Cart/index')}";
     }
     function addCart(goods_id)
     {
