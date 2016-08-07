@@ -128,6 +128,9 @@ class BaseController extends Controller{
 		$where['level'] = array('elt',$level);
 		$red_packet_list = M('RedPacket')->where($where)->order('level desc')->select();
 		$mid = $child_member_id;
+		$member_info = M('Member')->where(array('member_id'=>$child_member_id))->find();
+		$agent_name = get_agent_level($member_info['agent_id']);
+		$member_nickname = get_member_nickname($child_member_id);
 		foreach ($red_packet_list as $key => $item) {
 			$member_where['member_id'] = $mid;
 			$member = M('Member')->where($member_where)->field('parent_member_id')->find();
@@ -140,7 +143,14 @@ class BaseController extends Controller{
 					$res = M('Member')->where(array('member_id'=>$member['parent_member_id']))->setInc('predeposit',$item['reward_price']);
 					if ($res)
 					{
-						//TODO:资金日志
+						$bill['member_id'] = $member['parent_member_id'];
+						$bill['bill_log'] = '来自'.$agent_name.'-'.$member_nickname.'分销红包收益';
+						$bill['amount'] = $item['reward_price'];
+						$bill['balance'] = M('Member')->where(array('member_id'=>$member['parent_member_id']))->getField('predeposit');
+						$bill['addtime'] = NOW_TIME;
+						$bill['bill_type'] = 1;
+						$bill['channel'] = 5;
+						M('MemberBill')->add($bill);
 					}
 				}
 				$mid = $member['parent_member_id'];
@@ -190,6 +200,9 @@ class BaseController extends Controller{
 		$where['order_type'] = 1;
 		$where['order_state'] = 50;
 		$order = D('Order')->relation(true)->where($where)->find();
+		$agent_id = M('Member')->where(array('member_id'=>$order['member_id']))->getField('agent_id');
+		$agent_name = get_agent_level($agent_id);
+		$member_nickname = get_member_nickname($order['member_id']);
 		if ($order && $order['OrderGoods'])
 		{
 			$profit = 0;
@@ -211,7 +224,14 @@ class BaseController extends Controller{
 					$result = M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('predeposit',$profit*$rate);
 					if ($result)
 					{
-						//TODO:写入资金日志
+						$bill['member_id'] = $parents_member['member_id'];
+						$bill['bill_log'] = '来自'.$agent_name.'-'.$member_nickname.'的订单分润';
+						$bill['amount'] = $profit*$rate;
+						$bill['balance'] = M('Member')->where(array('member_id'=>$parents_member['member_id']))->getField('predeposit');
+						$bill['addtime'] = NOW_TIME;
+						$bill['bill_type'] = 1;
+						$bill['channel'] = 7;
+						M('MemberBill')->add($bill);
 					}
 				}
 			}

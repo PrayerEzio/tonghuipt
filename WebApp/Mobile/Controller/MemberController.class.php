@@ -168,6 +168,8 @@ class MemberController extends BaseController{
 				$list[$key]['branch_num'] = count($this->getChildsMember($item['member_id'],$field,$loop));//count(getChildsId($all_list,$item['member_id'],'member_id','parent_member_id',$loop));//
 			}
 			$this->branch_num = count($this->getChildsMember($this->mid,$field,$loop));//count(getChildsId($all_list,$this->mid,'member_id','parent_member_id',$loop));//
+			$parent_member_id = M('Member')->where(array('member_id'=>$this->mid))->getField('parent_member_id');
+			$this->parent_member = M('Member')->where(array('member_id'=>$parent_member_id))->find();
 			$this->list = $list;
 			$this->display();
 		}

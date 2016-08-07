@@ -18,7 +18,18 @@
 
 		<h2><i class="iconfont">&#xe607;</i>我的团队</h2>
 
-		<em>{$branch_num}</em>人
+		<em>{$branch_num}</em>人<br/>
+
+		<notempty name="parent_member">
+			<h2>
+				<notempty name="parent_member['wechat']">
+					[微信号]{$parent_member['nickname']}
+				</notempty>
+				<notempty name="parent_member['mobile']">
+					[手机号]{$parent_member['mobile']}
+				</notempty>
+			</h2>
+		</notempty>
 
 	</header>
 

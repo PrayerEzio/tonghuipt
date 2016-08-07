@@ -395,10 +395,14 @@ class PayController extends BaseController{
 					switch ($order['order_type'])
 					{
 						case 1:
+							$bill_log = '购买商品';
+							$channel = 1;
 							$res = $this->mod->where($where)->setField('order_state',20);
 							break;
 						case 2:
 							//充值
+							$bill_log = '充值余额';
+							$channel = 2;
 							$s = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('predeposit',$order['goods_amount']);
 							if ($s)
 							{
@@ -407,10 +411,14 @@ class PayController extends BaseController{
 							break;
 						case 3:
 							//TODO:购买vip
+							$bill_log = '购买vip';
+							$channel = 3;
 							$res = $this->mod->where($where)->setField('order_state',50);
 							break;
 						case 4:
 							//购买代理商
+							$bill_log = '购买代理';
+							$channel = 4;
 							$res = $this->mod->where($where)->setField('order_state',50);
 							$agent_info = M('AgentInfo')->where(array('agent_id'=>$order['order_param']))->find();
 							if ($agent_info && $res)
@@ -454,7 +462,14 @@ class PayController extends BaseController{
 											$board_reward_result = M('Member')->where(array('member_id'=>$active_board['member_id']))->setInc('predeposit',MSC('board_reward'));
 											if ($board_reward_result)
 											{
-												//TODO:写入资金日志
+												$bill['member_id'] = $active_board['member_id'];
+												$bill['bill_log'] = '来自全国代理公排收益';
+												$bill['amount'] = MSC('board_reward');
+												$bill['balance'] = M('Member')->where(array('member_id'=>$active_board['member_id']))->getField('predeposit');
+												$bill['addtime'] = NOW_TIME;
+												$bill['bill_type'] = 1;
+												$bill['channel'] = 6;
+												M('MemberBill')->add($bill);
 											}
 										}
 									}
@@ -465,6 +480,15 @@ class PayController extends BaseController{
 					}
 					//更改订单状态
 					$this->mod->where($where)->setField('payment_time',time());
+					//资金日志
+					$bill['member_id'] = $order['member_id'];
+					$bill['bill_log'] = $bill_log;
+					$bill['amount'] = $order['order_amount'];
+					$bill['balance'] = M('Member')->where(array('member_id'=>$order['member_id']))->getField('predeposit');
+					$bill['addtime'] = NOW_TIME;
+					$bill['bill_type'] = -1;
+					$bill['channel'] = $channel;
+					M('MemberBill')->add($bill);
 					//订单日志
 					$log_data['order_id'] = $order['order_id'];
 					$log_data['order_state'] = get_order_state_name(20);
