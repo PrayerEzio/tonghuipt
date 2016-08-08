@@ -17,5 +17,8 @@ return array(
         '__JS__'     => __ROOT__ . '/Public/'.MODULE_NAME.'/js',
     	'__FONT__'	 => __ROOT__ . '/Public/'.MODULE_NAME.'/font',
     ),
+
+	'TMPL_ACTION_ERROR'     =>  MODULE_PATH.'/View/Public/dispatch_jump.html', // 默认错误跳转对应的模板文件
+	'TMPL_ACTION_SUCCESS'   =>  MODULE_PATH.'/View/Public/dispatch_jump.html', // 默认成功跳转对应的模板文件
 	
 );

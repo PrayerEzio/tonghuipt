@@ -184,11 +184,12 @@ abstract class Controller {
      * @return void
      */
     protected function error($message='',$jumpUrl='',$ajax=false) {
-    	if (MODULE_NAME == 'Toadmin') {
+        $this->dispatchJump($message,0,$jumpUrl,$ajax);
+    	/*if (MODULE_NAME == 'Toadmin') {
     		$this->dispatchJump($message,0,$jumpUrl,$ajax);
     	}else {
     		$this->alert($message,$jumpUrl);
-    	}
+    	}*/
     }
 
     /**
@@ -200,11 +201,12 @@ abstract class Controller {
      * @return void
      */
     protected function success($message='',$jumpUrl='',$ajax=false) {
-    	if (MODULE_NAME == 'Toadmin') {
+        $this->dispatchJump($message,1,$jumpUrl,$ajax);die;
+    	/*if (MODULE_NAME == 'Toadmin') {
     		$this->dispatchJump($message,1,$jumpUrl,$ajax);
     	}else {
     		$this->alert($message,$jumpUrl);
-    	}
+    	}*/
     }
     
     protected function alert($message='',$jumpUrl=''){

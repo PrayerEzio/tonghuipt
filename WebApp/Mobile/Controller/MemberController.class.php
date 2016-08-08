@@ -25,77 +25,6 @@ class MemberController extends BaseController{
         $this->autoFinishOrder();
 	}
 
-	public function getWechatInfo()
-	{
-		$code = trim($_GET['code']);
-		$state = trim($_GET['state']);
-		if($code && $state)
-		{
-			//通过code获取用户信息
-			$url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.Wx_C('wx_appid').'&secret='.Wx_C('wx_secret').'&code='.$code.'&grant_type=authorization_code';
-			$info = json_decode(get_url($url));
-			$web_token = $info->access_token;
-			$refresh_token = $info->refresh_token;
-			$openid = $info->openid;
-            session('wechat_openid',encrypt($openid));
-			$unionid = $info->unionid;
-
-			//检查此用户是否已经注册过
-			$member_data = M('Member')->where('openid=\''.$openid.'\'')->find();
-			if(is_array($member_data) && !empty($member_data))
-			{
-				//更新用户微信网页授权access_token
-				M('Member')->where('member_id='.$member_data['member_id'])->save(array('web_token'=>$web_token,'refresh_token'=>$refresh_token));
-				//授权
-				session('member_id',$member_data['member_id']);
-			}else{
-				//未关注
-				if($state == 'STATEuserinfo')
-				{
-					$get_userinfo_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$web_token.'&openid='.$openid.'&lang=zh_CN';
-					$user = json_decode(get_url($get_userinfo_url));
-				}else{
-					//已关注
-					$access_token = get_wx_AccessToken(1);
-					$get_user_url = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
-					$user = json_decode(get_url($get_user_url));
-				}
-
-				if($user->nickname)
-				{
-					$member = M('Member')->where(array('member_id'=>$this->mid))->find();
-					$data = array();
-					//转义emoji
-					$emoji = new Emoji();
-					$data['nickname'] = $member['nickname'] ? $member['nickname'] : $emoji->emoji_unified_to_html($user->nickname);
-					$data['wechat'] = $member['wechat'] ? $member['wechat'] : $emoji->emoji_unified_to_html($user->nickname);
-					$data['openid'] = $user->openid;
-					$data['gender'] = $member['gender'] ? $member['gender'] : $user->sex;
-					$data['country'] = $member['country'] ? $member['country'] : $user->country;
-					$data['province'] = $member['province'] ? $member['province'] : $user->province;
-					$data['city'] = $member['city'] ? $member['city'] : $user->city;
-					$data['usercity'] = $member['usercity'] ? $member['usercity'] : $user->city;
-					$data['avatar'] = $member['avatar'] ? $member['avatar'] : $user->headimgurl;
-					$data['unionid'] = $user->unionid;
-					$data['web_token'] = $web_token;
-					$data['refresh_token'] = $refresh_token;
-					$data['register_time'] = NOW_TIME;
-					//$return = M('Member')->add($data);
-					$return = M('Member')->where(array('member_id'=>$this->mid))->save($data);
-					session('member_id',$member['member_id']);
-					session('wechat',true);
-				}
-			}
-		}else{
-			$c_url = U('',$_GET,'',true); //当前地址  ERROR:该地址没有生成当前地址的参数项   导致授权之后跳转页面没有传参 已解决:2015-6-27 17:35:58
-			$scope = 'snsapi_userinfo';
-			$re_url = urlencode($c_url);
-			$sq_url ='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.Wx_C('wx_appid').'&redirect_uri='.$re_url.'&response_type=code&scope='.$scope.'&state=STATEuserinfo#wechat_redirect';
-			redirect($sq_url);
-			//get_url($sq_url);
-		}
-	}
-
 	/**
 	 * 会员中心.
 	 */
@@ -356,9 +285,51 @@ class MemberController extends BaseController{
 	{
 		if(IS_POST)
 		{
-
+			$amount = floatval($_POST['amount']);
+			$predeposit = M('Member')->where(array('member_id'=>$this->mid))->getField('predeposit');
+			if (!$amount || $amount > $predeposit)
+			{
+				$this->error('提现金额不合法.');die;
+			}
+			$desc = '会员提现处理';
+			$order_sn = g_order_sn();
+			$data = array(
+				'order_sn' => $order_sn,
+				'buyer_id' => $this->mid,
+				'source_id' => $this->mid,
+				'order_type' => 4,
+				'payment_name' => '微信企业付款',
+				'order_amount' => $amount/100,
+				'goods_amount' => $amount/100,
+				'order_state' => 60,
+				'shipping_time' => NOW_TIME,
+				'payment_time' => NOW_TIME,
+				'add_time' => NOW_TIME,
+			);
+			//加载支付类库
+			Vendor('WxPayPubHelper.WxPayPubHelper');
+			$wxPay = new \Common_util_pub();
+			$openid = M('member')->where(array('member_id'=>$this->mid))->getField('openid');
+			$info = array(
+				'mch_appid' => Wx_C('wx_appid'),
+				'mchid' => Wx_C('wx_mch_id'),
+				'nonce_str' => $wxPay->createNoncestr(32),
+				'partner_trade_no' => $order_sn,
+				'openid' => $openid,
+				'check_name' => 'NO_CHECK',
+				'amount' => $amount,
+				'desc' => $desc,
+				'spbill_create_ip' => get_client_ip(),
+			);
+			$info['sign'] = $wxPay->getSign($info);
+			$arr = $info;
+			$xml = $wxPay->arrayToXml($arr);
+			$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
+			$result = $wxPay->postXmlSSLCurl($xml, $url);
+			$res = $wxPay->xmlToArray($result);
 		}elseif (IS_GET)
 		{
+			$this->member_info = M('Member')->where(array('member_id'=>$this->mid))->field('predeposit')->find();
 			$this->display();
 		}
 	}

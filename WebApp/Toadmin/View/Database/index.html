@@ -44,8 +44,8 @@
         <td class="w25pre align-center">{$v['time']}</td>
         <td class="w25pre align-center">{$v['size']}</td>
         <td class="align-center">
-        <a href="javascript:alert('演示数据不提供下载');">下载</a>
-        <!--<a href="{$Think.config.SiteUrl}/Backup/{$v['name']}">下载</a>-->&nbsp;&nbsp;|&nbsp;&nbsp;
+        <!--<a href="javascript:alert('演示数据不提供下载');">下载</a>-->
+        <a href="{$Think.config.SiteUrl}/Backup/{$v['name']}">下载</a>&nbsp;&nbsp;|&nbsp;&nbsp;
         <a href='javascript:if(confirm("确定要删除？该操作不可逆,请谨慎操作!"))window.location ="{:U('Database/deletebak',array('file'=>$v['name']))}";'>删除</a></td>
       </tr>
       </volist>

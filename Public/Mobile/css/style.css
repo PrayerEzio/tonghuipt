@@ -576,3 +576,55 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
     left: 0;
     transition:all 0.5s;
 }
+.upload_choose:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#fileDragArea {
+    display: none;
+}
+.into-box {
+    margin-top: -202px;
+    margin-left: -160px;
+    text-align: center;
+    max-width: 640px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+ 
+}
+.go-z {
+    font-size: 24px;
+    color: #000;
+    height: 70px;
+    line-height: 70px;
+}
+
+.into-go,.into-fail{
+    height: 45px;
+    line-height: 45px;
+    font-size: 24px;
+    display: inline-block;
+    width: 40%;
+    border-radius: 4px;
+}
+.into-go {
+    color: #b25470;
+    border: 1px solid #b25470; 
+}
+.into-fail {
+    color: #3478ad;
+    border: 1px solid #3478ad;
+}
+.into-go:active{
+   background: #b25470;
+   color: #fff;
+}
+.into-fail:active{
+   background: #3478ad;
+   color: #fff;
+}
+.into-box article {
+     
+}
