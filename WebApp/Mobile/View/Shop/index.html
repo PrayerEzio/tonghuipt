@@ -1,4 +1,15 @@
 ﻿<include file="Public:header"/>
+<script src="__JS__/jquery.lazyload.js"></script>
+<script>
+  $(function() {
+	  $("img").lazyload({
+	  		  //placeholder : "images/xwf.png",  
+	          effect: "fadeIn",
+	          threshold : 20,
+	   });  
+  });
+</script>
+
 <div class="index-group">
 	<div class="brand-intro">
 		<!-- 焦点图 -->
@@ -17,7 +28,7 @@
 			<volist name="list" id="vo">
 				<a class="brand-item" href="{:U('Shop/detail',array('id'=>$vo['goods_id']))}">
 					<div class="pr">
-						<img src="__UPLOADS__/{$vo['goods_pic']}" alt="">
+						<img data-original="__UPLOADS__/{$vo['goods_pic']}" alt="">
 						<span class="sales">销量：{$vo['goods_sales']}</span>
 					</div>
 					<div class="goods-name">{$vo['goods_name']}</div>
