@@ -1306,6 +1306,17 @@ function get_board_status_name($board_status){
 	return $name;
 }
 
+function get_member_agent_name($member_id){
+	$agent_id = M('Member')->where(array('member_id'=>$member_id))->getField('agent_id');
+	if ($agent_id)
+	{
+		$agent_level = M('AgentInfo')->where(array('agent_id'=>$agent_id))->getField('agent_level');
+		return get_agent_level($agent_level);
+	}else {
+		return '普通会员';
+	}
+}
+
 function get_agent_level($agent_level){
 	switch ($agent_level){
 		case 3:
@@ -1315,7 +1326,7 @@ function get_agent_level($agent_level){
 		case 9:
 			$name = '九星会员';break;
 		default:
-			$name = '未知';
+			$name = '普通会员';
 	}
 	return $name;
 }
@@ -1433,6 +1444,44 @@ function get_notice_type_name($notice_type){
 	}
 	return $name;
 }
+
+//微信JS-SDK
+function wx_js_sdk()
+{
+	Vendor('Wxjssdk.JSSDK');
+	$jssdk = new \JSSDK(Wx_C('wx_appid'),Wx_C('wx_secret'));
+	$signPackage = $jssdk->GetSignPackage();
+	return $signPackage;
+}
+
+/**
+ * 模板消息推送
+ */
+function sendTemplateMsg($data,$template_id_short = ''){
+	if (strlen($data['touser']) < 15) {
+		return false;
+	}
+	$access_token = S('access_token');
+	if (empty($access_token)) {
+		$c_url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.C('weixin.wx_appid').'&secret='.C('weixin.wx_secret');
+		$s_info = json_decode(get_url($c_url));
+		S(array('expire'=>7000));
+		S('access_token',$s_info->access_token);
+	}
+	if (empty($data['template_id']) && $template_id_short) {
+		//获取模板id
+		$ss_url = 'https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token='.S('access_token');
+		$c_data['template_id_short'] = $template_id_short;
+		$info = json_decode(post_url($ss_url, $c_data));
+		$template_id = $info->template_id;
+		$data['template_id'] = $template_id;
+	}
+	$api_url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='.S('access_token');
+	$data = json_encode($data);
+	$res = post_url($api_url, $data);
+	return $res;
+}
+
 function saveContact($contact_info,$contact_type,$contact_source,$contact_remark = '',$contact_time = NOW_TIME){
 	$Db = M('ContactList');
 	$data['contact_info'] = $contact_info;

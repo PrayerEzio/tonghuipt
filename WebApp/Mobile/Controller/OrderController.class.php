@@ -15,6 +15,11 @@ class OrderController extends BaseController{
 	public function __construct(){
 		parent::__construct();
 		$this->check_login();
+		$this->m_info = M('Member')->where('member_id='.$this->mid)->find();
+		if (empty($this->m_info['openid']))
+		{
+			$this->getWechatInfo();
+		}
 	}
 	/**
 	 * 订单列表
