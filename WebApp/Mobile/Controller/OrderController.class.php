@@ -27,6 +27,7 @@ class OrderController extends BaseController{
 	public function index()
 	{
 		$where['member_id'] = $this->mid;
+		$where['order_type'] = 1;
 		$count = D('Order')->where($where)->count();
 		$page = new Page($count,10);
 		$list = D('Order')->relation(true)->where($where)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();

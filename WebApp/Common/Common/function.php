@@ -1306,6 +1306,17 @@ function get_board_status_name($board_status){
 	return $name;
 }
 
+function get_member_agent_name($member_id){
+	$agent_id = M('Member')->where(array('member_id'=>$member_id))->getField('agent_id');
+	if ($agent_id)
+	{
+		$agent_level = M('AgentInfo')->where(array('agent_id'=>$agent_id))->getField('agent_level');
+		return get_agent_level($agent_level);
+	}else {
+		return '普通会员';
+	}
+}
+
 function get_agent_level($agent_level){
 	switch ($agent_level){
 		case 3:
@@ -1315,7 +1326,7 @@ function get_agent_level($agent_level){
 		case 9:
 			$name = '九星会员';break;
 		default:
-			$name = '未知';
+			$name = '普通会员';
 	}
 	return $name;
 }

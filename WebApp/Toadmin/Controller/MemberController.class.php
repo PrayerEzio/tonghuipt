@@ -19,11 +19,14 @@ class MemberController extends GlobalController {
 	{
 		$map = array();
 		$mobile = trim($_GET['mobile']);
+		$agent_id = intval($_GET['agent_id']);
 		if($mobile)$map['mobile'] = array('eq',$mobile);
+		if($agent_id)$map['agent_id'] = array('eq',$agent_id);
 		$map['member_type'] = I('get.type',0,'int');
 		$totalRows = $this->model->where($map)->count();
 		$page = new Page($totalRows,10);	
 		$list = $this->model->where($map)->limit($page->firstRow.','.$page->listRows)->order('register_time desc')->select();				
+		$this->agent_info = M('AgentInfo')->where(array('agent_status'=>1))->field('agent_id,agent_name')->order('agent_level desc')->select();
 		$this->assign('list',$list);
 		$this->assign('search',$_GET);	
 		$this->assign('page_show',$page->show());

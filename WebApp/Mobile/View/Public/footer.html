@@ -1,13 +1,25 @@
 {:MSC('statistics_code')}
+
 <notempty name="alert">
+
 <script>
+
 alert("{$alert['message']}");
+
 <?php if (!empty($alert['jumpUrl'])) { ?>
+
 window.location.href = "{$alert['jumpUrl']}";
+
 <?php }else { ?>
+
 location.reload();
+
  <?php } ?>
+
 </script>
+
 </notempty>
+
 </body>
+
 </html>

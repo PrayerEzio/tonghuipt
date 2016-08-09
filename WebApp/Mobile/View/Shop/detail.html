@@ -1,4 +1,6 @@
 <include file="Public:header"/>
+<script src="__JS__/main.js"></script>
+ 
 <div class="index-group">
     <div class="header-all">
         <div class="com-header">
@@ -55,13 +57,13 @@
     </div>
  
     <section class="actionBar-container">
-        <div class="cell collect"><a href="JavaScript:collectionGoods({$info['goods_id']});">收藏</a></div>
-        <div class="cell add"><a href="JavaScript:addCart({$info['goods_id']});">加入购物车</a></div>
+        <div class="cell collect"><a href="JavaScript:collectionGoods({$info['goods_id']});"><span id="Collection" class="iconfont">&#xe614;</span>收藏</a></div>
+        <div class="cell add"><a onclick="addCart({$info['goods_id']});" href="JavaScript:">加入购物车</a></div>
         <div class="cell once"><a href="JavaScript:quickBuy({$info['goods_id']});">立即购买</a></div>
-        <div class="cell collect"><a href="{:U('Cart/index')}">购物车</a></div>
+        <div class="cell collect"><a href="{:U('Cart/index')}"><span id="shopCar" class="iconfont">&#xe602;</span>购物车</a></div>
     </section>
 </div>	 
-<script src="__JS__/main.js"></script>
+
 <script src="__JS__/mui.js"></script>
 <script src="__JS__/swiper.min.js"></script>
 <script>
@@ -75,7 +77,7 @@
         var URL = "{:U('Shop/collectionGoods')}";
         var data = {'goods_id':goods_id};
         $.post(URL,data,function(){
-            //收藏商品动画
+            $("#Collection").css("color","red");
         },'json');
     }
     function quickBuy(goods_id)
@@ -89,7 +91,7 @@
         var URL = "{:U('Cart/addCart')}";
         var data = {'goods_id':goods_id,'num':num};
         $.post(URL,data,function(){
-            //加入购物车动画
+            $("#shopCar").css("color","red");
         },'json');
     }
 </script>

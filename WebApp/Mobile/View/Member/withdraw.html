@@ -28,7 +28,7 @@
         }
     </style>
     <form action="" method="post" id="mainForm">
-        <div class="weui_cells_title">当前可提现金额<em>{$member_info['predeposit']}</em></div>
+        <div class="weui_cells_title">当前余额<em>{$member_info['predeposit']}</em></div>
         <div class="weui_cells weui_cells_form">
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">金额</label></div>
@@ -37,7 +37,8 @@
                 </div>
             </div>
         </div>
-        <div class="weui_cells_title">温馨提示：每天只可以提现1次</div>
+        <div class="weui_cells_title">温馨提示：每天只可以提现1次.</div>
+        <div class="weui_cells_title">温馨提示：最小提现金额10元,最大提现金额200元,且必须是10的倍数.</div>
         <div class="weui_btn_area">
             <a class="weui_btn weui_btn_primary" href="javascript:submitForm();">确定</a>
         </div>
