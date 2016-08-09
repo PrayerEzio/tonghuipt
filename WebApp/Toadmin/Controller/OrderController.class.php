@@ -79,6 +79,7 @@ class OrderController extends GlobalController {
 					$info['OrderGoods'][0]['goods_price'] = $agent_info['price'];
 					$info['OrderGoods'][0]['goods_num'] = 1;
 					break;//代理商
+				default : break;
 			}
 			if (is_array($info['OrderLog'])) {
 				foreach ($info['OrderLog'] as $key => $vo){
