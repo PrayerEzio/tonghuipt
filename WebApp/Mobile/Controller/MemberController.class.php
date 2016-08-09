@@ -273,9 +273,41 @@ class MemberController extends BaseController{
 	{
 		if(IS_POST)
 		{
+			$amount = floatval($_POST['amount']);
+			p($amount);die;
+			//生成订单并跳转
+			$order['order_sn'] = order_sn();
+			$order['member_id'] = $this->mid;
+			$order['order_type'] = 2;
+			$order['payment_id'] = 4;
+			switch (intval($_POST['pay_type'])){
+				case 1:$order['payment_name'] = 'alipay';break;
+				case 2:$order['payment_name'] = 'bdpay';break;
+				case 3:$order['payment_name'] = 'wxpay';break;
+				default : $order['payment_name'] = 'undefine';break;
+			}
+			$order['order_points'] = 0;
+			$order['cost_points'] = 0;
+			$order['goods_amount'] = $amount;
+			$order['discount'] = 0;
+			$order['order_amount'] = $amount;
+			$order['order_state'] = 10;
+			$order['add_time'] = NOW_TIME;
+			$res = M('Order')->add($order);
+			if ($res)
+			{
+				//进行支付跳转
+				switch (intval($_POST['pay_type'])){
+					case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
+					case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
+					case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
+				}
+			}else {
 
+			}
 		}elseif (IS_GET)
 		{
+			$this->member_info = M('Member')->where(array('member_id'=>$this->mid))->field('predeposit')->find();
 			$this->display();
 		}
 	}
@@ -285,6 +317,7 @@ class MemberController extends BaseController{
 	{
 		if(IS_POST)
 		{
+			die;
 			$amount = floatval($_POST['amount']);
 			$predeposit = M('Member')->where(array('member_id'=>$this->mid))->getField('predeposit');
 			if (!$amount || $amount > $predeposit)
