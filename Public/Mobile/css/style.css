@@ -158,7 +158,6 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
      left: 0;
      width: 100%;
      height: 50px;
-     line-height: 50px;
          border-top: 1px solid #cfcfcf;
     background-color: #fff;
     font-size: 15px;
@@ -175,10 +174,12 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .actionBar-container .add{
     background: #FF9500;
         max-width: 100%;
+        line-height: 50px;
 }
 .actionBar-container .once{
     background: #DD2727;
         max-width: 100%;
+        line-height: 50px;
 }
 .actionBar-container a { 
     color: #fff;
@@ -627,4 +628,11 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 }
 .into-box article {
      
+}
+.custommodule-item {
+    padding: 0 10px;
+}
+.actionBar-container .iconfont {
+    display: block;
+    line-height: 21px;
 }

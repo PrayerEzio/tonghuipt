@@ -161,37 +161,6 @@ class BaseController extends Controller{
 	}
 
 	/**
-	 * 发放公牌奖励
-	 */
-	/*protected function giveBoardReward()
-	{
-		$board_reward = MSC('board_reward');
-		$where['board_status'] = 0;
-		$where['differ_num'] = array('neq',0);
-		$where['finish_time'] = 0;
-		$board_info = M('Board')->where($where)->order('create_time')->find();
-		$res = M('Member')->where(array('member_id'=>$board_info['member_id']))->setInc('predeposit',$board_reward);
-		if ($res)
-		{
-			//TODO:资金日志
-
-			//更新公牌数据库
-			$data['finish_num'] = $board_info['finish_num']++;
-			$data['differ_num'] = $board_info['differ_num']--;
-			if ($board_info['expect_num'] == $data['finish_num'] || $data['differ_num'] == 0)
-			{
-				$data['board_status'] = 1;
-				$data['finish_time'] = time();
-			}
-			$update_res = M('Board')->where(array('board_id'=>$board_info['board_id']))->save($data);
-			if ($update_res)
-			{
-				//TODO:公牌日志
-			}
-		}
-	}*/
-
-	/**
 	 * 订单分润
 	 */
 	protected function orderShareProfit($order_id)
