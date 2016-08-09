@@ -1463,7 +1463,7 @@ function sendTemplateMsg($data,$template_id_short = ''){
 	}
 	$access_token = S('access_token');
 	if (empty($access_token)) {
-		$c_url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.C('weixin.wx_appid').'&secret='.C('weixin.wx_secret');
+		$c_url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.Wx_C('wx_appid').'&secret='.Wx_C('wx_secret');
 		$s_info = json_decode(get_url($c_url));
 		S(array('expire'=>7000));
 		S('access_token',$s_info->access_token);

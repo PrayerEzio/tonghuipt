@@ -119,18 +119,24 @@ class BaseController extends Controller{
 
 	/**
 	 * 发放分销红包
-	 * @param $child_member_id
+	 * @param $order_id
 	 * @param $level
 	 */
-	protected function giveDistributionRedPacket($child_member_id,$level)
+	protected function giveDistributionRedPacket($order_id,$level)
 	{
+		$order = M('Order')->where(array('order_id'=>$order_id,'order_type'=>4))->find();
+		if (empty($order))
+		{
+			return '';
+		}
 		$where['reward_type'] = 'distribution';
 		$where['level'] = array('elt',$level);
 		$red_packet_list = M('RedPacket')->where($where)->order('level desc')->select();
-		$mid = $child_member_id;
-		$member_info = M('Member')->where(array('member_id'=>$child_member_id))->find();
-		$agent_name = get_agent_level($member_info['agent_id']);
-		$member_nickname = get_member_nickname($child_member_id);
+		$mid = $order['member_id'];
+		$member_info = M('Member')->where(array('member_id'=>$mid))->find();
+		$agent_level = M('AgentInfo')->where(array('agent_id'=>$member_info['agent_id']))->getField('agent_level');
+		$agent_name = get_agent_level($agent_level);
+		$member_nickname = get_member_nickname($mid);
 		foreach ($red_packet_list as $key => $item) {
 			$member_where['member_id'] = $mid;
 			$member = M('Member')->where($member_where)->field('parent_member_id')->find();
@@ -143,8 +149,27 @@ class BaseController extends Controller{
 					$res = M('Member')->where(array('member_id'=>$member['parent_member_id']))->setInc('predeposit',$item['reward_price']);
 					if ($res)
 					{
+						$open_id = M('Member')->where(array('member_id'=>$member['parent_member_id']))->getField('openid');
+						$member_level_ch = ch_num($key+1);
+						if ($open_id)
+						{
+							$data['touser'] = $open_id;
+							$data['template_id'] = trim('YpV6rl7TZz-dULxA2QgBlTZwXjF_FY4UztGoNMbd4rU');
+							$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>1));
+							$data['data']['first']['value'] = '您的'.$member_level_ch.'级会员-'.$member_nickname.'已经下单成功，请关注‘tonghui56789’企业服务号，点击进入商城个人中心查看余额';
+							$data['data']['first']['color'] = '#173177';
+							$data['data']['orderno']['value'] = $order['order_sn'];
+							$data['data']['orderno']['color'] = '#173177';
+							$data['data']['refundno']['value'] = 1;
+							$data['data']['refundno']['color'] = '#173177';
+							$data['data']['refundproduct']['value'] = price_format($item['reward_price']);
+							$data['data']['refundproduct']['color'] = '#173177';
+							$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
+							$data['data']['remark']['color'] = '#173177';
+							sendTemplateMsg($data);
+						}
 						$bill['member_id'] = $member['parent_member_id'];
-						$bill['bill_log'] = '来自'.$agent_name.'-'.$member_nickname.'分销红包收益';
+						$bill['bill_log'] = '来自'.$member_level_ch.'级会员-'.$member_nickname.'['.$agent_name.']的分销红包收益';
 						$bill['amount'] = $item['reward_price'];
 						$bill['balance'] = M('Member')->where(array('member_id'=>$member['parent_member_id']))->getField('predeposit');
 						$bill['addtime'] = NOW_TIME;

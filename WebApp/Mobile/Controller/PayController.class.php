@@ -430,7 +430,7 @@ class PayController extends BaseController{
 								$agent['agent_id'] = $agent_info['agent_id'];
 								$agent['agent_level'] = $agent_info['agent_level'];
 								M('Agent')->add($agent);
-								$this->giveDistributionRedPacket($order['member_id'],$agent_info['agent_level']);
+								$this->giveDistributionRedPacket($order['order_id'],$agent_info['agent_level']);
 								if ($agent_info['agent_level'] == 9)
 								{
 									//加入公排
