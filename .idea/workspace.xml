@@ -2,12 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1de074bf-16af-419b-b0f0-69e7cbb5dc4c" name="默认的" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cacert/apiclient_cert.p12" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cacert/apiclient_cert.p12" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Common/Common/function.php" afterPath="$PROJECT_DIR$/WebApp/Common/Common/function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Toadmin/View/Distribution/indexBoard.html" afterPath="$PROJECT_DIR$/WebApp/Toadmin/View/Distribution/indexBoard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/Mobile/css/style.css" afterPath="$PROJECT_DIR$/Public/Mobile/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Public/Mobile/css/zyUpload.css" afterPath="$PROJECT_DIR$/Public/Mobile/css/zyUpload.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Think/Controller.class.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Think/Controller.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Think/Upload/Driver/Bcs/mimetypes.class.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Think/Upload/Driver/Bcs/mimetypes.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseClassManager.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseClassManager.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseClient.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseClient.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseCommon.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseCommon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseFormatter.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseFormatter.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseHttpClient.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseHttpClient.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseHttpServer.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseHttpServer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseIO.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseIO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseIOStream.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseIOStream.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseReader.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseReader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseTags.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseTags.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseWriter.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Hprose/HproseWriter.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Smarty/plugins/modifier.capitalize.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Smarty/plugins/modifier.capitalize.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Smarty/sysplugins/smarty_internal_compile_config_load.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/Smarty/sysplugins/smarty_internal_compile_config_load.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cacert/apiclient_cert.pem" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cacert/apiclient_cert.pem" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cacert/apiclient_key.pem" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cacert/apiclient_key.pem" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cert/apiclient_cert.pem" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cert/apiclient_cert.pem" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cert/apiclient_key.pem" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/cert/apiclient_key.pem" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/bindings/tcpdf/qrcode.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/bindings/tcpdf/qrcode.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/index.php" afterPath="$PROJECT_DIR$/ThinkYun/Library/Vendor/phpqrcode/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Cart/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Public/dispatch_jump.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Public/dispatch_jump.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/detail.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/detail.html" />
     </list>
     <ignored path="tonghuipt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,20 +58,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TestController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/TestController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.076923">
-              <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DistributionController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/DistributionController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.692307">
+            <state vertical-scroll-proportion="0.0">
               <caret line="20" column="30" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="30" />
               <folding />
             </state>
@@ -59,7 +71,7 @@
       <file leaf-file-name="indexBoard.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Distribution/indexBoard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.26923">
+            <state vertical-scroll-proportion="0.0">
               <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
               <folding />
             </state>
@@ -69,9 +81,11 @@
       <file leaf-file-name="BaseController.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0817051">
-              <caret line="171" column="105" selection-start-line="171" selection-start-column="105" selection-end-line="171" selection-end-column="105" />
-              <folding />
+            <state vertical-scroll-proportion="0.8081705">
+              <caret line="133" column="46" selection-start-line="133" selection-start-column="46" selection-end-line="133" selection-end-column="46" />
+              <folding>
+                <element signature="e#267#288#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,7 +93,7 @@
       <file leaf-file-name="PayController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.038462">
+            <state vertical-scroll-proportion="0.0">
               <caret line="432" column="112" selection-start-line="432" selection-start-column="32" selection-end-line="432" selection-end-column="112" />
               <folding />
             </state>
@@ -89,8 +103,8 @@
       <file leaf-file-name="MemberController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.961538">
-              <caret line="147" column="25" selection-start-line="147" selection-start-column="16" selection-end-line="147" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="146" column="25" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -191,6 +205,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="问题" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -292,17 +317,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="问题" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -316,22 +330,23 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="37" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="38" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="37" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="56" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="55" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="518" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="501" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="45" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="44" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="38" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="37" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="56" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="55" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="510" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="494" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="last_opened_file_path" value="D:/www/trunk" />
     <property name="SearchEverywhereHistoryKey" value="Distribution&#9;FILE&#9;file://D:/wamp/www/tonghuipt/WebApp/Toadmin/Controller/DistributionController.class.php" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -522,28 +537,28 @@
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23717949" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24679486" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946581" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31263858" sideWeight="0.36324787" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31263858" sideWeight="0.6367521" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31263858" sideWeight="0.3488248" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31263858" sideWeight="0.6511752" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33592018" sideWeight="0.44070512" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33592018" sideWeight="0.43643162" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.41452992" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.40331197" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.49786323" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.49786323" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -586,7 +601,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php</url>
-          <line>348</line>
+          <line>343</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -594,6 +609,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="146" column="25" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.87348354">
@@ -675,13 +698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/AdvController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13138686">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -865,7 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -873,7 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,7 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,7 +902,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3015873">
           <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,23 +925,23 @@
         <state vertical-scroll-proportion="0.15476191">
           <caret line="1077" column="27" selection-start-line="1077" selection-start-column="22" selection-end-line="1077" selection-end-column="27" />
           <folding>
-            <marker date="1470750635604" expanded="true" signature="12663:12729" placeholder="..." />
-            <marker date="1470750635604" expanded="true" signature="12690:12719" placeholder="{...}" />
+            <marker date="1470750635000" expanded="true" signature="12663:12729" placeholder="..." />
+            <marker date="1470750635000" expanded="true" signature="12690:12719" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.961538">
-          <caret line="147" column="25" selection-start-line="147" selection-start-column="16" selection-end-line="147" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="146" column="25" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.038462">
+        <state vertical-scroll-proportion="0.0">
           <caret line="432" column="112" selection-start-line="432" selection-start-column="32" selection-end-line="432" selection-end-column="112" />
           <folding />
         </state>
@@ -938,7 +949,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Distribution/indexBoard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.26923">
+        <state vertical-scroll-proportion="0.0">
           <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
           <folding />
         </state>
@@ -946,25 +957,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/DistributionController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.692307">
+        <state vertical-scroll-proportion="0.0">
           <caret line="20" column="30" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/TestController.class.php">
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/AdvController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.076923">
-          <caret line="31" column="68" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0817051">
-          <caret line="171" column="105" selection-start-line="171" selection-start-column="105" selection-end-line="171" selection-end-column="105" />
-          <folding />
+        <state vertical-scroll-proportion="0.8081705">
+          <caret line="133" column="46" selection-start-line="133" selection-start-column="46" selection-end-line="133" selection-end-column="46" />
+          <folding>
+            <element signature="e#267#288#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

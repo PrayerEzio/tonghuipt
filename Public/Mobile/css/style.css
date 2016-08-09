@@ -81,7 +81,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .dt-top { height: 44px;}
 .shopCart-list .item {     
     background-color: #fff;
-    margin: 0.2rem;
+    margin: 0.2rem 0;
     padding: 0.15rem 0;
     position: relative;
     border-radius: 4px;
@@ -90,7 +90,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 }
 .red { color: red;}
 .shopCart-list .item:after { content: ""; display: block; clear: both; }
-.shopCart-list .item .close {     position: absolute; right: 0.1rem; top: 0.2rem;}
+.shopCart-list .item .close {     position: absolute; right: 0.1rem; top: 1rem;}
 .shopCart-list .item .close .iconfont { font-size: 0.6rem; color: #E23C35;}
 .shopCart-list .product-img { float: left; width: 2.5rem;     height: 2.5rem;}
 .shopCart-list .product-img img {width: 2.5rem;     height: 2.5rem;}
@@ -586,7 +586,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
     display: none;
 }
 .into-box {
-    margin-top: -202px;
+    margin-top: -70%;
     margin-left: -160px;
     text-align: center;
     max-width: 640px;
@@ -635,4 +635,55 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .actionBar-container .iconfont {
     display: block;
     line-height: 21px;
+}
+.check-box input[type="checkbox"]{
+    display: none;
+}
+.check-box input[type="checkbox"]:after{
+       
+}
+.check-box input[type="checkbox"]:checked + .m-check {
+    border: 1px solid #ff9500;
+    background: #ff9500;
+}
+.check-box input[type="checkbox"]:checked + .m-check:after {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    width: 8px;
+    height: 15px;
+    transform: rotate(39deg);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #fff;
+    border-top: 0;
+    border-left: 0;
+    position: absolute;
+    left: 6px;
+    top: 0px;
+}
+
+.m-check:after {
+
+}
+.m-check {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    margin: 0 8px;
+    display: block;
+    position: relative;
+    margin-top: 0.8rem;
+}
+#call-check {
+    display: none;
+}
+.collect .m-check {
+
+}
+.call-label {
+    display: block;
+    height: 100%;
+    margin-top: 15px;
 }
