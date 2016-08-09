@@ -8,7 +8,6 @@
  */
 namespace Mobile\Controller;
 use Muxiangdao\DesUtils;
-use Muxiangdao\Emoji;
 use Think\Page;
 
 class MemberController extends BaseController{
@@ -283,10 +282,6 @@ class MemberController extends BaseController{
 	{
 		if(IS_POST)
 		{
-			if ($this->mid != 36 && $this->mid != 37)
-			{
-				$this->error('该功能即将上线,请稍后再试');die;
-			}
 			$amount = floatval($_POST['amount']);
 			p($amount);die;
 			//生成订单并跳转

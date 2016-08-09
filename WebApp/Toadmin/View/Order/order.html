@@ -4,7 +4,10 @@
     <div class="item-title">
       <h3>订单管理</h3>
       <ul class="tab-base">
-        <li><a href="JavaScript:void(0);" class="current"><span>订单管理</span></a></li>
+        <li><a <eq name="search['order_type']" value="1">href="JavaScript:void(0);" class="current"<else/>href="{:U('',array('order_type'=>1))}"</eq>><span>购物订单</span></a></li>
+        <li><a <eq name="search['order_type']" value="2">href="JavaScript:void(0);" class="current"<else/>href="{:U('',array('order_type'=>2))}"</eq>><span>充值订单</span></a></li>
+        <li><a <eq name="search['order_type']" value="4">href="JavaScript:void(0);" class="current"<else/>href="{:U('',array('order_type'=>4))}"</eq>><span>购买代理商订单</span></a></li>
+        <li><a <eq name="search['order_type']" value="-2">href="JavaScript:void(0);" class="current"<else/>href="{:U('',array('order_type'=>-2))}"</eq>><span>提现订单</span></a></li>
         <!--<li><a href="{:U('addOrder')}"><span>录入</span></a></li>-->
       </ul>
     </div>
