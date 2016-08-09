@@ -17,11 +17,10 @@ class OrderController extends GlobalController {
 	//管理
 	public function order()
 	{
+		$search = $_GET;
 		$map = array();
-		$issuper = M('Admin')->where(array('admin_id'=>AID))->getField('admin_issuper');
-		if (!$issuper) {
-			$map['creat_admin_id'] = array('in','0,'.AID);
-		}
+		$map['order_type'] = intval($_GET['order_type']) ? intval($_GET['order_type']) : 1;
+		$search['order_type'] = $map['order_type'];
 		if(intval($_GET['order_state']))$map['order_state'] = array('eq',intval($_GET['order_state']));
 		if(trim($_GET['field']) && trim($_GET['search_name']))$map[$_GET['field']] = array('like','%'.trim($_GET['search_name']).'%');
 		$add_time_from = trim($_GET['add_time_from']) ? strtotime(trim($_GET['add_time_from'])) : 0;
@@ -42,7 +41,7 @@ class OrderController extends GlobalController {
 		$list = $this->model->where($map)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();				
 		$this->assign('list',$list);
 		$this->assign('page_show',$page->show());				
-	    $this->assign('search', $_GET);							
+	    $this->assign('search', $search);
 		$this->display();
 	}
 	
@@ -53,6 +52,34 @@ class OrderController extends GlobalController {
 		if($order_id)
 		{
 			$info = $this->model->where(array('order_id'=>$order_id))->relation(true)->find();
+			switch ($info['order_type']){
+				case -2:
+					$info['OrderGoods'][0]['goods_name'] = '余额提现';
+					$info['OrderGoods'][0]['goods_mkprice'] = $info['goods_amount'];
+					$info['OrderGoods'][0]['goods_price'] = $info['goods_amount'];
+					$info['OrderGoods'][0]['goods_num'] = '元';
+					break;//提现
+				case 1: '';break;//普通
+				case 2: '';
+					$info['OrderGoods'][0]['goods_name'] = '余额充值';
+					$info['OrderGoods'][0]['goods_mkprice'] = $info['goods_amount'];
+					$info['OrderGoods'][0]['goods_price'] = $info['goods_amount'];
+					$info['OrderGoods'][0]['goods_num'] = '元';
+					break;//充值
+				case 3:
+					$info['OrderGoods'][0]['goods_name'] = '充值vip';
+					$info['OrderGoods'][0]['goods_mkprice'] = $info['goods_amount'];
+					$info['OrderGoods'][0]['goods_price'] = $info['goods_amount'];
+					$info['OrderGoods'][0]['goods_num'] = '';
+					break;//vip
+				case 4:
+					$agent_info = M('AgentInfo')->where(array('agent_id'=>$info['order_param']))->find();
+					$info['OrderGoods'][0]['goods_name'] = get_agent_level($agent_info['agent_level']);
+					$info['OrderGoods'][0]['goods_mkprice'] = $agent_info['price'];
+					$info['OrderGoods'][0]['goods_price'] = $agent_info['price'];
+					$info['OrderGoods'][0]['goods_num'] = 1;
+					break;//代理商
+			}
 			if (is_array($info['OrderLog'])) {
 				foreach ($info['OrderLog'] as $key => $vo){
 					$where['order_id'] = $info['order_id'];

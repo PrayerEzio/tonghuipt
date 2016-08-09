@@ -9,6 +9,7 @@
  */
 namespace Mobile\Controller;
 use Think\Controller;
+use Muxiangdao\Emoji;
 
 class BaseController extends Controller{
 	public function __construct()
