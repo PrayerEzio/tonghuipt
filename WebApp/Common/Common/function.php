@@ -1512,6 +1512,7 @@ function system_log($title,$content,$type,$level=0,$operator_type='system',$oper
 	$data['log_time'] = time();
 	$data['operator_type'] = $operator_type;
 	$data['operator_id'] = $operator_id;
+	$data['log_ip'] = get_client_ip();
 	$log_id = M('SystemLog')->add($data);
 	return $log_id;
 }
