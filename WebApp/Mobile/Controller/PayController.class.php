@@ -366,28 +366,28 @@ class PayController extends BaseController{
 		if($notify->checkSign() == FALSE){
 			$notify->setReturnParameter("return_code","FAIL");//返回状态码
 			$notify->setReturnParameter("return_msg","签名失败");//返回信息
-			system_log('微信支付异步接口验证签名失败',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,2,'WechatPay');
+			system_log('微信支付异步接口验证签名失败',$xml,2,'WechatPay');
 		}else{
 			$notify->setReturnParameter("return_code","SUCCESS");//设置返回码
-			system_log('微信支付异步接验证签名成功',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,0,'WechatPay');
+			system_log('微信支付异步接验证签名成功',$xml,0,'WechatPay');
 		}
 		$returnXml = $notify->returnXml();
 		//==商户根据实际情况设置相应的处理流程，此处仅作举例=======
-		system_log('接受到微信notify通知',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,0,'WechatPay');
+		system_log('接受到微信notify通知',$xml,0,'WechatPay');
 
 		if($notify->checkSign() == TRUE)
 		{
 			if ($notify->data["return_code"] == "FAIL") {
 				//此处应该更新一下订单状态，商户自行增删操作
-				system_log('微信notify通信出错',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,1,'WechatPay');
+				system_log('微信notify通信出错',$xml,1,'WechatPay');
 			}
 			elseif($notify->data["result_code"] == "FAIL"){
 				//此处应该更新一下订单状态，商户自行增删操作
-				system_log('微信notify业务出错',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,1,'WechatPay');
+				system_log('微信notify业务出错',$xml,1,'WechatPay');
 			}
 			else{
 				//此处应该更新一下订单状态，商户自行增删操作
-				system_log('微信notify支付成功',$xml,CONTROLLER_NAME.'-'.ACTION_NAME,0,'WechatPay');
+				system_log('微信notify支付成功',$xml,0,'WechatPay');
 				$result_info = xmlToArray($xml);
 				$where['order_sn'] = $result_info['out_trade_no'];
 				$order = M('Order')->where($where)->find();

@@ -1499,7 +1499,7 @@ function saveContact($contact_info,$contact_type,$contact_source,$contact_remark
 /**
  * 系统日志
  */
-function system_log($title,$content,$type,$level=0,$operator_type='system',$operator_id=0)
+function system_log($title,$content,$level=0,$operator_type='system',$operator_id=0,$type)
 {
 	if (empty($type))
 	{
