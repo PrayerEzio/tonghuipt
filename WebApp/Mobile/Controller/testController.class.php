@@ -17,12 +17,6 @@ class TestController extends BaseController{
 		}*/
 	}
 
-	public function test()
-	{
-		system_log('来自Linux的curl访问','来自Linux的curl访问,时间:'.date('Y-m-d H:i:s',NOW_TIME).',Ip:'.get_client_ip());
-		echo '123';
-	}
-
 	public function company_pay(){
 		$amount = 2.88;
 		$desc = '企业付款测试';

@@ -143,7 +143,7 @@ class MemberController extends BaseController{
 	//账单
 	public function bill()
 	{
-		$bill_type = intval($_GET['type']);
+		$bill_type = intval($_GET['bill_type']);
 		$where['bill_type'] = $bill_type;
 		$where['member_id'] = $this->mid;
 		$count = M('MemberBill')->where($where)->count();

@@ -18,35 +18,52 @@ class DayController extends BaseController{
 		$this->increaseInterest();
 	}
 
+	//每日余额利息
 	private function increaseInterest()
 	{
 		$member_list_where['predeposit'] = array('gt',0);
 		$member_list_where['member_status'] = 1;
 		$member_list_field = 'member_id,predeposit';
 		$member_list = M('Member')->where($member_list_where)->field($member_list_field)->select();
-		foreach ($member_list as $key => $member)
+		$interest_rate = MSC('interest_rate');
+		if (is_array($member_list) && $interest_rate)
 		{
-			$interest = $member['predeposit']*MSC('interest_rate');
-			$res = M('Member')->where(array('member_id'=>$member['member_id']))->setInc('predeposit',$interest);
-			if ($res)
+			foreach ($member_list as $key => $member)
 			{
-				//写入收入日志
-				$bill['member_id'] = $member['member_id'];
-				$bill['bill_log'] = '来自余额利息';
-				$bill['amount'] = $interest;
-				$bill['balance'] = M('Member')->where(array('member_id'=>$member['member_id']))->getField('predeposit');
-				$bill['addtime'] = NOW_TIME;
-				$bill['bill_type'] = 1;
-				$bill['channel'] = 3;
-				M('MemberBill')->add($bill);
-			}else {
-				$fail_member[] = $member;
+				$interest = $member['predeposit']*$interest_rate;
+				$res = M('Member')->where(array('member_id'=>$member['member_id']))->setInc('predeposit',$interest);
+				if ($res)
+				{
+					//写入收入日志
+					$bill['member_id'] = $member['member_id'];
+					$bill['bill_log'] = '来自余额利息';
+					$bill['amount'] = $interest;
+					$bill['balance'] = M('Member')->where(array('member_id'=>$member['member_id']))->getField('predeposit');
+					$bill['addtime'] = NOW_TIME;
+					$bill['bill_type'] = 1;
+					$bill['channel'] = 3;
+					M('MemberBill')->add($bill);
+				}else {
+					$fail_member[] = $member;
+				}
 			}
-		}
-		if (!empty($fail_member_id))
-		{
-			//写入错误日志
-			system_log('每日余额利息增加失败.',json_encode($fail_member),10,'CrontabServer');
+			system_log('定时任务:每日余额利息任务','定时任务:每日余额利息任务完成.',0,'CrontabServer');
+			if (!empty($fail_member_id))
+			{
+				//写入错误日志
+				system_log('每日余额利息增加失败.',json_encode($fail_member),10,'CrontabServer');
+			}
+		}else {
+			$reason = '';
+			if (empty($member_list))
+			{
+				$reason .= '[没有获取到用户列表]';
+			}
+			if (empty($interest_rate))
+			{
+				$reason .= '[没有获取到利率]';
+			}
+			system_log('定时任务:每日余额利息任务','定时任务:每日余额利息任务没有执行,原因:'.$reason,1,'CrontabServer');
 		}
 	}
 }
