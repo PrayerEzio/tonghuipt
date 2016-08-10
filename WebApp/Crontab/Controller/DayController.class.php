@@ -25,7 +25,7 @@ class DayController extends BaseController{
 		$member_list_where['member_status'] = 1;
 		$member_list_field = 'member_id,predeposit';
 		$member_list = M('Member')->where($member_list_where)->field($member_list_field)->select();
-		$interest_rate = MSC('interest_rate');
+		$interest_rate = MSC('interest_rate')/100;
 		if (is_array($member_list) && $interest_rate)
 		{
 			foreach ($member_list as $key => $member)
