@@ -1445,6 +1445,30 @@ function get_notice_type_name($notice_type){
 	return $name;
 }
 
+function get_bill_channel($channel)
+{
+	//-2提现2充值3余额利息4购买代理5分销红包6公排收益7订单分润
+	switch ($channel){
+		case -2:
+			$name = '提现';break;
+		case 2:
+			$name = '充值';break;
+		case 3:
+			$name = '余额利息';break;
+		case 4:
+			$name = '购买代理';break;
+		case 5:
+			$name = '分销红包';break;
+		case 6:
+			$name = '公排收益';break;
+		case 7:
+			$name = '订单分润';break;
+		default:
+			$name = '未知';break;
+	}
+	return $name;
+}
+
 //微信JS-SDK
 function wx_js_sdk()
 {

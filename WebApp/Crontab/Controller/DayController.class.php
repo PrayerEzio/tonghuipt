@@ -30,7 +30,7 @@ class DayController extends BaseController{
 		{
 			foreach ($member_list as $key => $member)
 			{
-				$interest = $member['predeposit']*$interest_rate;
+				$interest = round($member['predeposit']*$interest_rate,2);
 				$res = M('Member')->where(array('member_id'=>$member['member_id']))->setInc('predeposit',$interest);
 				if ($res)
 				{

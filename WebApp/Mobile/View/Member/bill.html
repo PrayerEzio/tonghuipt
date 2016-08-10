@@ -18,14 +18,15 @@
     <div class="container">
         <volist name="list" id="vo">
             <dl>
-                <dt>{$vo['channel']}</dt>
+                <dt>{$vo['bill_log']}</dt>
                 <dd>
                     <strong>￥{$vo['amount']|price_format}</strong>
-                    <p>{$vo['bill_log']}</p>
+                    <p>{$vo['channel']|get_bill_channel}</p>
                     <span>{$vo['addtime']|date='Y-m-d H:i:s',###}</span>
                 </dd>
             </dl>
         </volist>
+        <div class="load-box">{$page}</div>
     </div>
     {:W('Menu/footer_nav')}
 </div>

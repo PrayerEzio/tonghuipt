@@ -150,6 +150,7 @@ class MemberController extends BaseController{
 		$page = new Page($count,10);
 		$list = M('MemberBill')->where($where)->limit($page->firstRow.','.$page->listRows)->order('addtime desc')->select();
 		$this->list = $list;
+        $this->page = $page->show();
 		$this->display();
 	}
 
