@@ -84,7 +84,7 @@
                         <td>{$val['member_id']|get_member_agent_name}</td>
                         <td>{$val['register_time']|date='Y-m-d',###}</td>
                         <td class='align-center'>
-                            <a href='javascript:if(confirm("确定要删除？"))window.location ="{:U(' Member/member_del',array('member_id'=>$val['member_id']))}";'>删除</a>
+                            <a href='javascript:if(confirm("确定要删除？"))window.location ="{:U('Member/member_del',array('member_id'=>$val['member_id']))}";'>删除</a>
                             <a href="{:U('curd',array('id'=>$val['member_id']))}">编辑</a>
                         </td>
                     </tr>

@@ -1499,8 +1499,12 @@ function saveContact($contact_info,$contact_type,$contact_source,$contact_remark
 /**
  * 系统日志
  */
-function system_log($title,$content,$type,$level,$operator_type='system',$operator_id=0)
+function system_log($title,$content,$type,$level=0,$operator_type='system',$operator_id=0)
 {
+	if (empty($type))
+	{
+		$type = MODULE_NAME.'-'.CONTROLLER_NAME.'-'.ACTION_NAME;
+	}
 	$data['log_type'] = $type;
 	$data['log_level'] = $level;
 	$data['log_title'] = $title;

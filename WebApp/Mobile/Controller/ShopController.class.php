@@ -23,10 +23,8 @@ class ShopController extends BaseController{
 		$order = 'goods_sort desc';
 		$where['goods_status'] = 1;
 		$gc_id = intval($_GET['gc']);
-		if (empty($gc_id))
+		if (!empty($gc_id))
 		{
-			$where['gc_id'] = array('neq',47);
-		}else {
 			$where['gc_id'] = $gc_id;
 		}
 		$count = $this->model->where($where)->count();
@@ -48,7 +46,8 @@ class ShopController extends BaseController{
 	 */
 	public function category()
 	{
-		$where['gc_id'] = array('neq',47);
+		//$where['gc_id'] = array('neq',47);
+		$where = array();
 		$list = M('GoodsClass')->where($where)->order('gc_sort desc')->select();
 		$list = unlimitedForLayer($list,'child','gc_parent_id','gc_id');
 		$this->list = $list;

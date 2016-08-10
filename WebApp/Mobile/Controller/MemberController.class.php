@@ -326,10 +326,10 @@ class MemberController extends BaseController{
 	{
 		if(IS_POST)
 		{
-			if ($this->mid != 36 && $this->mid != 37)
+			/*if ($this->mid != 36 && $this->mid != 37)
 			{
 				$this->error('该功能即将上线,请稍后再试');die;
-			}
+			}*/
 			$amount = floatval($_POST['amount']);
 			$predeposit = M('Member')->where(array('member_id'=>$this->mid))->getField('predeposit');
 			$judge_amount = intval($amount/10)*10;

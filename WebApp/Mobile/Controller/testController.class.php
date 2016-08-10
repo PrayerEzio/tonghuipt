@@ -7,24 +7,24 @@
  * @author     muxiangdao-cn Team Prayer (283386295@qq.com)
  */
 namespace Mobile\Controller;
-class testController extends BaseController{
+class TestController extends BaseController{
 	public function __construct(){
 		parent::__construct();
-		if ($this->mid == 36 || $this->mid == 37)
+		/*$this->getWechatInfo();
+		if ($this->mid != 36 && $this->mid != 37)
 		{
-			$amount = 101;
-		}else {
-			$this->error('请不要非法操作');die;
-		}
+			redirect(U('Member/index'));
+		}*/
+	}
+
+	public function test()
+	{
+		system_log('来自Linux的curl访问','来自Linux的curl访问,时间:'.date('Y-m-d H:i:s',NOW_TIME).',Ip:'.get_client_ip());
+		echo '123';
 	}
 
 	public function company_pay(){
-		if ($this->mid == 36 || $this->mid == 37)
-		{
-			$amount = 101;
-		}else {
-			$this->error('请不要非法操作');die;
-		}
+		$amount = 2.88;
 		$desc = '企业付款测试';
 		$order_sn = order_sn('Test');
 		$data = array(
@@ -64,6 +64,40 @@ class testController extends BaseController{
 		p($res);
 		if (!empty($res['partner_trade_no'])) {
 			M('Order')->add($data);
+		}
+	}
+
+	public function sendredpack()
+	{
+		$amount = 2.88;
+		//加载支付类库
+		Vendor('WxPayPubHelper.WxPayPubHelper');
+		$wxPay = new \Common_util_pub();
+		$openid = M('member')->where(array('member_id'=>$this->mid))->getField('openid');
+		$info = array(
+			'mch_billno' => Wx_C('wx_mch_id').date('Ymd',time()).substr(time(),1,11),
+			'wxappid' => Wx_C('wx_appid'),
+			'mch_id' => Wx_C('wx_mch_id'),
+			'nonce_str' => $wxPay->createNoncestr(32),
+			'send_name' => '通汇大商圈',
+			're_openid' => $openid,
+			'total_amount' => intval($amount*100),
+			'total_num' => 1,
+			'wishing' => '红包祝福语',
+			'client_ip' => get_client_ip(),
+			'act_name' => '通汇大商圈提现测试',
+			'remark' => '提现备注测试',
+		);
+		$info['sign'] = $wxPay->getSign($info);
+		$arr = $info;
+		$xml = $wxPay->arrayToXml($arr);
+		$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
+		$result = $wxPay->postXmlSSLCurl($xml, $url);
+		$res = $wxPay->xmlToArray($result);
+		p($res);
+		if ($res['return_code'] === 'SUCCESS' && $res['result_code'] === 'SUCCESS')
+		{
+			echo 'success';
 		}
 	}
 }
