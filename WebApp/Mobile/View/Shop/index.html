@@ -28,7 +28,7 @@
 			<volist name="list" id="vo">
 				<a class="brand-item" href="{:U('Shop/detail',array('id'=>$vo['goods_id']))}">
 					<div class="pr">
-						<img data-original="__UPLOADS__/{$vo['goods_pic']}" alt="">
+						<img data-original="__UPLOADS__/{$vo['goods_pic']}" src="__UPLOADS__/{$vo['goods_pic']}" alt="">
 						<span class="sales">销量：{$vo['goods_sales']}</span>
 					</div>
 					<div class="goods-name">{$vo['goods_name']}</div>

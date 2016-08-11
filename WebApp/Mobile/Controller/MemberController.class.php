@@ -327,10 +327,11 @@ class MemberController extends BaseController{
 	{
 		if(IS_POST)
 		{
-			/*if ($this->mid != 36 && $this->mid != 37)
+			$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
+			if (!$withdraw_status)
 			{
-				$this->error('该功能即将上线,请稍后再试');die;
-			}*/
+				$this->error('抱歉,您没有提现的权限.');
+			}
 			$amount = floatval($_POST['amount']);
 			$predeposit = M('Member')->where(array('member_id'=>$this->mid))->getField('predeposit');
 			$judge_amount = intval($amount/10)*10;
@@ -341,10 +342,14 @@ class MemberController extends BaseController{
 			$bill_count_where['bill_type'] = -1;
 			$bill_count_where['channel'] = -2;
 			$bill_count_where['member_id'] = $this->mid;
+			$bill_count_where['add_time'] = array('between',array(date('Y-m-d',NOW_TIME),date('Y-m-d',NOW_TIME)+86400));
 			$bill_count = M('MemberBill')->where($bill_count_where)->count();
-			if ($order_count || $bill_count)
+			if ($this->mid != 37 && $this->mid != 36)
 			{
-				$this->error('您今日已经没有提现次数了,请明天再来.');die;
+				if ($order_count || $bill_count)
+				{
+					$this->error('您今日已经没有提现次数了,请明天再来.');die;
+				}
 			}
 			if (!$amount || $amount > $predeposit || $judge_amount != $amount)
 			{
@@ -399,6 +404,18 @@ class MemberController extends BaseController{
 			$result = $wxPay->postXmlSSLCurl($xml, $url);
 			$res = $wxPay->xmlToArray($result);
 			if (!empty($res['partner_trade_no'])) {
+				$data['touser'] = $openid;
+				$data['template_id'] = trim('RyeUJ1L4zRD4DzQ_lQGuUlYldAmBudVZ3fF6R0zY_w4');
+				$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
+				$data['data']['first']['value'] = '您的提现申请已经完成,订单号:'.$order_sn.'，请关注‘tonghui56789’企业服务号，点击进入商城个人中心查看余额';
+				$data['data']['first']['color'] = '#173177';
+				$data['data']['keyword1']['value'] = price_format($amount);
+				$data['data']['keyword1']['color'] = '#173177';
+				$data['data']['keyword2']['value'] = date('Y-m-d H:i:s',time());
+				$data['data']['keyword2']['color'] = '#173177';
+				$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
+				$data['data']['remark']['color'] = '#173177';
+				sendTemplateMsg($data);
 				M('Order')->add($data);
 				//生成账单流水
 				$bill['member_id'] = $data['member_id'];

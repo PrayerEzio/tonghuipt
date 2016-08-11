@@ -699,6 +699,7 @@ class GoodsController extends GlobalController {
 			$data['goods_type'] = str_rp(trim($_POST['goods_type']));
 			$data['goods_type_id'] = get_goods_type_id($data['gc_id']);
 			$data['goods_city_id'] = intval(trim($_POST['goods_city_id']));
+			$data['goods_sales'] = intval($_POST['goods_sales']);
 			$data['goods_key'] = str_rp(trim($_POST['goods_key']));
 			$data['goods_desc'] = str_rp(trim($_POST['goods_desc']));
 			$data['goods_url'] = str_rp(trim($_POST['goods_url']));
@@ -889,7 +890,8 @@ class GoodsController extends GlobalController {
 			$data['goods_code'] = str_rp(trim($_POST['goods_code']));
 			$data['goods_type'] = str_rp(trim($_POST['goods_type']));
 			$data['goods_type_id'] = get_goods_type_id($data['gc_id']);
-			$data['goods_city_id'] = intval(trim($_POST['goods_city_id']));			
+			$data['goods_city_id'] = intval(trim($_POST['goods_city_id']));
+			$data['goods_sales'] = intval($_POST['goods_sales']);
 			$data['goods_key'] = str_rp(trim($_POST['goods_key']));
 			$data['goods_desc'] = str_rp(trim($_POST['goods_desc']));
 			$data['goods_url'] = str_rp(trim($_POST['goods_url']));

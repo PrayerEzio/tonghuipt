@@ -42,6 +42,7 @@ class MemberController extends GlobalController {
 			$data['predeposit'] = floatval($_POST['predeposit']);
 			$data['point'] = intval($_POST['point']);
 			$data['member_status'] = intval($_POST['member_status']);
+			$data['withdraw_status'] = intval($_POST['withdraw_status']);
 			$data['parent_member_id'] = intval($_POST['parent_member_id']);
 			$member_id = intval($_POST['member_id']);
 			$pwd = $_POST['pwd'];
