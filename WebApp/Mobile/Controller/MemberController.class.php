@@ -337,14 +337,14 @@ class MemberController extends BaseController{
 			$judge_amount = intval($amount/10)*10;
 			$order_count_where['member_id'] = $this->mid;
 			$order_count_where['order_type'] = -2;
-			$order_count_where['add_time'] = array('between',array(date('Y-m-d',NOW_TIME),date('Y-m-d',NOW_TIME)+86400));
+			$order_count_where['add_time'] = array('between',array(NOW_TIME,NOW_TIME+86400));
 			$order_count = M('Order')->where($order_count_where)->count();
 			$bill_count_where['bill_type'] = -1;
 			$bill_count_where['channel'] = -2;
 			$bill_count_where['member_id'] = $this->mid;
-			$bill_count_where['add_time'] = array('between',array(date('Y-m-d',NOW_TIME),date('Y-m-d',NOW_TIME)+86400));
-			$bill_count = M('MemberBill')->where($bill_count_where)->count();
-			if ($this->mid != 37 && $this->mid != 36)
+			$bill_count_where['addtime'] = array('between',array(NOW_TIME,NOW_TIME+86400));
+			$bill_count = M('MemberBill')->where($bill_count_where)->find();
+			if ($this->mid != 37)
 			{
 				if ($order_count || $bill_count)
 				{
