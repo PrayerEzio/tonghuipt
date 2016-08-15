@@ -284,7 +284,6 @@ class MemberController extends BaseController{
 		if(IS_POST)
 		{
 			$amount = floatval($_POST['amount']);
-			p($amount);die;
 			//生成订单并跳转
 			$order['order_sn'] = order_sn();
 			$order['member_id'] = $this->mid;

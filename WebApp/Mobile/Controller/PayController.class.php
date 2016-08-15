@@ -15,6 +15,176 @@ class PayController extends BaseController{
 		$this->mod = D('Order');
 		$this->mid = session('member_id');
 	}
+	public function predepositpay()
+	{
+		$order_sn = trim($_GET['order_sn']);
+		$order_where['member_id'] = $this->mid;
+		$order_where['order_sn'] = $order_sn;
+		$order = D('Order')->where($order_where)->find();
+		if (is_array($order) && !empty($order)) {
+			if ($order['order_state'] != 10) {
+				$this->error('该订单号无法进行支付,请联系客服.');
+			}else {
+				$predeposit = M('Member')->where(array('member_id'=>$this->mid,'member_status'=>1))->getField('predeposit');
+				if ($predeposit < $order['order_amount'])
+				{
+					$this->error('余额不足,请充值');
+				}else {
+					$res = M('Member')->where(array('member_id'=>$this->mid))->setDec('predeposit',$order['order_amount']);
+					if ($res)
+					{
+						$this->finishPay($order_sn);
+					}else {
+						$this->error('抱歉,支付失败.');
+					}
+				}
+			}
+		}else {
+			$this->error('非法操作');
+		}
+	}
+
+	private function finishPay($order_sn)
+	{
+		$where['order_sn'] = $order_sn;
+		$order = M('Order')->where($where)->find();
+		if ($order['order_state'] == 10){
+			switch ($order['order_type'])
+			{
+				case 1:
+					$bill_log = '购买商品';
+					$channel = 1;
+					$res = $this->mod->where($where)->setField('order_state',20);
+					break;
+				case 2:
+					//充值
+					$bill_log = '充值余额';
+					$channel = 2;
+					$s = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('predeposit',$order['goods_amount']);
+					if ($s)
+					{
+						$res = $this->mod->where($where)->setField('order_state',50);
+						$bill['member_id'] = $order['member_id'];
+						$bill['bill_log'] = '余额充值成功';
+						$bill['amount'] = $order['goods_amount'];
+						$bill['balance'] = M('Member')->where(array('member_id'=>$order['member_id']))->getField('predeposit');
+						$bill['addtime'] = NOW_TIME;
+						$bill['bill_type'] = 1;
+						$bill['channel'] = 2;
+						M('MemberBill')->add($bill);
+					}
+					break;
+				case 3:
+					//TODO:购买vip
+					$bill_log = '购买vip';
+					$channel = 3;
+					$res = $this->mod->where($where)->setField('order_state',50);
+					break;
+				case 4:
+					//购买代理商
+					$bill_log = '购买代理';
+					$channel = 4;
+					$res = $this->mod->where($where)->setField('order_state',50);
+					$agent_info = M('AgentInfo')->where(array('agent_id'=>$order['order_param']))->find();
+					if ($agent_info && $res)
+					{
+						$s = M('Member')->where(array('member_id'=>$order['member_id']))->setField('agent_id',$agent_info['agent_id']);
+						$agent['member_id'] = $order['member_id'];
+						$agent['create_time'] = NOW_TIME;
+						$agent['status'] = 1;
+						$agent['agent_id'] = $agent_info['agent_id'];
+						$agent['agent_level'] = $agent_info['agent_level'];
+						M('Agent')->add($agent);
+						$this->giveDistributionRedPacket($order['order_id'],$agent_info['agent_level']);
+						if ($agent_info['agent_level'] == 9)
+						{
+							//加入公排
+							$board['member_id'] = $order['member_id'];
+							$board['board_status'] = 0;
+							$board['expect_num'] = MSC('board_expect_num');
+							$board['differ_num'] = MSC('board_expect_num');
+							$board['finish_num'] = 0;
+							$board['create_time'] = NOW_TIME;
+							M('Board')->add($board);
+							//给公排收益
+							$active_board_where['board_status'] = 0;
+							$active_board_where['differ_num'] = array('gt',0);
+							$active_board_where['finish_time'] = 0;
+							$active_board = M('Board')->where($active_board_where)->order('create_time asc,board_id asc')->find();
+							if ($active_board)
+							{
+								//更新公排数据
+								$update_board['differ_num'] = $active_board['differ_num']-1;
+								$update_board['finish_num'] = $active_board['finish_num']+1;
+								if ($update_board['differ_num'] == 0)
+								{
+									$update_board['finish_time'] = NOW_TIME;
+									$update_board['board_status'] = 1;
+								}
+								$update_board_result = M('Board')->where(array('board_id'=>$active_board['board_id']))->save($update_board);
+								if ($update_board_result)
+								{
+									$board_reward_result = M('Member')->where(array('member_id'=>$active_board['member_id']))->setInc('predeposit',MSC('board_reward'));
+									if ($board_reward_result)
+									{
+										$bill['member_id'] = $active_board['member_id'];
+										$bill['bill_log'] = '来自全国代理公排收益';
+										$bill['amount'] = MSC('board_reward');
+										$bill['balance'] = M('Member')->where(array('member_id'=>$active_board['member_id']))->getField('predeposit');
+										$bill['addtime'] = NOW_TIME;
+										$bill['bill_type'] = 1;
+										$bill['channel'] = 6;
+										M('MemberBill')->add($bill);
+									}
+								}
+							}
+						}
+					}
+					break;
+				default :break;
+			}
+			//更改订单状态
+			$this->mod->where($where)->setField('payment_time',time());
+			//资金日志
+			$bill['member_id'] = $order['member_id'];
+			$bill['bill_log'] = $bill_log;
+			$bill['amount'] = $order['order_amount'];
+			$bill['balance'] = M('Member')->where(array('member_id'=>$order['member_id']))->getField('predeposit');
+			$bill['addtime'] = NOW_TIME;
+			$bill['bill_type'] = -1;
+			$bill['channel'] = $channel;
+			M('MemberBill')->add($bill);
+			//订单日志
+			$log_data['order_id'] = $order['order_id'];
+			$log_data['order_state'] = get_order_state_name(20);
+			$log_data['change_state'] = get_order_state_name(30);
+			$log_data['state_info'] = '会员已支付订单';
+			$log_data['log_time'] = NOW_TIME;
+			$log_data['operator'] = '会员';
+			M('OrderLog')->add($log_data);
+			if ($order['order_type'] != 1)
+			{
+				//订单日志
+				$log_data['order_id'] = $order['order_id'];
+				$log_data['order_state'] = get_order_state_name(30);
+				$log_data['change_state'] = get_order_state_name(50);
+				$log_data['state_info'] = '系统已完成订单';
+				$log_data['log_time'] = NOW_TIME;
+				$log_data['operator'] = '系统';
+				M('OrderLog')->add($log_data);
+			}
+		}else {
+			//订单日志
+			$log_data['order_id'] = $order['order_id'];
+			$log_data['order_state'] = get_order_state_name(0);
+			$log_data['change_state'] = get_order_state_name(0);
+			$log_data['state_info'] = '客户支付完成.但订单状态异常.异常状态为'.$order['order_state'].':'.get_order_state_name($order['order_state']);
+			$log_data['log_time'] = NOW_TIME;
+			$log_data['operator'] = '会员';
+			M('OrderLog')->add($log_data);
+		}
+	}
+
 	public function alipay(){
 		$order_sn = trim($_GET['order_sn']);
 		if ($order_sn) {
@@ -389,135 +559,8 @@ class PayController extends BaseController{
 				//此处应该更新一下订单状态，商户自行增删操作
 				system_log('微信notify支付成功',$xml,0,'WechatPay');
 				$result_info = xmlToArray($xml);
-				$where['order_sn'] = $result_info['out_trade_no'];
-				$order = M('Order')->where($where)->find();
-				if ($order['order_state'] == 10){
-					switch ($order['order_type'])
-					{
-						case 1:
-							$bill_log = '购买商品';
-							$channel = 1;
-							$res = $this->mod->where($where)->setField('order_state',20);
-							break;
-						case 2:
-							//充值
-							$bill_log = '充值余额';
-							$channel = 2;
-							$s = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('predeposit',$order['goods_amount']);
-							if ($s)
-							{
-								$res = $this->mod->where($where)->setField('order_state',50);
-							}
-							break;
-						case 3:
-							//TODO:购买vip
-							$bill_log = '购买vip';
-							$channel = 3;
-							$res = $this->mod->where($where)->setField('order_state',50);
-							break;
-						case 4:
-							//购买代理商
-							$bill_log = '购买代理';
-							$channel = 4;
-							$res = $this->mod->where($where)->setField('order_state',50);
-							$agent_info = M('AgentInfo')->where(array('agent_id'=>$order['order_param']))->find();
-							if ($agent_info && $res)
-							{
-								$s = M('Member')->where(array('member_id'=>$order['member_id']))->setField('agent_id',$agent_info['agent_id']);
-								$agent['member_id'] = $order['member_id'];
-								$agent['create_time'] = NOW_TIME;
-								$agent['status'] = 1;
-								$agent['agent_id'] = $agent_info['agent_id'];
-								$agent['agent_level'] = $agent_info['agent_level'];
-								M('Agent')->add($agent);
-								$this->giveDistributionRedPacket($order['order_id'],$agent_info['agent_level']);
-								if ($agent_info['agent_level'] == 9)
-								{
-									//加入公排
-									$board['member_id'] = $order['member_id'];
-									$board['board_status'] = 0;
-									$board['expect_num'] = MSC('board_expect_num');
-									$board['differ_num'] = MSC('board_expect_num');
-									$board['finish_num'] = 0;
-									$board['create_time'] = NOW_TIME;
-									M('Board')->add($board);
-									//给公排收益
-									$active_board_where['board_status'] = 0;
-									$active_board_where['differ_num'] = array('gt',0);
-									$active_board_where['finish_time'] = 0;
-									$active_board = M('Board')->where($active_board_where)->order('create_time asc,board_id asc')->find();
-									if ($active_board)
-									{
-										//更新公排数据
-										$update_board['differ_num'] = $active_board['differ_num']-1;
-										$update_board['finish_num'] = $active_board['finish_num']+1;
-										if ($update_board['differ_num'] == 0)
-										{
-											$update_board['finish_time'] = NOW_TIME;
-											$update_board['board_status'] = 1;
-										}
-										$update_board_result = M('Board')->where(array('board_id'=>$active_board['board_id']))->save($update_board);
-										if ($update_board_result)
-										{
-											$board_reward_result = M('Member')->where(array('member_id'=>$active_board['member_id']))->setInc('predeposit',MSC('board_reward'));
-											if ($board_reward_result)
-											{
-												$bill['member_id'] = $active_board['member_id'];
-												$bill['bill_log'] = '来自全国代理公排收益';
-												$bill['amount'] = MSC('board_reward');
-												$bill['balance'] = M('Member')->where(array('member_id'=>$active_board['member_id']))->getField('predeposit');
-												$bill['addtime'] = NOW_TIME;
-												$bill['bill_type'] = 1;
-												$bill['channel'] = 6;
-												M('MemberBill')->add($bill);
-											}
-										}
-									}
-								}
-							}
-							break;
-						default :break;
-					}
-					//更改订单状态
-					$this->mod->where($where)->setField('payment_time',time());
-					//资金日志
-					$bill['member_id'] = $order['member_id'];
-					$bill['bill_log'] = $bill_log;
-					$bill['amount'] = $order['order_amount'];
-					$bill['balance'] = M('Member')->where(array('member_id'=>$order['member_id']))->getField('predeposit');
-					$bill['addtime'] = NOW_TIME;
-					$bill['bill_type'] = -1;
-					$bill['channel'] = $channel;
-					M('MemberBill')->add($bill);
-					//订单日志
-					$log_data['order_id'] = $order['order_id'];
-					$log_data['order_state'] = get_order_state_name(20);
-					$log_data['change_state'] = get_order_state_name(30);
-					$log_data['state_info'] = '会员已支付订单';
-					$log_data['log_time'] = NOW_TIME;
-					$log_data['operator'] = '会员';
-					M('OrderLog')->add($log_data);
-					if ($order['order_type'] != 1)
-					{
-						//订单日志
-						$log_data['order_id'] = $order['order_id'];
-						$log_data['order_state'] = get_order_state_name(30);
-						$log_data['change_state'] = get_order_state_name(50);
-						$log_data['state_info'] = '系统已完成订单';
-						$log_data['log_time'] = NOW_TIME;
-						$log_data['operator'] = '系统';
-						M('OrderLog')->add($log_data);
-					}
-				}else {
-					//订单日志
-					$log_data['order_id'] = $order['order_id'];
-					$log_data['order_state'] = get_order_state_name(0);
-					$log_data['change_state'] = get_order_state_name(0);
-					$log_data['state_info'] = '客户支付完成.但订单状态异常.异常状态为'.$order['order_state'].':'.get_order_state_name($order['order_state']);
-					$log_data['log_time'] = NOW_TIME;
-					$log_data['operator'] = '会员';
-					M('OrderLog')->add($log_data);
-				}
+				$order_sn = $result_info['out_trade_no'];
+				$this->finishPay($order_sn);
 				//推送支付完成信息
 			}
 			//商户自行增加处理流程,

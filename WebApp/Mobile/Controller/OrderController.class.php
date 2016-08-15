@@ -272,9 +272,11 @@ class OrderController extends BaseController{
 				M('OrderLog')->add($log_data);
 				//进行支付跳转
 				switch (trim($_POST['pay_type'])){
+					case 0:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$data['order_sn'])));break;
 					case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$data['order_sn'])));break;
 					case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$data['order_sn'])));break;
 					case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$data['order_sn'])));break;
+					default :
 				}
 			}
 		}else {

@@ -39,17 +39,18 @@
         </div>
         <!--<div class="weui_cells_title">温馨提示：每天最多充值10000元</div>-->
         <div class="weui_btn_area">
-            <a class="weui_btn weui_btn_primary" href="javascript:submitForm();">确定</a>
+            <a class="weui_btn weui_btn_primary" href="javascript:submitOrder(3);">确定</a>
+            <input type="hidden" id="pay_type" name="pay_type" value="0">
         </div>
     </form>
     <!-- flexd nav -->
     {:W('Menu/footer_nav')}
 </div>
 <script>
-    function submitForm()
+    function submitOrder(pay_type)
     {
         //提交
-        var pay_type = $("#pay_type").val();
+        var pay_type = $("#pay_type").val(pay_type);
         if (pay_type == 0)
         {
             alert('请选择支付方式');
