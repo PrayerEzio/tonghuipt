@@ -8,73 +8,96 @@
 <link rel="stylesheet" href="css/swiper.min.css">
 <link rel="stylesheet" href="css/mui.min.css">
 <link rel="stylesheet" href="css/weui.css">
-
 <script src="js/jquery-1.11.3.min.js"></script>
+
 <body>
-<div class="index-group">
+<div class="container js_container">
+<div class="index-group page">
   <div class="header-all">
     <div class="com-header">
       <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>填写订单
     </div>
     <div class="dt-top"></div>
   </div>
-  <div class="order-com">
-      <div class="o-info">
-                <form class="mui-input-group">
-                  <div class="mui-input-row">
-                    <label>收件人</label>
-                    <input type="text" placeholder="请输入姓名">
-                  </div>
-                  <div class="mui-input-row">
-                    <label>手机号码</label>
-                    <input type="tel" class="mui-input-clear" placeholder="请输入手机号码" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
-                  </div>
-                  <div class="mui-input-row">
-                    <label>详细地址</label>
-                    <input type="text" placeholder="请输入街道">
-                  </div>
 
-                </form>
+<script src="js/example.js"></script>
 
-     <!--    <span class="o-name"><input type="text" placeholder="张三"></span>
-        <span class="o-phone"><input type="tel" placeholder="13418566387"></span> -->
-         <!--  <section class="address-where"> <textarea placeholder="广东深圳市龙岗区龙城街道南联地铁站B出口吓岗一村，2巷6号一楼"></textarea></section>  -->
-      </div>
-       <div class="bord-back"></div>
+  <div class="order-tx clear">
+    <div class="fl addressIco">
+      <i class="iconfont">&#xe615;</i>
+    </div>
 
-       <div class="remwrap">
-         <div class="product-details clear">
-           <div class="pro_item"><img class="product-img" src="images/1051.jpg" width="60" height="60" alt=""></div>
-           <div><p class="product-ms">美的（Midea） 电压力锅5L 双胆高压锅 红色电脑版 24小时预约压力锅 WQC50A5</p></div>
-            <div><p><em class="red">￥199.50</em></p><p>数量：<em>1</em></p></div>
-         </div>
-         <div class="product-details clear">
-           <div class="pro_item"><img class="product-img" src="images/1051.jpg" width="60" height="60" alt=""></div>
-           <div><p class="product-ms">美的（Midea） 电压力锅5L 双胆高压锅 红色电脑版 24小时预约压力锅 WQC50A5</p></div>
-            <div><p><em class="red">￥199.50</em></p><p>数量：<em>1</em></p></div>
-         </div>
-         <div class="product-details clear">
-           <div class="pro_item"><img class="product-img" src="images/1051.jpg" width="60" height="60" alt=""></div>
-           <div><p class="product-ms">美的（Midea） 电压力锅5L 双胆高压锅 红色电脑版 24小时预约压力锅 WQC50A5</p></div>
-            <div><p><em class="red">￥199.50</em></p><p>数量：<em>1</em></p></div>
-         </div>
-       </div>
-
-       <div class="price-items">
-            <a class="but" href="">支付宝支付</a>
-          </div>
-
-<!--        <div class="price-items">
-        <a class="but2" href="">货到付款</a>
-       </div> -->
-      
+    <div class="fl addressInfo">
+      <a class="address-A" id="showActionSheet" href="javascript:">
+        <ul>
+          <li>地址 : <span>深圳市龙岗区南联地铁站吓岗一村二巷</span></li>
+          <li>姓名 : <em class="name">林子媛</em> 电话 : <span>13418566387</span></li>
+        </ul>
+      </a>
+    </div>
   </div>
- 
 
- 
+  <div>
+    <div class="weui_cells_title" style="font-size:12px;">选择支付方式</div>
+     <div class="weui_cells weui_cells_radio">
+          <label class="weui_cell weui_check_label" for="x11">
+              <div class="weui_cell_bd weui_cell_primary">
+                  <p>微信支付</p>
+              </div>
+              <div class="weui_cell_ft">
+                  <input type="radio" class="weui_check" name="radio1" id="x11">
+                  <span class="weui_icon_checked"></span>
+              </div>
+          </label>
+
+          <label class="weui_cell weui_check_label" for="x12">
+              <div class="weui_cell_bd weui_cell_primary">
+                  <p>支付宝</p>
+              </div>
+              <div class="weui_cell_ft">
+                  <input type="radio" name="radio1" class="weui_check" id="x12" checked="checked">
+                  <span class="weui_icon_checked"></span>
+              </div>
+          </label>
+
+      </div>      
+  </div>
+
+
+
+  <!--BEGIN actionSheet-->
+<div id="actionSheet_wrap">
+    <div class="weui_mask_transition" id="mask"></div>
+    <div class="weui_actionsheet" id="weui_actionsheet">
+        <div class="weui_actionsheet_menu">
+
+            <div class="weui_actionsheet_cell address-item">
+              <section>德莱文</section>
+              <section>广东省深圳市灵感去2巷 <span class="fr">13541866153</span></section>
+            </div>
+
+            <div class="weui_actionsheet_cell address-item">
+              <section>德莱文</section>
+              <section>广东省深圳市灵感去2巷 <span class="fr">13541866153</span></section>
+            </div>
+
+        </div>
+        <div class="weui_actionsheet_action">
+            <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
+        </div>
+    </div>
+</div>
+<!--END actionSheet-->
 </div>	 
 
+<div class="bottom-fixed">
+  <span class="spn">总计：￥<em>100</em></span> <a class="payment" href="">支付</a>
+</div>
+
+</div>
+
+
 <script src="js/main.js"></script>
-<script src="js/mui.js"></script>
+<!-- <script src="js/mui.js"></script> -->
 </body>
 </html>

@@ -34,6 +34,7 @@ class PayController extends BaseController{
 					if ($res)
 					{
 						$this->finishPay($order_sn);
+						$this->success('支付成功',U('Order/index'));
 					}else {
 						$this->error('抱歉,支付失败.');
 					}
