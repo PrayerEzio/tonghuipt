@@ -58,7 +58,7 @@ $(function () {
         $('#toast').show();
         setTimeout(function () {
             $('#toast').hide();
-        }, 3000);
+        }, 5000);
     });
     $container.on('click', '#showLoadingToast', function () {
         $('#loadingToast').show();

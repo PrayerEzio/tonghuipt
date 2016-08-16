@@ -29,6 +29,12 @@
 		<a href="{:U('Member/bill',array('bill_type'=>1))}"><div class="item"><i class="iconfont ico-m-red">&#xe606;</i>我的收入<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/bill',array('bill_type'=>-1))}"><div class="item"><i class="iconfont ico-m-red">&#xe606;</i>我的支出<em class="ico-right"></em></div></a>
 		<!-- <a href=""><div class="item"><i class="iconfont ico-m-member">&#xe605;</i>红包排行<em class="ico-right"></em></div></a> -->
+		<if condition="$user_info['merchant_status'] == 1">
+			<div class="border"></div>
+			<a href="{:U('Member/addGoods')}"><div class="item"><i class="iconfont ico-m-commis">&#xe60f;</i>发布商品<em class="ico-right"></em></div></a>
+			<a href="{:U('Member/myGoods')}"><div class="item"><i class="iconfont ico-m-commis">&#xe60f;</i>我的商品<em class="ico-right"></em></div></a>
+			<a href="{:U('Member/exchange')}"><div class="item"><i class="iconfont ico-m-commis">&#xe60f;</i>积分兑现<em class="ico-right"></em></div></a>
+		</if>
 		<div class="border"></div>
 		<a href="{:U('Member/recharge')}"><div class="item"><i class="iconfont ico-m-commis">&#xe60f;</i>我要充值<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/withdraw')}"><div class="item"><i class="iconfont ico-m-deposit">&#xe610;</i>我要提现<em class="ico-right"></em></div></a>

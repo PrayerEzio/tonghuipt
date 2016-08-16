@@ -436,4 +436,21 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
+
+	public function addGoods()
+	{
+		$merchant_status = M('Member')->where(array('member_id'=>$this->mid))->getField('merchant_status');
+		if (empty($merchant_status))
+		{
+			$this->error('抱歉,您的权限等级不够.');
+		}
+		if (IS_POST)
+		{
+
+		}elseif(IS_GET){
+			$where = array();
+			$this->goods_class = M('GoodsClass')->where($where)->order('gc_sort')->select();
+			$this->display();
+		}
+	}
 }

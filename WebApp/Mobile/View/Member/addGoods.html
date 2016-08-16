@@ -1,0 +1,115 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {$seo}
+    <link rel="stylesheet" href="__CSS__/style.css">
+    <link rel="stylesheet" href="__CSS__/swiper.min.css">
+    <link rel="stylesheet" href="__CSS__/mui.min.css">
+    <link rel="stylesheet" href="__CSS__/weui.css">
+    <script>
+        document.getElementsByTagName("link")[2].setAttribute('href', "0");
+    </script>
+    <script src="__JS__/jquery-1.11.3.min.js"></script>
+<body>
+<div class="index-group">
+    <div class="header-all">
+        <div class="com-header">
+            <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>商品上传
+        </div>
+        <div class="dt-top"></div>
+    </div>
+
+    <div class="publish-con">
+        <div class="weui_cells_title">商品图片</div>
+        <div class="uploadBox clearfix">
+            <div class="upload rlt fl" style="height: 53px;">
+                <div id="preview">
+                    <img id="imghead" src="__IMG__/upload.png">
+                </div>
+                <input type="file" onchange="previewImage(this)" class="uploadBtn" id="file">
+            </div>
+            <div class="upload rlt fl" style="height: 53px;">
+                <div id="preview1">
+                    <img id="imghead1" src="__IMG__/upload.png">
+                </div>
+                <input type="file" onchange="previewImage1(this)" class="uploadBtn" id="file1">
+            </div>
+            <div class="upload rlt fl" style="height: 53px;">
+                <div id="preview2">
+                    <img id="imghead2" src="__IMG__/upload.png">
+                </div>
+                <input type="file" onchange="previewImage2(this)" class="uploadBtn" id="file2">
+            </div>
+            <div class="upload rlt fl" style="height: 53px;">
+                <div id="preview3">
+                    <img id="imghead3" src="__IMG__/upload.png">
+                </div>
+                <input type="file" onchange="previewImage3(this)" class="uploadBtn" id="file3">
+            </div>
+            <div class="upload rlt fl" style="height: 53px;">
+                <div id="preview4">
+                    <img id="imghead4" src="__IMG__/upload.png">
+                </div>
+                <input type="file" onchange="previewImage4(this)" class="uploadBtn" id="file4">
+            </div>
+        </div>
+
+        <div class="weui_cells_title">商品标题</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input type="text" class="weui_input" id="goods_title" name="goods_title" placeholder="请输入商品标题"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui_cells_title">商品描述</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea class="weui_textarea" id="goods_body" name="goods_body" placeholder="请输入商品描述"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">所需积分</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" id="cost_point" name="cost_point" placeholder="请输入所需积分">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">库存</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" id="goods_storage" name="goods_storage" placeholder="请输入商品库存">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui_cells">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>选择分类</p>
+                </div>
+                <div class="weui_cell_ft">
+                    <select name="gc_id" id="gc_id" class="pad-select">
+                        <option value="0">请选择</option>
+                        <volist name="goods_class" id="vo">
+                            <option value="{$vo['gc_id']}">{$vo['gc_name']}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="weui_btn_area">
+            <a class="weui_btn weui_btn_primary" href="javascript:">完成</a>
+        </div>
+    </div>
+</div>
+<script src="__JS__/main.js"></script>
+<script src="__JS__/mui.js"></script>
+<script src="__JS__/upload.js"></script>
+<include file="Public:footer"/>
