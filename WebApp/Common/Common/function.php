@@ -1319,6 +1319,8 @@ function get_member_agent_name($member_id){
 
 function get_agent_level($agent_level){
 	switch ($agent_level){
+		case 2:
+			$name = '二星会员';break;
 		case 3:
 			$name = '三星会员';break;
 		case 6:

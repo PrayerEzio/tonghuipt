@@ -327,4 +327,38 @@ class OrderController extends GlobalController {
 			}
 		}
 	}
+
+	public function finishOrder()
+	{
+
+		$where['order_sn'] = intval($_GET['order_sn']);
+		$order = D('Order')->relation('OrderGoods')->where($where)->find();
+		//变更交易状态
+		$res = M('Order')->where($where)->setField('order_state',50);
+		if ($res)
+		{
+			//赠送商品积分 扣除所需积分
+			$get_point_amount = 0;
+			$cost_point_amount = 0;
+			foreach ($order['OrderGoods'] as $k => $goods)
+			{
+				$get_point_amount += $goods['goods_point'];
+				$cost_point_amount += $goods['cost_point'];
+			}
+			M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$get_point_amount);
+			M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$cost_point_amount);
+			//TODO:积分日志
+			//订单日志
+			$log_data['order_id'] = $order['order_id'];
+			$log_data['order_state'] = get_order_state_name($order['order_state']);
+			$log_data['change_state'] = get_order_state_name(50);
+			$log_data['state_info'] = '平台管理员完成订单';
+			$log_data['log_time'] = $order['auto_finish_time'];//NOW_TIME;
+			$log_data['operator'] = '管理员-'.get_admin_nickname(AID);
+			M('OrderLog')->add($log_data);
+			//进行三级分润
+			$this->orderShareProfit($order['order_id']);
+		}
+		$this->success('操作订单成功');
+	}
 }

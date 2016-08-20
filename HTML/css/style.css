@@ -89,6 +89,8 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
      display: -webkit-flex;
 }
 .red { color: red;}
+.yellow { color: #e29400;}
+.blue { color: #14b4b5;}
 .shopCart-list .item:after { content: ""; display: block; clear: both; }
 .shopCart-list .item .close {     position: absolute; right: 0.1rem; top: 0.2rem;}
 .shopCart-list .item .close .iconfont { font-size: 0.6rem; color: #E23C35;}
@@ -158,7 +160,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
      left: 0;
      width: 100%;
      height: 50px;
-         border-top: 1px solid #cfcfcf;
+    border-top: 1px solid #cfcfcf;
     background-color: #fff;
     font-size: 15px;
 
@@ -564,7 +566,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
      width: 10rem;
 }
 .ercode {
-       position: absolute;
+    position: absolute;
     bottom: 0.75rem;
     right: 1.8rem;
     width: 3.1rem;
@@ -784,4 +786,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .pad-select {
    font-size: 15px;
    border:0;
+}
+.integral-nav {
+    padding-top: 10px;
 }

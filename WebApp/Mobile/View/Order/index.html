@@ -24,7 +24,10 @@
                                         <p>数量：<em>{$goods['goods_num']}</em></p></div>
                                 </div>
                             </volist>
-                            <div class="Statistic"> 合计￥<em>{$vo['order_amount']|price_format}</em> <em>（{$vo['order_state']|get_order_state_name}）</em></div>
+                            <div class="Statistic">
+                                合计￥<em>{$vo['order_amount']|price_format}</em>
+                                <em>（{$vo['order_state']|get_order_state_name}）</em>
+                            </div>
                         </div>
                     </a>
                     <div class="bord-back"></div>
