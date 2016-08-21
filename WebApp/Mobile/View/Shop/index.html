@@ -1,55 +1,214 @@
 ﻿<include file="Public:header"/>
+
 <script src="__JS__/jquery.lazyload.js"></script>
+
 <script>
+
   $(function() {
+
 	  $("img").lazyload({
+
 	  		  //placeholder : "images/xwf.png",  
+
 	          effect: "fadeIn",
+
 	          threshold : 20,
+
 	   });  
+
   });
+
 </script>
+<style>
+.Popup-wrapp {
+	background: rgba(0,0,0,0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+}	
+.load_box {
+	width:100px;
+	height:100px;
+	margin: 0 auto;
+	border-radius: 50%;
+	background:#fff;
+}
+.Popup-wrapp::after, .Popup-wrapp::before {
+    content: '';
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border-radius: 50%;
+    opacity: 1;
+    z-index: 1000;
+    -webkit-transition: opacity 0.15s, visibility 0s 0.15s;
+    transition: opacity 0.15s, visibility 0s 0.15s;
+}
+.Popup-wrapp::before {
+	background: #d86b29;
+-webkit-transform: translateX(20px);
+transform: translateX(20px);
+-webkit-animation: moveLeft 0.6s linear infinite alternate;
+animation: moveLeft 0.6s linear infinite alternate;
+}
+.Popup-wrapp::after {
+    background: #6cc88a;
+    -webkit-transform: translateX(-20px);
+    transform: translateX(-20px);
+    -webkit-animation: moveRight 0.6s linear infinite alternate;
+    animation: moveRight 0.6s linear infinite alternate;
+}
+
+@-webkit-keyframes moveLeft {
+	to { -webkit-transform: translateX(-20px); }
+}
+
+@keyframes moveLeft {
+	to { transform: translateX(-20px); }
+}
+@-webkit-keyframes moveRight {
+	to { -webkit-transform: translateX(20px); }
+}
+
+@keyframes moveRight {
+	to { transform: translateX(20px); }
+}
+
+</style>
+<!-- 加载中 -->
+<div class="Popup-wrapp"></div>
+<script>
+$(function(){
+// 图片加载
+  var pic = $("img");
+  var count=0;
+  var len = pic.length;
+
+  for(var i=0;i<len;i++)
+  {
+     var s = pic.eq(i).attr("src");
+     pload(s);
+  }
+
+
+  function pload(url){
+    var image = $("<img />").attr("src", url).on("load", function() {
+                      complete();
+                  });
+  }
+
+  function complete(){
+    count++;
+    if(count == len)
+    {
+      $(".Popup-wrapp").hide();
+    }
+
+  }
+
+});
+</script>
+
+
+	
 
 <div class="index-group">
+	<div class="top">通汇大商圈官方网站</div>
 	<div class="brand-intro">
+
 		<!-- 焦点图 -->
+
 		<div class="swiper-container">
+
 			<div class="swiper-wrapper">
+
 				<volist name="banner" id="vo">
+
 					<div class="swiper-slide"><img src="__UPLOADS__/{$vo['ap_pic']}" alt=""></div>
+
 				</volist>
+
 			</div>
+
 			<!-- 分页器 -->
+
 			<div class="swiper-pagination"></div>
+
 		</div>
+
 		<!-- 焦点图 end-->
+
+<div class="main_menu">
+	<ul>
+		<li><a href=""><i class="iconfont menu_font B_color_A">&#xe616;</i><span class="menu_txt">分销中心</span></a></li>
+		<li><a href=""><i class="iconfont menu_font B_color_B">&#xe60e;</i><span class="menu_txt">我的团队</span></a></li>
+		<li><a href=""><i class="iconfont menu_font B_color_D">&#xe606;</i><span class="menu_txt">获利红包</span></a></li>
+		<li><a href=""><i class="iconfont menu_font B_color_C">&#xe611;</i><span class="menu_txt">积分商城</span></a></li>
+	</ul>
+</div>
+
 	  	<!--  产品内容 -->
+
 		<div class="goods-group">
+
 			<volist name="list" id="vo">
+
 				<a class="brand-item" href="{:U('Shop/detail',array('id'=>$vo['goods_id']))}">
+
 					<div class="pr">
+
 						<img data-original="__UPLOADS__/{$vo['goods_pic']}" src="__UPLOADS__/{$vo['goods_pic']}" alt="">
+
 						<span class="sales">销量：{$vo['goods_sales']}</span>
+
 					</div>
+
 					<div class="goods-name">{$vo['goods_name']}</div>
+
 					<div class="goods-price">￥<em>{$vo['goods_price']|price_format}</em><del>原价:{$vo['goods_mktprice']|price_format}</del></div>
+
 				</a>
+
 			</volist>
+
 		</div>
+
 		<!-- 加载中 -->
+
 		<div class="load-box">{$page}</div>
+
 	</div>
 
+
+
 	<!-- flexd nav -->
+
 	{:W('Menu/footer_nav')}
+
 </div>
+
 <script src="__JS__/main.js"></script>
+
 <script src="__JS__/swiper.min.js"></script>
+
 <script>
+
       var mySwiper = new Swiper('.swiper-container', {
+
         autoplay: 5000,
+
         pagination: '.swiper-pagination',
+
         loop:'true'
+
       })
+
 </script>
+
 <include file="Public:footer"/>

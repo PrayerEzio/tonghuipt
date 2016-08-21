@@ -100,7 +100,7 @@
         <if condition="$info['order_state'] gt 20">
         <a href="{:U('deliver',array('sn'=>$info['order_sn']))}" class="btn"><span>修改发货序列号</span></a>
         </if>
-        <if condition="$info['order_state'] gt 30">
+        <if condition="$info['order_state'] gt 20">
             <a href="{:U('finishOrder',array('sn'=>$info['order_sn']))}" class="btn"><span>完成订单</span></a>
         </if>
         </td>

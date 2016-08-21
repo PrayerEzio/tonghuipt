@@ -38,6 +38,31 @@ class BaseController extends Controller{
 		}else {
 			$this->mid = session('member_id');
 			$this->assign('seo',seo());
+			//JS-SDK
+			$signPackage = wx_js_sdk();
+			$this->assign('signPackage',$signPackage);
+			$seo = M('Seo');
+			$module = MODULE_NAME;
+			$controller = CONTROLLER_NAME;
+			$action = ACTION_NAME;
+			$cavalue = $module.'/'.$controller.'/'.$action;
+			$seo_info = $seo->where(array('cavalue'=>$cavalue))->find();
+			if (empty($seo_info)) {
+				$cavalue = $module.'/'.$controller.'/*';
+				$seo_info = $seo->where(array('cavalue'=>$cavalue))->find();
+				if (empty($seo_info)) {
+					$cavalue = $module.'/*';
+					$seo_info = $seo->where(array('cavalue'=>$cavalue))->find();
+				}
+				if (empty($seo_info)) {
+					$seo_info = $seo->where(array('type'=>1))->find();
+				}
+			}
+			$shareConfig['title'] = $seo_info['title'];
+			$shareConfig['desc'] = $seo_info['description'];
+			$shareConfig['linkUrl'] = C('SiteUrl').U('',I());
+			$shareConfig['imgUrl'] = C('SiteUrl').'/Uploads/'.MSC('wx_share_img');
+			$this->shareConfig = $shareConfig;
 		}
 	}
 
@@ -182,74 +207,6 @@ class BaseController extends Controller{
 				$mid = $member['parent_member_id'];
 			}else {
 				break;
-			}
-		}
-	}
-
-	/**
-	 * 订单分润
-	 */
-	protected function orderShareProfit($order_id)
-	{
-		$where['order_id'] = $order_id;
-		$where['order_type'] = 1;
-		$where['order_state'] = 50;
-		$order = D('Order')->relation(true)->where($where)->find();
-		$agent_id = M('Member')->where(array('member_id'=>$order['member_id']))->getField('agent_id');
-		$agent_name = get_agent_level($agent_id);
-		$member_nickname = get_member_nickname($order['member_id']);
-		if ($order && $order['OrderGoods'])
-		{
-			$profit = 0;
-			foreach($order['OrderGoods'] as $key => $goods)
-			{
-				$profit += $goods['goods_price']-$goods['goods_cost'];
-			}
-			if ($profit)
-			{
-				$parents_member_list = $this->getParentsMember($order['member_id'],'*',3);
-				foreach ($parents_member_list as $key => $parents_member)
-				{
-					//执行商品分润
-					$where['level'] = $key+1;
-					$where['status'] = 1;
-					$OrderShareProfit = M('OrderShareProfit')->where($where)->find();
-					$rate = $OrderShareProfit['profit_rate']/100;
-					//执行分润
-					$rate_pofit = $profit*$rate;
-					$result = M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('predeposit',$rate_pofit);
-					if ($result)
-					{
-						$bill['member_id'] = $parents_member['member_id'];
-						$bill['bill_log'] = '来自'.$agent_name.'-'.$member_nickname.'的订单分润';
-						$bill['amount'] = $rate_pofit;
-						$bill['balance'] = M('Member')->where(array('member_id'=>$parents_member['member_id']))->getField('predeposit');
-						$bill['addtime'] = NOW_TIME;
-						$bill['bill_type'] = 1;
-						$bill['channel'] = 7;
-						M('MemberBill')->add($bill);
-						//推送消息
-						$open_id = M('Member')->where(array('member_id'=>$bill['member_id']))->getField('openid');
-						$member_level_ch = ch_num($key+1);
-						if ($open_id)
-						{
-							$data['touser'] = $open_id;
-							$data['template_id'] = trim('YpV6rl7TZz-dULxA2QgBlTZwXjF_FY4UztGoNMbd4rU');
-							$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>1));
-							$data['data']['first']['value'] = '您的'.$member_level_ch.'级会员-'.$member_nickname.'已经下单成功，请关注‘tonghui56789’企业服务号，点击进入商城个人中心查看余额';
-							$data['data']['first']['color'] = '#173177';
-							$data['data']['orderno']['value'] = $order['order_sn'];
-							$data['data']['orderno']['color'] = '#173177';
-							$data['data']['refundno']['value'] = 1;
-							$data['data']['refundno']['color'] = '#173177';
-							$data['data']['refundproduct']['value'] = price_format($rate_pofit);
-							$data['data']['refundproduct']['color'] = '#173177';
-							$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
-							$data['data']['remark']['color'] = '#173177';
-							sendTemplateMsg($data);
-						}
-					}
-				}
 			}
 		}
 	}

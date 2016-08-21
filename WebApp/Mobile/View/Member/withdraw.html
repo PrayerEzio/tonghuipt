@@ -1,56 +1,115 @@
 ﻿<include file="Public:header"/>
+<style>
+.weui_input { margin-bottom: 0 !important;}    
+p   { margin-bottom: 0 !important;}
+</style>
 <div class="personal-group">
+
     <div class="header-all">
+
         <div class="com-header">
+
             <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+
         </div>
+
         <div class="dt-top"></div>
+
     </div>
+
     <div class="weui_cells weui_cells_radio">
+
         <label class="weui_cell weui_check_label" for="x12">
+
             <div class="weui_cell_bd weui_cell_primary">
+
                 <p>微信</p>
+
             </div>
+
             <div class="weui_cell_ft">
+
                 <input type="radio" name="radio1" class="weui_check" id="x12" checked="checked">
+
                 <span class="weui_icon_checked"></span>
+
             </div>
+
         </label>
+
     </div>
+
     <style>
+
         .weui_btn_primary {
+
             background-color: #007AFF;
+
         }
 
+
+
         .weui_btn_primary:not(.weui_btn_disabled):active {
+
             color: rgba(255, 255, 255, 0.4);
+
             background-color: #065fc1;
+
         }
+
     </style>
+
     <form action="" method="post" id="mainForm">
+
         <div class="weui_cells_title">当前余额<em>{$member_info['predeposit']}</em></div>
+
         <div class="weui_cells weui_cells_form">
+
             <div class="weui_cell">
+
                 <div class="weui_cell_hd"><label class="weui_label">金额</label></div>
+
                 <div class="weui_cell_bd weui_cell_primary">
+
                     <input class="weui_input" type="number" name="amount" placeholder="请输入提现金额">
+
                 </div>
+
             </div>
+
         </div>
+
         <div class="weui_cells_title">温馨提示：每天只可以提现1次.</div>
+
         <div class="weui_cells_title">温馨提示：最小提现金额10元,最大提现金额200元,且必须是10的倍数.</div>
+
         <div class="weui_btn_area">
+
             <a class="weui_btn weui_btn_primary" href="javascript:submitForm();">确定</a>
+
         </div>
+
     </form>
+
     <!-- flexd nav -->
+
     {:W('Menu/footer_nav')}
+
 </div>
+
 <script>
+
     function submitForm()
+
     {
+
         //提交
+
         $("#mainForm").submit();
+
     }
+
 </script>
+
 <include file="Public:footer"/>
+

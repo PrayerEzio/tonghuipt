@@ -63,11 +63,8 @@
             <div class="item"><span>库存</span><em>{$info['goods_storage']}</em></div>
 
             <div class="item"><span>数量</span><div class="mui-numbox" data-numbox-min="1">
-
                   <button class="mui-btn mui-btn-numbox-minus" type="button" disabled="">-</button>
-
                   <input id="num" class="mui-input-numbox" type="number" value="1">
-
                   <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 
                 </div>
@@ -135,45 +132,25 @@
 <script src="__JS__/swiper.min.js"></script>
 
 <script>
-
     var mySwiper = new Swiper('.swiper-container', {
-
         autoplay: 5000,
-
         pagination: '.swiper-pagination',
-
         loop:'true'
-
     });
-
     function collectionGoods(goods_id)
-
     {
-
         var URL = "{:U('Shop/collectionGoods')}";
-
         var data = {'goods_id':goods_id};
-
         $.post(URL,data,function(){
-
             $("#Collection").css("color","red");
-
         },'json');
-
     }
-
     function quickBuy(goods_id)
-
     {
-
         addCart(goods_id);
-
         window.location.href="{:U('Cart/index')}";
-
     }
-
     function addCart(goods_id)
-
     {
         //$("#shopCar").css("color","red");
         $("#shopCar").animate({
@@ -185,20 +162,13 @@
                 'color':'red'
             });
         });
-
         var num = $('#num').val();
-
         var URL = "{:U('Cart/addCart')}";
-
         var data = {'goods_id':goods_id,'num':num};
-
         $.post(URL,data,function(){
-
-           
+            alert(123);return false;
         },'json');
-
     }
-
 </script>
 
 <include file="Public:footer"/>

@@ -145,7 +145,7 @@ class OrderController extends BaseController{
 	/**
 	 * 完成订单
 	 */
-	public function finish(){
+	public function finishOrder(){
 		$sn = str_rp($_GET['sn']);
 		$where['order_sn'] = $sn;
 		$where['member_id'] = $this->mid;
@@ -169,7 +169,26 @@ class OrderController extends BaseController{
 				$log_data['operator'] = '会员';
 				M('OrderLog')->add($log_data);
 				//进行三级分润
-				$this->orderShareProfit($order['order_id']);
+				orderShareProfit($order['order_id']);
+				//消息推送
+				$open_id = M('Member')->where(array('member_id'=>$order['member_id']))->getField('openid');
+				if ($open_id)
+				{
+					$data['touser'] = $open_id;
+					$data['template_id'] = trim('YpV6rl7TZz-dULxA2QgBlTZwXjF_FY4UztGoNMbd4rU');
+					$data['url'] = C('SiteUrl').U('Order/index');
+					$data['data']['first']['value'] = '您的订单:'.$order['order_sn'].'已完成.';
+					$data['data']['first']['color'] = '#173177';
+					$data['data']['orderno']['value'] = $order['order_sn'];
+					$data['data']['orderno']['color'] = '#173177';
+					$data['data']['refundno']['value'] = 1;
+					$data['data']['refundno']['color'] = '#173177';
+					$data['data']['refundproduct']['value'] = price_format($order['order_amount']);
+					$data['data']['refundproduct']['color'] = '#173177';
+					$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
+					$data['data']['remark']['color'] = '#173177';
+					sendTemplateMsg($data);
+				}
 				$this->success('完成订单成功',U('Order/detail',array('sn'=>$sn)));
 			}else {
 				$this->error('完成订单失败');
