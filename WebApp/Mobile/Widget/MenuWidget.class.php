@@ -12,4 +12,9 @@ class MenuWidget extends WechatController{
 	public function footer_nav(){
 		$this->display('Widget:Menu:footer_nav');
 	}
+
+	public function order_nav()
+	{
+		$this->display('Widget:Menu:order_nav');
+	}
 }

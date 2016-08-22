@@ -39,8 +39,8 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .m-main .item:active { background-color: #ECECEC; }
 .m-main .item .ico-right {     position: absolute; right: 15px; top: 50%; margin-top: -5px;}
 .border { border-bottom: 1px solid #cfcfcf; margin-top: 10px;}
-.flexdNav {    -webkit-box-shadow: 0 0 1px rgba(0,0,0,.85);box-shadow: 0 0 1px rgba(0,0,0,.85);  position: fixed; width: 100%;  bottom: 0; left: 0; background: #fff; display: flex; display: -webkit-flex; display: -moz-flex; display: -moz-flex; display: -o-flex;  }
-.flexdNav a { color: #929292; display: block; padding: 5px 0; font-size: 0.32rem;}
+.flexdNav {    -webkit-box-shadow: 0 0 1px rgba(0,0,0,.85);box-shadow: 0 0 1px rgba(0,0,0,.85);  position: fixed; width: 100%;  bottom: 0; left: 0; background:#10aeff; display: flex; display: -webkit-flex; display: -moz-flex; display: -moz-flex; display: -o-flex;  }
+.flexdNav a { color: #fff; display: block; padding: 5px 0; font-size: 0.32rem;}
 .flexdNav .item { text-align: center; -ms-flex:1; -webkit-flex:1; -moz-flex:1; -o-flex:1;}
 .flexdNav a span { display: block;}
 .redpacket-group header { padding: 20px; background: #1c5f97; color: #fff; font-size: 40px;}
@@ -75,9 +75,9 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .deposit-group .container dl dt { font-size: 12px;}
 .deposit-group .container dl dd { position: relative;     text-align: right; font-size: 15px;}
 .deposit-group .container dl dd strong { color: #C81623; font-weight: normal;    font-size: 30px; position: absolute; left: 0;}
-.com-header { -webkit-box-shadow: 0 1px 6px #ccc; box-shadow: 0 1px 6px #ccc;   border-bottom: 1px solid #E1E1E1;  width: 100%; position: fixed; background: -webkit-linear-gradient(top,#eee, #EFEFEF); height: 44px; line-height: 44px; z-index: 20; text-align: center; }
+.com-header { font-size: 16px; -webkit-box-shadow: 0 1px 6px #adadad; box-shadow: 0 1px 6px #adadad;  width: 100%; position: fixed; background: #10aeff; height: 44px; color:#fff; line-height: 44px; z-index: 20; text-align: center; }
 .head-icon-back {     font-family: "iconfont"; font-size: 30px; display: block; }
-.back-a { position: absolute; left: 0; top: 0; height: 100%; width: 40px; text-align: center;}
+.back-a { position: absolute; left: 0; top: 0; height: 100%; width: 40px; text-align: center; color:#fff;}
 .dt-top { height: 44px;}
 .shopCart-list .item {     
     background-color: #fff;
@@ -89,8 +89,6 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
      display: -webkit-flex;
 }
 .red { color: red;}
-.yellow { color: #e29400;}
-.blue { color: #14b4b5;}
 .shopCart-list .item:after { content: ""; display: block; clear: both; }
 .shopCart-list .item .close {     position: absolute; right: 0.1rem; top: 0.2rem;}
 .shopCart-list .item .close .iconfont { font-size: 0.6rem; color: #E23C35;}
@@ -160,7 +158,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
      left: 0;
      width: 100%;
      height: 50px;
-    border-top: 1px solid #cfcfcf;
+         border-top: 1px solid #cfcfcf;
     background-color: #fff;
     font-size: 15px;
 
@@ -174,7 +172,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
     text-align: center;
 }
 .actionBar-container .add{
-    background: #FF9500;
+        color: #FF9500;
         max-width: 100%;
         line-height: 50px;
 }
@@ -191,7 +189,8 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
     
 }
 .actionBar-container .collect{
-       max-width: 50px;
+       max-width: 70px;
+       line-height: 50px;
 
 }
 .actionBar-container .collect a {
@@ -303,7 +302,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 }
 .goods-group .brand-item .goods-price { 
 	padding: 0 0.15rem;
-    font-size: 0.315rem; 
+    font-size: 0.415rem; 
     color: #FF0D0D;
 }
 .goods-group .brand-item .goods-price del{ 
@@ -430,7 +429,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 }
 /*分页样式*/
 .load-box{  clear: both; text-align: center; font-size: 12px;  line-height: 22px;} 
-.load-box a{  border-radius: 3px; padding: 5px 10px; border: 1px solid #ddd; margin-left: 4px; background: #fff; color:#696969;}
+.load-box a{  border-radius: 3px; padding: 5px 10px; border: 1px solid #ddd; margin: 2px; background: #fff; color:#696969;}
 .load-box a:hover{border:#FF5400 1px solid; color:#FF5400;}
 .load-box a:active{border:#999 1px solid;color:#666;}
 .load-box .current{ border-radius: 3px; padding:4px 10px; font-weight:bold; margin:2px; background: #FF5400;color: #FFF;border: 1px solid #FF5400;}
@@ -566,7 +565,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
      width: 10rem;
 }
 .ercode {
-    position: absolute;
+       position: absolute;
     bottom: 0.75rem;
     right: 1.8rem;
     width: 3.1rem;
@@ -674,7 +673,7 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 
 
 .order-tx {
-    background: #3b6aad;
+    background: #1191d2;
     padding: 10px 0;
   }
 .index-group p{ margin-bottom: 0;}
@@ -787,6 +786,20 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
    font-size: 15px;
    border:0;
 }
-.integral-nav {
-    padding-top: 10px;
+.index-group .top {
+        height: 40px;
+    line-height: 40px;
+    background-color: #10AEFF;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
 }
+.main_menu { padding:10px 15px 0 15px}
+.main_menu ul { display:box; display:-webkit-box; box-sizing: border-box; -webkit-box-pack: justify;  box-pack: justify;}
+.main_menu ul li a { display:block; text-align: center;}
+.main_menu .menu_txt { display:block; font-size: 0.315rem; margin-top: 8px; color:#848484;}
+.main_menu .menu_font { width: 51px; display: block; font-size: 30px; height: 51px; border-radius: 50%; line-height: 51px; color: #fff;}
+.B_color_A{ background: #ffbb29;}
+.B_color_B{ background: #a7e15b;}
+.B_color_C{ background: #8aa6ff;}
+.B_color_D{ background: #ea1e1e;}

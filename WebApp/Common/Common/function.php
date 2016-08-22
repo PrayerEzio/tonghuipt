@@ -1598,6 +1598,29 @@ function qrcode($url,$logo = './Public/Mobile/images/logo.jpg')
 	return __ROOT__.'/Uploads/qrcode/'.$name.'.png';
 }
 
+function getParentsMember($member_id,$field = '*',$loop = 9999)
+{
+	$array = array();
+	if (!$loop)
+	{
+		return $array;
+	}
+	$loop--;
+	if (!is_array($field))
+	{
+		$field = explode(',',$field);
+	}
+	if (!in_array('parent_member_id',$field))
+	{
+		$field[] = 'parent_member_id';
+	}
+	$user = M('Member')->where(array('member_id'=>$member_id))->field($field)->find();
+	$parents_member[] = M('Member')->where(array('member_id'=>$user['parent_member_id']))->field($field)->find();
+	$next_parents_member = getParentsMember($user['parent_member_id'],$field,$loop);
+	$array = array_merge($parents_member,$next_parents_member);
+	return $array;
+}
+
 function orderShareProfit($order_id)
 {
 	$where['order_id'] = $order_id;
@@ -1616,7 +1639,7 @@ function orderShareProfit($order_id)
 		}
 		if ($profit)
 		{
-			$parents_member_list = $this->getParentsMember($order['member_id'],'*',3);
+			$parents_member_list = getParentsMember($order['member_id'],'*',3);
 			foreach ($parents_member_list as $key => $parents_member)
 			{
 				//执行商品分润

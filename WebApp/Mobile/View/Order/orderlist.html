@@ -1,0 +1,118 @@
+﻿<include file="Public:header"/>
+<link rel="stylesheet" href="__CSS__/main.css">
+<div class="index-group">
+    <div class="header-all">
+        <div class="com-header">
+            <a class="back-a" href="{:U('Index/index')}"><i class="head-icon-back">&#xe609;</i></a>订单管理
+        </div>
+        <div class="dt-top"></div>
+    </div>
+    <div class="order-com">
+        <!--订单管理-->
+        <div class="main">
+            <!-- 写入widget -->
+            {:W('Menu/order_nav')}
+            <div class="tabs tab0">
+                <volist name="list" id="vo">
+                    <div class="order">
+                        <h3>
+                            <a href="{:U('Order/detail',array('sn'=>$vo['order_sn']))}">
+                                <span>{$vo['add_time']|date='Y-m-d',###}</span>
+                                <span class="fr">订单号：{$vo['order_sn']}</span>
+                            </a>
+                        </h3>
+                        <volist name="vo['OrderGoods']" id="goods">
+                            <dl class="clearfix">
+                                <dt class="fl">
+                                    <a href="">
+                                        <img src="__UPLOADS__/{$goods['goods_image']}" alt="">
+                                    </a>
+                                </dt>
+                                <dd class="fl ellipsis">{$goods['goods_name']}</dd>
+                                <notempty name="goods['spec_id']">
+                                    <dd class="fl p1 ellipsis">{$goods['spec_id']|get_spec_name}</dd>
+                                </notempty>
+                                <dd class="fl p2 ellipsis"><span class="price">￥<span
+                                        style="font-size: 20px">{$goods['goods_price']|price_format}</span></span><span class="fr">x{$goods['goods_num']}</span></dd>
+                            </dl>
+                        </volist>
+                        <div class="operating">{$vo['order_state']|get_order_state_name}
+                            <span class="order_amount">总计:￥{$vo['order_amount']|price_format}</span>
+                            <ul class="fr">
+                                <switch name="vo['order_state']">
+                                    <case value="10">
+                                        <!-- 未支付 -->
+                                        <li class="fl"><a href="JavaScript:cancelOrder({$vo['order_sn']});">取消订单</a></li>
+                                        <li class="fl red"><a href="order.html">立即支付</a></li>
+                                    </case>
+                                    <case value="20">
+                                        <!-- 已付款 -->
+                                    </case>
+                                    <case value="30">
+                                        <!-- 已发货 -->
+                                        <li class="fl red"><a href="javascript:" onclick="ReformConfirm({$vo['order_sn']})">确认收货</a></li>
+                                    </case>
+                                    <case value="40">
+                                        <!-- 已收货 -->
+                                        <li class="fl red"><a href="javascript:" onclick="finishOrder({$vo['order_sn']})">完成订单</a></li>
+                                    </case>
+                                    <case value="50">
+                                        <!-- 已完成 -->
+                                        <li class="fl"><a href="JavaScript:deleteOrder({$vo['order_sn']});">删除订单</a></li>
+                                    </case>
+                                    <case value="60">
+                                        <!-- 已取消 -->
+                                        <li class="fl"><a href="JavaScript:deleteOrder({$vo['order_sn']});">删除订单</a></li>
+                                    </case>
+                                </switch>
+                            </ul>
+                        </div>
+                    </div>
+                </volist>
+                <div class="load-box">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function ReformConfirm(sn) {
+        if (window.confirm('是否确认收到货物？')) {
+            var URL = "/Order/receipt/sn/"+sn;
+            window.location.href = URL;
+            // return true;
+        } else {
+            alert("取消");
+            // return false;
+        }
+    }
+    function finishOrder(sn) {
+        if (window.confirm('是否确认完成订单？')) {
+            var URL = "/Order/finishOrder/sn/"+sn;
+            window.location.href = URL;
+            // return true;
+        } else {
+            // return false;
+        }
+    }
+    function cancelOrder(sn) {
+        if (window.confirm('是否确认取消订单？')) {
+            var URL = "/Order/cancelOrder/sn/"+sn;
+            window.location.href = URL;
+            // return true;
+        } else {
+            // return false;
+        }
+    }
+    function deleteOrder(sn) {
+        if (window.confirm('是否确认删除订单？')) {
+            var URL = "/Order/deleteOrder/sn/"+sn;
+            window.location.href = URL;
+            // return true;
+        } else {
+            // return false;
+        }
+    }
+</script>
+<script src="__JS__/main.js"></script>
+<script src="__JS__/mui.js"></script>
+<include file="Public:footer"/>

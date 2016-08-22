@@ -1,0 +1,6 @@
+<ul class="clearfix tab">
+    <li <eq name="search['order_type']" value="1">class="fl on"<else/>class="fl"</eq>><a href="{:U('',array('order_type'=>1))}">购物订单</a></li>
+    <li <eq name="search['order_type']" value="2">class="fl on"<else/>class="fl"</eq>><a href="{:U('',array('order_type'=>2))}">充值订单</a></li>
+    <li <eq name="search['order_type']" value="4">class="fl on"<else/>class="fl"</eq>><a href="{:U('',array('order_type'=>4))}">代理商订单</a></li>
+    <li <eq name="search['order_type']" value="-2">class="fl on"<else/>class="fl"</eq>><a href="{:U('',array('order_type'=>-2))}">提现订单</a></li>
+</ul>

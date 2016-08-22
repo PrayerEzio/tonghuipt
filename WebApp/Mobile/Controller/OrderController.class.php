@@ -26,14 +26,45 @@ class OrderController extends BaseController{
 	 */
 	public function index()
 	{
+		$order_type = intval($_GET['order_type']);
+		$order_type ? $order_type = $order_type : $order_type = 1;
+		if ($order_type)
+		{
+			//类型-2提现1-普通2-充值3-vip4-购买代理商
+			$where['order_type'] = $order_type;
+		}
+		$where['visible'] = 1;
 		$where['member_id'] = $this->mid;
 		//$where['order_type'] = 1;
 		$count = D('Order')->where($where)->count();
 		$page = new Page($count,10);
 		$list = D('Order')->relation(true)->where($where)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();
+		switch ($order_type)
+		{
+			case 1:
+				$temp = 'orderlist';
+				break;
+			case 2:
+				$temp = 'orderlist-cz';
+				break;
+			case 4:
+				foreach ($list as $key => $item)
+				{
+					$list[$key]['desc'] = M('AgentInfo')->where(array('agent_id'=>$item['order_param']))->getField('agent_name');
+				}
+				$temp = 'orderlist-dl';
+				break;
+			case -2:
+				$temp = 'orderlist-tx';
+				break;
+			default:
+				$temp = 'orderlist';
+				break;
+		}
 		$this->list = $list;
 		$this->page = $page->show();
-		$this->display();
+		$this->search = $_GET;
+		$this->display($temp);
 	}
 
 	/**
@@ -134,6 +165,7 @@ class OrderController extends BaseController{
 		if ($count == 1) {
 			$res = M('Order')->where($where)->setField('order_state',40);
 			if ($res) {
+				//$this->success('确认收货成功',$_SERVER['HTTP_REFERER']);
 				$this->success('确认收货成功',U('Order/detail',array('sn'=>$sn)));
 			}else {
 				$this->error('确认收货失败');
@@ -244,7 +276,7 @@ class OrderController extends BaseController{
 					$goods_price = $goods_price*MSC('distributor_discount');
 				}
 				$data['goods_amount'] += $goods_price*$val['goods_num'];
-				$data['shipping_fee'] += $val['freight']*$val['goods_num'];
+				$data['shipping_fee'] += $val['freight'];
 				$data['discount'] += $data['goods_amount']*(1-get_discount($val['goods_num']));
 				if ($goods['goods_storage'] < $val['goods_num'])
 				{
@@ -306,7 +338,7 @@ class OrderController extends BaseController{
 	 * 取消订单
 	 */
 	public function cancelOrder(){
-		$order_sn = trim($_POST['sn']);
+		$order_sn = trim($_GET['sn']);
 		$where['order_sn'] = $order_sn;
 		$where['member_id'] = $this->mid;
 		$where['order_state'] = 10;
@@ -355,38 +387,55 @@ class OrderController extends BaseController{
 			}
 			redirect($url);
 		}elseif (IS_GET){
-			$type = $_GET['type'];
 			$sn = str_rp($_GET['sn'],1);
 			$where['member_id'] = $this->mid;
 			if ($sn) {
-				if ($type == 'repair') {
-					$this->mod = M('Repair');
-					$where['rp_sn'] = $sn;
-					$where['rp_status'] = 3;
-					$info['rp_sn'] = $sn;
-					$info['title'] = '佐西卡维修支付';
-				}else {
-					$this->mod = M('Order');
-					$where['order_sn'] = $sn;
-					$where['order_state'] = 10;
-					$info['order_sn'] = $sn;
-					$info['title'] = '佐西卡购物支付';
-				}
+				$this->mod = M('Order');
+				$where['order_sn'] = $sn;
+				$where['order_state'] = 10;
+				$info['order_sn'] = $sn;
+				$info['title'] = '通汇平台支付';
 				$order = $this->mod->where($where)->find();
 				if (!$order) {
 					$this->error('没有找到相关订单信息.');
+				}else {
+					$this->success('正在跳转微信支付页面.',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));
 				}
-				if ($type == 'repair') {
+				/*if ($type == 'repair') {
 					$info['total_fee'] = $order['price'];
 				}else {
 					$info['total_fee'] = $order['order_amount'];
 				}
 				$info['body'] = '订单号:'.$sn;
 				$this->info = $info;
-				$this->display();
+				$this->success();*/
 			}else {
 				$this->error('没有找到相关订单信息.');
 			}
+		}
+	}
+
+	public function deleteOrder()
+	{
+		//非完全删除订单 而是订单设置为会员不可见
+		$order_sn = trim($_GET['sn']);
+		$where['order_sn'] = $order_sn;
+		$where['member_id'] = $this->mid;
+		$res = M('Order')->where($where)->setField('visible',0);
+		if ($res) {
+			//解冻库存
+			$order_id = M('Order')->where($where)->getField('order_id');
+			//订单日志
+			$log_data['order_id'] = $order_id;
+			$log_data['order_state'] = get_order_state_name(-10);
+			$log_data['change_state'] = '无';
+			$log_data['state_info'] = '会员删除订单[设置不可见]';
+			$log_data['log_time'] = NOW_TIME;
+			$log_data['operator'] = '会员';
+			M('OrderLog')->add($log_data);
+			$this->success('删除订单成功');
+		}else {
+			$this->error('删除订单失败');
 		}
 	}
 }

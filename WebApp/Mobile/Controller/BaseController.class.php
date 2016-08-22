@@ -211,29 +211,6 @@ class BaseController extends Controller{
 		}
 	}
 
-	public function getParentsMember($member_id,$field = '*',$loop = 9999)
-	{
-		$array = array();
-		if (!$loop)
-		{
-			return $array;
-		}
-		$loop--;
-		if (!is_array($field))
-		{
-			$field = explode(',',$field);
-		}
-		if (!in_array('parent_member_id',$field))
-		{
-			$field[] = 'parent_member_id';
-		}
-		$user = M('Member')->where(array('member_id'=>$member_id))->field($field)->find();
-		$parents_member[] = M('Member')->where(array('member_id'=>$user['parent_member_id']))->field($field)->find();
-		$next_parents_member = $this->getParentsMember($user['parent_member_id'],$field,$loop);
-		$array = array_merge($parents_member,$next_parents_member);
-		return $array;
-	}
-
 	//取消超时订单
 	private function autoCancelOvertimeOrder()
 	{
