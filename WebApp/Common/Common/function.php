@@ -1627,8 +1627,7 @@ function orderShareProfit($order_id)
 	$where['order_type'] = 1;
 	$where['order_state'] = 50;
 	$order = D('Order')->relation(true)->where($where)->find();
-	$agent_id = M('Member')->where(array('member_id'=>$order['member_id']))->getField('agent_id');
-	$agent_name = get_agent_level($agent_id);
+	$agent_name = get_member_agent_name($order['member_id']);
 	$member_nickname = get_member_nickname($order['member_id']);
 	if ($order && $order['OrderGoods'])
 	{

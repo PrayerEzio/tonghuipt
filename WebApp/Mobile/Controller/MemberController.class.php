@@ -148,6 +148,10 @@ class MemberController extends BaseController{
 		$where['member_id'] = $this->mid;
 		$count = M('MemberBill')->where($where)->count();
 		$page = new Page($count,10);
+		$page->rollPage = 3;
+		$page->setConfig('prev','上一页');
+		$page->setConfig('next','下一页');
+		$page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
 		$list = M('MemberBill')->where($where)->limit($page->firstRow.','.$page->listRows)->order('addtime desc')->select();
 		$this->list = $list;
         $this->page = $page->show();
@@ -253,16 +257,10 @@ class MemberController extends BaseController{
 			$res = M('Order')->where($where)->setField('order_state',50);
 			if ($res)
 			{
-				//赠送商品积分 扣除所需积分
-				$get_point_amount = 0;
-				$cost_point_amount = 0;
-				foreach ($order['OrderGoods'] as $k => $goods)
-				{
-					$get_point_amount += $goods['goods_point'];
-					$cost_point_amount += $goods['cost_point'];
-				}
-				M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$get_point_amount);
-				M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$cost_point_amount);
+				//赠送商品积分
+				M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['order_points']);
+				//扣除所需积分需要在支付时扣除
+				//M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$order['cost_points']);
 				//TODO:积分日志
 				//订单日志
 				$log_data['order_id'] = $order['order_id'];

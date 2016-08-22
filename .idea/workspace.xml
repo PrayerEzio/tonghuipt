@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1de074bf-16af-419b-b0f0-69e7cbb5dc4c" name="默认的" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/ico_agent.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/ico_extract.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/ico_recharge.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-cz.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-dl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-tx.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Widget/Menu/order_nav.html" />
+    <list default="true" id="1de074bf-16af-419b-b0f0-69e7cbb5dc4c" name="默认的" comment="2016-8-22 16:20:00">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTML/css/style.css" afterPath="$PROJECT_DIR$/HTML/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTML/css/swiper.min.css" afterPath="$PROJECT_DIR$/HTML/css/swiper.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Common/Common/function.php" afterPath="$PROJECT_DIR$/WebApp/Common/Common/function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Widget/MenuWidget.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Widget/MenuWidget.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Index/myqrcode.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Index/myqrcode.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php" afterPath="$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php" />
     </list>
     <ignored path="tonghuipt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,25 +38,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OrderController.class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OrderController.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2646048">
-              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="66" selection-end-column="30" />
+            <state vertical-scroll-proportion="-17.307692">
+              <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MemberController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-40.153847">
+              <caret line="153" column="70" selection-start-line="153" selection-start-column="70" selection-end-line="153" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-162.92308">
+              <caret line="342" column="113" selection-start-line="342" selection-start-column="113" selection-end-line="342" selection-end-column="113" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="function.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebApp/Common/Common/function.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1319" column="24" selection-start-line="1319" selection-start-column="9" selection-end-line="1319" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.580756">
+              <caret line="1668" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="1685" selection-end-column="1" />
               <folding>
-                <marker date="1471847356435" expanded="true" signature="12663:12729" placeholder="..." />
-                <marker date="1471847356435" expanded="true" signature="12690:12719" placeholder="{...}" />
+                <marker date="1471861930075" expanded="true" signature="12663:12729" placeholder="..." />
+                <marker date="1471861930075" expanded="true" signature="12690:12719" placeholder="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ThinkYun/Common/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.769231">
+              <caret line="851" column="9" selection-start-line="851" selection-start-column="9" selection-end-line="851" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,7 +94,7 @@
       <file leaf-file-name="orderlist-tx.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-tx.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.538462">
+            <state vertical-scroll-proportion="0.0">
               <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
               <folding />
             </state>
@@ -81,7 +104,7 @@
       <file leaf-file-name="orderlist-dl.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-dl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.461538">
+            <state vertical-scroll-proportion="0.0">
               <caret line="63" column="51" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="51" />
               <folding />
             </state>
@@ -94,18 +117,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="106" selection-end-column="9" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="orderlist.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#span#0;n#dd#1;n#dl#0;n#volist#0;n#div#0;n#volist#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -124,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Database/index.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php" />
         <option value="$PROJECT_DIR$/ThinkYun/Library/Vendor/WxPayPubHelper/WxPay.pub.config.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/withdraw.html" />
@@ -142,9 +152,7 @@
         <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Order/order.html" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Index/index.html" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Order/order_view.html" />
-        <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Member/member.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/CrontabController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Common/Controller/CrontabController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Common/Conf/config.php" />
@@ -157,16 +165,13 @@
         <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/GoodsController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Goods/goods_edit.html" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/DatabaseController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/recharge.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Order/confirm.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/PayController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Member/curd.html" />
         <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/MemberController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/addGoods.html" />
-        <option value="$PROJECT_DIR$/WebApp/Common/Common/function.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Widget/MenuWidget.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Widget/Menu/order_nav.html" />
@@ -174,6 +179,12 @@
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-cz.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-dl.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-tx.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Index/myqrcode.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Common/Common/function.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" />
       </list>
     </option>
@@ -286,59 +297,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonghuipt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonghuipt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonghuipt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tonghuipt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Order" />
+              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -387,6 +346,72 @@
       <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="问题" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tonghuipt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tonghuipt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WebApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tonghuipt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WebApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Mobile">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tonghuipt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WebApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Mobile">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -667,7 +692,13 @@
       <option name="project" value="LOCAL" />
       <updated>1471431697254</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="2016-8-22 16:20:00">
+      <created>1471854005254</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1471854005254</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -675,15 +706,16 @@
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18215811" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20459402" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20886752" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.48023504" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.51976496" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.47168803" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.52831197" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3352018" sideWeight="0.38301283" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3352018" sideWeight="0.52831197" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847533" sideWeight="0.37126067" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.4764957" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -696,7 +728,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.48076922" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -713,7 +744,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="2016-7-25 07:56:05" />
     <MESSAGE value="2016-7-25 07:58:24" />
     <MESSAGE value="2016-7-26 00:35:05" />
     <MESSAGE value="2016-7-29 00:37:44" />
@@ -738,45 +768,18 @@
     <MESSAGE value="2016-8-15 18:47:04" />
     <MESSAGE value="2016-8-16 18:54:09" />
     <MESSAGE value="2016-8-17 19:01:32" />
-    <option name="LAST_COMMIT_MESSAGE" value="2016-8-17 19:01:32" />
+    <MESSAGE value="2016-8-22 16:20:00" />
+    <option name="LAST_COMMIT_MESSAGE" value="2016-8-22 16:20:00" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Order/order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2802768">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.1349483">
-          <caret line="197" column="37" selection-start-line="197" selection-start-column="37" selection-end-line="197" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/View/Order/order_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.650519">
-          <caret line="53" column="85" selection-start-line="53" selection-start-column="76" selection-end-line="53" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ThinkYun/Library/Muxiangdao/Emoji.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09342561">
           <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5184501">
-          <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -791,13 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.076923">
           <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.153846">
-          <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -977,13 +973,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8.922279">
-          <caret line="294" column="17" selection-start-line="294" selection-start-column="17" selection-end-line="294" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HTML/orderlist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4041451">
@@ -1055,20 +1044,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25773194">
-          <caret line="183" column="8" selection-start-line="183" selection-start-column="8" selection-end-line="183" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
           <folding>
-            <element signature="n#style#0;n#span#0;n#span#0;n#dd#1;n#dl#0;n#volist#0;n#div#0;n#volist#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#dd#1;n#dl#0;n#volist#0;n#div#0;n#volist#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1081,20 +1062,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Common/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1319" column="24" selection-start-line="1319" selection-start-column="9" selection-end-line="1319" selection-end-column="24" />
-          <folding>
-            <marker date="1471847356435" expanded="true" signature="12663:12729" placeholder="..." />
-            <marker date="1471847356435" expanded="true" signature="12690:12719" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-dl.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.461538">
+        <state vertical-scroll-proportion="0.0">
           <caret line="63" column="51" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="51" />
           <folding />
         </state>
@@ -1102,17 +1072,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Order/orderlist-tx.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.538462">
+        <state vertical-scroll-proportion="0.0">
           <caret line="38" column="51" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Index/myqrcode.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.794776">
+          <caret line="145" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/ShopController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5933456">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkYun/Common/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.769231">
+          <caret line="851" column="9" selection-start-line="851" selection-start-column="9" selection-end-line="851" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/CartController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.030927835">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.030927835">
+          <caret line="164" column="36" selection-start-line="164" selection-start-column="36" selection-end-line="164" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-162.92308">
+          <caret line="342" column="113" selection-start-line="342" selection-start-column="113" selection-end-line="342" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-40.153847">
+          <caret line="153" column="70" selection-start-line="153" selection-start-column="70" selection-end-line="153" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2646048">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="66" selection-end-column="30" />
+        <state vertical-scroll-proportion="-17.307692">
+          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.580756">
+          <caret line="1668" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="1685" selection-end-column="1" />
+          <folding>
+            <marker date="1471861930075" expanded="true" signature="12663:12729" placeholder="..." />
+            <marker date="1471861930075" expanded="true" signature="12690:12719" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

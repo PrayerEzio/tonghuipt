@@ -41,6 +41,30 @@ class ShopController extends BaseController{
 		$this->display();
 	}
 
+	public function point()
+	{
+		$order = 'goods_sort desc';
+		$where['member_id'] = array('neq',0);
+		$where['goods_status'] = 1;
+		$gc_id = intval($_GET['gc']);
+		if (!empty($gc_id))
+		{
+			$where['gc_id'] = $gc_id;
+		}
+		$count = $this->model->where($where)->count();
+		$page = new Page($count,10);
+		$page->rollPage = 3;
+		$page->setConfig('prev','上一页');
+		$page->setConfig('next','下一页');
+		$page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
+		$list = $this->model->where($where)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
+		$ad_where['is_use'] = 1;
+		$this->banner = M('AdvPosition')->where($ad_where)->order('ap_sort desc')->select();
+		$this->list = $list;
+		$this->page = $page->show();
+		$this->display();
+	}
+
 	/**
 	 * 商品分类页
 	 */

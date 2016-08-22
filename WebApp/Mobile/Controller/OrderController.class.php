@@ -26,6 +26,7 @@ class OrderController extends BaseController{
 	 */
 	public function index()
 	{
+		$search = $_GET;
 		$order_type = intval($_GET['order_type']);
 		$order_type ? $order_type = $order_type : $order_type = 1;
 		if ($order_type)
@@ -33,11 +34,16 @@ class OrderController extends BaseController{
 			//类型-2提现1-普通2-充值3-vip4-购买代理商
 			$where['order_type'] = $order_type;
 		}
+		$search['order_type'] = $order_type;
 		$where['visible'] = 1;
 		$where['member_id'] = $this->mid;
 		//$where['order_type'] = 1;
 		$count = D('Order')->where($where)->count();
 		$page = new Page($count,10);
+		$page->rollPage = 3;
+		$page->setConfig('prev','上一页');
+		$page->setConfig('next','下一页');
+		$page->setConfig('theme','%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
 		$list = D('Order')->relation(true)->where($where)->limit($page->firstRow.','.$page->listRows)->order('add_time desc')->select();
 		switch ($order_type)
 		{
@@ -63,7 +69,7 @@ class OrderController extends BaseController{
 		}
 		$this->list = $list;
 		$this->page = $page->show();
-		$this->search = $_GET;
+		$this->search = $search;
 		$this->display($temp);
 	}
 
@@ -126,6 +132,8 @@ class OrderController extends BaseController{
 					{
 						$order_goods['spec_id'] = $goods_spec['spec_id'];
 					}
+					$order_goods['goods_point'] = $goods['goods_point'];
+					$order_goods['cost_point'] = $goods['cost_point'];
 					$order_goods['goods_name'] = $goods['goods_name'];
 					$order_goods['goods_price'] = $price*get_discount($num);
 					$order_goods['goods_mkprice'] = $goods['goods_mktprice'];
@@ -283,10 +291,16 @@ class OrderController extends BaseController{
 					$this->error('抱歉,订单商品库存已不足,无法生成订单.');
 				}
 			}
+			$order_points = 0;
+			$cost_points = 0;
 			foreach ($goods_list as $key => $val){
+				$order_points += $val['goods_point']*$val['goods_num'];
+				$cost_points += $val['cost_point']*$val['goods_num'];
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setDec('goods_storage',$val['goods_num']);
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setInc('goods_freez',$val['goods_num']);
 			}
+			$data['order_points'] = $order_points;
+			$data['cost_points'] = $cost_points;
 			$data['order_amount'] = $data['goods_amount']-$data['discount']+$data['shipping_fee'];
 			$data['order_message'] = str_rp($_POST['order_message'],1);
 			$member = M('Member')->where(array('member_id'=>$this->mid))->field('mobile,email')->find();

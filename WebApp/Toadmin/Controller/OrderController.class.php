@@ -337,16 +337,10 @@ class OrderController extends GlobalController {
 		$res = M('Order')->where($where)->setField('order_state',50);
 		if ($res)
 		{
-			//赠送商品积分 扣除所需积分
-			$get_point_amount = 0;
-			$cost_point_amount = 0;
-			foreach ($order['OrderGoods'] as $k => $goods)
-			{
-				$get_point_amount += $goods['goods_point'];
-				$cost_point_amount += $goods['cost_point'];
-			}
-			M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$get_point_amount);
-			M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$cost_point_amount);
+			//赠送商品积分
+			M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['order_points']);
+			//扣除所需积分需要在支付时扣除
+			//M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$order['cost_points']);
 			//TODO:积分日志
 			//订单日志
 			$log_data['order_id'] = $order['order_id'];
