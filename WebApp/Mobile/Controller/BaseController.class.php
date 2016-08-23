@@ -180,17 +180,19 @@ class BaseController extends Controller{
 						if ($open_id)
 						{
 							$data['touser'] = $open_id;
-							$data['template_id'] = trim('YpV6rl7TZz-dULxA2QgBlTZwXjF_FY4UztGoNMbd4rU');
+							$data['template_id'] = trim('kJSVapgJEGqrE5XoePDKpe0b2mq1_vv1AZjbN2_SI_Y');
 							$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>1));
-							$data['data']['first']['value'] = '您的'.$member_level_ch.'级会员-'.$member_nickname.'已经下单成功，请关注‘tonghui56789’企业服务号，点击进入商城个人中心查看余额';
+							$data['data']['first']['value'] = '亲，您的'.$member_level_ch.'级会员-'.$member_nickname.'已购买成功！您的分成如下：';
 							$data['data']['first']['color'] = '#173177';
-							$data['data']['orderno']['value'] = $order['order_sn'];
-							$data['data']['orderno']['color'] = '#173177';
-							$data['data']['refundno']['value'] = 1;
-							$data['data']['refundno']['color'] = '#173177';
-							$data['data']['refundproduct']['value'] = price_format($item['reward_price']);
-							$data['data']['refundproduct']['color'] = '#173177';
-							$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
+							$data['data']['keyword1']['value'] = $order['order_sn'];
+							$data['data']['keyword1']['color'] = '#173177';
+							$data['data']['keyword2']['value'] = price_format($order['order_amount']).'元';
+							$data['data']['keyword2']['color'] = '#173177';
+							$data['data']['keyword3']['value'] = price_format($item['reward_price']).'元';
+							$data['data']['keyword3']['color'] = '#173177';
+							$data['data']['keyword4']['value'] = date('Y年m月d日 H:i',time());
+							$data['data']['keyword4']['color'] = '#173177';
+							$data['data']['remark']['value'] = '【通汇大商圈】感谢有您，客服：894916947';
 							$data['data']['remark']['color'] = '#173177';
 							sendTemplateMsg($data);
 						}
@@ -310,33 +312,6 @@ class BaseController extends Controller{
 			$sq_url ='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.Wx_C('wx_appid').'&redirect_uri='.$re_url.'&response_type=code&scope='.$scope.'&state=STATEuserinfo#wechat_redirect';
 			redirect($sq_url);
 			//get_url($sq_url);
-		}
-	}
-
-	public function test()
-	{
-		die;
-		$data['touser'] = $_POST['wechatid'];
-		$data['template_id'] = trim('NS4UltLeVLGeuqq3QOvexAaTNjX-KgQAe2-N2Cd00vg');
-		$data['url'] = C('SiteUrl').U('Parkrecord/park_record',array('status'=>'incomplete'));
-		$data['data']['first']['value'] = '欢迎使用RFID停车系统！';
-		$data['data']['first']['color'] = '#173177';
-		$data['data']['keyword1']['value'] = $_POST['car_plate'].'(RFID号：'.$_POST['rfid_card'].')';
-		$data['data']['keyword1']['color'] = '#173177';
-		$data['data']['keyword2']['value'] = $_POST['parking_address'].'(车位号：'.$_POST['parking_spot'].')';
-		$data['data']['keyword2']['color'] = '#173177';
-		$data['data']['keyword3']['value'] = $_POST['parking_time'];
-		$data['data']['keyword3']['color'] = '#173177';
-		$data['data']['remark']['value'] = "半小时计费：".$_POST['tariff_30m']."\r\n一小时计费：".$_POST['tariff_60m']."\r\n两小时计费：".$_POST['tariff_120m']."\r\n三小时计费：".$_POST['tariff_180m'];
-		$data['data']['remark']['color'] = '#173177';
-		$res_json = sendTemplateMsg($data);
-		$res_obj = json_decode($res_json);
-		if ($res_obj->errcode == 0) {
-			//success;
-			echo $res_json;
-		}else {
-			//fail;
-			echo $res_json;
 		}
 	}
 

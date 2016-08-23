@@ -28,7 +28,7 @@ class ShopController extends BaseController{
 			$where['gc_id'] = $gc_id;
 		}
 		$count = $this->model->where($where)->count();
-		$page = new Page($count,10);
+		$page = new Page($count,6);
 		$page->rollPage = 3;
 		$page->setConfig('prev','上一页');
 		$page->setConfig('next','下一页');
@@ -108,6 +108,11 @@ class ShopController extends BaseController{
 
 	public function detail()
 	{
+		$this->m_info = M('Member')->where('member_id='.$this->mid)->find();
+		if (empty($this->m_info['openid']))
+		{
+			$this->getWechatInfo();
+		}
 		$goods_id = intval($_GET['id']);
 		$where['goods_id'] = $goods_id;
 		$goods_info = $this->model->relation(true)->where($where)->find();
