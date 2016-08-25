@@ -564,7 +564,7 @@ function get_order_state_name($order_state)
 		  $return = "已发货";
 		  break;
 		case 40:
-		  $return = "已收货";
+		  $return = "配送中";
 		  break;
 		case 50:
 		  $return = "已完成";
@@ -920,6 +920,12 @@ function nonce_str($length = 8,$upper = 1,$lower = 1,$num = 1){
  	{
  		return 'error';
  	}else{
+		if ($param['thumb'])
+		{
+			$image = new \Think\Image();
+			$image->open('.'.C('TMPL_PARSE_STRING.__UPLOADS__').'/'.$info['savepath'].$info['savename']);
+			$image->thumb($param['thumb']['width'],$param['thumb']['height'])->save('.'.C('TMPL_PARSE_STRING.__UPLOADS__').'/'.$info['savepath'].$info['savename']);
+		}
  		return $info['savepath'].$info['savename'];
  	}
  }
@@ -1491,8 +1497,7 @@ function sendTemplateMsg($data,$template_id_short = ''){
 	if (empty($access_token)) {
 		$c_url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.Wx_C('wx_appid').'&secret='.Wx_C('wx_secret');
 		$s_info = json_decode(get_url($c_url));
-		S(array('expire'=>7000));
-		S('access_token',$s_info->access_token);
+		S('access_token',$s_info->access_token,array('expire'=>300));
 	}
 	if (empty($data['template_id']) && $template_id_short) {
 		//获取模板id
@@ -1504,7 +1509,9 @@ function sendTemplateMsg($data,$template_id_short = ''){
 	}
 	$api_url = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='.S('access_token');
 	$data = json_encode($data);
+	system_log('模板消息发送json',$data,0,'wxMsg');
 	$res = post_url($api_url, $data);
+	system_log('模板消息发送',$res,0,'wxMsg');
 	return $res;
 }
 
@@ -1665,17 +1672,19 @@ function orderShareProfit($order_id)
 					if ($open_id)
 					{
 						$data['touser'] = $open_id;
-						$data['template_id'] = trim('YpV6rl7TZz-dULxA2QgBlTZwXjF_FY4UztGoNMbd4rU');
+						$data['template_id'] = trim('kJSVapgJEGqrE5XoePDKpe0b2mq1_vv1AZjbN2_SI_Y');
 						$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>1));
-						$data['data']['first']['value'] = '您的'.$member_level_ch.'级会员-'.$member_nickname.'已经下单成功，请关注‘tonghui56789’企业服务号，点击进入商城个人中心查看余额';
+						$data['data']['first']['value'] = '亲，您的'.$member_level_ch.'级会员-'.$member_nickname.'已购买成功！您的分成如下：';
 						$data['data']['first']['color'] = '#173177';
-						$data['data']['orderno']['value'] = $order['order_sn'];
-						$data['data']['orderno']['color'] = '#173177';
-						$data['data']['refundno']['value'] = 1;
-						$data['data']['refundno']['color'] = '#173177';
-						$data['data']['refundproduct']['value'] = price_format($rate_pofit);
-						$data['data']['refundproduct']['color'] = '#173177';
-						$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
+						$data['data']['keyword1']['value'] = $order['order_sn'];
+						$data['data']['keyword1']['color'] = '#173177';
+						$data['data']['keyword2']['value'] = price_format($order['order_amount']).'元';
+						$data['data']['keyword2']['color'] = '#173177';
+						$data['data']['keyword3']['value'] = price_format($rate_pofit).'元';
+						$data['data']['keyword3']['color'] = '#173177';
+						$data['data']['keyword4']['value'] = date('Y年m月d日 H:i',time());
+						$data['data']['keyword4']['color'] = '#173177';
+						$data['data']['remark']['value'] = '【通汇大商圈】感谢有您，客服：894916947';
 						$data['data']['remark']['color'] = '#173177';
 						sendTemplateMsg($data);
 					}

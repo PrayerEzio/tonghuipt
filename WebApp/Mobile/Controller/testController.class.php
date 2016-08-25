@@ -7,6 +7,8 @@
  * @author     muxiangdao-cn Team Prayer (283386295@qq.com)
  */
 namespace Mobile\Controller;
+use Think\Image;
+
 class TestController extends BaseController{
 	public function __construct(){
 		parent::__construct();
@@ -15,9 +17,44 @@ class TestController extends BaseController{
 		{
 			redirect(U('Member/index'));
 		}*/
+		$this->mid = 36;
+	}
+
+	public function test()
+	{
+		$image = new Image();
+		$item = M('Goods')->where(array('goods_id'=>1897))->field('goods_id,goods_pic')->find();
+		if (!empty($item['goods_pic']))
+		{
+			$pic_url = './Uploads/'.$item['goods_pic'];
+			$image->open($pic_url);
+			$image->thumb(200, 250)->save('./Uploads/'.$item['goods_pic']);
+			p($item['goods_id'].':'.$pic_url);
+		}else {
+			p($item['goods_id'].':empty pic');
+		}
+	}
+
+	public function thumb()
+	{
+		$image = new Image();
+		$goods_pic_list = M('Goods')->field('goods_id,goods_pic')->select();
+		foreach ($goods_pic_list as $key => $item)
+		{
+			if (!empty($item['goods_pic']))
+			{
+				$pic_url = './Uploads/'.$item['goods_pic'];
+				$image->open($pic_url);
+				$image->thumb(200, 250)->save('./Uploads/'.$item['goods_pic']);
+				p($item['goods_id'].':'.$pic_url);
+			}else {
+				p($item['goods_id'].':empty pic');
+			}
+		}
 	}
 
 	public function company_pay(){
+		die;
 		$amount = 2.88;
 		$desc = '企业付款测试';
 		$order_sn = order_sn('Test');
@@ -63,6 +100,7 @@ class TestController extends BaseController{
 
 	public function sendredpack()
 	{
+		die;
 		$amount = 2.88;
 		//加载支付类库
 		Vendor('WxPayPubHelper.WxPayPubHelper');

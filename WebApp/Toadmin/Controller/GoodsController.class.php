@@ -724,6 +724,8 @@ class GoodsController extends GlobalController {
 				$goods_img = 'g_'.$data['add_time'];
 				$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES['goods_pic'],'saveName'=>$goods_img,'saveExt'=>'');				
 				$up_return = upload_one($param);
+				$param['thumb']['width'] = 200;
+				$param['thumb']['height'] = 250;
 				if($up_return == 'error')
 				{
 					$this->error('图片上传失败');
@@ -790,7 +792,9 @@ class GoodsController extends GlobalController {
 						if($_FILES[$pic_name]['size'] > 0)
 						{
 							$goods_img = 'm1_'.$goods_id.'_'.$n.'_'.NOW_TIME;
-							$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES[$pic_name],'saveName'=>$goods_img,'saveExt'=>'');				
+							$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES[$pic_name],'saveName'=>$goods_img,'saveExt'=>'');
+							$param['thumb']['width'] = 200;
+							$param['thumb']['height'] = 250;
 							$up_return = upload_one($param);
 							if($up_return == 'error')
 							{
@@ -919,7 +923,9 @@ class GoodsController extends GlobalController {
 					$old_pic = BasePath.'/Uploads/'.$gd['goods_pic'];			
 					unlink($old_pic);	
 				}
-				$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES['goods_pic'],'saveName'=>$goods_img,'saveExt'=>'');				
+				$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES['goods_pic'],'saveName'=>$goods_img,'saveExt'=>'');
+				$param['thumb']['width'] = 200;
+				$param['thumb']['height'] = 250;
 				$up_return = upload_one($param);
 				if($up_return == 'error')
 				{
@@ -1001,7 +1007,9 @@ class GoodsController extends GlobalController {
 						if($_FILES[$pic_name]['size'] > 0)
 						{
 							$goods_img = 'm1_'.$goods_id.'_'.$n.'_'.NOW_TIME;
-							$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES[$pic_name],'saveName'=>$goods_img,'saveExt'=>'');				
+							$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES[$pic_name],'saveName'=>$goods_img,'saveExt'=>'');
+							$param['thumb']['width'] = 200;
+							$param['thumb']['height'] = 250;
 							$up_return = upload_one($param);
 							if($up_return == 'error')
 							{

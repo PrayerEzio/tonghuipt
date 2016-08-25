@@ -258,7 +258,7 @@ class MemberController extends BaseController{
 			if ($res)
 			{
 				//赠送商品积分
-				M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['order_points']);
+				$points_res = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['order_points']);
 				//扣除所需积分需要在支付时扣除
 				//M('Member')->where(array('member_id'=>$order['member_id']))->setDec('point',$order['cost_points']);
 				//TODO:积分日志
@@ -276,6 +276,27 @@ class MemberController extends BaseController{
 				$open_id = M('Member')->where(array('member_id'=>$order['member_id']))->getField('openid');
 				if ($open_id)
 				{
+					if ($points_res)
+					{
+						$data['touser'] = $open_id;
+						$data['template_id'] = trim('zEB34NUf7Q1rgT1vjZeP0bQdGqHqRQqyItmQCVD_cmA');
+						$data['url'] = C('SiteUrl').U('Member/index');
+						$data['data']['first']['value'] = '亲，您的积分已到账！';
+						$data['data']['first']['color'] = '#173177';
+						$data['data']['time']['value'] = date('Y年m月d日 H:i',time());
+						$data['data']['time']['color'] = '#173177';
+						$data['data']['org']['value'] = '通汇大商圈';
+						$data['data']['org']['color'] = '#173177';
+						$data['data']['type']['value'] = '个人消费';
+						$data['data']['type']['color'] = '#173177';
+						$data['data']['money']['value'] = price_format($order['order_amount']).'元';
+						$data['data']['money']['color'] = '#173177';
+						$data['data']['point']['value'] = $order['order_points'].'积分';
+						$data['data']['point']['color'] = '#173177';
+						$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
+						$data['data']['remark']['color'] = '#173177';
+						sendTemplateMsg($data);
+					}
 					$data['touser'] = $open_id;
 					$data['template_id'] = trim('YpV6rl7TZz-dULxA2QgBlTZwXjF_FY4UztGoNMbd4rU');
 					$data['url'] = C('SiteUrl').U('Order/index');
@@ -423,13 +444,13 @@ class MemberController extends BaseController{
 				$data['touser'] = $openid;
 				$data['template_id'] = trim('RyeUJ1L4zRD4DzQ_lQGuUlYldAmBudVZ3fF6R0zY_w4');
 				$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
-				$data['data']['first']['value'] = '您的提现申请已经完成,订单号:'.$order_sn.'，请关注‘tonghui56789’企业服务号，点击进入商城个人中心查看余额';
+				$data['data']['first']['value'] = get_member_nickname($this->mid).'，恭喜您提现成功！';
 				$data['data']['first']['color'] = '#173177';
 				$data['data']['keyword1']['value'] = price_format($amount);
 				$data['data']['keyword1']['color'] = '#173177';
-				$data['data']['keyword2']['value'] = date('Y-m-d H:i:s',time());
+				$data['data']['keyword2']['value'] = date('Y-m-d H:i',time());
 				$data['data']['keyword2']['color'] = '#173177';
-				$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
+				$data['data']['remark']['value'] = '小额系统自提，大额请联系客服：894916947';
 				$data['data']['remark']['color'] = '#173177';
 				sendTemplateMsg($data);
 				M('Order')->add($data);

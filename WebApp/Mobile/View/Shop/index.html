@@ -160,7 +160,7 @@
                 <li><a href="{:U('Member/branch')}"><i class="iconfont menu_font B_color_B">&#xe60e;</i><span
                         class="menu_txt">我的团队</span></a></li>
                 <li><a href="{:U('Member/bill',array('bill_type'=>1))}"><i class="iconfont menu_font B_color_D">&#xe606;</i><span
-                        class="menu_txt">获利红包</span></a></li>
+                        class="menu_txt">我的收入</span></a></li>
                 <li><a href="{:U('Shop/index')}"><i class="iconfont menu_font B_color_C">&#xe611;</i><span
                         class="menu_txt">积分商城</span></a></li>
             </ul>
@@ -176,7 +176,15 @@
 
                     <div class="pr">
 
-                        <img data-original="__UPLOADS__/{$vo['goods_pic']}" src="__UPLOADS__/{$vo['goods_pic']}" alt="">
+                        <empty name="vo['goods_pic']">
+
+                            <img data-original="__IMG__/nopic.jpg" src="__IMG__/nopic.jpg" alt="">
+
+                        <else />
+
+                            <img data-original="__UPLOADS__/{$vo['goods_pic']}" src="__UPLOADS__/{$vo['goods_pic']}" alt="">
+
+                        </empty>
 
                         <span class="sales">销量：{$vo['goods_sales']}</span>
 
