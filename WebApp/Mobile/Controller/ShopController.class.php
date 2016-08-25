@@ -28,7 +28,7 @@ class ShopController extends BaseController{
 			$where['gc_id'] = $gc_id;
 		}
 		$count = $this->model->where($where)->count();
-		$page = new Page($count,6);
+		$page = new Page($count,10);
 		$page->rollPage = 3;
 		$page->setConfig('prev','上一页');
 		$page->setConfig('next','下一页');
