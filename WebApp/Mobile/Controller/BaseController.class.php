@@ -155,7 +155,12 @@ class BaseController extends Controller{
 		{
 			return '';
 		}
-		$where['reward_type'] = 'distribution';
+		if ($level == 2)
+		{
+			$where['reward_type'] = 'gift_distribution';
+		}else {
+			$where['reward_type'] = 'distribution';
+		}
 		$where['level'] = array('elt',$level);
 		$red_packet_list = M('RedPacket')->where($where)->order('level desc')->select();
 		$mid = $order['member_id'];

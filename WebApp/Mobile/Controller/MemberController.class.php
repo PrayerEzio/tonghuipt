@@ -86,7 +86,6 @@ class MemberController extends BaseController{
 		{
 
 		}elseif (IS_GET){
-			$all_list = M('Member')->select();
 			$where['parent_member_id'] = $this->mid;
 			$list = M('Member')->where($where)->order('register_time')->select();
 			$field = 'member_id,parent_member_id,agent_id';
@@ -174,7 +173,10 @@ class MemberController extends BaseController{
 		if (IS_POST)
 		{
 			$where['agent_id'] = intval($_POST['radio1']);
-			$where['agent_status'] = 1;
+			if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
+			{
+				$where['agent_status'] = 1;
+			}
 			$agent_info = M('AgentInfo')->where($where)->find();
 			$max_level = M('AgentInfo')->Max('agent_level');
 			//加入判断
@@ -186,15 +188,18 @@ class MemberController extends BaseController{
 					$this->error('您的公排系统还在结算,请勿重复购买.');
 				}
 			}else {
-				$my_max_level_where['member_id'] = $this->mid;
-				$my_max_level = M('Agent')->where($my_max_level_where)->Max('agent_level');
-				if ($my_max_level != $max_level && $my_max_level >= $agent_info['agent_level'])
+				if ($agent_info['agent_level'] != 2)
 				{
-					$this->error('您不能购买更低级的代理级别.');
-				}
-				if ($my_max_level == $max_level && $my_max_level > $agent_info['agent_level'])
-				{
-					$this->error('您不能购买更低级的代理级别.');
+					$my_max_level_where['member_id'] = $this->mid;
+					$my_max_level = M('Agent')->where($my_max_level_where)->Max('agent_level');
+					if ($my_max_level != $max_level && $my_max_level >= $agent_info['agent_level'])
+					{
+						$this->error('您不能购买更低级的代理级别.');
+					}
+					if ($my_max_level == $max_level && $my_max_level > $agent_info['agent_level'])
+					{
+						$this->error('您不能购买更低级的代理级别.');
+					}
 				}
 			}
 			if ($agent_info)
@@ -235,7 +240,11 @@ class MemberController extends BaseController{
 			}
 		}elseif (IS_GET)
 		{
-			$this->list = M('AgentInfo')->where(array('agent_status'=>1))->order('agent_sort desc,agent_level desc')->select();
+			if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
+			{
+				$where['agent_status'] = 1;
+			}
+			$this->list = M('AgentInfo')->where($where)->order('agent_sort desc,agent_level desc')->select();
 			$where['member_id'] = $this->mid;
 			$user_info = D('Member')->relation(true)->where($where)->find();
 			$this->user_info = $user_info;
@@ -374,19 +383,16 @@ class MemberController extends BaseController{
 			$judge_amount = intval($amount/10)*10;
 			$order_count_where['member_id'] = $this->mid;
 			$order_count_where['order_type'] = -2;
-			$order_count_where['add_time'] = array('between',array(NOW_TIME,NOW_TIME+86400));
+			$order_count_where['add_time'] = array('gt',strtotime(date('Y-m-d',time())));
 			$order_count = M('Order')->where($order_count_where)->count();
 			$bill_count_where['bill_type'] = -1;
 			$bill_count_where['channel'] = -2;
 			$bill_count_where['member_id'] = $this->mid;
-			$bill_count_where['addtime'] = array('between',array(NOW_TIME,NOW_TIME+86400));
+			$bill_count_where['addtime'] = array('gt',strtotime(date('Y-m-d',time())));
 			$bill_count = M('MemberBill')->where($bill_count_where)->find();
-			if ($this->mid != 37)
+			if ($order_count || $bill_count)
 			{
-				if ($order_count || $bill_count)
-				{
-					$this->error('您今日已经没有提现次数了,请明天再来.');die;
-				}
+				$this->error('您今日已经没有提现次数了,请明天再来.');die;
 			}
 			if (!$amount || $amount > $predeposit || $judge_amount != $amount)
 			{
