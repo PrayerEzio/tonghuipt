@@ -481,7 +481,7 @@ class MemberController extends BaseController{
 		}
 	}
 
-	public function addGoods()
+	public function curdGoods()
 	{
 		$merchant_status = M('Member')->where(array('member_id'=>$this->mid))->getField('merchant_status');
 		if (empty($merchant_status))
@@ -490,10 +490,63 @@ class MemberController extends BaseController{
 		}
 		if (IS_POST)
 		{
-
+			$goods_id = intval($_POST['id']);
+			if ($goods_id)
+			{
+				$where['goods_id'] = $goods_id;
+				$where['member_id'] = $this->mid;
+				$goods = M('Goods')->where(array('goods_id'=>$goods_id))->find();
+			}
+			$data['goods_name'] = trim($_POST['goods_name']);
+			$data['goods_body'] = trim($_POST['goods_body']);
+			$data['cost_point'] = intval($_POST['cost_point']);
+			$data['goods_storage'] = intval($_POST['goods_storage']);
+			$data['gc_id'] = intval($_POST['gc_id']);
+			$data['addtime'] = time();
+			//图片上传
+			if(!empty($_FILES['goods_pic']['name']))
+			{
+				$goods_img = 'mid_point_goods_'.$this->mid.'_'.time();
+				if ($goods['goods_pic'])
+				{
+					$old_pic = BasePath.'/Uploads/'.$goods['goods_pic'];
+					unlink($old_pic);
+				}
+				$param = array('savePath'=>'points_goods/','subName'=>'','files'=>$_FILES['goods_pic'],'saveName'=>$goods_img,'saveExt'=>'');
+				$param['thumb']['width'] = 200;
+				$param['thumb']['height'] = 250;
+				$up_return = upload_one($param);
+				if($up_return == 'error')
+				{
+					$this->error('图片上传失败');
+					exit;
+				}else{
+					$data['goods_pic'] = $up_return;
+				}
+			}
+			$data['member_id'] = $this->mid;
+			$data['goods_status'] = 1;
+			if ($goods_id)
+			{
+				$res = M('Goods')->where($where)->save($data);
+			}else {
+				$res = M('Goods')->add($data);
+			}
+			if ($res)
+			{
+				$this->success('发布商品成功!',U('Shop/point'));
+			}else {
+				$this->error('发布商品失败!');
+			}
 		}elseif(IS_GET){
-			$where = array();
-			$this->goods_class = M('GoodsClass')->where($where)->order('gc_sort')->select();
+			$goods_id = intval($_GET['id']);
+			if ($goods_id)
+			{
+				$where['goods_id'] = $goods_id;
+				$where['member_id'] = $this->mid;
+				$this->info = M('Goods')->where($where)->find();
+			}
+			$this->goods_class = M('GoodsClass')->order('gc_sort')->select();
 			$this->display();
 		}
 	}

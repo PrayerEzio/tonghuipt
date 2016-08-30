@@ -43,6 +43,15 @@ class ShopController extends BaseController{
 
 	public function point()
 	{
+		$m_info = M('Member')->where(array('member_id'=>$this->mid))->find();
+		if (empty($m_info['openid']))
+		{
+			$this->getWechatInfo();
+		}
+		if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
+		{
+			$this->error('该功能即将上线,敬请期待.');
+		}
 		$order = 'goods_sort desc';
 		$where['member_id'] = array('neq',0);
 		$where['goods_status'] = 1;
@@ -115,6 +124,7 @@ class ShopController extends BaseController{
 		}
 		$goods_id = intval($_GET['id']);
 		$where['goods_id'] = $goods_id;
+		$where['member_id'] = array('eq',0);
 		$goods_info = $this->model->relation(true)->where($where)->find();
 		if (empty($goods_info))
 		{
@@ -130,6 +140,51 @@ class ShopController extends BaseController{
 		$shareConfig['imgUrl'] = C('SiteUrl').'/Uploads/'.$goods_info['goods_pic'];
 		$this->shareConfig = $shareConfig;
 		$this->display();
+	}
+
+	public function pg_detail()
+	{
+		$m_info = M('Member')->where(array('member_id'=>$this->mid))->find();
+		if (empty($m_info['openid']))
+		{
+			$this->getWechatInfo();
+		}
+		$goods_id = intval($_GET['id']);
+		$where['goods_id'] = $goods_id;
+		$where['member_id'] = array('neq',0);
+		$goods_info = $this->model->relation(true)->where($where)->find();
+		if (empty($goods_info))
+		{
+			$this->error('没有找到相关信息');
+		}
+		$this->info = $goods_info;
+		//JS-SDK
+		$signPackage = wx_js_sdk();
+		$this->assign('signPackage',$signPackage);
+		$shareConfig['title'] = $goods_info['goods_name'];
+		$shareConfig['desc'] = $goods_info['goods_desc'];
+		$shareConfig['linkUrl'] = C('SiteUrl').U('',I());
+		$shareConfig['imgUrl'] = C('SiteUrl').'/Uploads/'.$goods_info['goods_pic'];
+		$this->shareConfig = $shareConfig;
+		$this->display();
+	}
+
+	public function pg_buy()
+	{
+		$where['goods_id'] = intval($_GET['id']);
+		$where['member_id'] = array('neq',0);
+		$where['goods_status'] = 1;
+		$pg_goods = M('Goods')->where($where)->find();
+		if ($pg_goods)
+		{
+			if ($pg_goods['strong'] <= 0)
+			{
+				$this->error('库存不足');
+			}
+			//TODO:生成唯一二维码
+		}else {
+			$this->error('没有找到相关商品.');
+		}
 	}
 
 	public function collectionGoods()

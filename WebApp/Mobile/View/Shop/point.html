@@ -1,0 +1,55 @@
+﻿<include file="Public:header"/>
+<div class="index-group">
+    <div class="brand-intro">
+        <!-- 焦点图 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <volist name="banner" id="vo">
+                    <div class="swiper-slide"><img src="__UPLOADS__/{$vo['ap_pic']}" alt=""></div>
+                </volist>
+            </div>
+            <!-- 分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- 焦点图 end-->
+        <div class="integral-nav">
+            <ul>
+                <li><a href=""><i class="iconfont">&#xe611;</i><span>{$m_info['point']}积分</span></a></li>
+                <li><a href=""><i class="iconfont">&#xe603;</i><span>我的订单</span></a></li>
+                <li><a href=""><i class="iconfont">&#xe612;</i><span>如何赚积分</span></a></li>
+            </ul>
+        </div>
+        <div class="index_title">热销积分商品</div>
+        <!--  产品内容 -->
+        <div class="goods-group">
+            <volist name="list" id="vo">
+                <a class="brand-item" href="{:U('Shop/pg_detail',array('id'=>$vo['goods_id']))}">
+                    <div class="pr">
+                        <empty name="vo['goods_pic']">
+                            <img data-original="__IMG__/nopic.jpg" src="__IMG__/nopic.jpg" alt="">
+                            <else />
+                            <img data-original="__UPLOADS__/{$vo['goods_pic']}" src="__UPLOADS__/{$vo['goods_pic']}" alt="">
+                        </empty>
+                        <span class="sales">已兑换：{$vo['goods_sales']}</span>
+                    </div>
+                    <div class="goods-name">{$vo['goods_name']}</div>
+                    <div class="goods-price">积分<em>{$vo['cost_point']}</em></div>
+                </a>
+            </volist>
+        </div>
+        <!-- 加载中 -->
+        <div class="load-box">{$page}</div>
+    </div>
+    <!-- flexd nav -->
+    {:W('Menu/footer_nav')}
+</div>
+<script src="__JS__/main.js"></script>
+<script src="__JS__/swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop: 'true'
+    })
+</script>
+<include file="Public:footer"/>

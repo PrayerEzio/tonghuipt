@@ -21,6 +21,7 @@
         <div class="dt-top"></div>
     </div>
 
+    <form action="" id="mainForm" method="post" enctype="multipart/form-data">
     <div class="publish-con">
         <div class="weui_cells_title">商品图片</div>
         <div class="uploadBox clearfix">
@@ -28,9 +29,9 @@
                 <div id="preview">
                     <img id="imghead" src="__IMG__/upload.png">
                 </div>
-                <input type="file" onchange="previewImage(this)" class="uploadBtn" id="file">
+                <input type="file" name="goods_pic" onchange="previewImage(this)" class="uploadBtn" id="file">
             </div>
-            <div class="upload rlt fl" style="height: 53px;">
+            <!--<div class="upload rlt fl" style="height: 53px;">
                 <div id="preview1">
                     <img id="imghead1" src="__IMG__/upload.png">
                 </div>
@@ -53,14 +54,14 @@
                     <img id="imghead4" src="__IMG__/upload.png">
                 </div>
                 <input type="file" onchange="previewImage4(this)" class="uploadBtn" id="file4">
-            </div>
+            </div>-->
         </div>
 
         <div class="weui_cells_title">商品标题</div>
         <div class="weui_cells weui_cells_form">
             <div class="weui_cell">
                 <div class="weui_cell_bd weui_cell_primary">
-                    <input type="text" class="weui_input" id="goods_title" name="goods_title" placeholder="请输入商品标题"/>
+                    <input type="text" class="weui_input" id="goods_name" name="goods_name" placeholder="请输入商品标题"/>
                 </div>
             </div>
         </div>
@@ -105,10 +106,17 @@
             </div>
         </div>
         <div class="weui_btn_area">
-            <a class="weui_btn weui_btn_primary" href="javascript:">完成</a>
+            <a class="weui_btn weui_btn_primary" href="javascript:submitForm()">完成</a>
         </div>
     </div>
+    </form>
 </div>
+<script>
+    function submitForm()
+    {
+        $("#mainForm").submit();
+    }
+</script>
 <script src="__JS__/main.js"></script>
 <script src="__JS__/mui.js"></script>
 <script src="__JS__/upload.js"></script>
