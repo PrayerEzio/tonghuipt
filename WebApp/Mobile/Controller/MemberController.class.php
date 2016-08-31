@@ -183,7 +183,7 @@ class MemberController extends BaseController{
 			if ($agent_info['agent_level'] == $max_level)
 			{
 				$count = M('Board')->where(array('board_status'=>0,'member_id'=>$this->mid))->count();
-				if ($count)
+				if ($count > 3)
 				{
 					$this->error('您的公排系统还在结算,请勿重复购买.');
 				}
@@ -231,6 +231,7 @@ class MemberController extends BaseController{
 						case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
 						case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
 						case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
+						case 4:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$order['order_sn'])));break;
 					}
 				}else {
 

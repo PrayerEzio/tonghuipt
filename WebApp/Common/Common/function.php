@@ -922,11 +922,15 @@ function nonce_str($length = 8,$upper = 1,$lower = 1,$num = 1){
  	}else{
 		if ($param['thumb'])
 		{
+			$img_src = '.'.C('TMPL_PARSE_STRING.__UPLOADS__').'/'.$info['savepath'].$info['savename'];
 			$image = new \Think\Image();
-			$image->open('.'.C('TMPL_PARSE_STRING.__UPLOADS__').'/'.$info['savepath'].$info['savename']);
-			$image->thumb($param['thumb']['width'],$param['thumb']['height'])->save('.'.C('TMPL_PARSE_STRING.__UPLOADS__').'/'.$info['savepath'].$info['savename']);
+			$image->open($img_src);
+			$new_img_src = './Uploads/'.$info['savepath'].'thumb_'.$info['savename'];
+			$image->thumb($param['thumb']['width'],$param['thumb']['height'])->save($new_img_src);
+			return $new_img_src;
+		}else {
+			return $info['savepath'].$info['savename'];
 		}
- 		return $info['savepath'].$info['savename'];
  	}
  }
  /**

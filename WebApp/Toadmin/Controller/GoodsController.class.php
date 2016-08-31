@@ -660,7 +660,7 @@ class GoodsController extends GlobalController {
 			$map['gc_id'] = array('eq',$gc_id);
 		}
 		$order_post = I('get.order','goods_sort-desc');
-		$order = explode('-', $order);
+		$order = explode('-', $order_post);
 		if (!empty($order)) {
 			$order = $order[0].' '.$order[1];
 		}
