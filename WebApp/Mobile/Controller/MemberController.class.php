@@ -157,6 +157,11 @@ class MemberController extends BaseController{
 		$this->display();
 	}
 
+	public function submitAddress()
+	{
+		$data['name'] = trim($_POST['name']);
+	}
+
 	//站内信
 	public function letter()
 	{

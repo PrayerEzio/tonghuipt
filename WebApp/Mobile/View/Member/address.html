@@ -1,0 +1,80 @@
+﻿<include file="Public:header"/>
+<div class="index-group">
+    <div class="header-all">
+        <div class="com-header">
+            <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>填写收货地址
+        </div>
+        <div class="dt-top"></div>
+    </div>
+    <form method="post" action="{:U('Member/submitAddress')}" id="mainForm">
+        <div class="order-com">
+            <div class="o-info">
+                <form class="mui-input-group">
+                    <div class="mui-input-row">
+                        <label>收件人</label>
+                        <input type="text" id="name" name="name" placeholder="请输入姓名">
+                    </div>
+                    <div class="mui-input-row">
+                        <label>手机号码</label>
+                        <input type="tel" id="mobile" name="mobile" class="mui-input-clear" placeholder="请输入手机号码" data-input-clear="5"><span
+                            class="mui-icon mui-icon-clear mui-hidden"></span>
+                    </div>
+                    <!-- TODO:省市区 -->
+                    <!--<select name="province">
+                        <option value="">请选择</option>
+                        <volist name="province" id="vo">
+                            <option value="{$vo['id']}">{$vo['name']}</option>
+                        </volist>
+                    </select>-->
+                    <div class="mui-input-row">
+                        <label>详细地址</label>
+                        <input type="text" id="address" name="address" placeholder="请输入街道">
+                    </div>
+                </form>
+            </div>
+            <div class="bord-back"></div>
+            <div class="remwrap">
+                <volist name="list" id="vo">
+                    <div class="product-details clear">
+                        <div class="pro_item">
+                            <img class="product-img" src="__UPLOADS__/{$vo['Goods']['goods_pic']}" width="60" height="60" alt="">
+                        </div>
+                        <div>
+                            <p class="product-ms">{$vo['Goods']['goods_name']}</p>
+                        </div>
+                        <div>
+                            <p><em class="red">赠送</em></p>
+                            <p>运费：<em>{$vo['Goods']['freight']|price_format}</em></p>
+                            <p>数量：<em>1</em></p>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+            <div class="price-items">
+                <a class="but" style="background:#04BE02;" href="JavaScript:submitOrder();">确认收货地址</a><br/>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    function submitOrder(){
+        //TODO:提交验证 为空报错
+        var name = $.trim($("#name").val());
+        var mobile = $.trim($("#mobile").val());
+        var address = $.trim($("#address").val());
+        if (name == '' || typeof (name) == 'undefined')
+        {
+            alert('请填写姓名');
+        }
+        if (mobile == '' || typeof (mobile) == 'undefined')
+        {
+            alert('请填写手机号');
+        }
+        if (address == '' || typeof (address) == 'undefined')
+        {
+            alert('请填写地址');
+        }
+        $("#mainForm").submit();
+    }
+</script>
+<include file="Public:footer"/>
