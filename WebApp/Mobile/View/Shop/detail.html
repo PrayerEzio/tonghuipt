@@ -1,9 +1,4 @@
 <include file="Public:header"/>
-
-<script src="__JS__/main.js"></script>
-
- 
-
 <div class="index-group">
 
     <div class="header-all">
@@ -11,9 +6,9 @@
         <div class="com-header">
 
             <if condition="empty($_SERVER['HTTP_REFERER'])">
-                <a class="back-a" href="{:U('Index/Index')}"><i class="head-icon-back">&#xe609;</i></a><a href="{:U('Index/Index')}">返回商城</a>
+                <a class="back-a" href="{:U('Index/Index')}"><i class="head-icon-back">&#xe609;</i></a>通汇大商圈
             <else/>
-                <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a><a href="{:U('Index/Index')}">返回商城</a>
+                <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>通汇大商圈
             </if>
 
         </div>
@@ -102,18 +97,18 @@
             </notempty>
 
             <!-- 产品图片 -->
-
+            <div class="p_title"><h2>商品详情</h2></div>
             <div class="custommodule-item">
-
                {$info['goods_body']}
-
             </div>
 
         </div>
 
     </div>
 
- 
+ <div style="height:70px;">
+     <p style="text-align:center;font-size:12px;">没有更多内容啦！</p>
+ </div>
 
     <section class="actionBar-container">
 

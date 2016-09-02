@@ -121,6 +121,7 @@ function submit_delete(id){
         <tr class="thead">
           <th class="w24"></th>
           <th class="w72">排序</th>
+          <th class="w72">商品id</th>
           <th colspan="2">商品名称</th>
           <th class="align-center">商品分类</th>
           <th class="align-center">商品价格</th>
@@ -136,6 +137,7 @@ function submit_delete(id){
         <tr class="hover edit">
 		  <td><input type="checkbox" value="{$val['goods_id']}" class="checkitem"></td>
           <td class="w48 sort"><span title="可编辑" ajax_branch="goods_sort" datatype="number" fieldid="{$val['goods_id']}" ajax_control="Goods" fieldname="goods_sort" nc_type="inline_edit" class="editable tooltip">{$val['goods_sort']}</span></td>
+          <td class="align-center">{$val['goods_id']}</td>
           <td class="w60 picture">
           	<div class="size-56x56"><span class="thumb size-56x56"><i></i>
           	<notempty name="val['goods_pic']">

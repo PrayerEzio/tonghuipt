@@ -77,4 +77,26 @@ class CartController extends BaseController{
 			$this->Cart->delItem($goods_id,$spec_id);
 		}
 	}
+
+	/**
+	 * ajax获取价格
+	 */
+	public function ajaxGetCartPrice()
+	{
+		if (IS_AJAX)
+		{
+			$goods_id_str = trim($_POST['goods_id_str']);
+			$goods_id_array = explode(',',$goods_id_str);
+			$Cart = new Cart();
+			$goods = array();
+			$total_price = 0;
+			foreach ($goods_id_array as $key => $goods_id)
+			{
+				$goods[$key] = $Cart->getItem($goods_id);
+				$total_price = $goods[$key]['price']*$goods[$key]['num'];
+			}
+			$data['total_price'] = $total_price;
+			json_return(200,'获取价格成功',$data);
+		}
+	}
 }
