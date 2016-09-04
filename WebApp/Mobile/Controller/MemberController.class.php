@@ -159,7 +159,58 @@ class MemberController extends BaseController{
 
 	public function submitAddress()
 	{
-		$data['name'] = trim($_POST['name']);
+		if (IS_POST)
+		{
+			$where['order_sn'] = trim($_POST['sn']);
+			$where['member_id'] = $this->mid;
+			$where['order_state'] = 10;
+			$where['order_type'] = 4;
+			$order = M('Order')->where($where)->find();
+			if ($order)
+			{
+				$orderAddress['order_id'] = $order['order_id'];
+				$orderAddress['buyer_id'] = $order['member_id'];
+				$order_address = M('OrderAddress')->where($orderAddress)->field('id')->find();
+				$orderAddress['true_name'] = str_rp($_POST['name'],1);
+				$orderAddress['prov_id'] = 19;
+				$orderAddress['city_id'] = 291;
+				$orderAddress['area_id'] = 3572;
+				$orderAddress['address'] = str_rp($_POST['address'],1);
+				$orderAddress['mob_phone'] = str_rp($_POST['mobile'],1);
+				$orderAddress['add_time'] = NOW_TIME;
+				if ($order_address['id'])
+				{
+					$res = M('OrderAddress')->where(array('id'=>$order_address['id']))->save($orderAddress);
+				}else {
+					$res = M('OrderAddress')->add($orderAddress);
+				}
+				if ($res)
+				{
+					//进行支付跳转
+					switch (intval($_POST['pay_type'])){
+						case 1:$this->success('地址填写成功,正在跳转支付.',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
+						case 2:$this->success('地址填写成功,正在跳转支付.',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
+						case 3:$this->success('地址填写成功,正在跳转支付.',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
+						case 4:$this->success('地址填写成功,正在跳转支付.',U('Pay/predepositpay',array('order_sn'=>$order['order_sn'])));break;
+					}
+				}
+			}else {
+				$this->error('没有找到相关订单.');
+			}
+		}elseif(IS_GET)
+		{
+			$where['order_sn'] = trim($_GET['sn']);
+			$where['member_id'] = $this->mid;
+			$where['order_state'] = 10;
+			$where['order_type'] = 4;
+			$order = D('Order')->relation(true)->where($where)->find();
+			if (empty($order))
+			{
+				$this->error('没有找到相关订单.');
+			}
+			$this->order = $order;
+			$this->display('address');
+		}
 	}
 
 	//站内信
@@ -228,15 +279,44 @@ class MemberController extends BaseController{
 				$order['order_amount'] = $agent_info['price'];
 				$order['order_state'] = 10;
 				$order['add_time'] = NOW_TIME;
-				$res = M('Order')->add($order);
+				$goods_id_array = explode(',',$agent_info['gift_id_str']);
+				foreach ($goods_id_array as $key => $val){
+					$goods = M('Goods')->where(array('goods_id'=>$val))->find();
+					if (!empty($goods)) {
+						$data['OrderGoods'][$key]['goods_id'] = $goods['goods_id'];
+						$data['OrderGoods'][$key]['goods_price'] = 0;
+						$data['OrderGoods'][$key]['goods_mkprice'] = $goods['goods_mktprice'];
+						$data['OrderGoods'][$key]['goods_num'] = 1;
+						$data['OrderGoods'][$key]['goods_name'] = $goods['goods_name'];
+						$data['OrderGoods'][$key]['goods_image'] = $goods['goods_pic'];
+					}
+				}
+				$res = D('Order')->relation(true)->add($order);
 				if ($res)
 				{
-					//进行支付跳转
-					switch (intval($_POST['pay_type'])){
-						case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
-						case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
-						case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
-						case 4:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$order['order_sn'])));break;
+					if ($goods_id_array)
+					{
+						if (is_beta_member_id($this->mid))
+						{
+							//填写地址跳转
+							$this->success('订单生成成功',U('Member/submitAddress',array('sn'=>$order['order_sn'],'pay_type'=>intval($_POST['pay_type']))));
+						}else {
+							//进行支付跳转
+							switch (intval($_POST['pay_type'])){
+								case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
+								case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
+								case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
+								case 4:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$order['order_sn'])));break;
+							}
+						}
+					}else {
+						//进行支付跳转
+						switch (intval($_POST['pay_type'])){
+                            case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
+                            case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
+                            case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
+                            case 4:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$order['order_sn'])));break;
+                        }
 					}
 				}else {
 

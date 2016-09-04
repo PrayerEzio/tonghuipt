@@ -920,7 +920,7 @@ function nonce_str($length = 8,$upper = 1,$lower = 1,$num = 1){
  	{
  		return 'error';
  	}else{
-		if ($param['thumb'])
+		if ($param['thumb']['width'] || $param['thumb']['height'])
 		{
 			$img_src = '.'.C('TMPL_PARSE_STRING.__UPLOADS__').'/'.$info['savepath'].$info['savename'];
 			$image = new \Think\Image();
@@ -1695,5 +1695,15 @@ function orderShareProfit($order_id)
 				}
 			}
 		}
+	}
+}
+function is_beta_member_id($mid)
+{
+	$beta_member_id = array(36,37,89);
+	if (in_array($mid,$beta_member_id))
+	{
+		return true;
+	}else {
+		return false;
 	}
 }

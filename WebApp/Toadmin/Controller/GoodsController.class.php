@@ -722,10 +722,10 @@ class GoodsController extends GlobalController {
 			if(!empty($_FILES['goods_pic']['name']))
 			{
 				$goods_img = 'g_'.$data['add_time'];
-				$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES['goods_pic'],'saveName'=>$goods_img,'saveExt'=>'');				
-				$up_return = upload_one($param);
+				$param = array('savePath'=>'goods/','subName'=>'','files'=>$_FILES['goods_pic'],'saveName'=>$goods_img,'saveExt'=>'');
 				$param['thumb']['width'] = 200;
 				$param['thumb']['height'] = 250;
+				$up_return = upload_one($param);
 				if($up_return == 'error')
 				{
 					$this->error('图片上传失败');

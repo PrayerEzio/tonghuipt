@@ -27,7 +27,7 @@
             <li><strong>买家:</strong>{$info['member_id']|get_member_nickname}</li>
             <li><strong>支付时间:</strong><if condition="$info['payment_time'] neq 0">{$info['payment_time']|date='Y-m-d H:i:s',###}<else/>未支付</if></li>
             <li><strong>收货人姓名:</strong>{$info['OrderAddress']['true_name']}</li>
-            <li><strong>收货地址:</strong>{$info['OrderAddress']['prov_id']|getDistrictName}{$info['OrderAddress']['city_id']|getDistrictName}{$info['OrderAddress']['area_id']|getDistrictName}{$info['OrderAddress']['address']}</li>
+            <li><strong>收货地址:</strong>{$info['OrderAddress']['address']}</li>
             <li><strong>邮政编码:</strong>{$info['OrderAddress']['zip_code']}</li>
             <li><strong>联系电话:</strong>{$info['OrderAddress']['mob_phone']}</li>
           </ul></td>

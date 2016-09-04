@@ -34,23 +34,24 @@
             </div>
             <div class="bord-back"></div>
             <div class="remwrap">
-                <volist name="list" id="vo">
+                <volist name="$order['OrderGoods']" id="vo">
                     <div class="product-details clear">
                         <div class="pro_item">
-                            <img class="product-img" src="__UPLOADS__/{$vo['Goods']['goods_pic']}" width="60" height="60" alt="">
+                            <img class="product-img" src="__UPLOADS__/{$vo['goods_pic']}" width="60" height="60" alt="">
                         </div>
                         <div>
-                            <p class="product-ms">{$vo['Goods']['goods_name']}</p>
+                            <p class="product-ms">{$vo['goods_name']}</p>
                         </div>
                         <div>
                             <p><em class="red">赠送</em></p>
-                            <p>运费：<em>{$vo['Goods']['freight']|price_format}</em></p>
                             <p>数量：<em>1</em></p>
                         </div>
                     </div>
                 </volist>
             </div>
             <div class="price-items">
+                <input type="hidden" name="sn" value="{$order['order_sn']}">
+                <input type="hidden" name="pay_type" value="{$_GET['pay_type']}">
                 <a class="but" style="background:#04BE02;" href="JavaScript:submitOrder();">确认收货地址</a><br/>
             </div>
         </div>

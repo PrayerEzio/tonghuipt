@@ -38,7 +38,7 @@ class TestController extends BaseController{
 	public function thumb()
 	{
 		$image = new Image();
-		$goods_pic_list = M('Goods')->field('goods_id,goods_pic')->select();
+		$goods_pic_list = M('Goods')->field('goods_id,goods_pic')->order('goods_id desc')->select();
 		foreach ($goods_pic_list as $key => $item)
 		{
 			if (!empty($item['goods_pic']))
