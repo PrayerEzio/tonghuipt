@@ -927,7 +927,7 @@ function nonce_str($length = 8,$upper = 1,$lower = 1,$num = 1){
 			$image->open($img_src);
 			$new_img_src = './Uploads/'.$info['savepath'].'thumb_'.$info['savename'];
 			$image->thumb($param['thumb']['width'],$param['thumb']['height'])->save($new_img_src);
-			return $new_img_src;
+			return $info['savepath'].$info['savename'];
 		}else {
 			return $info['savepath'].$info['savename'];
 		}
