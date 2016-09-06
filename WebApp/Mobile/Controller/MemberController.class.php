@@ -296,19 +296,7 @@ class MemberController extends BaseController{
 				{
 					if ($goods_id_array)
 					{
-						if (is_beta_member_id($this->mid))
-						{
-							//填写地址跳转
-							$this->success('订单生成成功',U('Member/submitAddress',array('sn'=>$order['order_sn'],'pay_type'=>intval($_POST['pay_type']))));
-						}else {
-							//进行支付跳转
-							switch (intval($_POST['pay_type'])){
-								case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
-								case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
-								case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
-								case 4:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$order['order_sn'])));break;
-							}
-						}
+						$this->success('订单生成成功',U('Member/submitAddress',array('sn'=>$order['order_sn'],'pay_type'=>intval($_POST['pay_type']))));
 					}else {
 						//进行支付跳转
 						switch (intval($_POST['pay_type'])){

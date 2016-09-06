@@ -41,6 +41,43 @@ class ShopController extends BaseController{
 		$this->display();
 	}
 
+	public function ajaxGetGoodsList()
+	{
+		if (IS_AJAX)
+		{
+
+		}
+			$order = 'goods_sort desc';
+			$where['goods_status'] = 1;
+			$gc_id = intval($_GET['gc']);
+			if (!empty($gc_id))
+			{
+				$where['gc_id'] = $gc_id;
+			}
+			$_GET['p'] = intval($_GET['p']);
+			if (!$_GET['p'])
+			{
+				$p = 1;
+			}else {
+				$p = $_GET['p'];
+			}
+			$listRows = intval($_GET['listRows']);
+			if (!$listRows)
+			{
+				$listRows = 6;
+			}
+			$count = $this->model->where($where)->count();
+			$page = new Page($count,$listRows);
+			$field = 'goods_id,goods_name,goods_mktprice,goods_price,goods_pic,freight,goods_sales,goods_point,gc_id';
+			$list = $this->model->where($where)->field($field)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
+			$data['list'] = $list;
+			$data['page']['currentPage'] = $p;
+			$data['page']['totalRows'] = $count;
+			$data['page']['listRows'] = $listRows;
+			$data['page']['totalPages'] = ceil($data['page']['totalRows']/$data['page']['listRows']);
+			json_return(200,'获取信息成功.',$data);
+	}
+
 	public function point()
 	{
 		$m_info = M('Member')->where(array('member_id'=>$this->mid))->find();
@@ -85,34 +122,6 @@ class ShopController extends BaseController{
 		$list = unlimitedForLayer($list,'child','gc_parent_id','gc_id');
 		$this->list = $list;
 		$this->display();
-	}
-
-	public function ajaxGetGoodsList()
-	{
-		if (IS_AJAX)
-		{
-			$order = 'goods_sort desc';
-			$where['goods_status'] = 1;
-			$gc_id = intval($_POST['gc']);
-			$page = intval($_POST['page']);
-			$limit = intval($_POST['limit']);
-			if (!$page)
-			{
-				$page = 1;
-			}
-			if ($gc_id)
-			{
-				$where['gc_id'] = $gc_id;
-			}
-			if (!$limit)
-			{
-				$limit = 10;
-			}
-			$fields = 'goods_id,goods_pic,goods_sales,goods_name,goods_price';
-			$count = $this->model->where($where)->count();
-			$list = $this->model->where($where)->order($order)->field($fields)->limit(($page-1)*$limit.','.$limit)->select();
-			json_return(1,'success',$list);die;
-		}
 	}
 
 	public function detail()
