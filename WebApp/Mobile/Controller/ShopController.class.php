@@ -38,6 +38,7 @@ class ShopController extends BaseController{
 		$this->banner = M('AdvPosition')->where($ad_where)->order('ap_sort desc')->select();
 		$this->list = $list;
 		$this->page = $page->show();
+		$this->gc = $gc_id;
 		$this->display();
 	}
 
@@ -45,8 +46,74 @@ class ShopController extends BaseController{
 	{
 		if (IS_AJAX)
 		{
-
-		}
+			$order = 'goods_sort desc';
+			$where['goods_status'] = 1;
+			$gc_id = intval($_POST['gc']);
+			if (!empty($gc_id))
+			{
+				$where['gc_id'] = $gc_id;
+			}
+			$_GET['p'] = intval($_POST['p']);
+			if (!$_GET['p'])
+			{
+				$p = 1;
+			}else {
+				$p = $_GET['p'];
+			}
+			$listRows = intval($_POST['listRows']);
+			if (!$listRows)
+			{
+				$listRows = 6;
+			}
+			$count = $this->model->where($where)->count();
+			$page = new Page($count,$listRows);
+			$field = 'goods_id,goods_name,goods_mktprice,goods_price,goods_pic,freight,goods_sales,goods_point,gc_id';
+			$list = $this->model->where($where)->field($field)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
+			foreach ($list as $key => $item)
+			{
+				$list[$key]['url'] = U('Shop/detail',array('id'=>$item['goods_id']));
+			}
+			$data['list'] = $list;
+			$data['page']['currentPage'] = $p;
+			$data['page']['totalRows'] = $count;
+			$data['page']['listRows'] = $listRows;
+			$data['page']['totalPages'] = ceil($data['page']['totalRows']/$data['page']['listRows']);
+			json_return(200,'获取信息成功.',$data);
+		}elseif (IS_POST){
+			$order = 'goods_sort desc';
+			$where['goods_status'] = 1;
+			$gc_id = intval($_POST['gc']);
+			if (!empty($gc_id))
+			{
+				$where['gc_id'] = $gc_id;
+			}
+			$_GET['p'] = intval($_POST['p']);
+			if (!$_GET['p'])
+			{
+				$p = 1;
+			}else {
+				$p = $_GET['p'];
+			}
+			$listRows = intval($_POST['listRows']);
+			if (!$listRows)
+			{
+				$listRows = 6;
+			}
+			$count = $this->model->where($where)->count();
+			$page = new Page($count,$listRows);
+			$field = 'goods_id,goods_name,goods_mktprice,goods_price,goods_pic,freight,goods_sales,goods_point,gc_id';
+			$list = $this->model->where($where)->field($field)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
+			foreach ($list as $key => $item)
+			{
+				$list[$key]['url'] = U('Shop/detail',array('id'=>$item['goods_id']));
+			}
+			$data['list'] = $list;
+			$data['page']['currentPage'] = $p;
+			$data['page']['totalRows'] = $count;
+			$data['page']['listRows'] = $listRows;
+			$data['page']['totalPages'] = ceil($data['page']['totalRows']/$data['page']['listRows']);
+			json_return(200,'获取信息成功.',$data);
+		}elseif (IS_GET){
 			$order = 'goods_sort desc';
 			$where['goods_status'] = 1;
 			$gc_id = intval($_GET['gc']);
@@ -70,12 +137,17 @@ class ShopController extends BaseController{
 			$page = new Page($count,$listRows);
 			$field = 'goods_id,goods_name,goods_mktprice,goods_price,goods_pic,freight,goods_sales,goods_point,gc_id';
 			$list = $this->model->where($where)->field($field)->order($order)->limit($page->firstRow.','.$page->listRows)->select();
+			foreach ($list as $key => $item)
+			{
+				$list[$key]['url'] = U('Shop/detail',array('id'=>$item['goods_id']));
+			}
 			$data['list'] = $list;
 			$data['page']['currentPage'] = $p;
 			$data['page']['totalRows'] = $count;
 			$data['page']['listRows'] = $listRows;
 			$data['page']['totalPages'] = ceil($data['page']['totalRows']/$data['page']['listRows']);
 			json_return(200,'获取信息成功.',$data);
+		}
 	}
 
 	public function point()
