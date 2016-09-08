@@ -1,59 +1,20 @@
 ﻿<include file="Public:header"/>
 <div class="shopCart-group">
-
-
-
     <!--  头部导航-->
-
-
-
     <div class="header-all">
-
-
-
         <div class="com-header">
-
-
-
             <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>购物车
-
-
-
         </div>
-
-
-
         <div class="dt-top"></div>
-
-
-
     </div>
-
-
-
     <!--  头部导航-->
-
-
-
     <form method="POST" action="{:U('Order/confirm')}" id="mainForm">
-
-
-
         <div class="shopCart-list">
-
-
-
             <volist name="list" id="vo">
                 <div class="item">
                     <a class="close" href="javascript:" onclick="remov(this);removeCart({$vo['id']},{$vo['spec_id']});"><i class="iconfont">&#xe60a;</i></a>
-
-
-
                     <div class="check-box"><input id="c_{$key}" type="checkbox" name="goods_id[]" value="{$vo['Goods']['goods_id']}-{$vo['spec_id']}"><label class="m-check" for="c_{$key}"> </label></div>
                     <div class="product-img">
-
-
-
                         <notempty name="vo['img']">
                             <img src="__UPLOADS__/{$vo['img']}" alt="">
                             <else/>
@@ -83,122 +44,154 @@
                     </dl>
                 </div>
             </volist>
-
-
-
         </div>
-
-
-
         <section class="actionBar-container">
             <div class="cell collect"><label class="call-label"><input id="call-check" type="checkbox">全选</label></div>
             <div class="cell add">合计：<span>￥<em id="totals">0</em></span></div>
             <div class="cell once"><a href="JavaScript:submitOrder();">结算(<span id="sum">0</span>)</a></div>
         </section>
-
-
-
     </form>
-
-
-
 </div>
 
-
- 
-
-
-
 <script>
-
-var ajax_com={
-    ajax_getMoney:function(select_Id){
-        $.ajax({
-            url:"{:U('Cart/ajaxGetCartPrice')}",
-            dataType:"json",
-            type:'post',
-            data: {'goods_id_str':select_Id},
-            success:function(arr){
-                alert(arr.data.total_price);
+var check_but=$(".item input[type='checkbox']");
+var callBut = $("#call-check");
+var Method_Com={
+    Method_getMoney:function(select_Id){
+        var v = $('.subtotal').eq(select_Id).text();
+        return parseInt(v);
+    },
+    select_Event:function() //勾选统计
+    {
+            var sum = 0;
+            for(var i=0; i<check_but.length; i++)
+            {
+                if(check_but.eq(i).is(":checked"))
+                {
+                    sum = sum + Method_Com.Method_getMoney(i);
+                }
             }
-        });
+             $("#totals").text(sum);
+    },
+    call_Event:function(obj)//全选
+    {
+           
+                if ($(obj).is(":checked")) 
+                {
+                    for (var i = 0; i < check_but.length; i++) 
+                    {
+                        check_but.eq(i).prop("checked", true);
+                        //totalPrice(check_but.eq(i));
+                    }
+                    Method_Com.select_Event();
+                }
+                else 
+                {
+                    for (var i = 0; i < check_but.length; i++) 
+                    {
+                        check_but.eq(i).prop("checked", false);
+                        //totalPrice(check_but.eq(i));
+                    }
+                    Method_Com.select_Event();
+                }
+          
+    },
+    Total:function(){   // 统计结算商品个数
+            var s = 0;
+            for (var i = 0; i < check_but.length; i++) 
+            {
+                if (check_but.eq(i).is(":checked")) 
+                {
+                    s++;
+                }
+            }
+            $("#sum").text(s);
     }
+
 };
 
-var s_id=[101,102];
-ajax_com.ajax_getMoney(s_id);
-
-    var arr = [];
-    var callBut = $("#call-check");
-    var che = $(".item input[type='checkbox']");
-    che.click(function () {
-        Total();
-        totalPrice($(this));
-    });
+// 页面刷新就加载一次方法 否则用户点击后退数值不会变化
+Method_Com.select_Event(); // 合计
+Method_Com.Total();  //结算商品个数
 
 
-    callBut.click(function () {
-
-        if ($(this).is(":checked")) {
-
-            for (var i = 0; i < che.length; i++) {
-
-                che.eq(i).prop("checked", true);
-
-                totalPrice(che.eq(i));
-
-            }
-
-        }
-
-        else {
-
-            for (var i = 0; i < che.length; i++) {
-
-                che.eq(i).prop("checked", false);
-
-                totalPrice(che.eq(i));
-
-            }
-
-        }
-
-        Total();
+check_but.click(function(){
+    Method_Com.select_Event();
+    Method_Com.Total();
+});
+callBut.click(function (){ 
+    Method_Com.call_Event($(this));
+    Method_Com.Total();
+});
 
 
-
-    });
 
     // 统计结算数量
-    function Total() {
-        var s = 0;
-        for (var i = 0; i < che.length; i++) {
-            if (che.eq(i).is(":checked")) {
-                s++;
-            }
-        }
-        $("#sum").text(s);
-    }
+    // function Total() {
+    //     var s = 0;
+    //     for (var i = 0; i < che.length; i++) {
+    //         if (che.eq(i).is(":checked")) {
+    //             s++;
+    //         }
+    //     }
+    //     $("#sum").text(s);
+    // }
 
 
+// function select_Event()   //勾选
+// {
+//         var check_but=$(".item input[type='checkbox']");
+//         check_but.click(function (){
+//             var sum = 0;
+//             for(var i=0; i<check_but.length; i++)
+//             {
+//                 if(check_but.eq(i).is(":checked"))
+//                 {
+//                     sum = sum + Method_Com.Method_getMoney(i);
+//                 }
+//             }
+//              $("#totals").text(sum);
+//         });
+// }
+// select_Event();
 
+// function call_Event()   //点击全选
+// {
+//         var callBut = $("#call-check");
+//         callBut.click(function () {
+//             if ($(this).is(":checked")) {
+//                 for (var i = 0; i < che.length; i++) {
+//                     che.eq(i).prop("checked", true);
+//                     totalPrice(che.eq(i));
+//                 }
+
+//             }
+//             else {
+//                 for (var i = 0; i < che.length; i++) {
+//                     che.eq(i).prop("checked", false);
+//                     totalPrice(che.eq(i));
+//                 }
+//             }
+//             Total();
+//         });
+// }
     // 统计总价
 
-    var sumtotal = 0;
-    function totalPrice(obj) {
-        var t = obj.attr("id").substring(2);
+    // var sumtotal = 0;
+    // function totalPrice(obj) {
+    //     var t = obj.attr("id").substring(2);
 
-        var p = parseInt($(".subtotal").eq(t).text());
+    //     var p = parseInt($(".subtotal").eq(t).text());
 
-        if (obj.is(":checked")) {
-            sumtotal = sumtotal + p;
-        }
-        else {
-            sumtotal = sumtotal - p;
+    //     if (obj.is(":checked")) {
+    //         sumtotal = sumtotal + p;
+    //     }
+    //     else {
+    //         sumtotal = sumtotal - p;
+    //     }
+    //     $("#totals").text(sumtotal);
+    // }
 
-        }
-        $("#totals").text(sumtotal);
-    }
 
 
     //  移除父节点

@@ -1,23 +1,13 @@
 ﻿<include file="Public:header"/>
-
 <script src="__JS__/jquery.lazyload.js"></script>
-
 <script>
-
     $(function () {
-
         $("img").lazyload({
-
             //placeholder : "images/xwf.png",
-
             effect: "fadeIn",
-
             threshold: 20,
-
         });
-
     });
-
 </script>
 <style>
     .Popup-wrapp {
@@ -29,7 +19,6 @@
         bottom: 0;
         z-index: 9999;
     }
-
     .load_box {
         width: 100px;
         height: 100px;
@@ -37,7 +26,6 @@
         border-radius: 50%;
         background: #fff;
     }
-
     .Popup-wrapp::after, .Popup-wrapp::before {
         content: '';
         position: fixed;
@@ -52,7 +40,6 @@
         -webkit-transition: opacity 0.15s, visibility 0s 0.15s;
         transition: opacity 0.15s, visibility 0s 0.15s;
     }
-
     .Popup-wrapp::before {
         background: #d86b29;
         -webkit-transform: translateX(20px);
@@ -60,37 +47,12 @@
         -webkit-animation: moveLeft 0.6s linear infinite alternate;
         animation: moveLeft 0.6s linear infinite alternate;
     }
-
     .Popup-wrapp::after {
         background: #6cc88a;
         -webkit-transform: translateX(-20px);
         transform: translateX(-20px);
         -webkit-animation: moveRight 0.6s linear infinite alternate;
         animation: moveRight 0.6s linear infinite alternate;
-    }
-
-    @-webkit-keyframes moveLeft {
-        to {
-            -webkit-transform: translateX(-20px);
-        }
-    }
-
-    @keyframes moveLeft {
-        to {
-            transform: translateX(-20px);
-        }
-    }
-
-    @-webkit-keyframes moveRight {
-        to {
-            -webkit-transform: translateX(20px);
-        }
-    }
-
-    @keyframes moveRight {
-        to {
-            transform: translateX(20px);
-        }
     }
 
 </style>
@@ -102,57 +64,37 @@
         var pic = $("img");
         var count = 0;
         var len = pic.length;
-
         for (var i = 0; i < len; i++) {
             var s = pic.eq(i).attr("src");
             pload(s);
         }
-
-
         function pload(url) {
             var image = $("<img />").attr("src", url).on("load", function () {
                 complete();
             });
         }
-
         function complete() {
             count++;
             if (count == len) {
                 $(".Popup-wrapp").hide();
             }
-
         }
-
     });
 </script>
-
-
 <div class="index-group">
     <div class="top">通汇大商圈官方网站</div>
     <div class="brand-intro">
-
         <!-- 焦点图 -->
-
         <div class="swiper-container">
-
             <div class="swiper-wrapper">
-
                 <volist name="banner" id="vo">
-
                     <div class="swiper-slide"><img src="__UPLOADS__/{$vo['ap_pic']}" alt=""></div>
-
                 </volist>
-
             </div>
-
             <!-- 分页器 -->
-
             <div class="swiper-pagination"></div>
-
         </div>
-
         <!-- 焦点图 end-->
-
         <div class="main_menu">
             <ul>
                 <li><a href="{:U('Member/branch')}"><i class="iconfont menu_font B_color_A">&#xe616;</i><span
@@ -165,72 +107,108 @@
                         class="menu_txt">积分商城</span></a></li>
             </ul>
         </div>
-
         <!--  产品内容 -->
-
-        <div class="goods-group">
-
+        <div class="goods-group" id="goods-group">
             <volist name="list" id="vo">
-
                 <a class="brand-item" href="{:U('Shop/detail',array('id'=>$vo['goods_id']))}">
-
                     <div class="pr">
-
                         <empty name="vo['goods_pic']">
-
                             <img data-original="__IMG__/nopic.jpg" src="__IMG__/nopic.jpg" alt="">
-
                         <else />
-
                             <img data-original="__UPLOADS__/{$vo['goods_pic']}" src="__UPLOADS__/{$vo['goods_pic']}" alt="">
-
                         </empty>
-
                         <span class="sales">销量：{$vo['goods_sales']}</span>
-
                     </div>
-
                     <div class="goods-name">{$vo['goods_name']}</div>
-
                     <div class="goods-price">￥<em>{$vo['goods_price']|price_format}</em>
                         <del>原价:{$vo['goods_mktprice']|price_format}</del>
                     </div>
-
                 </a>
-
             </volist>
-
         </div>
-
+        <input id="gc" type="hidden" value="{$gc}">
+            <!--<div class="load-box" style="font-size: 13px;font-weight: bold;">客官，别急...</div>-->
+        <div class="load-wrapp-box" id="load-wrapp-box">
+            <div class="loads-box">
+                <!-- <i class="loading rotateflash">&#xe60b;</i> -->
+            </div>
+        </div>
         <!-- 加载中 -->
-
-        <div class="load-box">{$page}</div>
-
+       <!--  <div class="load-box">{$page}</div> -->
     </div>
-
-
-    <!-- flexd nav -->
-
-    {:W('Menu/footer_nav')}
-
-</div>
-
-<script src="__JS__/main.js"></script>
-
-<script src="__JS__/swiper.min.js"></script>
-
 <script>
-
-    var mySwiper = new Swiper('.swiper-container', {
-
-        autoplay: 5000,
-
-        pagination: '.swiper-pagination',
-
-        loop: 'true'
-
-    })
-
+$(function(){
+    var page=2;
+    var gc = $("#gc").val();
+    var ajax_Dom = {
+        get_data:function(){
+                $.ajax({
+                    url:"{:U('Shop/ajaxGetGoodsList')}",
+                    dataType:"json",
+                    type:"POST",
+                    data:{"listRows":"6","p":page,"gc":gc},
+                    success:function(e){
+                    if(page < e.data.page.totalPages)
+                        {
+                            for(var i=0;i<e.data.list.length;i++)
+                            {
+                                var g_id,g_name,g_mktprice,g_price,g_pic,g_freight,g_sales,g_point,c_id,g_url;
+                                g_id = e.data.list[i].goods_id;
+                                g_name = e.data.list[i].goods_name;
+                                g_mktprice = e.data.list[i].goods_mktprice;
+                                g_price = e.data.list[i].goods_price;
+                                g_pic = e.data.list[i].goods_pic;
+                                g_freight = e.data.list[i].freight;
+                                g_sales = e.data.list[i].goods_sales;
+                                g_point = e.data.list[i].goods_point;
+                                c_id = e.data.list[i].gc_id;
+                                g_url =e.data.list[i].url;
+                                ajax_Dom.createDom(g_id,g_name,g_mktprice,g_price,g_pic,g_freight,g_sales,g_point,c_id,g_url);
+                            };
+                        }
+                        else
+                        {
+                            $("#load-wrapp-box").html("没有更多数据啦！");
+                        }
+                    }
+                 });
+            page++;
+        },
+        createDom:function(cg_id,cg_name,cg_mktprice,cg_price,cg_pic,cg_freight,cg_sales,cg_point,cc_id,cg_url)
+        {
+             var Dom = $("<a class='brand-item' href='" + cg_url +"'>"+
+                            "<div class='pr'>"+
+                            "<img data-original='/Uploads/goods/g_1473149395.jpg' src='/Uploads/"+cg_pic+"' alt='' style='display: inline;'>"+
+                            "<span class='sales'>销量哦："+cg_sales+"</span>"+
+                            "</div>"+
+                            "<div class='goods-name'>"+cg_name+"</div>"+
+                            "<div class='goods-price'>￥<em>"+cg_price+"</em>"+
+                            "<del>原价:"+cg_mktprice+"</del>"+
+                            "</div>"+
+                            "</a>");
+            $("#goods-group").append(Dom);
+        }
+    }
+    $(document).scroll(function(){
+       var scroll_height = $(document).height() - $(window).height();
+        if($(document).scrollTop()>=scroll_height)
+        {
+            ajax_Dom.get_data();
+        }
+    });
+});
+   
 </script>
-
+    <!-- flexd nav -->
+    {:W('Menu/footer_nav')}
+</div>
+<script src="__JS__/main.js"></script>
+<script src="__JS__/swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop: 'true'
+    })
+</script>
 <include file="Public:footer"/>
