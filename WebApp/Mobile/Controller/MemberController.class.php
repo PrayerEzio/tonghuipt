@@ -624,4 +624,162 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
+
+	public function transfer()
+	{
+		$a_member_where['member_id'] = $this->mid;
+		$a_member_where['member_status'] = 1;
+		if (IS_POST)
+		{
+			$type = I('post.type','');
+			$amount = I('post.amount',0,'float');
+			switch ($type)
+			{
+				case 'point' :
+					$type_name = '积分';
+					if (!$amount || $amount != intval($amount))
+					{
+						$this->error('转账'.$type_name.'不正确.');
+					}
+					break;
+				case 'predeposit' :
+					$type_name = '余额';
+					if (!$amount)
+					{
+						$this->error('转账金额不正确.');
+					}
+					break;
+				default :
+					$this->error('非法操作');
+					break;
+			}
+			$mid = I('post.b_mid',0,'int');
+			if ($mid == $this->mid)
+			{
+				$this->error('用户id无效.');
+			}
+			$b_member_where['member_id'] = $mid;
+			$b_member_where['member_status'] = 1;
+			$mid = M('Member')->where($b_member_where)->getField('member_id');
+			$total_amount = M('Member')->where($a_member_where)->getField($type);
+			if ($total_amount < $amount)
+			{
+				$this->error('您的剩余'.$type_name.'不足,处理失败.');
+			}
+			if (!$mid)
+			{
+				$this->error('该用户不存在,请查证.');
+			}
+			$res_a = M('Member')->where($a_member_where)->setDec($type,$amount);
+			if (!$res_a)
+			{
+				$this->error('网络繁忙,请稍后再试.');
+			}
+			$res_b = M('Member')->where($b_member_where)->setInc($type,$amount);
+			if (!$res_b)
+			{
+				system_log('会员转移'.$type_name.'失败','甲方已扣,乙方未收',10,'system');
+			}
+			$field = 'member_id,openid,nickname,point,predeposit,mobile';
+			$a_user_info = M('Member')->where($a_member_where)->field($field)->find();
+			$b_user_info = M('Member')->where($b_member_where)->field($field)->find();
+			if ($a_user_info['open_id'])
+			{
+				if ($type == 'point')
+				{
+					$data['touser'] = $a_user_info['open_id'];
+					$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
+					$data['url'] = C('SiteUrl').U('Member/index');
+					$data['data']['first']['value'] = '亲，您的通汇账号最新交易信息';
+					$data['data']['first']['color'] = '#173177';
+					$data['data']['time']['value'] = date('Y-m-d H:i',time());
+					$data['data']['time']['color'] = '#173177';
+					$data['data']['type']['value'] = '减少';
+					$data['data']['type']['color'] = '#173177';
+					$data['data']['Point']['value'] = $amount;
+					$data['data']['Point']['color'] = '#173177';
+					$data['data']['From']['value'] = '积分转出';
+					$data['data']['From']['color'] = '#173177';
+					$data['data']['remark']['value'] = '截止'.$data['data']['time']['value'].'，您的通汇积分为'.$a_user_info['point'].'积分。如有疑问请咨询微信894916947';
+					$data['data']['remark']['color'] = '#173177';
+					sendTemplateMsg($data);
+				}elseif ($type == 'predeposit')
+				{
+					$b_user_info['mobile'] ? $b_mobile = $b_user_info['mobile'] : $b_mobile = '未知';
+					$data['touser'] = $a_user_info['open_id'];
+					$data['template_id'] = trim('hJTtNJfTzW4x4lEe8SRS6Cp662mzoaeTQHzyU7PqoVE');
+					$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
+					$data['data']['first']['value'] = get_member_nickname($this->mid).',您余额转出成功！';
+					$data['data']['first']['color'] = '#173177';
+					$data['data']['keyword1']['value'] = price_format($amount).'元';
+					$data['data']['keyword1']['color'] = '#173177';
+					$data['data']['keyword2']['value'] = $b_mobile;
+					$data['data']['keyword2']['color'] = '#173177';
+					$data['data']['remark']['value'] = '进入通汇大商圈个人中心查看余额，有疑问联系客服微信894916947';
+					$data['data']['remark']['color'] = '#173177';
+					sendTemplateMsg($data);
+					//生成账单流水
+					$bill['member_id'] = $a_user_info['member_id'];
+					$bill['bill_log'] = '余额转出';
+					$bill['amount'] = price_format($amount);
+					$bill['balance'] = $a_user_info['predeposit'];
+					$bill['addtime'] = NOW_TIME;
+					$bill['bill_type'] = -1;
+					$bill['channel'] = -8;
+					M('MemberBill')->add($bill);
+				}
+			}
+			if ($b_user_info['open_id'])
+			{
+				if ($type == 'point')
+				{
+					$data['touser'] = $b_user_info['open_id'];
+					$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
+					$data['url'] = C('SiteUrl').U('Member/index');
+					$data['data']['first']['value'] = '亲，您的通汇账号最新交易信息';
+					$data['data']['first']['color'] = '#173177';
+					$data['data']['time']['value'] = date('Y-m-d H:i',time());
+					$data['data']['time']['color'] = '#173177';
+					$data['data']['type']['value'] = '增加';
+					$data['data']['type']['color'] = '#173177';
+					$data['data']['Point']['value'] = $amount;
+					$data['data']['Point']['color'] = '#173177';
+					$data['data']['From']['value'] = '积分转入';
+					$data['data']['From']['color'] = '#173177';
+					$data['data']['remark']['value'] = '截止'.$data['data']['time']['value'].'，您的通汇积分为'.$b_user_info['point'].'积分。如有疑问请咨询微信894916947';
+					$data['data']['remark']['color'] = '#173177';
+					sendTemplateMsg($data);
+				}elseif ($type == 'predeposit')
+				{
+					$a_user_info['mobile'] ? $a_mobile = $a_user_info['mobile'] : $a_mobile = '未知';
+					$data['touser'] = $b_user_info['open_id'];
+					$data['template_id'] = trim('hJTtNJfTzW4x4lEe8SRS6Cp662mzoaeTQHzyU7PqoVE');
+					$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
+					$data['data']['first']['value'] = '亲，'.get_member_nickname($this->mid).'给您转账了';
+					$data['data']['first']['color'] = '#173177';
+					$data['data']['keyword1']['value'] = price_format($amount).'元';
+					$data['data']['keyword1']['color'] = '#173177';
+					$data['data']['keyword2']['value'] = $a_mobile;
+					$data['data']['keyword2']['color'] = '#173177';
+					$data['data']['remark']['value'] = '进入通汇大商圈个人中心查看余额，有疑问联系客服微信894916947';
+					$data['data']['remark']['color'] = '#173177';
+					sendTemplateMsg($data);
+					//生成账单流水
+					$bill['member_id'] = $b_user_info['member_id'];
+					$bill['bill_log'] = '余额转入';
+					$bill['amount'] = price_format($amount);
+					$bill['balance'] = $b_user_info['predeposit'];
+					$bill['addtime'] = NOW_TIME;
+					$bill['bill_type'] = 1;
+					$bill['channel'] = 8;
+					M('MemberBill')->add($bill);
+				}
+			}
+			$this->success('操作成功.');
+		}elseif (IS_GET)
+		{
+			$this->member_info = M('Member')->where($a_member_where)->field('point,predeposit')->find();
+			$this->display();
+		}
+	}
 }

@@ -1,0 +1,68 @@
+﻿<include file="Public:header"/>
+<style>
+.weui_input { margin-bottom: 0 !important;}    
+p   { margin-bottom: 0 !important;}
+</style>
+<div class="personal-group">
+    <div class="header-all">
+        <div class="com-header">
+            <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
+        </div>
+        <div class="dt-top"></div>
+    </div>
+    <style>
+        .weui_btn_primary {
+            background-color: #007AFF;
+        }
+        .weui_btn_primary:not(.weui_btn_disabled):active {
+            color: rgba(255, 255, 255, 0.4);
+            background-color: #065fc1;
+        }
+        .weui_cell_select{
+            margin-bottom: 0px; 
+        }
+ 
+    </style>
+    <form action="" method="post" id="mainForm">
+        <div class="weui_cells_title font17">当前余额： <em class="green">{$member_info['predeposit']}</em></div>
+        <div class="weui_cells_title font17">当前积分： <em class="orange">{$member_info['point']}</em></div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">类型</label></div>
+                <div class="weui_cell_bd weui_cell_primary pr">
+                    <select class="weui_cell_select font17" name="type">
+                        <option value="predeposit">余额</option>
+                        <option value="point">积分</option>
+                    </select>
+                    <i class="dow-ico"></i>
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">收款方</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" name="b_mid" placeholder="请输入收款人会员ID   ">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">数量</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="number" name="amount" placeholder="请输入金额">
+                </div>
+            </div>
+        </div>
+        <div class="weui_cells_title">温馨提示：请输入要转账账户的会员id.</div>
+        <div class="weui_btn_area">
+            <a class="weui_btn weui_btn_primary" href="javascript:submitForm();">确定</a>
+        </div>
+    </form>
+    <!-- flexd nav -->
+    {:W('Menu/footer_nav')}
+</div>
+<script>
+    function submitForm()
+    {
+        //提交
+        $("#mainForm").submit();
+    }
+</script>
+<include file="Public:footer"/>
