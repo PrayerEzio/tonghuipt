@@ -1,109 +1,56 @@
 ﻿<include file="Public:header"/>
-
 <div class="member-group">
-
 	<div class="header-all">
-
 		<div class="com-header">
-
 			<a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>个人中心
-
 		</div>
-
 		<div class="dt-top"></div>
-
 	</div>
-
 	<header>
-
 		<div class="pic">
-
 			<img src="{$member['avatar']}" alt="">
-
 		</div>
-
 		<div class="member-txt">
-
 			<p>会员ID：<em>{$user_info['member_id']}</em></p>
-
 			<p>会员昵称：<em><notempty name="user_info['nickname']">{$user_info['nickname']}<else/>未填写</notempty></em></p>
-
 			<p>会员等级：<em><notempty name="user_info['AgentInfo']">{$user_info['AgentInfo']['agent_level']|get_agent_level}<else/>普通会员</notempty></em></p>
-
 			<p>注册时间：<em>{$user_info['register_time']|date="Y-m-d H:i:s",###}</em></p>
-
 		</div>
-
 		<div class="clear"></div>
-
 	</header>
-
 	<div class="show-money">
-
 		 <div class="f">余额:￥<em>{$user_info['predeposit']|price_format}</em></div>
-
 		 <div class="f">积分:<em>{$user_info['point']}</em></div>
-
 	</div>
-
 	<div class="m-main">
-
 		<div class="border"></div>
-
 		<!-- <a href=""><div class="item"><i class="iconfont ico-m-cation">&#xe605;</i>购买资格<em class="ico-right"></em></div></a> -->
-
 		<a href="{:U('Member/branch')}"><div class="item"><i class="iconfont ico-m-team">&#xe60e;</i>我的团队<em class="ico-right"></em></div></a>
-
 		<a href="{:U('Member/bill',array('bill_type'=>1))}"><div class="item"><i class="iconfont ico-m-deposit">&#xe618;</i>我的收入<em class="ico-right"></em></div></a>
-
 		<a href="{:U('Member/bill',array('bill_type'=>-1))}"><div class="item"><i class="iconfont ico-m-expenditure">&#xe619;</i>我的支出<em class="ico-right"></em></div></a>
-
 		<!-- <a href=""><div class="item"><i class="iconfont ico-m-member">&#xe605;</i>红包排行<em class="ico-right"></em></div></a> -->
-
 		<if condition="$user_info['merchant_status'] == 1">
-
 			<div class="border"></div>
-
 			<a href="{:U('Member/curdGoods')}"><div class="item"><i class="iconfont ico-m-release">&#xe61a;</i>发布商品<em class="ico-right"></em></div></a>
-
 			<a href="{:U('Member/myGoods')}"><div class="item"><i class="iconfont ico-m-commodity">&#xe61b;</i>我的商品<em class="ico-right"></em></div></a>
-
 			<a href="{:U('Member/exchange')}"><div class="item"><i class="iconfont ico-m-integral">&#xe60f;</i>积分兑现<em class="ico-right"></em></div></a>
-
 		</if>
-
 		<div class="border"></div>
-
 		<a href="{:U('Member/recharge')}"><div class="item"><i class="iconfont ico-m-recharge">&#xe61d;</i>我要充值<em class="ico-right"></em></div></a>
-
 		<a href="{:U('Member/withdraw')}"><div class="item"><i class="iconfont ico-m-takenow">&#xe610;</i>我要提现<em class="ico-right"></em></div></a>
-
+		<a href="{:U('Member/transfer')}"><div class="item"><i class="iconfont ico-m-takenow">&#xe610;</i>我要转账<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/agent')}"><div class="item"><i class="iconfont ico-m-deposit">&#xe617;</i>成为代理商<em class="ico-right"></em></div></a>
-
 		<a href="{:U('Member/info')}"><div class="item"><i class="iconfont ico-m-info">&#xe61e;</i>个人资料<em class="ico-right"></em></div></a>
-
 		<a href="{:U('Index/myqrcode',array('phone'=>$user_info['mobile']))}"><div class="item"><i class="iconfont ico-m-two">&#xe61c;</i>我的二维码<em class="ico-right"></em></div></a>
-
 		<div class="weui_btn_area">
-
         <a class="weui_btn weui_btn_primary" href="{:U('Member/logout')}">退出</a>
-
         </div>
-
 	</div>
-
 	<!-- flexd nav -->
-
 	{:W('Menu/footer_nav')}
-
 </div>
-
 <style>
-
 	.weui_btn_primary{     background-color: #007AFF;}
-
 </style>
-
 <script src="__JS__/main.js"></script>
-
 <include file="Public:footer"/>

@@ -629,6 +629,11 @@ class MemberController extends BaseController{
 	{
 		$a_member_where['member_id'] = $this->mid;
 		$a_member_where['member_status'] = 1;
+		$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
+		if (!$withdraw_status)
+		{
+			$this->error('抱歉,您没有提现的权限.');
+		}
 		if (IS_POST)
 		{
 			$type = I('post.type','');
