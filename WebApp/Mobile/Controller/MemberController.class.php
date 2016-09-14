@@ -9,7 +9,6 @@
 namespace Mobile\Controller;
 use Muxiangdao\DesUtils;
 use Think\Page;
-
 class MemberController extends BaseController{
 	public function __construct(){
 		parent::__construct();
@@ -23,7 +22,6 @@ class MemberController extends BaseController{
 		}
         $this->autoFinishOrder();
 	}
-
 	/**
 	 * 会员中心.
 	 */
@@ -34,7 +32,6 @@ class MemberController extends BaseController{
 		$this->user_info = $user_info;
 		$this->display();
 	}
-
 	//登出
 	public function logout()
 	{
@@ -43,7 +40,6 @@ class MemberController extends BaseController{
 		session('wechat',null);
 		redirect(U('Index/index'));
 	}
-
 	//个人资料
 	public function info()
 	{
@@ -78,13 +74,11 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
-
 	//我的团队
 	public function branch()
 	{
 		if (IS_POST)
 		{
-
 		}elseif (IS_GET){
 			$where['parent_member_id'] = $this->mid;
 			$list = M('Member')->where($where)->order('register_time')->select();
@@ -111,7 +105,6 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
-
 	//获取子级id
 	private function getChildsMember($parent_member_id,$field = '*',$loop = 9999)
 	{
@@ -138,7 +131,6 @@ class MemberController extends BaseController{
 			return $array;
 		}
 	}
-
 	//账单
 	public function bill()
 	{
@@ -156,7 +148,6 @@ class MemberController extends BaseController{
         $this->page = $page->show();
 		$this->display();
 	}
-
 	public function submitAddress()
 	{
 		if (IS_POST)
@@ -212,7 +203,6 @@ class MemberController extends BaseController{
 			$this->display('address');
 		}
 	}
-
 	//站内信
 	public function letter()
 	{
@@ -223,7 +213,6 @@ class MemberController extends BaseController{
 		$this->list = $list;
 		$this->display();
 	}
-
 	public function agent()
 	{
 		if (IS_POST)
@@ -307,7 +296,6 @@ class MemberController extends BaseController{
                         }
 					}
 				}else {
-
 				}
 			}else {
 				//报错
@@ -325,7 +313,6 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
-
 	//订单自动完成
 	private function autoFinishOrder()
 	{
@@ -433,7 +420,6 @@ class MemberController extends BaseController{
 					case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
 				}
 			}else {
-
 			}
 		}elseif (IS_GET)
 		{
@@ -441,7 +427,6 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
-
 	//提现
 	public function withdraw()
 	{
@@ -545,6 +530,7 @@ class MemberController extends BaseController{
 				M('MemberBill')->add($bill);
 				$this->success('提现成功.');
 			}else {
+				system_log('会员提现失败',json_encode($res),5,'wechat');
 				M('Member')->where(array('member_id'=>$data['member_id']))->setInc('predeposit',$data['order_amount']);
 				$this->error('提现失败,请稍后再试.');
 			}
@@ -554,7 +540,6 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
-
 	public function curdGoods()
 	{
 		$merchant_status = M('Member')->where(array('member_id'=>$this->mid))->getField('merchant_status');
@@ -624,7 +609,6 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
-
 	public function transfer()
 	{
 		$a_member_where['member_id'] = $this->mid;

@@ -2,12 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1de074bf-16af-419b-b0f0-69e7cbb5dc4c" name="默认的" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/facepic.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/g3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/g4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/g5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/g6.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/g7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/g8.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/g9.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/middle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/monery.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/images/shadow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/css/lottery.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/css/public/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/css/public/function.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/css/public/reset.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/js/model/html5.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/js/model/jquery-1.8.0.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/js/model/jquery.SuperSlide.2.1.1.source.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Public/Mobile/js/public.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Common/Model/LotteryModel.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/EventController.class.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Event/lottery.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" afterPath="$PROJECT_DIR$/WebApp/Mobile/Controller/OrderController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Member/withdraw.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Member/withdraw.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" afterPath="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
     </list>
     <ignored path="tonghuipt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,70 +55,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MemberController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
+      <file leaf-file-name="lottery.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Event/lottery.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="500" column="14" selection-start-line="500" selection-start-column="14" selection-end-line="500" selection-end-column="14" />
-              <folding>
-                <marker date="1473426919000" expanded="true" signature="21299:21649" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="21323:21466" placeholder="..." />
-                <marker date="1473426919000" expanded="true" signature="21396:21454" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="21490:21591" placeholder="..." />
-                <marker date="1473426919000" expanded="true" signature="21533:21579" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="21605:21644" placeholder="..." />
-                <marker date="1473426919000" expanded="true" signature="21711:21750" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="22006:22064" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="22078:22121" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="22209:22252" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="22340:22414" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="22667:24790" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="22698:23611" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="23641:24785" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="24822:26944" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="24853:25766" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="25796:26939" placeholder="{...}" />
-                <marker date="1473426919000" expanded="true" signature="26991:27116" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/footer.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
+            <state vertical-scroll-proportion="-3.8865979">
+              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/header.html">
+      <file leaf-file-name="testController.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/testController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.371134">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="weui.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/Mobile/css/weui.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="539" column="17" selection-start-line="539" selection-start-column="1" selection-end-line="539" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="withdraw.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Member/withdraw.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+            <state vertical-scroll-proportion="-18.192308">
+              <caret line="37" column="25" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -119,10 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Index/index.html" />
-        <option value="$PROJECT_DIR$/WebApp/Toadmin/View/Member/member.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/CrontabController.class.php" />
-        <option value="$PROJECT_DIR$/WebApp/Common/Controller/CrontabController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Crontab/Controller/BaseController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Crontab/Controller/EverydayController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Crontab/Controller/CrontabController.class.php" />
@@ -167,9 +133,13 @@
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Shop/index.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/withdraw.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Member/transfer.html" />
-        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Public/footer.html" />
         <option value="$PROJECT_DIR$/WebApp/Mobile/View/Public/header.html" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/Controller/EventController.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Event/index.html" />
+        <option value="$PROJECT_DIR$/WebApp/Common/Model/LotteryModel.class.php" />
+        <option value="$PROJECT_DIR$/WebApp/Mobile/View/Event/lottery.html" />
       </list>
     </option>
   </component>
@@ -259,7 +229,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -342,24 +311,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="View" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="问题" />
         <subPane subId="Project Files">
@@ -456,20 +414,20 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="617" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zuoxika" />
+    <property name="last_opened_file_path" value="D:/www/trunk" />
     <property name="SearchEverywhereHistoryKey" value="Pay&#9;FILE&#9;file://D:/wamp/www/tonghuipt/WebApp/Mobile/Controller/PayController.class.php&#10;Member&#9;FILE&#9;file://D:/wamp/www/tonghuipt/WebApp/Toadmin/Controller/MemberController.class.php" />
     <property name="prop_add_unversioned_files" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\tonghuipt\Public\Mobile\images" />
+      <recent name="D:\wamp\www\tonghuipt\Public\Mobile\css" />
+      <recent name="D:\wamp\www\tonghuipt\Public\Mobile\js" />
+      <recent name="D:\wamp\www\tonghuipt\WebApp\Common\Model" />
+      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Event" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\wamp\www\tonghuipt\Uploads\thumb\goods" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Member" />
-      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Shop" />
-      <recent name="D:\wamp\www\tonghuipt\Public\Mobile" />
-      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Widget\Menu" />
-      <recent name="D:\wamp\www\tonghuipt\WebApp\Mobile\View\Order" />
     </key>
   </component>
   <component name="RunManager">
@@ -777,7 +735,13 @@
       <option name="project" value="LOCAL" />
       <updated>1473418240529</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="2016-9-12 15:38:07">
+      <created>1473665892544</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1473665892544</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -785,20 +749,21 @@
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18215811" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13568376" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14529915" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.3707265" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.62927353" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="版本控制" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.35950854" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28363228" sideWeight="0.6404914" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31278026" sideWeight="0.46634614" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847533" sideWeight="0.40758547" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847533" sideWeight="0.40438035" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.4636752" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="调试" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31278026" sideWeight="0.45779914" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="消息" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="运行" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -806,7 +771,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="找到" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.4636752" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -823,7 +787,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="2016-8-9 08:26:46" />
     <MESSAGE value="2016-8-9 08:37:49" />
     <MESSAGE value="2016-8-9 15:30:07" />
     <MESSAGE value="2016-8-10 16:29:17" />
@@ -848,50 +811,14 @@
     <MESSAGE value="2016-9-6 19:34:25" />
     <MESSAGE value="2016-9-8 11:07:06" />
     <MESSAGE value="2016-9-9 18:50:33" />
-    <option name="LAST_COMMIT_MESSAGE" value="2016-9-9 18:50:33" />
+    <MESSAGE value="2016-9-12 15:38:07" />
+    <option name="LAST_COMMIT_MESSAGE" value="2016-9-12 15:38:07" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebApp/Toadmin/Controller/OrderController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6923077">
-          <caret line="363" column="67" selection-start-line="363" selection-start-column="67" selection-end-line="363" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Uploads/thumb/goods/g_1469163667.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Uploads/thumb/goods/g_1469238909.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Uploads/thumb/goods/g_1469255978.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Uploads/thumb/goods/g_1469255216.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Uploads/thumb/goods/g_1469254901.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Uploads/thumb/goods/g_1469243889.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Uploads/thumb/goods/g_1469242739.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -993,20 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/testController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23507462">
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1131,17 +1044,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Member/withdraw.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="1.4226804">
           <caret line="46" column="14" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Public/Mobile/css/weui.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="16.70103">
           <caret line="539" column="17" selection-start-line="539" selection-start-column="1" selection-end-line="539" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1166,38 +1077,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="500" column="14" selection-start-line="500" selection-start-column="14" selection-end-line="500" selection-end-column="14" />
-          <folding>
-            <marker date="1473426919000" expanded="true" signature="21299:21649" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="21323:21466" placeholder="..." />
-            <marker date="1473426919000" expanded="true" signature="21396:21454" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="21490:21591" placeholder="..." />
-            <marker date="1473426919000" expanded="true" signature="21533:21579" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="21605:21644" placeholder="..." />
-            <marker date="1473426919000" expanded="true" signature="21711:21750" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="22006:22064" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="22078:22121" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="22209:22252" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="22340:22414" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="22667:24790" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="22698:23611" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="23641:24785" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="24822:26944" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="24853:25766" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="25796:26939" placeholder="{...}" />
-            <marker date="1473426919000" expanded="true" signature="26991:27116" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/footer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="2.8762887">
           <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1210,8 +1093,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Public/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.371134">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.4329897">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/BaseController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34707904">
+          <caret line="251" column="20" selection-start-line="251" selection-start-column="20" selection-end-line="251" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/MemberController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4329897">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Model/OrderModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/EventController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="101" column="31" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="31" />
+          <folding>
+            <element signature="e#6#245#0#PHP" expanded="true" />
+            <element signature="e#275#299#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/public/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.230769">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/js/model/html5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Common/Model/LotteryModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30927834">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding>
+            <element signature="e#6#245#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/Controller/testController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.192308">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/Mobile/css/lottery.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebApp/Mobile/View/Event/lottery.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8865979">
+          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
           <folding />
         </state>
       </provider>
