@@ -672,11 +672,11 @@ class MemberController extends BaseController{
 			$field = 'member_id,openid,nickname,point,predeposit,mobile';
 			$a_user_info = M('Member')->where($a_member_where)->field($field)->find();
 			$b_user_info = M('Member')->where($b_member_where)->field($field)->find();
-			if ($a_user_info['open_id'])
+			if ($a_user_info['openid'])
 			{
 				if ($type == 'point')
 				{
-					$data['touser'] = $a_user_info['open_id'];
+					$data['touser'] = $a_user_info['openid'];
 					$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
 					$data['url'] = C('SiteUrl').U('Member/index');
 					$data['data']['first']['value'] = '亲，您的通汇账号最新交易信息';
@@ -695,7 +695,7 @@ class MemberController extends BaseController{
 				}elseif ($type == 'predeposit')
 				{
 					$b_user_info['mobile'] ? $b_mobile = $b_user_info['mobile'] : $b_mobile = '未知';
-					$data['touser'] = $a_user_info['open_id'];
+					$data['touser'] = $a_user_info['openid'];
 					$data['template_id'] = trim('hJTtNJfTzW4x4lEe8SRS6Cp662mzoaeTQHzyU7PqoVE');
 					$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
 					$data['data']['first']['value'] = get_member_nickname($this->mid).',您余额转出成功！';
@@ -718,11 +718,11 @@ class MemberController extends BaseController{
 					M('MemberBill')->add($bill);
 				}
 			}
-			if ($b_user_info['open_id'])
+			if ($b_user_info['openid'])
 			{
 				if ($type == 'point')
 				{
-					$data['touser'] = $b_user_info['open_id'];
+					$data['touser'] = $b_user_info['openid'];
 					$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
 					$data['url'] = C('SiteUrl').U('Member/index');
 					$data['data']['first']['value'] = '亲，您的通汇账号最新交易信息';
@@ -741,7 +741,7 @@ class MemberController extends BaseController{
 				}elseif ($type == 'predeposit')
 				{
 					$a_user_info['mobile'] ? $a_mobile = $a_user_info['mobile'] : $a_mobile = '未知';
-					$data['touser'] = $b_user_info['open_id'];
+					$data['touser'] = $b_user_info['openid'];
 					$data['template_id'] = trim('hJTtNJfTzW4x4lEe8SRS6Cp662mzoaeTQHzyU7PqoVE');
 					$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
 					$data['data']['first']['value'] = '亲，'.get_member_nickname($this->mid).'给您转账了';

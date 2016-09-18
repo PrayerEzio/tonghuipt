@@ -33,13 +33,19 @@
                             <notempty name="spec_id">
                                 <div>规格：<em>{$vo['GoodsSpec']['spec_name']}</em></div>
                             </notempty>
-                            <div>单价：<em>{$vo['Goods']['goods_price']|price_format}</em>
-                                <del>原价<em>{$vo['Goods']['goods_mktprice']|price_format}</em></del>
-                            </div>
+                                <if condition="$vo['Goods']['member_id'] == 0">
+                                    <div>单价：<em>{$vo['Goods']['goods_price']|price_format}</em>元
+                                        <del>原价<em>{$vo['Goods']['goods_mktprice']|price_format}</em></del>
+                                    </div>
+                                <else/>
+                                    <div>单价：<em>{$vo['Goods']['cost_point']}</em>积分</div>
+                                </if>
                             <div>数量：<em>{$vo['num']}</em></div>
-
-                            <div>小计：<em class="subtotal">{$vo['Goods']['goods_price']*$vo['num']|price_format}</em>元
-                            </div>
+                            <if condition="$vo['Goods']['member_id'] == 0">
+                                <div>小计：<em class="subtotal">{$vo['Goods']['goods_price']*$vo['num']|price_format}</em>元</div>
+                            <else/>
+                                <div>小计：<em class="subtotal">{$vo['Goods']['cost_point']*$vo['num']}</em>积分</div>
+                            </if>
                         </dd>
                     </dl>
                 </div>

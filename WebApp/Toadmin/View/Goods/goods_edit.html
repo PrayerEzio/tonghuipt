@@ -222,7 +222,7 @@ $(document).ready(function(){
             <span class="type-file-show">
           	<img class="show_image" src="__IMG__/preview.png">
           	<notempty name="rs['goods_pic']">
-            <div class="type-file-preview"><img src="__UPLOADS__{$rs['goods_pic']}"></div>
+            <div class="type-file-preview"><img src="__UPLOADS__/{$rs['goods_pic']}"></div>
             <else/>
             <div class="type-file-preview"><img src="__IMG__/nopic.jpg"></div>
             </notempty>
@@ -256,7 +256,7 @@ $(document).ready(function(){
                 <tr class="hover edit">
                 <td class="w48 sort"><input type="text" name="s_pic1[s_{$i}][sort]" value="{$sp['p_sort']}" /></td>
                 <td class="w270 name">           
-                <a href="__UPLOADS__{$sp['pic']}" target="_blank"><img src="__UPLOADS__{$sp['pic']}" width="56" height="25"></a>
+                <a href="__UPLOADS__/{$sp['pic']}" target="_blank"><img src="__UPLOADS__/{$sp['pic']}" width="56" height="25"></a>
                 </td>
                 <td class="w150 align-center"><a onclick="remove_pic($(this),{$sp['id']});" href="JavaScript:void(0);">移除</a></td>
                 <td></td>
@@ -292,7 +292,7 @@ $(document).ready(function(){
                 <tr class="hover edit">
                 <td class="w48 sort"><input type="text" name="s_pic2[s_{$i}][sort]" value="{$sp['p_sort']}" /></td>
                 <td class="w270 name">           
-                <a href="__UPLOADS__{$sp['pic']}" target="_blank"><img src="__UPLOADS__{$sp['pic']}" width="56" height="25"></a>
+                <a href="__UPLOADS__/{$sp['pic']}" target="_blank"><img src="__UPLOADS__/{$sp['pic']}" width="56" height="25"></a>
                 </td>
                 <td class="w150 align-center"><a onclick="remove_pic($(this),{$sp['id']});" href="JavaScript:void(0);">移除</a></td>
                 <td></td>

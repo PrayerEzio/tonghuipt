@@ -39,12 +39,12 @@
               <td></td>
               <td class="align-center power-onoff"></td>
               <td class="w84">
-              <a href="{:U('Goods/curdGoodsBrand',array('brand_id'=>$vo['brand_id']))}">编辑</a> 
+              <a href="{:U('Goods/curdGoodsBrand',array('brand_id'=>$vo['brand_id']))}">编辑</a>
               | <a href='javascript:if(confirm("您确定要删除？"))window.location ="{:U('Goods/delGoodsBrand',array('brand_id'=>$vo['brand_id']))}";'>删除</a>
               </td>
             </tr>
             </volist>
-            <else /> 
+            <else />
             <tr class="no_data">
               <td colspan="10">暂无记录</td>
             </tr>
@@ -60,9 +60,9 @@
             </tr>
           </tfoot>
           </notempty>
-        </table>   
+        </table>
   </form>
 </div>
-<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script> 
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
 <script type="text/javascript" src="__JS__/jquery.goods_class.js" charset="utf-8"></script>
 <include file="Public/footer" />

@@ -258,11 +258,10 @@ class ShopController extends BaseController{
 		$pg_goods = M('Goods')->where($where)->find();
 		if ($pg_goods)
 		{
-			if ($pg_goods['strong'] <= 0)
+			if ($pg_goods['goods_storage'] <= 0)
 			{
 				$this->error('库存不足');
 			}
-			//TODO:生成唯一二维码
 		}else {
 			$this->error('没有找到相关商品.');
 		}
