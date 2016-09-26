@@ -268,22 +268,27 @@ class MemberController extends BaseController{
 				$order['order_amount'] = $agent_info['price'];
 				$order['order_state'] = 10;
 				$order['add_time'] = NOW_TIME;
-				$goods_id_array = explode(',',$agent_info['gift_id_str']);
-				foreach ($goods_id_array as $key => $val){
-					$goods = M('Goods')->where(array('goods_id'=>$val))->find();
-					if (!empty($goods)) {
-						$data['OrderGoods'][$key]['goods_id'] = $goods['goods_id'];
-						$data['OrderGoods'][$key]['goods_price'] = 0;
-						$data['OrderGoods'][$key]['goods_mkprice'] = $goods['goods_mktprice'];
-						$data['OrderGoods'][$key]['goods_num'] = 1;
-						$data['OrderGoods'][$key]['goods_name'] = $goods['goods_name'];
-						$data['OrderGoods'][$key]['goods_image'] = $goods['goods_pic'];
+				if ($agent_info['gift_id_str'])
+				{
+					$goods_id_array = explode(',',$agent_info['gift_id_str']);
+					foreach ($goods_id_array as $key => $val){
+						$goods = M('Goods')->where(array('goods_id'=>$val))->find();
+						if (!empty($goods)) {
+							$data['OrderGoods'][$key]['goods_id'] = $goods['goods_id'];
+							$data['OrderGoods'][$key]['goods_price'] = 0;
+							$data['OrderGoods'][$key]['goods_mkprice'] = $goods['goods_mktprice'];
+							$data['OrderGoods'][$key]['goods_num'] = 1;
+							$data['OrderGoods'][$key]['goods_name'] = $goods['goods_name'];
+							$data['OrderGoods'][$key]['goods_image'] = $goods['goods_pic'];
+						}
 					}
+				}else {
+					$goods_id_array = array();
 				}
 				$res = D('Order')->relation(true)->add($order);
 				if ($res)
 				{
-					if ($goods_id_array)
+					if (!empty($goods_id_array))
 					{
 						$this->success('订单生成成功',U('Member/submitAddress',array('sn'=>$order['order_sn'],'pay_type'=>intval($_POST['pay_type']))));
 					}else {
@@ -443,15 +448,15 @@ class MemberController extends BaseController{
 			$order_count_where['member_id'] = $this->mid;
 			$order_count_where['order_type'] = -2;
 			$order_count_where['add_time'] = array('gt',strtotime(date('Y-m-d',time())));
-			$order_count = M('Order')->where($order_count_where)->count();
+			$order_sum = M('Order')->where($order_count_where)->sum('order_amount');
 			$bill_count_where['bill_type'] = -1;
 			$bill_count_where['channel'] = -2;
 			$bill_count_where['member_id'] = $this->mid;
 			$bill_count_where['addtime'] = array('gt',strtotime(date('Y-m-d',time())));
-			$bill_count = M('MemberBill')->where($bill_count_where)->find();
-			if ($order_count || $bill_count)
+			$bill_sum = M('MemberBill')->where($bill_count_where)->sum('amount');
+			if ($order_sum+$amount > 200 || $bill_sum+$amount > 200)
 			{
-				$this->error('您今日已经没有提现次数了,请明天再来.');die;
+				$this->error('您今日已经没有提现额度了,请明天再来.');die;
 			}
 			if (!$amount || $amount > $predeposit || $judge_amount != $amount)
 			{
@@ -488,36 +493,48 @@ class MemberController extends BaseController{
 			Vendor('WxPayPubHelper.WxPayPubHelper');
 			$wxPay = new \Common_util_pub();
 			$openid = M('member')->where(array('member_id'=>$this->mid))->getField('openid');
-			$info = array(
-				'mch_appid' => Wx_C('wx_appid'),
-				'mchid' => Wx_C('wx_mch_id'),
-				'nonce_str' => $wxPay->createNoncestr(32),
-				'partner_trade_no' => $order_sn,
-				'openid' => $openid,
-				'check_name' => 'NO_CHECK',
-				'amount' => intval($amount*100),
-				'desc' => $desc,
-				'spbill_create_ip' => get_client_ip(),
-			);
-			$info['sign'] = $wxPay->getSign($info);
-			$arr = $info;
-			$xml = $wxPay->arrayToXml($arr);
-			$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
+			if ($this->mid == 36 || $this->mid == 37 || $this->mid == 89)
+			{
+				$info = array(
+					'wxappid' => Wx_C('wx_appid'),
+					'mch_id' => Wx_C('wx_mch_id'),
+					'mch_billno' => $order_sn,
+					'client_ip' => get_client_ip(),
+					're_openid' => $openid,
+					'total_amount' => intval($amount*100),
+					'min_value' => intval($amount*100),
+					'max_value' => intval($amount*100),
+					'total_num' => 1,
+					'send_name' => '通汇大商圈',
+					'wishing' => '通汇大商圈提现',
+					'act_name' => '提现',
+					'remark' => '通汇红包备注',
+					'nonce_str' => $wxPay->createNoncestr(32),
+				);
+				$info['sign'] = $wxPay->getSign($info);
+				$arr = $info;
+				$xml = $wxPay->arrayToXml($arr);
+				$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
+			}else {
+				$info = array(
+					'mch_appid' => Wx_C('wx_appid'),
+					'mchid' => Wx_C('wx_mch_id'),
+					'nonce_str' => $wxPay->createNoncestr(32),
+					'partner_trade_no' => $order_sn,
+					'openid' => $openid,
+					'check_name' => 'NO_CHECK',
+					'amount' => intval($amount*100),
+					'desc' => $desc,
+					'spbill_create_ip' => get_client_ip(),
+				);
+				$info['sign'] = $wxPay->getSign($info);
+				$arr = $info;
+				$xml = $wxPay->arrayToXml($arr);
+				$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
+			}
 			$result = $wxPay->postXmlSSLCurl($xml, $url);
 			$res = $wxPay->xmlToArray($result);
-			if (!empty($res['partner_trade_no'])) {
-				$data['touser'] = $openid;
-				$data['template_id'] = trim('RyeUJ1L4zRD4DzQ_lQGuUlYldAmBudVZ3fF6R0zY_w4');
-				$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
-				$data['data']['first']['value'] = get_member_nickname($this->mid).'，恭喜您提现成功！';
-				$data['data']['first']['color'] = '#173177';
-				$data['data']['keyword1']['value'] = price_format($amount);
-				$data['data']['keyword1']['color'] = '#173177';
-				$data['data']['keyword2']['value'] = date('Y-m-d H:i',time());
-				$data['data']['keyword2']['color'] = '#173177';
-				$data['data']['remark']['value'] = '小额系统自提，大额请联系客服：894916947';
-				$data['data']['remark']['color'] = '#173177';
-				sendTemplateMsg($data);
+			if ($res['result_code'] == 'SUCCESS') {//!empty($res['partner_trade_no'])
 				M('Order')->add($data);
 				//生成账单流水
 				$bill['member_id'] = $data['member_id'];

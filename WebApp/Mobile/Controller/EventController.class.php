@@ -13,14 +13,14 @@ use Think\Page;
 class EventController extends BaseController{
 	public function __construct(){
 		parent::__construct();
-		$this->check_login();
+		//$this->check_login();
         //检查登录
         //session('wechat_openid',null);
-        $this->m_info = M('Member')->where(array('member_id'=>$this->mid))->find();
+        /*$this->m_info = M('Member')->where(array('member_id'=>$this->mid))->find();
 		if (empty($this->m_info['openid']))
 		{
 			$this->getWechatInfo();
-		}
+		}*/
 		$this->lotteryModel = D('Lottery');
 	}
 
@@ -31,6 +31,10 @@ class EventController extends BaseController{
 		$info_where['lottery_status'] = 1;
 		$info = $this->lotteryModel->relation(true)->where($info_where)->find();
 		$this->info = $info;
+		$record_list_where['member_id'] = array('neq',0);
+		$record_list_where['lottery_id'] = $info['lottery_id'];
+		$record_list = M('LotteryAwardPool')->where($record_list_where)->select();
+		$this->record_list = $record_list;
 		$this->display();
 	}
 
@@ -79,7 +83,7 @@ class EventController extends BaseController{
 				return array(300,'网络繁忙,请稍后再试.');
 			}
 		}
-		if ($lottery_info['lottery_cost_money'])
+		if ($lottery_info['lottery_cost_money'] != 0.00)
 		{
 			$user_predeposit = M('Member')->where($cost_where)->getField('predeposit');
 			if ($user_predeposit < $lottery_info['lottery_cost_money'])
@@ -101,9 +105,7 @@ class EventController extends BaseController{
 
 	public function ajaxLottery()
 	{
-		if (IS_AJAX)
-		{
-			$lottery_id = intval($_POST['id']);
+			$lottery_id = intval($_GET['id']);
 			$res = $this->lotteryAuth($lottery_id);
 			if ($res)
 			{
@@ -164,5 +166,4 @@ class EventController extends BaseController{
 			M('LotteryAwardPool')->add($pool_data);
 			json_return(200,'success',$default_award);
 		}
-	}
 }

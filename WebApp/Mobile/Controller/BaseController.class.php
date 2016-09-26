@@ -231,6 +231,15 @@ class BaseController extends Controller{
 			$res = M('Order')->where(array('order_id'=>$order['order_id']))->setField('order_state',60);
 			if ($res)
 			{
+				//返还预先扣除的积分
+				if ($order['cost_points'])
+				{
+					$point_res = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['cost_points']);
+					if (!$point_res)
+					{
+						system_log('超时订单自动取消,但为返还用户积分.','超时订单自动取消,但为返还用户积分.订单id:'.$order['order_id'],10);
+					}
+				}
 				//写入订单日志
 				$log_data['order_id'] = $order['order_id'];
 				$log_data['order_state'] = get_order_state_name(10);

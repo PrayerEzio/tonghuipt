@@ -157,10 +157,10 @@ class ShopController extends BaseController{
 		{
 			$this->getWechatInfo();
 		}
-		if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
+		/*if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
 		{
 			$this->error('该功能即将上线,敬请期待.');
-		}
+		}*/
 		$order = 'goods_sort desc';
 		$where['member_id'] = array('neq',0);
 		$where['goods_status'] = 1;

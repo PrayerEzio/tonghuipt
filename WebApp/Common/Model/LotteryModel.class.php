@@ -11,7 +11,7 @@ use Think\Model\RelationModel;
 class LotteryModel extends RelationModel{
 	protected $_link = array(
 		'LotteryAward' => array(
-				'mapping_type' => self::HAS_ONE,
+				'mapping_type' => self::HAS_MANY,
 				'class_name' => 'LotteryAward',
 				'mapping_name' => 'LotteryAward',
 				'foreign_key' => 'lottery_id',

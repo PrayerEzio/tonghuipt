@@ -45,6 +45,25 @@ class PayController extends BaseController{
 		}
 	}
 
+	public function point()
+	{
+		$order_sn = trim($_GET['order_sn']);
+		$order_where['member_id'] = $this->mid;
+		$order_where['order_sn'] = $order_sn;
+		$order_where['order_amount'] = 0;
+		$order = D('Order')->where($order_where)->find();
+		if (is_array($order) && !empty($order)) {
+			if ($order['order_state'] != 10) {
+				$this->error('该订单号无法进行支付,请联系客服.');
+			}else {
+				$this->finishPay($order_sn);
+				$this->success('支付成功',U('Order/index'));
+			}
+		}else {
+			$this->error('非法操作');
+		}
+	}
+
 	private function finishPay($order_sn)
 	{
 		$where['order_sn'] = $order_sn;

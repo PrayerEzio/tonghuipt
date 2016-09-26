@@ -20,42 +20,12 @@
     <section class="main-sec pt5 main-wheel">
         <div class="big-border">
             <div class="small-border g9">
-                <div class="shan">
-                    <span>100元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>2元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>3元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>4元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>5元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>6元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>7元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>8元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
-                <div class="shan">
-                    <span>9元现金</span>
-                    <img src="__IMG__/monery.png" width="30%">
-                </div>
+                <volist name="info['LotteryAward']" id="vo">
+                    <div class="shan">
+                        <span>{$vo['award_name']}</span>
+                        <img src="__UPLOADS__/{$vo['award_pic']}" width="30%">
+                    </div>
+                </volist>
                 <img src="__IMG__/middle.png" width="50%" class="middle">
             </div>
         </div>
@@ -67,29 +37,18 @@
     <section class="main-sec loptop">
         <div class="m-title"><h3>有谁在抢</h3></div>
         <dl class="peolist">
+            <volist name="record_list" id="vo">
             <dd>
-                <img src="__IMG__/facepic.jpg" width="20%">
+                <img src="{:get_member_avatar($vo['member_id'])}" width="20%">
                 <div class="right">
-                    <span><h2>雨中漫步</h2><em>7月1日 21:25</em></span>
+                    <span>
+                        <h2>{:get_member_nickname($vo['member_id'])}</h2>
+                        <em>{$vo['lottery_time']|date='Y-m-d H:i:s',###}</em>
+                    </span>
                     <p>跪谢老板打赏跪谢老板</p>
                 </div>
             </dd>
-
-            <dd>
-                <img src="__IMG__/facepic.jpg" width="20%">
-                <div class="right">
-                    <span><h2>雨中漫步</h2><em>7月1日 21:25</em></span>
-                    <p>跪谢老板打赏</p>
-                </div>
-            </dd>
-
-            <dd>
-                <img src="__IMG__/facepic.jpg" width="20%">
-                <div class="right">
-                    <span><h2>雨中漫步</h2><em>7月1日 21:25</em></span>
-                    <p>跪谢老板打赏</p>
-                </div>
-            </dd>
+            </volist>
         </dl>
     </section>
     <!-- 页面用户在抢滚动 -->
@@ -107,24 +66,15 @@
             pnLoop:true
         });
     </script>
-    <section class="main-sec">
+    <!--<section class="main-sec">
         <div class="m-title"><h3>活动说明</h3></div>
         <div class="einfo">
             <p>活动时间：7月1日-7月30日</p>
             <p>每日签到可获1次抽奖机会</p>
             <p>每日邀请好友参与可获1次抽奖机会</p>
         </div>
-    </section>
+    </section>-->
 </div>
-<!--<div class="dialog gz">
-    <div class="d-main">
-        <p>请进入"镇江微生活"公众号立即参与</p>
-        <div class="btn-w">
-            <a class="btn" href="#">进入</a>
-            <a class="btn false" href="javascript:void(0);">取消</a>
-        </div>
-    </div>
-</div>-->
 <div class="dialog info">
     <div class="d-main">
         <p>次数用光,金额不足 之类的 信息提示表单</p>

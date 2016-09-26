@@ -41,11 +41,10 @@
                                     <div>单价：<em>{$vo['Goods']['cost_point']}</em>积分</div>
                                 </if>
                             <div>数量：<em>{$vo['num']}</em></div>
-                            <if condition="$vo['Goods']['member_id'] == 0">
-                                <div>小计：<em class="subtotal">{$vo['Goods']['goods_price']*$vo['num']|price_format}</em>元</div>
-                            <else/>
-                                <div>小计：<em class="subtotal">{$vo['Goods']['cost_point']*$vo['num']}</em>积分</div>
-                            </if>
+                            <div>小计：
+                                <em class="subtotal">{$vo['Goods']['goods_price']*$vo['num']|price_format}</em>元
+                                <em class="">{$vo['Goods']['cost_point']*$vo['num']}</em>积分
+                            </div>
                         </dd>
                     </dl>
                 </div>

@@ -1274,6 +1274,11 @@ function get_member_nickname($member_id){
 		}
 	}
 }
+function get_member_avatar($member_id)
+{
+	$avatar = M('Member')->where(array('member_id'=>$member_id))->getField('avatar');
+	return $avatar;
+}
 function get_spec_name($spec_id){
 	if ($spec_id)
 	{
@@ -1431,7 +1436,7 @@ function json_return($code,$msg = '',$data = array(),$jump_url=''){
 	$result['msg'] = $msg;
 	$result['data'] = $data;
 	$result['jump_url'] = $jump_url;
-	echo json_encode($result);
+	echo json_encode($result);die;
 }
 function get_distributor($member_id){
 	$distributor = M('Member')->where(array('member_id'=>$member_id))->getField('distributor');

@@ -326,6 +326,41 @@ class OrderController extends BaseController{
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setDec('goods_storage',$val['goods_num']);
 				M('Goods')->where(array('goods_id'=>$val['goods_id']))->setInc('goods_freez',$val['goods_num']);
 			}
+			if ($cost_points)
+			{
+				$member_point = M('Member')->where(array('member_id'=>$this->mid,'member_status'=>1))->getField('point');
+				if ($member_point < $cost_points)
+				{
+					$this->error('抱歉,您剩余的积分无法完成支付,订单生成失败.');
+				}else {
+					$res = M('Member')->where(array('member_id'=>$this->mid))->setDec('point',$cost_points);
+					if (!$res)
+					{
+						$this->error('因积分支付失败,订单生成失败.');
+					}else {
+						$member = M('Member')->where(array('member_id'=>$this->mid))->find();
+						if ($member['openid'])
+						{
+							$data['touser'] = $member['openid'];
+							$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
+							$data['url'] = C('SiteUrl').U('Order/index');
+							$data['data']['first']['value'] = get_member_nickname($this->mid).',您好:\n您的账号积分最新交易信息';
+							$data['data']['first']['color'] = '#173177';
+							$data['data']['time']['value'] = date('Y年m月d日 H:i',time());
+							$data['data']['time']['color'] = '#173177';
+							$data['data']['type']['value'] = '减少';
+							$data['data']['type']['color'] = '#173177';
+							$data['data']['Point']['value'] = $cost_points;
+							$data['data']['Point']['color'] = '#173177';
+							$data['data']['From']['value'] = '通汇积分商城';
+							$data['data']['From']['color'] = '#173177';
+							$data['data']['remark']['value'] = '截止'.date('Y年m月d日 H:i',time()).'，您的可用积分为'.$member['point'].'积分。如有疑问请咨询微信TH09241121';
+							$data['data']['remark']['color'] = '#173177';
+							sendTemplateMsg($data);
+						}
+					}
+				}
+			}
 			$data['order_points'] = $order_points;
 			$data['cost_points'] = $cost_points;
 			$data['order_amount'] = $data['goods_amount']-$data['discount']+$data['shipping_fee'];
@@ -362,13 +397,19 @@ class OrderController extends BaseController{
 				$log_data['log_time'] = NOW_TIME;
 				$log_data['operator'] = '会员';
 				M('OrderLog')->add($log_data);
-				//进行支付跳转
-				switch (trim($_POST['pay_type'])){
-					case 0:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$data['order_sn'])));break;
-					case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$data['order_sn'])));break;
-					case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$data['order_sn'])));break;
-					case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$data['order_sn'])));break;
-					default :
+				if ($data['order_amount'] > 0)
+				{
+					//进行支付跳转
+					switch (trim($_POST['pay_type'])){
+						case 0:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$data['order_sn'])));break;
+						case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$data['order_sn'])));break;
+						case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$data['order_sn'])));break;
+						case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$data['order_sn'])));break;
+						//case 10:$this->success('订单生成成功',U('Pay/point',array('order_sn'=>$data['order_sn'])));break;
+						default :$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$data['order_sn'])));break;
+					}
+				}else {
+					$this->success('订单生成成功',U('Pay/point',array('order_sn'=>$data['order_sn'])));
 				}
 			}
 		}else {
@@ -385,6 +426,16 @@ class OrderController extends BaseController{
 		$where['order_state'] = 10;
 		$res = M('Order')->where($where)->setField('order_state',60);
 		if ($res) {
+			//返还预先扣除的积分
+			$order = M('Order')->where($where)->find();
+			if ($order['cost_points'])
+			{
+				$point_res = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['cost_points']);
+				if (!$point_res)
+				{
+					$this->error('积分返还失败,未能成功取消订单.');
+				}
+			}
 			//解冻库存
 			$order_id = M('Order')->where(array('order_sn'=>$order_sn))->getField('order_id');
 			$order_goods = M('OrderGoods')->where(array('order_id'=>$order_id))->select();
