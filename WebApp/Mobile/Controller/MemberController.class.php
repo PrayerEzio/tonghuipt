@@ -448,6 +448,7 @@ class MemberController extends BaseController{
 			$order_count_where['member_id'] = $this->mid;
 			$order_count_where['order_type'] = -2;
 			$order_count_where['add_time'] = array('gt',strtotime(date('Y-m-d',time())));
+			//$order_count = M('Order')->where($order_count_where)->count();
 			$order_sum = M('Order')->where($order_count_where)->sum('order_amount');
 			$bill_count_where['bill_type'] = -1;
 			$bill_count_where['channel'] = -2;
@@ -458,6 +459,11 @@ class MemberController extends BaseController{
 			{
 				$this->error('您今日已经没有提现额度了,请明天再来.');die;
 			}
+			/*$bill_count = M('MemberBill')->where($bill_count_where)->find();
+			if ($order_count || $bill_count)
+			{
+				$this->error('您今日已经没有提现次数了,请明天再来.');die;
+			}*/
 			if (!$amount || $amount > $predeposit || $judge_amount != $amount)
 			{
 				$this->error('提现金额不合法.');die;
@@ -493,45 +499,26 @@ class MemberController extends BaseController{
 			Vendor('WxPayPubHelper.WxPayPubHelper');
 			$wxPay = new \Common_util_pub();
 			$openid = M('member')->where(array('member_id'=>$this->mid))->getField('openid');
-			if ($this->mid == 36 || $this->mid == 37 || $this->mid == 89)
-			{
-				$info = array(
-					'wxappid' => Wx_C('wx_appid'),
-					'mch_id' => Wx_C('wx_mch_id'),
-					'mch_billno' => $order_sn,
-					'client_ip' => get_client_ip(),
-					're_openid' => $openid,
-					'total_amount' => intval($amount*100),
-					'min_value' => intval($amount*100),
-					'max_value' => intval($amount*100),
-					'total_num' => 1,
-					'send_name' => '通汇大商圈',
-					'wishing' => '通汇大商圈提现',
-					'act_name' => '提现',
-					'remark' => '通汇红包备注',
-					'nonce_str' => $wxPay->createNoncestr(32),
-				);
-				$info['sign'] = $wxPay->getSign($info);
-				$arr = $info;
-				$xml = $wxPay->arrayToXml($arr);
-				$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
-			}else {
-				$info = array(
-					'mch_appid' => Wx_C('wx_appid'),
-					'mchid' => Wx_C('wx_mch_id'),
-					'nonce_str' => $wxPay->createNoncestr(32),
-					'partner_trade_no' => $order_sn,
-					'openid' => $openid,
-					'check_name' => 'NO_CHECK',
-					'amount' => intval($amount*100),
-					'desc' => $desc,
-					'spbill_create_ip' => get_client_ip(),
-				);
-				$info['sign'] = $wxPay->getSign($info);
-				$arr = $info;
-				$xml = $wxPay->arrayToXml($arr);
-				$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
-			}
+			$info = array(
+				'wxappid' => Wx_C('wx_appid'),
+				'mch_id' => Wx_C('wx_mch_id'),
+				'mch_billno' => $order_sn,
+				'client_ip' => get_client_ip(),
+				're_openid' => $openid,
+				'total_amount' => intval($amount*100),
+				'min_value' => intval($amount*100),
+				'max_value' => intval($amount*100),
+				'total_num' => 1,
+				'send_name' => '通汇大商圈',
+				'wishing' => '通汇大商圈提现',
+				'act_name' => '提现',
+				'remark' => '通汇红包备注',
+				'nonce_str' => $wxPay->createNoncestr(32),
+			);
+			$info['sign'] = $wxPay->getSign($info);
+			$arr = $info;
+			$xml = $wxPay->arrayToXml($arr);
+			$url = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
 			$result = $wxPay->postXmlSSLCurl($xml, $url);
 			$res = $wxPay->xmlToArray($result);
 			if ($res['result_code'] == 'SUCCESS') {//!empty($res['partner_trade_no'])
