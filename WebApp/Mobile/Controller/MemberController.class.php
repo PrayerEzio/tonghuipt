@@ -512,7 +512,7 @@ class MemberController extends BaseController{
 				'send_name' => '通汇大商圈',
 				'wishing' => '通汇大商圈提现',
 				'act_name' => '提现',
-				'remark' => '通汇红包备注',
+				'remark' => $desc,
 				'nonce_str' => $wxPay->createNoncestr(32),
 			);
 			$info['sign'] = $wxPay->getSign($info);
