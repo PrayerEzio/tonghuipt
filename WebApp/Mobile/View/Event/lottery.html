@@ -166,6 +166,7 @@ img{ border-radius: 4px;}
         </volist>
     </dl>
  </section>
+ <input type="hidden" id="lottery_id" value="{$info['lottery_id']}">
  <script type="text/javascript" src="__JS__/model/jquery.SuperSlide.2.1.1.source.js"></script>
  <!-- 页面用户在抢滚动 -->
 <script type="text/javascript">
@@ -189,7 +190,6 @@ img{ border-radius: 4px;}
 <script type="text/javascript" src="__JS__/model/awardRotate.js"></script>
 <script src="__JS__/model/sweet-alert.min.js"></script>
 <script type="text/javascript">
-
 $(function (){
     var bRotate = false;
 
@@ -211,41 +211,46 @@ $(function (){
     
 
     $('.pointer').click(function (){
-
         if(bRotate)return;
-
         $.ajax({
             url:"{:U('Event/ajaxLottery')}",
             type:"GET",
             dataType:"json",
-            data:{"id":1},
+            data:{"id":$("#lottery_id").val()},
             success : function (data) {
-            var item = parseInt(data.data.award_level); //中了几等奖            
-                switch (item) {
-                    case 1:
-                        //var angle = [26, 88, 137, 185, 235, 287, 337];
-                        rotateFn("一等奖", 341, data.data.award_name);
-                        break;
-                    case 2:
-                        //var angle = [88, 137, 185, 235, 287];
-                        rotateFn("二等奖", 269, data.data.award_name);
-                        break;
-                    case 3:
-                        //var angle = [137, 185, 235, 287];
-                        rotateFn("三等奖", 199, data.data.award_name);
-                        break;
-                    case 4:
-                        //var angle = [137, 185, 235, 287];
-                        rotateFn("四等奖", 140, data.data.award_name);
-                        break;
-                    case 5:
-                        //var angle = [185, 235, 287];
-                        rotateFn("五等奖", 55, data.data.award_name);
-                        break;
-
-                }
+             var item = parseInt(data.data.award_level); //中了几等奖            
+                    // 执行抽奖
+                 if(data.code == 200){
+                    switch (item) {
+                            case 1:
+                                rotateFn("一等奖", 341, data.data.award_name);
+                                break;
+                            case 2:
+                                 rotateFn("二等奖", 269, data.data.award_name);
+                                break;
+                            case 3:
+                                rotateFn("三等奖", 199, data.data.award_name);
+                                break;
+                            case 4:
+                                 rotateFn("四等奖", 140, data.data.award_name); 
+                                break;
+                            case 5:
+                                rotateFn("五等奖", 55, data.data.award_name);
+                                break;
+                            default:
+                            alert("抱歉，没有适合您的奖项！");
+                        }
+                    }
+                    else
+                    {
+                        alert(data.msg)
+                    }
+             
                 
             }
+            // error:function(){
+            //     alert("您的抽奖机会已经用完！")
+            // }
         });
     });
 });

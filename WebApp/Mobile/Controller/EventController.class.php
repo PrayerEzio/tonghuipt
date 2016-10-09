@@ -109,6 +109,10 @@ class EventController extends BaseController{
 			$res = $this->lotteryAuth($lottery_id);
 			if ($res)
 			{
+				if (empty($res[2]))
+				{
+					$res[2] = array();
+				}
 				json_return($res[0],$res[1],$res[2]);
 			}
 			$award_field = 'award_id,lottery_id,award_level,award_name,award_type,award_pic,award_msg,award_parameter,award_is_entity';
@@ -168,5 +172,5 @@ class EventController extends BaseController{
 			$pool_data['lottery_id'] = $default_award['lottery_id'];
 			M('LotteryAwardPool')->add($pool_data);
 			json_return(200,'success',$default_award);
-		}
+	}
 }
