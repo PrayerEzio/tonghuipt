@@ -1712,3 +1712,13 @@ function is_beta_member_id($mid)
 		return false;
 	}
 }
+
+function get_award_name($award_id)
+{
+	$award_name = M('LotteryAward')->where(array('award_id'=>$award_id))->getField('award_name');
+	if (empty($award_name))
+	{
+		$award_name = '谢谢参与';
+	}
+	return $award_name;
+}

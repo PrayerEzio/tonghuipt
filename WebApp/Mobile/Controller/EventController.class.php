@@ -13,14 +13,14 @@ use Think\Page;
 class EventController extends BaseController{
 	public function __construct(){
 		parent::__construct();
-		//$this->check_login();
+		$this->check_login();
         //检查登录
         //session('wechat_openid',null);
-        /*$this->m_info = M('Member')->where(array('member_id'=>$this->mid))->find();
+        $this->m_info = M('Member')->where(array('member_id'=>$this->mid))->find();
 		if (empty($this->m_info['openid']))
 		{
 			$this->getWechatInfo();
-		}*/
+		}
 		$this->lotteryModel = D('Lottery');
 	}
 
@@ -128,6 +128,7 @@ class EventController extends BaseController{
 				$pool_data['release_time'] = NOW_TIME;
 				$pool_data['status'] = 0;
 				$pool_data['lottery_time'] = NOW_TIME;
+				$pool_data['lottery_id'] = $default_award['lottery_id'];
 				M('LotteryAwardPool')->add($pool_data);
 				json_return(200,'success',$default_award);
 			}
@@ -140,6 +141,7 @@ class EventController extends BaseController{
 				$pool_data['release_time'] = NOW_TIME;
 				$pool_data['status'] = 0;
 				$pool_data['lottery_time'] = NOW_TIME;
+				$pool_data['lottery_id'] = $default_award['lottery_id'];
 				M('LotteryAwardPool')->add($pool_data);
 				json_return(200,'success',$default_award);
 			}
@@ -163,6 +165,7 @@ class EventController extends BaseController{
 			$pool_data['release_time'] = NOW_TIME;
 			$pool_data['status'] = 0;
 			$pool_data['lottery_time'] = NOW_TIME;
+			$pool_data['lottery_id'] = $default_award['lottery_id'];
 			M('LotteryAwardPool')->add($pool_data);
 			json_return(200,'success',$default_award);
 		}

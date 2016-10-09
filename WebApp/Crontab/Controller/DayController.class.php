@@ -15,6 +15,7 @@ class DayController extends BaseController{
 
 	public function every()
 	{
+		die;
 		$this->increaseInterest();
 	}
 

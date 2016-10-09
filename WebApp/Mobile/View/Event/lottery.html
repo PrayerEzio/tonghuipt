@@ -24,6 +24,7 @@ body { margin: 0; padding: 0; position: relative;  background-position: center; 
     height:100%;
     position:relative;
     color: #fff;
+        font-size: 13px;
 }
 .turntable {
     position:absolute;
@@ -31,6 +32,10 @@ body { margin: 0; padding: 0; position: relative;  background-position: center; 
     left:0;
     z-index: -1;
 }
+p{
+    padding-top: 3px;
+}
+img{ border-radius: 4px;}
 .item1 {
     position: absolute;
     top: 16px;
@@ -120,10 +125,16 @@ body { margin: 0; padding: 0; position: relative;  background-position: center; 
     font-size: 12px;
     color: #ffb820;
 }
+.sweet-alert h2 {
+    color: #fb2222;
+    font-size: 17px;
+
+}
 </style> 
 <script type="text/javascript" src="__JS__/model/jquery.min.js"></script>
 </head>
 <body bgcolor="#eae0d9" id="body" onLoad="init()">
+<h2 style="text-align:center; color:#ffb820; padding:10px; background: #c72222;">{$info['lottery_title']}</h2>
     <div class="couten" style="position:relative; width:100%; margin:0 auto; text-align:center; padding-top:5%">
         <div class="turntable-bg">
             <!--<div class="mask"><img src="images/award_01.png"/></div>-->
@@ -142,18 +153,18 @@ body { margin: 0; padding: 0; position: relative;  background-position: center; 
     </div>
   
 <section class="main-sec loptop">
-            <div class="m-title"><h3>有谁在抢</h3></div>
-            <dl class="peolist">
-                <volist name="record_list" id="vo">
-                    <dd>
-                        <img src="{:get_member_avatar($vo['member_id'])}" width="20%">
-                        <div class="right">
-                            <h2>{:get_member_nickname($vo['member_id'])}<em>{$vo['lottery_time']|date='Y-m-d H:i:s',###}</em></h2>
-                            <p>跪谢老板打赏跪谢老板</p>
-                        </div>
-                    </dd>
-                </volist>
-            </dl>
+    <div class="m-title"><h3>有谁在抢</h3></div>
+    <dl class="peolist">
+        <volist name="record_list" id="vo">
+            <dd>
+                <img src="{:get_member_avatar($vo['member_id'])}" width="20%">
+                <div class="right">
+                    <h2>{:get_member_nickname($vo['member_id'])}<em>{$vo['lottery_time']|date='Y-m-d H:i:s',###}</em></h2>
+                    <p>获得了{:get_award_name($award_id)}</p>
+                </div>
+            </dd>
+        </volist>
+    </dl>
  </section>
  <script type="text/javascript" src="__JS__/model/jquery.SuperSlide.2.1.1.source.js"></script>
  <!-- 页面用户在抢滚动 -->
@@ -191,7 +202,7 @@ $(function (){
             duration:8000,
             callback:function (){
                 /*alert(txt);*/
-                swal({   title: "获得"+awards+"等奖"+txt+"红包",   imageUrl: "__IMG__/gx.png" });
+                swal({   title: "获得"+awards+" "+txt,   imageUrl: "__IMG__/gx.png" });
                 
                 bRotate = !bRotate;
             }
@@ -209,28 +220,27 @@ $(function (){
             dataType:"json",
             data:{"id":1},
             success : function (data) {
-            var item = parseInt(data.data.award_level);
-            console.log(item);
+            var item = parseInt(data.data.award_level); //中了几等奖            
                 switch (item) {
                     case 1:
                         //var angle = [26, 88, 137, 185, 235, 287, 337];
-                        rotateFn(1, 55, '888元');
+                        rotateFn("一等奖", 341, data.data.award_name);
                         break;
                     case 2:
                         //var angle = [88, 137, 185, 235, 287];
-                        rotateFn(2, 140, '388元');
+                        rotateFn("二等奖", 269, data.data.award_name);
                         break;
                     case 3:
                         //var angle = [137, 185, 235, 287];
-                        rotateFn(3, 199, '188元');
+                        rotateFn("三等奖", 199, data.data.award_name);
                         break;
                     case 4:
                         //var angle = [137, 185, 235, 287];
-                        rotateFn(4, 269, '88元');
+                        rotateFn("四等奖", 140, data.data.award_name);
                         break;
                     case 5:
                         //var angle = [185, 235, 287];
-                        rotateFn(data.data.award_name, 341, '8元');
+                        rotateFn("五等奖", 55, data.data.award_name);
                         break;
 
                 }
