@@ -80,6 +80,16 @@
             <td class="vatop tips"></td>
         </tr>
         <tr>
+            <td colspan="2" class="required"><label>排单权限:</label></td>
+        </tr>
+        <tr class="noborder">
+            <td class="vatop rowform onoff"><label for="loan_status1" class='cb-enable <if condition="$info['loan_status'] eq 1">selected</if>'><span>正常</span></label>
+                <label for="loan_status0" class='cb-disable <if condition="$info['loan_status'] eq 0">selected</if>'><span>冻结</span></label>
+                <input id="loan_status1" name="loan_status" <if condition="$info['loan_status'] eq 1">checked="checked"</if> value="1" type="radio">
+                <input id="loan_status0" name="loan_status" <if condition="$info['loan_status'] eq 0">checked="checked"</if> value="0" type="radio"></td>
+            <td class="vatop tips"></td>
+        </tr>
+        <tr>
             <td colspan="2" class="required"><label>联盟商家:</label></td>
         </tr>
         <tr class="noborder">

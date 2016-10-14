@@ -1480,6 +1480,14 @@ function get_bill_channel($channel)
 			$name = '公排收益';break;
 		case 7:
 			$name = '订单分润';break;
+		case -9:
+			$name = '排单';break;
+		case 8:
+			$name = '转入';break;
+		case 9:
+			$name = '排单返款';break;
+		case 10:
+			$name = '排单分润';break;
 		default:
 			$name = '未知';break;
 	}

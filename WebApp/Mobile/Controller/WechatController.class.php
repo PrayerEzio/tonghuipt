@@ -39,13 +39,19 @@ class WechatController extends Controller{
 			$this->assign('seo',seo());
 		}
 		//检查登录
-		/* session('member_id',null);
+		//session('member_id',null);
 		if(!session('member_id'))
 		{
 			$this->wx_auto_login(); //自动登录	
 		}
-		$this->mid = session('member_id'); */
-		$this->mid = 10;
+		$this->mid = session('member_id');
+		/*$admin_id = array(36,37,89);
+		if(!in_array($this->mid,$admin_id)){
+			echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+			echo $this->web_stting['closed_reason'];
+			exit;
+		}*/
+		//$this->mid = 10;
 		$this->m_info = M('Member')->where('member_id='.$this->mid)->find();	
 				
 	}

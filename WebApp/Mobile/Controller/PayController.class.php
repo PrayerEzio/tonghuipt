@@ -161,6 +161,35 @@ class PayController extends BaseController{
 						}
 					}
 					break;
+				case 5:
+					//放贷(排单)
+					$bill_log = '排单';
+					$channel = -9;
+					$loan_info_where['loan_id'] = $order['order_param'];
+					$loan_info = M('Loan')->where($loan_info_where)->find();
+					$data['member_id'] = $order['member_id'];
+					$data['loan_id'] = $loan_info['loan_id'];
+					$data['loan_level'] = $loan_info['loan_level'];
+					$data['create_time'] = time();
+					$data['start_time'] = strtotime('+1 day');
+					$data['end_time'] = $data['start_time']+$loan_info['cycle']*24*60*60;
+					$data['execution_times'] = 0;
+					$data['status'] = 1;
+					$data['active'] = 1;
+ 					$s = M('LoanRecord')->add($data);
+					if ($s)
+					{
+						$res = $this->mod->where($where)->setField('order_state',50);
+						$bill['member_id'] = $order['member_id'];
+						$bill['bill_log'] = '余额充值成功';
+						$bill['amount'] = $order['goods_amount'];
+						$bill['balance'] = M('Member')->where(array('member_id'=>$order['member_id']))->getField('predeposit');
+						$bill['addtime'] = NOW_TIME;
+						$bill['bill_type'] = 1;
+						$bill['channel'] = 2;
+						M('MemberBill')->add($bill);
+					}
+					break;
 				default :break;
 			}
 			//更改订单状态

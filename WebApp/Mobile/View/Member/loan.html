@@ -33,18 +33,17 @@
                 <volist name="list" id="vo">
                     <label class="weui_cell weui_check_label" for="x{$key}">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <p><i class="iconfont red">&#xe613;</i>{$vo['agent_name']}({$vo['price']|price_format}元)</p>
+                            <p><i class="iconfont red">&#xe613;</i>{$vo['loan_name']}({$vo['price']|price_format}元)</p>
                         </div>
                         <div class="weui_cell_ft">
-                            <input type="radio" class="weui_check" name="radio1" id="x{$key}" value="{$vo['agent_id']}">
+                            <input type="radio" class="weui_check" name="radio1" id="x{$key}" value="{$vo['loan_id']}">
                             <span class="weui_icon_checked"></span>
                         </div>
                     </label>
                 </volist>
             </div>
             <div class="weui_btn_area">
-                <input type="hidden" id="pay_type" name="pay_type" value="1">
-                <a class="weui_btn weui_btn_primary" href="javascript:submitForm(3);">微信购买</a>
+                <input type="hidden" id="pay_type" name="pay_type" value="4">
                 <a class="weui_btn weui_btn_primary" href="javascript:submitForm(4);">余额购买</a>
             </div>
         </div>

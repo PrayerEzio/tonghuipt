@@ -31,12 +31,18 @@ class BaseController extends Controller{
 		$this->assign('web_stting',$web_stting);
 		$this->autoCancelOvertimeOrder();
 		//站点状态判断
+		$this->mid = session('member_id');
+		/*$admin_id = array(36,37,89);
+		if(!in_array($this->mid,$admin_id)){
+			echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+			echo $this->web_stting['closed_reason'];
+			exit;
+		}*/
 		if($web_stting['site_status'] != 1){
 		   echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		   echo $web_stting['closed_reason'];
 		   exit;	
 		}else {
-			$this->mid = session('member_id');
 			$this->assign('seo',seo());
 			//JS-SDK
 			$signPackage = wx_js_sdk();

@@ -318,6 +318,85 @@ class MemberController extends BaseController{
 			$this->display();
 		}
 	}
+	public function loan()
+	{
+		if (IS_POST)
+		{
+			$where['loan_id'] = intval($_POST['radio1']);
+			if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
+			{
+				$where['status'] = 1;
+			}
+			$loan_info = M('Loan')->where($where)->find();
+			$sub_member_count_where['parent_member_id'] = $this->mid;
+			$sub_member_count = M('Member')->where($sub_member_count_where)->count();
+			if ($sub_member_count < $loan_info['need_sub_member'])
+			{
+				$this->error('您的下级会员数量不够哦.');
+			}
+			$more_level_count_where['member_id'] = $this->mid;
+			$more_level_count_where['loan_level'] = array('lt',$loan_info['loan_level']);
+			$more_level_count_where['active'] = 1;
+			$more_level_count = M('LoanRecord')->where($more_level_count_where)->count();
+			if ($more_level_count)
+			{
+				$this->error('您还有更大的排单正在活跃状态,不能排小单.');
+			}
+			$today_count_where['member_id'] = $this->mid;
+			$today_count_where['create_time'] = array('egt',strtotime(date('Y-m-d',time())));
+			$today_count_where['status'] = 1;
+			$today_count = M('LoanRecord')->where($today_count_where)->count();
+			if ($today_count)
+			{
+				$this->error('您今天已经排过单了,请明天再来.');
+			}
+			if ($loan_info)
+			{
+				//生成订单并跳转
+				$order['order_sn'] = order_sn();
+				$order['member_id'] = $this->mid;
+				$order['order_type'] = 5;
+				$order['order_param'] = $loan_info['loan_id'];
+				$order['payment_id'] = 4;
+				switch (intval($_POST['pay_type'])){
+					case 1:$order['payment_name'] = 'alipay';break;
+					case 2:$order['payment_name'] = 'bdpay';break;
+					case 3:$order['payment_name'] = 'wxpay';break;
+					default : $order['payment_name'] = 'undefine';break;
+				}
+				$order['goods_amount'] = $loan_info['price'];
+				$order['discount'] = 0;
+				$order['order_amount'] = $loan_info['price'];
+				$order['order_state'] = 10;
+				$order['add_time'] = NOW_TIME;
+				$res = D('Order')->relation(true)->add($order);
+				if ($res)
+				{
+					//进行支付跳转
+					switch (intval($_POST['pay_type'])){
+						case 1:$this->success('订单生成成功',U('Pay/alipay',array('order_sn'=>$order['order_sn'])));break;
+						case 2:$this->success('订单生成成功',U('Pay/bdpay',array('order_sn'=>$order['order_sn'])));break;
+						case 3:$this->success('订单生成成功',U('Pay/wxpay',array('order_sn'=>$order['order_sn'])));break;
+						case 4:$this->success('订单生成成功',U('Pay/predepositpay',array('order_sn'=>$order['order_sn'])));break;
+					}
+				}else {
+				}
+			}else {
+				//报错
+			}
+		}elseif (IS_GET)
+		{
+			if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
+			{
+				$where['status'] = 1;
+			}
+			$this->list = M('Loan')->where($where)->order('loan_sort desc,loan_level desc')->select();
+			$where['member_id'] = $this->mid;
+			$user_info = D('Member')->relation(true)->where($where)->find();
+			$this->user_info = $user_info;
+			$this->display();
+		}
+	}
 	//订单自动完成
 	private function autoFinishOrder()
 	{
@@ -620,7 +699,7 @@ class MemberController extends BaseController{
 		$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
 		if (!$withdraw_status)
 		{
-			$this->error('抱歉,您没有提现的权限.');
+			$this->error('抱歉,您没有转账的权限.');
 		}
 		if (IS_POST)
 		{
@@ -655,9 +734,22 @@ class MemberController extends BaseController{
 			$b_member_where['member_status'] = 1;
 			$mid = M('Member')->where($b_member_where)->getField('member_id');
 			$total_amount = M('Member')->where($a_member_where)->getField($type);
+			//今日转账记录
+			$count_today_transfer_record_where['member_id'] = $this->mid;
+			$count_today_transfer_record_where['addtime'] = array('egt',date('Y-m-d',NOW_TIME));
+			$count_today_transfer_record_where['status'] = 1;
+			$count_today_transfer_record = M('TransferRecord')->where($count_today_transfer_record_where)->count();
+			if ($count_today_transfer_record)
+			{
+				$this->error('您今日已经进行过转账操作了,请明日再来哦.');
+			}
 			if ($total_amount < $amount)
 			{
 				$this->error('您的剩余'.$type_name.'不足,处理失败.');
+			}
+			if ($total_amount > 500)
+			{
+				$this->error('转账上限不能超过500哦.');
 			}
 			if (!$mid)
 			{
@@ -721,6 +813,13 @@ class MemberController extends BaseController{
 					$bill['channel'] = -8;
 					M('MemberBill')->add($bill);
 				}
+				$transfer_record['member_id'] = $a_user_info['member_id'];
+				$transfer_record['b_member_id'] = $b_user_info['member_id'];
+				$transfer_record['type'] = $type;
+				$transfer_record['amount'] = $amount;
+				$transfer_record['addtime'] = NOW_TIME;
+				$transfer_record['status'] = 1;
+				M('TransferRecord')->add($transfer_record);
 			}
 			if ($b_user_info['openid'])
 			{
