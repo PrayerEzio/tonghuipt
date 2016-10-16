@@ -24,15 +24,15 @@ p   { margin-bottom: 0 !important;}
  
     </style>
     <form action="" method="post" id="mainForm">
-        <div class="weui_cells_title font17">当前余额： <em class="green">{$member_info['predeposit']}</em></div>
-        <div class="weui_cells_title font17">当前积分： <em class="orange">{$member_info['point']}</em></div>
+        <div class="weui_cells_title font17">当前静态： <em class="green">{$member_info['predeposit']}</em></div>
+        <div class="weui_cells_title font17">当前动态： <em class="orange">{$member_info['point']}</em></div>
         <div class="weui_cells weui_cells_form">
             <div class="weui_cell">
                 <div class="weui_cell_hd"><label class="weui_label">类型</label></div>
                 <div class="weui_cell_bd weui_cell_primary pr">
                     <select class="weui_cell_select font17" name="type">
-                        <option value="predeposit">余额</option>
-                        <option value="point">积分</option>
+                        <option value="predeposit">静态</option>
+                        <option value="point">动态</option>
                     </select>
                     <i class="dow-ico"></i>
                 </div>

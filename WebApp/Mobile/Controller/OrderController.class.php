@@ -220,17 +220,17 @@ class OrderController extends BaseController{
 						$data['touser'] = $open_id;
 						$data['template_id'] = trim('zEB34NUf7Q1rgT1vjZeP0bQdGqHqRQqyItmQCVD_cmA');
 						$data['url'] = C('SiteUrl').U('Member/index');
-						$data['data']['first']['value'] = '亲，您的积分已到账！';
+						$data['data']['first']['value'] = '亲，您的动态已到账！';
 						$data['data']['first']['color'] = '#173177';
 						$data['data']['time']['value'] = date('Y年m月d日 H:i',time());
 						$data['data']['time']['color'] = '#173177';
-						$data['data']['org']['value'] = '通汇大商圈';
+						$data['data']['org']['value'] = '泰鑫国际';
 						$data['data']['org']['color'] = '#173177';
 						$data['data']['type']['value'] = '个人消费';
 						$data['data']['type']['color'] = '#173177';
 						$data['data']['money']['value'] = price_format($order['order_amount']).'元';
 						$data['data']['money']['color'] = '#173177';
-						$data['data']['point']['value'] = $order['order_points'].'积分';
+						$data['data']['point']['value'] = $order['order_points'].'动态';
 						$data['data']['point']['color'] = '#173177';
 						$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
 						$data['data']['remark']['color'] = '#173177';
@@ -331,12 +331,12 @@ class OrderController extends BaseController{
 				$member_point = M('Member')->where(array('member_id'=>$this->mid,'member_status'=>1))->getField('point');
 				if ($member_point < $cost_points)
 				{
-					$this->error('抱歉,您剩余的积分无法完成支付,订单生成失败.');
+					$this->error('抱歉,您剩余的动态无法完成支付,订单生成失败.');
 				}else {
 					$res = M('Member')->where(array('member_id'=>$this->mid))->setDec('point',$cost_points);
 					if (!$res)
 					{
-						$this->error('因积分支付失败,订单生成失败.');
+						$this->error('因动态支付失败,订单生成失败.');
 					}else {
 						$member = M('Member')->where(array('member_id'=>$this->mid))->find();
 						if ($member['openid'])
@@ -344,7 +344,7 @@ class OrderController extends BaseController{
 							$data['touser'] = $member['openid'];
 							$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
 							$data['url'] = C('SiteUrl').U('Order/index');
-							$data['data']['first']['value'] = get_member_nickname($this->mid).',您好:\n您的账号积分最新交易信息';
+							$data['data']['first']['value'] = get_member_nickname($this->mid).',您好:\n您的账号动态最新交易信息';
 							$data['data']['first']['color'] = '#173177';
 							$data['data']['time']['value'] = date('Y年m月d日 H:i',time());
 							$data['data']['time']['color'] = '#173177';
@@ -352,9 +352,9 @@ class OrderController extends BaseController{
 							$data['data']['type']['color'] = '#173177';
 							$data['data']['Point']['value'] = $cost_points;
 							$data['data']['Point']['color'] = '#173177';
-							$data['data']['From']['value'] = '通汇积分商城';
+							$data['data']['From']['value'] = '泰鑫国际动态商城';
 							$data['data']['From']['color'] = '#173177';
-							$data['data']['remark']['value'] = '截止'.date('Y年m月d日 H:i',time()).'，您的可用积分为'.$member['point'].'积分。如有疑问请咨询微信TH09241121';
+							$data['data']['remark']['value'] = '截止'.date('Y年m月d日 H:i',time()).'，您的可用动态为'.$member['point'].'积分。如有疑问请咨询微信TH09241121';
 							$data['data']['remark']['color'] = '#173177';
 							sendTemplateMsg($data);
 						}
@@ -433,7 +433,7 @@ class OrderController extends BaseController{
 				$point_res = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['cost_points']);
 				if (!$point_res)
 				{
-					$this->error('积分返还失败,未能成功取消订单.');
+					$this->error('动态返还失败,未能成功取消订单.');
 				}
 			}
 			//解冻库存
@@ -486,7 +486,7 @@ class OrderController extends BaseController{
 				$where['order_sn'] = $sn;
 				$where['order_state'] = 10;
 				$info['order_sn'] = $sn;
-				$info['title'] = '通汇平台支付';
+				$info['title'] = '泰鑫国际平台支付';
 				$order = $this->mod->where($where)->find();
 				if (!$order) {
 					$this->error('没有找到相关订单信息.');

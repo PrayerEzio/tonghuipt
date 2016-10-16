@@ -79,6 +79,7 @@ class BaseController extends Controller{
 			$member = M('Member')->where(array('member_id'=>$this->mid))->find();
 			if ($member['member_status'] != 1)
 			{
+				session('member_id',null);
 				$this->error('抱歉,您的账户已被锁定,请联系网站管理员解锁.');
 			}
 			$this->assign('member',$member);
@@ -203,7 +204,7 @@ class BaseController extends Controller{
 							$data['data']['keyword3']['color'] = '#173177';
 							$data['data']['keyword4']['value'] = date('Y年m月d日 H:i',time());
 							$data['data']['keyword4']['color'] = '#173177';
-							$data['data']['remark']['value'] = '【通汇大商圈】感谢有您，客服：894916947';
+							$data['data']['remark']['value'] = '【泰鑫国际】感谢有您，客服：894916947';
 							$data['data']['remark']['color'] = '#173177';
 							sendTemplateMsg($data);
 						}
@@ -243,7 +244,7 @@ class BaseController extends Controller{
 					$point_res = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['cost_points']);
 					if (!$point_res)
 					{
-						system_log('超时订单自动取消,但为返还用户积分.','超时订单自动取消,但为返还用户积分.订单id:'.$order['order_id'],10);
+						system_log('超时订单自动取消,但为返还用户动态.','超时订单自动取消,但为返还用户积分.订单id:'.$order['order_id'],10);
 					}
 				}
 				//写入订单日志

@@ -38,12 +38,12 @@
                                         <del>原价<em>{$vo['Goods']['goods_mktprice']|price_format}</em></del>
                                     </div>
                                 <else/>
-                                    <div>单价：<em>{$vo['Goods']['cost_point']}</em>积分</div>
+                                    <div>单价：<em>{$vo['Goods']['cost_point']}</em>动态</div>
                                 </if>
                             <div>数量：<em>{$vo['num']}</em></div>
                             <div>小计：
                                 <em class="subtotal">{$vo['Goods']['goods_price']*$vo['num']|price_format}</em>元
-                                <em class="">{$vo['Goods']['cost_point']*$vo['num']}</em>积分
+                                <em class="">{$vo['Goods']['cost_point']*$vo['num']}</em>动态
                             </div>
                         </dd>
                     </dl>

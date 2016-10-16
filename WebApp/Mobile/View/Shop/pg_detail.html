@@ -3,9 +3,9 @@
     <div class="header-all">
         <div class="com-header">
             <if condition="empty($_SERVER['HTTP_REFERER'])">
-                <a class="back-a" href="{:U('Index/Index')}"><i class="head-icon-back">&#xe609;</i></a>通汇大商圈
+                <a class="back-a" href="{:U('Index/Index')}"><i class="head-icon-back">&#xe609;</i></a>{:MSC('site_name')}
                 <else/>
-                <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>通汇大商圈
+                <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>{:MSC('site_name')}
             </if>
         </div>
         <div class="dt-top"></div>
@@ -28,7 +28,7 @@
     <div class="commodityDetails">
         <div class="title">{$info['goods_name']}</div>
         <div class="parameter">
-            <div class="item"><span>所需积分</span><em>{$info['cost_point']}</em></div>
+            <div class="item"><span>所需动态</span><em>{$info['cost_point']}</em></div>
             <div class="item"><span>已售</span><em>{$info['goods_sales']}</em></div>
             <div class="item"><span>库存</span><em>{$info['goods_storage']}</em></div>
             <div class="item"><span>数量</span><div class="mui-numbox" data-numbox-min="1">

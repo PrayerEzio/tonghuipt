@@ -28,7 +28,7 @@ class PayController extends BaseController{
 				$predeposit = M('Member')->where(array('member_id'=>$this->mid,'member_status'=>1))->getField('predeposit');
 				if ($predeposit < $order['order_amount'])
 				{
-					$this->error('余额不足,请充值');
+					$this->error('静态不足,请充值');
 				}else {
 					$res = M('Member')->where(array('member_id'=>$this->mid))->setDec('predeposit',$order['order_amount']);
 					if ($res)
@@ -78,14 +78,14 @@ class PayController extends BaseController{
 					break;
 				case 2:
 					//充值
-					$bill_log = '充值余额';
+					$bill_log = '充值静态';
 					$channel = 2;
 					$s = M('Member')->where(array('member_id'=>$order['member_id']))->setInc('predeposit',$order['goods_amount']);
 					if ($s)
 					{
 						$res = $this->mod->where($where)->setField('order_state',50);
 						$bill['member_id'] = $order['member_id'];
-						$bill['bill_log'] = '余额充值成功';
+						$bill['bill_log'] = '静态充值成功';
 						$bill['amount'] = $order['goods_amount'];
 						$bill['balance'] = M('Member')->where(array('member_id'=>$order['member_id']))->getField('predeposit');
 						$bill['addtime'] = NOW_TIME;
@@ -181,12 +181,12 @@ class PayController extends BaseController{
 					{
 						$res = $this->mod->where($where)->setField('order_state',50);
 						$bill['member_id'] = $order['member_id'];
-						$bill['bill_log'] = '余额充值成功';
+						$bill['bill_log'] = '购买排单成功';
 						$bill['amount'] = $order['goods_amount'];
 						$bill['balance'] = M('Member')->where(array('member_id'=>$order['member_id']))->getField('predeposit');
 						$bill['addtime'] = NOW_TIME;
 						$bill['bill_type'] = 1;
-						$bill['channel'] = 2;
+						$bill['channel'] = -9;
 						M('MemberBill')->add($bill);
 					}
 					break;
@@ -247,7 +247,7 @@ class PayController extends BaseController{
 				}else {
 					$alipay_data['total_fee'] = $order['order_amount'];//订单总金额
 					$alipay_data['out_trade_no'] = $order['order_sn'];//商户订单ID
-					$alipay_data['subject'] = '通汇大商圈订单支付';//订单商品标题
+					$alipay_data['subject'] = '泰鑫国际订单支付';//订单商品标题
 					$alipay_data['body'] = '订单号:'.$order['order_sn'];//订单商品描述
 					$alipay_data['show_url'] = 'http://'.$_SERVER['SERVER_NAME'].U('Member/order',array('sn'=>$order['order_sn']));//订单商品地址
 					$alipay_data['notify_url'] = U('Mobile/Pay/alipayNotify', '', true, true);

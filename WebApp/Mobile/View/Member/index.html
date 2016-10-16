@@ -19,8 +19,8 @@
 		<div class="clear"></div>
 	</header>
 	<div class="show-money">
-		 <div class="f">余额:￥<em>{$user_info['predeposit']|price_format}</em></div>
-		 <div class="f">积分:<em>{$user_info['point']}</em></div>
+		 <div class="f">静态:￥<em>{$user_info['predeposit']|price_format}</em></div>
+		 <div class="f">动态:<em>{$user_info['point']}</em></div>
 	</div>
 	<div class="m-main">
 		<div class="border"></div>
@@ -36,9 +36,10 @@
 			<a href="{:U('Member/exchange')}"><div class="item"><i class="iconfont ico-m-integral">&#xe60f;</i>积分兑现<em class="ico-right"></em></div></a>
 		</if>
 		<div class="border"></div>
-		<a href="{:U('Member/recharge')}"><div class="item"><i class="iconfont ico-m-recharge">&#xe61d;</i>我要充值<em class="ico-right"></em></div></a>
-		<a href="{:U('Member/withdraw')}"><div class="item"><i class="iconfont ico-m-takenow">&#xe610;</i>我要提现<em class="ico-right"></em></div></a>
+		<!--<a href="{:U('Member/recharge')}"><div class="item"><i class="iconfont ico-m-recharge">&#xe61d;</i>我要充值<em class="ico-right"></em></div></a>-->
+		<!--<a href="{:U('Member/withdraw')}"><div class="item"><i class="iconfont ico-m-takenow">&#xe610;</i>我要提现<em class="ico-right"></em></div></a>-->
 		<a href="{:U('Member/transfer')}"><div class="item"><i class="iconfont ico-m-takenow">&#xe610;</i>我要转账<em class="ico-right"></em></div></a>
+		<a href="{:U('Member/loan')}"><div class="item"><i class="iconfont ico-m-deposit">&#xe617;</i>我要排单<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/agent')}"><div class="item"><i class="iconfont ico-m-deposit">&#xe617;</i>成为代理商<em class="ico-right"></em></div></a>
 		<a href="{:U('Member/info')}"><div class="item"><i class="iconfont ico-m-info">&#xe61e;</i>个人资料<em class="ico-right"></em></div></a>
 		<a href="{:U('Index/myqrcode',array('phone'=>$user_info['mobile']))}"><div class="item"><i class="iconfont ico-m-two">&#xe61c;</i>我的二维码<em class="ico-right"></em></div></a>

@@ -1701,7 +1701,7 @@ function orderShareProfit($order_id)
 						$data['data']['keyword3']['color'] = '#173177';
 						$data['data']['keyword4']['value'] = date('Y年m月d日 H:i',time());
 						$data['data']['keyword4']['color'] = '#173177';
-						$data['data']['remark']['value'] = '【通汇大商圈】感谢有您，客服：894916947';
+						$data['data']['remark']['value'] = '【泰鑫国际】感谢有您，客服：894916947';
 						$data['data']['remark']['color'] = '#173177';
 						sendTemplateMsg($data);
 					}

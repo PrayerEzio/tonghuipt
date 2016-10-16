@@ -215,6 +215,7 @@ class MemberController extends BaseController{
 	}
 	public function agent()
 	{
+		$this->error('该功能已关闭');
 		if (IS_POST)
 		{
 			$where['agent_id'] = intval($_POST['radio1']);
@@ -330,12 +331,17 @@ class MemberController extends BaseController{
 			$loan_info = M('Loan')->where($where)->find();
 			$sub_member_count_where['parent_member_id'] = $this->mid;
 			$sub_member_count = M('Member')->where($sub_member_count_where)->count();
+			$loan_status = M('Member')->where(array('member_id'=>$this->mid))->getField('loan_status');
+			if ($loan_status)
+			{
+				$this->error('您还没有排单权限,请联系管理员开通.');
+			}
 			if ($sub_member_count < $loan_info['need_sub_member'])
 			{
 				$this->error('您的下级会员数量不够哦.');
 			}
 			$more_level_count_where['member_id'] = $this->mid;
-			$more_level_count_where['loan_level'] = array('lt',$loan_info['loan_level']);
+			$more_level_count_where['loan_level'] = array('gt',$loan_info['loan_level']);
 			$more_level_count_where['active'] = 1;
 			$more_level_count = M('LoanRecord')->where($more_level_count_where)->count();
 			if ($more_level_count)
@@ -435,17 +441,17 @@ class MemberController extends BaseController{
 						$data['touser'] = $open_id;
 						$data['template_id'] = trim('zEB34NUf7Q1rgT1vjZeP0bQdGqHqRQqyItmQCVD_cmA');
 						$data['url'] = C('SiteUrl').U('Member/index');
-						$data['data']['first']['value'] = '亲，您的积分已到账！';
+						$data['data']['first']['value'] = '亲，您的动态已到账！';
 						$data['data']['first']['color'] = '#173177';
 						$data['data']['time']['value'] = date('Y年m月d日 H:i',time());
 						$data['data']['time']['color'] = '#173177';
-						$data['data']['org']['value'] = '通汇大商圈';
+						$data['data']['org']['value'] = '泰鑫国际';
 						$data['data']['org']['color'] = '#173177';
 						$data['data']['type']['value'] = '个人消费';
 						$data['data']['type']['color'] = '#173177';
 						$data['data']['money']['value'] = price_format($order['order_amount']).'元';
 						$data['data']['money']['color'] = '#173177';
-						$data['data']['point']['value'] = $order['order_points'].'积分';
+						$data['data']['point']['value'] = $order['order_points'].'动态';
 						$data['data']['point']['color'] = '#173177';
 						$data['data']['remark']['value'] = '如有疑问，请联系客服894916947。';
 						$data['data']['remark']['color'] = '#173177';
@@ -588,8 +594,8 @@ class MemberController extends BaseController{
 				'min_value' => intval($amount*100),
 				'max_value' => intval($amount*100),
 				'total_num' => 1,
-				'send_name' => '通汇大商圈',
-				'wishing' => '通汇大商圈提现',
+				'send_name' => '泰鑫国际',
+				'wishing' => '泰鑫国际提现',
 				'act_name' => '提现',
 				'remark' => $desc,
 				'nonce_str' => $wxPay->createNoncestr(32),
@@ -708,17 +714,17 @@ class MemberController extends BaseController{
 			switch ($type)
 			{
 				case 'point' :
-					$type_name = '积分';
+					$type_name = '动态';
 					if (!$amount || $amount != intval($amount))
 					{
 						$this->error('转账'.$type_name.'不正确.');
 					}
 					break;
 				case 'predeposit' :
-					$type_name = '余额';
+					$type_name = '静态';
 					if (!$amount)
 					{
-						$this->error('转账金额不正确.');
+						$this->error('转账静态不正确.');
 					}
 					break;
 				default :
@@ -747,7 +753,7 @@ class MemberController extends BaseController{
 			{
 				$this->error('您的剩余'.$type_name.'不足,处理失败.');
 			}
-			if ($total_amount > 500)
+			if ($amount > 500)
 			{
 				$this->error('转账上限不能超过500哦.');
 			}
@@ -775,7 +781,7 @@ class MemberController extends BaseController{
 					$data['touser'] = $a_user_info['openid'];
 					$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
 					$data['url'] = C('SiteUrl').U('Member/index');
-					$data['data']['first']['value'] = '亲，您的通汇账号最新交易信息';
+					$data['data']['first']['value'] = '亲，您的泰鑫国际账号最新交易信息';
 					$data['data']['first']['color'] = '#173177';
 					$data['data']['time']['value'] = date('Y-m-d H:i',time());
 					$data['data']['time']['color'] = '#173177';
@@ -783,9 +789,9 @@ class MemberController extends BaseController{
 					$data['data']['type']['color'] = '#173177';
 					$data['data']['Point']['value'] = $amount;
 					$data['data']['Point']['color'] = '#173177';
-					$data['data']['From']['value'] = '积分转出';
+					$data['data']['From']['value'] = '动态转出';
 					$data['data']['From']['color'] = '#173177';
-					$data['data']['remark']['value'] = '截止'.$data['data']['time']['value'].'，您的通汇积分为'.$a_user_info['point'].'积分。如有疑问请咨询微信894916947';
+					$data['data']['remark']['value'] = '截止'.$data['data']['time']['value'].'，您的泰鑫国际动态为'.$a_user_info['point'].'积分。如有疑问请咨询微信894916947';
 					$data['data']['remark']['color'] = '#173177';
 					sendTemplateMsg($data);
 				}elseif ($type == 'predeposit')
@@ -794,18 +800,18 @@ class MemberController extends BaseController{
 					$data['touser'] = $a_user_info['openid'];
 					$data['template_id'] = trim('hJTtNJfTzW4x4lEe8SRS6Cp662mzoaeTQHzyU7PqoVE');
 					$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>-1));
-					$data['data']['first']['value'] = get_member_nickname($this->mid).',您余额转出成功！';
+					$data['data']['first']['value'] = get_member_nickname($this->mid).',您静态转出成功！';
 					$data['data']['first']['color'] = '#173177';
 					$data['data']['keyword1']['value'] = price_format($amount).'元';
 					$data['data']['keyword1']['color'] = '#173177';
 					$data['data']['keyword2']['value'] = $b_mobile;
 					$data['data']['keyword2']['color'] = '#173177';
-					$data['data']['remark']['value'] = '进入通汇大商圈个人中心查看余额，有疑问联系客服微信894916947';
+					$data['data']['remark']['value'] = '进入泰鑫国际个人中心查看静态，有疑问联系客服微信894916947';
 					$data['data']['remark']['color'] = '#173177';
 					sendTemplateMsg($data);
 					//生成账单流水
 					$bill['member_id'] = $a_user_info['member_id'];
-					$bill['bill_log'] = '余额转出';
+					$bill['bill_log'] = '静态转出';
 					$bill['amount'] = price_format($amount);
 					$bill['balance'] = $a_user_info['predeposit'];
 					$bill['addtime'] = NOW_TIME;
@@ -828,7 +834,7 @@ class MemberController extends BaseController{
 					$data['touser'] = $b_user_info['openid'];
 					$data['template_id'] = trim('C-ODq44vKBM88QaKAoXdeTF_bJ3dkqkrFqprjVTiDK0');
 					$data['url'] = C('SiteUrl').U('Member/index');
-					$data['data']['first']['value'] = '亲，您的通汇账号最新交易信息';
+					$data['data']['first']['value'] = '亲，您的泰鑫国际账号最新交易信息';
 					$data['data']['first']['color'] = '#173177';
 					$data['data']['time']['value'] = date('Y-m-d H:i',time());
 					$data['data']['time']['color'] = '#173177';
@@ -836,9 +842,9 @@ class MemberController extends BaseController{
 					$data['data']['type']['color'] = '#173177';
 					$data['data']['Point']['value'] = $amount;
 					$data['data']['Point']['color'] = '#173177';
-					$data['data']['From']['value'] = '积分转入';
+					$data['data']['From']['value'] = '动态转入';
 					$data['data']['From']['color'] = '#173177';
-					$data['data']['remark']['value'] = '截止'.$data['data']['time']['value'].'，您的通汇积分为'.$b_user_info['point'].'积分。如有疑问请咨询微信894916947';
+					$data['data']['remark']['value'] = '截止'.$data['data']['time']['value'].'，您的泰鑫国际动态为'.$b_user_info['point'].'积分。如有疑问请咨询微信894916947';
 					$data['data']['remark']['color'] = '#173177';
 					sendTemplateMsg($data);
 				}elseif ($type == 'predeposit')
@@ -853,12 +859,12 @@ class MemberController extends BaseController{
 					$data['data']['keyword1']['color'] = '#173177';
 					$data['data']['keyword2']['value'] = $a_mobile;
 					$data['data']['keyword2']['color'] = '#173177';
-					$data['data']['remark']['value'] = '进入通汇大商圈个人中心查看余额，有疑问联系客服微信894916947';
+					$data['data']['remark']['value'] = '进入泰鑫国际个人中心查看静态，有疑问联系客服微信894916947';
 					$data['data']['remark']['color'] = '#173177';
 					sendTemplateMsg($data);
 					//生成账单流水
 					$bill['member_id'] = $b_user_info['member_id'];
-					$bill['bill_log'] = '余额转入';
+					$bill['bill_log'] = '静态转入';
 					$bill['amount'] = price_format($amount);
 					$bill['balance'] = $b_user_info['predeposit'];
 					$bill['addtime'] = NOW_TIME;

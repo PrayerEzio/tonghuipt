@@ -3,9 +3,9 @@
     <div class="header-all">
         <div class="com-header">
             <if condition="empty($_SERVER['HTTP_REFERER'])">
-                <a class="back-a" href="{:U('Index/Index')}"><i class="head-icon-back">&#xe609;</i></a>通汇大商圈
+                <a class="back-a" href="{:U('Index/Index')}"><i class="head-icon-back">&#xe609;</i></a>{:MSC('site_name')}
             <else/>
-                <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>通汇大商圈
+                <a class="back-a" href="javascript:history.go(-1)"><i class="head-icon-back">&#xe609;</i></a>{:MSC('site_name')}
             </if>
         </div>
         <div class="dt-top"></div>

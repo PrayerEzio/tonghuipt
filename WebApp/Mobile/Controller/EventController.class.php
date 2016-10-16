@@ -75,7 +75,7 @@ class EventController extends BaseController{
 			$user_point = M('Member')->where($cost_where)->getField('point');
 			if ($user_point < $lottery_info['lottery_cost_point'])
 			{
-				return array(300,'抱歉,您的积分不足,无法参与抽奖.');
+				return array(300,'抱歉,您的动态不足,无法参与抽奖.');
 			}
 			$res_cost_point = M('Member')->where($cost_where)->setDec('point',$lottery_info['lottery_cost_point']);
 			if (!$res_cost_point)
@@ -89,7 +89,7 @@ class EventController extends BaseController{
 			if ($user_predeposit < $lottery_info['lottery_cost_money'])
 			{
 				M('Member')->where($cost_where)->setInc('point',$lottery_info['lottery_cost_point']);
-				return array(300,'抱歉,您的余额不足,无法参与抽奖.');
+				return array(300,'抱歉,您的静态不足,无法参与抽奖.');
 			}
 			$res_cost_predeposit = M('Member')->where($cost_where)->setDec('predeposit',$lottery_info['lottery_cost_money']);
 			if (!$res_cost_predeposit)

@@ -365,7 +365,7 @@ class OrderController extends GlobalController {
 					$data['data']['first']['color'] = '#173177';
 					$data['data']['time']['value'] = date('Y年m月d日 H:i',time());
 					$data['data']['time']['color'] = '#173177';
-					$data['data']['org']['value'] = '通汇大商圈';
+					$data['data']['org']['value'] = '泰鑫国际';
 					$data['data']['org']['color'] = '#173177';
 					$data['data']['type']['value'] = '个人消费';
 					$data['data']['type']['color'] = '#173177';

@@ -19,8 +19,8 @@
         <div class="clear"></div>
     </header>
     <div class="show-money">
-        <div class="f">余额:￥<em>{$user_info['predeposit']|price_format}</em></div>
-        <div class="f">积分:<em>{$user_info['point']}</em></div>
+        <div class="f">静态:￥<em>{$user_info['predeposit']|price_format}</em></div>
+        <div class="f">动态:<em>{$user_info['point']}</em></div>
     </div>
     <style>
         p {
@@ -44,8 +44,8 @@
             </div>
             <div class="weui_btn_area">
                 <input type="hidden" id="pay_type" name="pay_type" value="1">
-                <a class="weui_btn weui_btn_primary" href="javascript:submitForm(3);">微信购买</a>
-                <a class="weui_btn weui_btn_primary" href="javascript:submitForm(4);">余额购买</a>
+                <!--<a class="weui_btn weui_btn_primary" href="javascript:submitForm(3);">微信购买</a>-->
+                <a class="weui_btn weui_btn_primary" href="javascript:submitForm(4);">静态购买</a>
             </div>
         </div>
     </form>
