@@ -54,32 +54,36 @@ var indexApp = {
 		//点击事件
 		t.valueJson['startBtn'].click(function () {
 			if(t.onStart == true) { //只有 为 true 的 时候 才允许转动
-				t.onStart = false;
-
-				//如果开启了关注 并且 当前 用户 没有关注
-				if(t.valueJson['is_gz'] == 1 && t.valueJson['is_follow'] == 2) {
-					t.dialog($('.gz')); //弹出关注提示框
-				}else {
-
+				// t.onStart = false;
 					//ajax 事件 获取
-					//得到的参数详细见交互文档
-					
-					/*$.ajax({
-						'type' : 'POST',
-						'url' : t.valueJson['clickAjaxUrl'],
-						success : function (data) {*/
-							var data = {'status' : 1, 'actionStatus' : 1, 'ran' : 40, 'onceran' : 40, 'num' : 1}
+					$.ajax({
+						url:"www.tonghuipt.com/Event/ajaxLottery",
+						type:'GET',
+						dataType:"json",
+						data:{"id":1},
+						success : function (data) {
+							//需要返回的数据
+							// var data = {'status' : 1, 'actionStatus' : 2, 'ran' : 40, 'onceran' : 40, 'num' : 13}
+							// 			// status: 1执行转动 2不转动; 
+							// 			// actionStatus: 1值为中奖了,2值为再来一次3值为多谢参加;
+							// 			// num:抽奖次数; 
+							// 			// 其它两个参数不管
+										
+							// if(data['status'] == 1) { //表示成功 
+							// 	t.showWheel(data); //执行转动效果
+							// }else if(data['status'] == 2){ //金额不足 或者次数不足
+							// 	t.dialog($('.info')); //没有按钮的提示信息
+							// }else {         //出现了异常错误
+							// 	t.dialog($('.again'),data);  //执行带按钮的提示框
+							// }
+							alert(data);
+						},
+						error:function(){
+							alert("错误")
+						}
+					 });
 
-							if(data['status'] == 1) { //表示成功 
-								t.showWheel(data); //执行转动效果
-							}else if(data['status'] == 2){ //金额不足 或者次数不足
-								t.dialog($('.info'),data); //没有按钮的提示信息
-							}else {         //出现了异常错误
-								t.dialog($('.again'),data);  //执行带按钮的提示框
-							}
-						/*}
-					});*/
-				}
+		
 			}
 		});
 	},
@@ -113,15 +117,15 @@ var indexApp = {
 	//根据各种不同的参数 显示弹出层的提示框
 	showDialog : function (data) {
 		var t = this;
-
 		if(data['actionStatus'] == 1) {  //值为1 表示 抽取到了现金红包
 			t.deduct(data); //扣除次数;
 			t.dialog($('.theForm'), data); //获得奖品的 提示信息框
 		}else if(data['actionStatus'] == 2) {   //值为2 表示 再来一次  再来一次不扣除次数
 			t.dialog($('.again'), data);//再来一次
+			t.deduct(data); //扣除次数; 
 		}else if(data['actionStatus'] == 3) {  //值为3 表示 谢谢参与
 			t.deduct(data); //扣除次数;  
-			t.dialog($('.again'), data);//谢谢参与
+			t.dialog($('.info'), data);//谢谢参与
 		}
 	},
 

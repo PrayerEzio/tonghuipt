@@ -105,6 +105,27 @@ class DayController extends BaseController
 						$bill['bill_type'] = 1;
 						$bill['channel'] = 9;
 						M('MemberBill')->add($bill);
+						//推送消息
+						$open_id = M('Member')->where(array('member_id'=>$bill['member_id']))->getField('openid');
+						if ($open_id)
+						{
+							$data['touser'] = $open_id;
+							$data['template_id'] = trim('O1byAyvnVv6dtj1wrwQiL9LdUS6Zb6S6E65APrUmf7I');
+							$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>9));
+							$data['data']['first']['value'] = $member_nickname.'您好,您的排单获得返利回馈.';
+							$data['data']['first']['color'] = '#173177';
+							$data['data']['keyword1']['value'] = $item['order_sn'];
+							$data['data']['keyword1']['color'] = '#173177';
+							$data['data']['keyword2']['value'] = price_format($loan_info['price']).'元';
+							$data['data']['keyword2']['color'] = '#173177';
+							$data['data']['keyword3']['value'] = date('Y年m月d日 H:i',time());
+							$data['data']['keyword2']['color'] = '#173177';
+							$data['data']['keyword3']['value'] =  price_format($bill['amount']).'元';
+							$data['data']['keyword3']['color'] = '#173177';
+							$data['data']['remark']['value'] = '感谢您的支持！';
+							$data['data']['remark']['color'] = '#173177';
+							sendTemplateMsg($data);
+						}
 					}else {
 						M()->rollback();
 						//写入报错日志

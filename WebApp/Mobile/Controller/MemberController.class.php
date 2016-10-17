@@ -332,7 +332,7 @@ class MemberController extends BaseController{
 			$sub_member_count_where['parent_member_id'] = $this->mid;
 			$sub_member_count = M('Member')->where($sub_member_count_where)->count();
 			$loan_status = M('Member')->where(array('member_id'=>$this->mid))->getField('loan_status');
-			if ($loan_status)
+			if (!$loan_status)
 			{
 				$this->error('您还没有排单权限,请联系管理员开通.');
 			}

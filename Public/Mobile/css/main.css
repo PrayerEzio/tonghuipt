@@ -656,6 +656,7 @@ a.cash{
     line-height: 40px;
     width: 25%;
     text-align: center;
+    font-size: 13px;
 }
 .tab li.on{
     color: #339EE2;
@@ -664,7 +665,7 @@ a.cash{
 .order{
     margin-bottom: 10px;
     border-bottom:1px solid #ddd;
-    border-top:1px solid #ddd;
+    
 }
 .order h3{
     background-color: #fff;
@@ -672,6 +673,8 @@ a.cash{
     line-height: 40px;
     font-size: 12px;
     padding:0 10px;
+    color: #737373;
+    border-top:1px solid #ddd;
 }
 .order h3 span{
     font-weight: bold;
@@ -679,6 +682,7 @@ a.cash{
 }
 .order dl{
     padding: 10px;
+    background:#fff;
 }
 .order dl dt{
     margin-right: 10px;
@@ -690,6 +694,7 @@ a.cash{
 .order dl dd{
     width:calc(100% - 90px);
     width:-webkit-calc(100% - 90px);
+    font-size: 13px;
 }
 .operating{
     height: 40px;
@@ -697,6 +702,7 @@ a.cash{
     background-color: #fff;
     padding:0 10px;
     color: #f50;
+    font-size: 12px;
 }
 .operating ul li{
     margin-left: 5px;

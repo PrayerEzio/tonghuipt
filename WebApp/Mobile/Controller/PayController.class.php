@@ -176,6 +176,7 @@ class PayController extends BaseController{
 					$data['execution_times'] = 0;
 					$data['status'] = 1;
 					$data['active'] = 1;
+					$data['order_sn'] = $order_sn;
  					$s = M('LoanRecord')->add($data);
 					if ($s)
 					{
