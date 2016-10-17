@@ -519,6 +519,7 @@ class MemberController extends BaseController{
 	//提现
 	public function withdraw()
 	{
+		$this->error('该功能已关闭');
 		if(IS_POST)
 		{
 			$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
@@ -702,6 +703,8 @@ class MemberController extends BaseController{
 		$a_member_where['member_id'] = $this->mid;
 		$a_member_where['member_status'] = 1;
 		$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
+		$admin_id = array(141,89);
+		$is_in_admin_id = in_array($this->mid,$admin_id);
 		if (!$withdraw_status)
 		{
 			$this->error('抱歉,您没有转账的权限.');
@@ -744,15 +747,15 @@ class MemberController extends BaseController{
 			$count_today_transfer_record_where['addtime'] = array('egt',date('Y-m-d',NOW_TIME));
 			$count_today_transfer_record_where['status'] = 1;
 			$count_today_transfer_record = M('TransferRecord')->where($count_today_transfer_record_where)->count();
-			if ($count_today_transfer_record)
+			if ($count_today_transfer_record && !$admin_id)
 			{
 				$this->error('您今日已经进行过转账操作了,请明日再来哦.');
 			}
-			if ($total_amount < $amount)
+			if ($total_amount < $amount && !$admin_id)
 			{
 				$this->error('您的剩余'.$type_name.'不足,处理失败.');
 			}
-			if ($amount > 500)
+			if ($amount > 500 && !$admin_id)
 			{
 				$this->error('转账上限不能超过500哦.');
 			}
@@ -760,8 +763,11 @@ class MemberController extends BaseController{
 			{
 				$this->error('该用户不存在,请查证.');
 			}
-			$res_a = M('Member')->where($a_member_where)->setDec($type,$amount);
-			if (!$res_a)
+			if (!$admin_id)
+			{
+				$res_a = M('Member')->where($a_member_where)->setDec($type,$amount);
+			}
+			if (!$res_a && !$admin_id)
 			{
 				$this->error('网络繁忙,请稍后再试.');
 			}
