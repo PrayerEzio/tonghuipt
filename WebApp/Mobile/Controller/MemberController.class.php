@@ -215,7 +215,6 @@ class MemberController extends BaseController{
 	}
 	public function agent()
 	{
-		$this->error('该功能已关闭');
 		if (IS_POST)
 		{
 			$where['agent_id'] = intval($_POST['radio1']);
