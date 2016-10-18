@@ -119,9 +119,9 @@ class DayController extends BaseController
 							$data['data']['keyword2']['value'] = price_format($loan_info['price']).'元';
 							$data['data']['keyword2']['color'] = '#173177';
 							$data['data']['keyword3']['value'] = date('Y年m月d日 H:i',time());
-							$data['data']['keyword2']['color'] = '#173177';
-							$data['data']['keyword3']['value'] =  price_format($bill['amount']).'元';
 							$data['data']['keyword3']['color'] = '#173177';
+							$data['data']['keyword4']['value'] =  price_format($bill['amount']).'元';
+							$data['data']['keyword4']['color'] = '#173177';
 							$data['data']['remark']['value'] = '感谢您的支持！';
 							$data['data']['remark']['color'] = '#173177';
 							sendTemplateMsg($data);

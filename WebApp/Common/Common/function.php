@@ -1590,12 +1590,13 @@ function getParentUidList($member_id,$loop = 9)
 	return $list;
 }
 
-function qrcode($url,$logo = './Public/Mobile/images/logo.jpg')
+function qrcode($url,$logo = './Public/Mobile/images/logo.jpg',$background = '',$path = '',$background_path = '')
 {
 	$name = md5($url);
-	if (!file_exists('./Uploads/qrcode/'.$name.'.png'))
+	$path ? '' : $path = '/Uploads/qrcode/'.$name.'.png';
+	if (!file_exists('.'.$path))
 	{
-		$QR = './Uploads/qrcode/'.$name.'.png';
+		$QR = '.'.$path;
 		$errorCorrectionLevel = 'L';//容错级别
 		$matrixPointSize = 6;//生成图片大小
 		vendor('phpqrcode.phpqrcode');
@@ -1617,9 +1618,32 @@ function qrcode($url,$logo = './Public/Mobile/images/logo.jpg')
 				$logo_qr_height, $logo_width, $logo_height);
 		}
 		//输出图片
-		imagepng($QR, './Uploads/qrcode/'.$name.'.png');
+		imagepng($QR, '.'.$path);
 	}
-	return __ROOT__.'/Uploads/qrcode/'.$name.'.png';
+	if ($background)
+	{
+		$background_path ? '' : $background_path = '/Uploads/qrcode_background/'.$name.'.png'; ;
+		return qrcodeBackground($path,$background,$background_path);
+	}else {
+		return $path;
+	}
+}
+
+function qrcodeBackground($qrcode,$background,$path)
+{
+	if (!file_exists('.'.$path))
+	{
+		//输出图片
+		$QR = imagecreatefromstring(file_get_contents('.'.$qrcode));
+		$QR_width = imagesx($QR);//二维码图片宽度
+		$QR_height = imagesy($QR);//二维码图片高度
+		//图片背景
+		$background = imagecreatefromstring(file_get_contents($background));
+		//重新组合图片并调整大小
+		imagecopyresampled($background, $QR, 82, 235, 0, 0, $QR_width+17,$QR_height+24, $QR_width, $QR_height);
+		imagepng($background, '.'.$path);
+	}
+	return $path;
 }
 
 function getParentsMember($member_id,$field = '*',$loop = 9999)
