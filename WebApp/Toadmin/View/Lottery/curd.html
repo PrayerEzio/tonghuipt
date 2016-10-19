@@ -1,0 +1,111 @@
+<include file="Public/header" />
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title">
+            <h3><if condition="$info['lottery_title'] != ''">{$info['lottery_title']}-抽奖设置<else/>新建抽奖</if></h3>
+            <ul class="tab-base">
+                <li><a href="{:U('Adv/adv_position')}"><span>管理</span></a></li>
+                <li><a href="JavaScript:void(0);" class="current"><span><empty name="info['ap_id']">新增<else/>编辑</empty></span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="fixed-empty"></div>
+    <form id="link_form" enctype="multipart/form-data" method="post">
+        <input name="id" type="hidden" value="{$info['ap_id']}"/>
+        <table class="table tb-type2">
+            <tbody>
+            <tr class="noborder">
+                <td colspan="2" class="required"><label class="validation" for="lottery_title">抽奖标题:</label></td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform"><input type="text" name="lottery_title" id="lottery_title"  value="{$info['lottery_title']}" class="txt">
+                </td>
+                <td class="vatop tips"></td>
+            </tr>
+            <tr class="noborder">
+                <td colspan="2" class="required"><label for="lottery_cycle_day">循环周期:</label></td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform"><input type="text" name="lottery_cycle_day" value="{$info['lottery_cycle_day']}" id="lottery_cycle_day" class="txt">天
+                </td>
+                <td class="vatop tips"></td>
+            </tr>
+            <tr class="noborder">
+                <td colspan="2" class="required"><label for="lottery_cycle_times">周期次数:</label></td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform"><input type="text" name="lottery_cycle_times" value="{$info['lottery_cycle_times']}" id="lottery_cycle_times" class="txt">次
+                </td>
+                <td class="vatop tips"></td>
+            </tr>
+            <tr class="noborder">
+                <td colspan="2" class="required"><label for="lottery_cost_money">花费金额:</label></td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform"><input type="text" name="lottery_cost_money" value="{$info['lottery_cost_money']}" id="lottery_cost_money" class="txt">元
+                </td>
+                <td class="vatop tips">抽奖需要花费的金额</td>
+            </tr>
+            <tr class="noborder">
+                <td colspan="2" class="required"><label for="lottery_cost_money">花费积分:</label></td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform"><input type="text" name="lottery_cost_point" value="{$info['lottery_cost_point']}" id="lottery_cost_point" class="txt">分
+                </td>
+                <td class="vatop tips">抽奖需要花费的积分</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="required">状态:</td>
+            </tr>
+            <tr class="noborder">
+                <td class="vatop rowform">
+                    <ul>
+                        <li>
+                            <input name="lottery_status" type="radio" value="1" <if condition="$info['lottery_status'] eq 1">checked="checked"</if>>
+                            <label>进行</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="lottery_status" value="0" <if condition="$info['lottery_status'] eq 0">checked="checked"</if>>
+                            <label>下线</label>
+                        </li>
+                    </ul>
+                </td>
+                <td class="vatop tips"></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr class="tfoot">
+                <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+            </tr>
+            </tfoot>
+        </table>
+    </form>
+</div>
+<script>
+    //按钮先执行验证再提交表单
+    $(function(){
+        $("#submitBtn").click(function(){
+            $("#link_form").submit();
+        });
+    });
+</script>
+<script type="text/javascript">
+    // 模拟网站LOGO上传input type='file'样式
+    $(function(){
+        $("#default_pic").change(function(){
+            $("#txt_default_pic").val($(this).val());
+        });
+    // 上传图片类型
+        $('input[class="type-file-file"]').change(function(){
+            var filepatd=$(this).val();
+            var extStart=filepatd.lastIndexOf(".");
+            var ext=filepatd.substring(extStart,filepatd.lengtd).toUpperCase();
+            if(ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+                alert("图片格式错误");
+                $(this).attr('value','');
+                return false;
+            }
+        });
+    });
+</script>
+<include file="Public/footer" />
