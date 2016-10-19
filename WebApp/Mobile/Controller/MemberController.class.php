@@ -744,7 +744,7 @@ class MemberController extends BaseController{
 			$total_amount = M('Member')->where($a_member_where)->getField($type);
 			//今日转账记录
 			$count_today_transfer_record_where['member_id'] = $this->mid;
-			$count_today_transfer_record_where['addtime'] = array('egt',date('Y-m-d',NOW_TIME));
+			$count_today_transfer_record_where['addtime'] = array('egt',NOW_TIME);
 			$count_today_transfer_record_where['status'] = 1;
 			$count_today_transfer_record = M('TransferRecord')->where($count_today_transfer_record_where)->count();
 			if ($count_today_transfer_record && !$is_in_admin_id)
