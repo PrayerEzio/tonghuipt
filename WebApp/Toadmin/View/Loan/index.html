@@ -1,0 +1,135 @@
+<include file="Public/header"/>
+<script type="text/javascript">
+    function submit_delete_batch() {
+        /* 获取选中的项 */
+        var items = '';
+        $('.checkitem:checked').each(function () {
+            items += this.value + ',';
+        });
+        if (items != '') {
+            items = items.substr(0, (items.length - 1));
+            submit_delete(items);
+        } else {
+            alert('请选择要操作的对象');
+        }
+    }
+
+    function submit_delete(id) {
+        if (confirm('确定要删除？')) {
+            $('#goods_id').val(id);
+            $('#list_form').submit();
+        }
+    }
+</script>
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title">
+            <h3>排单管理</h3>
+            <ul class="tab-base">
+                <li><a href="javascript:void(0);" class="current"><span>管理</span></a></li>
+                <!--<li><a href="{:U('Agent/agent_add')}"><span>新增</span></a></li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="fixed-empty"></div>
+    <form method="get" name="formSearch">
+        <table class="tb-type1 noborder search">
+            <tbody>
+            <tr>
+                <th>会员id</th>
+                <td><input type="text" value="{$search['member_id']}" name="member_id" class="txt"></td>
+                <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <!-- 操作说明 -->
+    <table class="table tb-type2" id="prompt">
+        <tbody>
+        <tr class="space odd">
+            <th colspan="12" class="nobg">
+                <div class="title">
+                    <h5>操作提示</h5>
+                    <span class="arrow"></span></div>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <ul>
+                    <li>可以查看排单信息</li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form id="list_form" method='post' action="{:U('Loan/loan_del')}">
+        <input id="id" name="id" type="hidden"/>
+        <table class="table tb-type2">
+            <thead>
+            <tr class="space">
+                <th colspan="15" class="nobg">列表</th>
+            </tr>
+            <tr class="thead">
+                <th class="w24"></th>
+                <th class="w72">订单号</th>
+                <th class="w72">会员id</th>
+                <th class="w72">会员名</th>
+                <th class="align-center">排单类型</th>
+                <th class="align-center">创建时间</th>
+                <th class="align-center">开始时间</th>
+                <th class="align-center">结束时间</th>
+                <th class="align-center">已执行次数</th>
+                <th class="align-center">父级返款</th>
+                <th class="align-center">活跃状态</th>
+                <th class="align-center">状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <notempty name="list">
+                <volist name="list" id="val">
+                    <tr class="hover edit">
+                        <td><input type="checkbox" value="{$val['id']}" class="checkitem"></td>
+                        <td class="w72">{$val['order_sn']}</td>
+                        <td class="w72">{$val['member_id']}</td>
+                        <td class="w72">{$val['member_id']|get_member_nickname}</td>
+                        <td class="align-center">{:get_loan_price($val['loan_id'])}</td>
+                        <td class="align-center">{$val['create_time']|date='Y-m-d',###}</td>
+                        <td class="align-center">{$val['start_time']|date='Y-m-d',###}</td>
+                        <td class="align-center">{$val['end_time']|date='Y-m-d',###}</td>
+                        <td class="align-center">{$val['execution_times']}</td>
+                        <td class="align-center">
+                            <if condition="$val['parent_reward_status'] == 1">已返款<else/>待返款</if>
+                        </td>
+                        <td class="align-center">
+                            <if condition="$val['active'] == 1">进行中<else/>已完成</if>
+                        </td>
+                        <td class="align-center">
+                            <if condition="$val['status'] == 1">正常<else/>冻结</if>
+                        </td>
+                    </tr>
+                </volist>
+                <else/>
+                <tr class="no_data">
+                    <td colspan="10">暂无记录</td>
+                </tr>
+            </notempty>
+            </tbody>
+            <notempty name="list">
+                <tfoot>
+                <tr class="tfoot">
+                    <td><!--<input type="checkbox" class="checkall" id="checkall_1">--></td>
+                    <td id="batchAction" colspan="15">
+          	<span class="all_checkbox">
+<!--            	<label for="checkall_1">全选</label>
+            	<a href="javascript:void(0)" class="btn" onclick="submit_delete_batch();"><span>删除</span></a>-->
+            </span>
+                        <div class="pagination">{$page_show}</div>
+                </tr>
+                </tfoot>
+            </notempty>
+        </table>
+    </form>
+</div>
+<script type="text/javascript" src="__JS__/jquery.edit.js" charset="utf-8"></script>
+<include file="Public/footer"/>

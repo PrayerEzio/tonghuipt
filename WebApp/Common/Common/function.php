@@ -1754,3 +1754,13 @@ function get_award_name($award_id)
 	}
 	return $award_name;
 }
+
+function get_loan_price($loan_id)
+{
+	$loan_price = M('Loan')->where(array('loan_id'=>$loan_id))->getField('price');
+	if (empty($loan_price))
+	{
+		$loan_price = '未知';
+	}
+	return $loan_price;
+}

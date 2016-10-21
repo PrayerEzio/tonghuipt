@@ -1,101 +1,113 @@
-<include file="Public/header" />
+<include file="Public/header"/>
+
 <div class="page">
-    <div class="fixed-bar">
-        <div class="item-title">
-            <h3><if condition="$info['lottery_title'] != ''">{$info['lottery_title']}-抽奖设置<else/>新建抽奖</if></h3>
-            <ul class="tab-base">
-                <li><a href="{:U('Adv/adv_position')}"><span>管理</span></a></li>
-                <li><a href="JavaScript:void(0);" class="current"><span><empty name="info['ap_id']">新增<else/>编辑</empty></span></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="fixed-empty"></div>
-    <form id="link_form" enctype="multipart/form-data" method="post">
-        <input name="id" type="hidden" value="{$info['ap_id']}"/>
-        <table class="table tb-type2">
+    <form action="" id="form_submit" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="lottery_id" value="{$info['lottery_id']}">
+        <table class="table tb-type2 order">
             <tbody>
-            <tr class="noborder">
-                <td colspan="2" class="required"><label class="validation" for="lottery_title">抽奖标题:</label></td>
-            </tr>
-            <tr class="noborder">
-                <td class="vatop rowform"><input type="text" name="lottery_title" id="lottery_title"  value="{$info['lottery_title']}" class="txt">
-                </td>
-                <td class="vatop tips"></td>
-            </tr>
-            <tr class="noborder">
-                <td colspan="2" class="required"><label for="lottery_cycle_day">循环周期:</label></td>
-            </tr>
-            <tr class="noborder">
-                <td class="vatop rowform"><input type="text" name="lottery_cycle_day" value="{$info['lottery_cycle_day']}" id="lottery_cycle_day" class="txt">天
-                </td>
-                <td class="vatop tips"></td>
-            </tr>
-            <tr class="noborder">
-                <td colspan="2" class="required"><label for="lottery_cycle_times">周期次数:</label></td>
-            </tr>
-            <tr class="noborder">
-                <td class="vatop rowform"><input type="text" name="lottery_cycle_times" value="{$info['lottery_cycle_times']}" id="lottery_cycle_times" class="txt">次
-                </td>
-                <td class="vatop tips"></td>
-            </tr>
-            <tr class="noborder">
-                <td colspan="2" class="required"><label for="lottery_cost_money">花费金额:</label></td>
-            </tr>
-            <tr class="noborder">
-                <td class="vatop rowform"><input type="text" name="lottery_cost_money" value="{$info['lottery_cost_money']}" id="lottery_cost_money" class="txt">元
-                </td>
-                <td class="vatop tips">抽奖需要花费的金额</td>
-            </tr>
-            <tr class="noborder">
-                <td colspan="2" class="required"><label for="lottery_cost_money">花费积分:</label></td>
-            </tr>
-            <tr class="noborder">
-                <td class="vatop rowform"><input type="text" name="lottery_cost_point" value="{$info['lottery_cost_point']}" id="lottery_cost_point" class="txt">分
-                </td>
-                <td class="vatop tips">抽奖需要花费的积分</td>
+            <tr class="space">
+                <th colspan="15">抽奖总览</th>
             </tr>
             <tr>
-                <td colspan="2" class="required">状态:</td>
-            </tr>
-            <tr class="noborder">
-                <td class="vatop rowform">
+                <td colspan="2">
                     <ul>
-                        <li>
-                            <input name="lottery_status" type="radio" value="1" <if condition="$info['lottery_status'] eq 1">checked="checked"</if>>
-                            <label>进行</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="lottery_status" value="0" <if condition="$info['lottery_status'] eq 0">checked="checked"</if>>
-                            <label>下线</label>
-                        </li>
+                        <li><strong>抽奖ID:{$info['lottery_id']}</strong></li>
+                        <li><strong>抽奖标题:</strong><input type="text" name="lottery_title" value="{$info['lottery_title']}"></li>
+                        <empty name="info">
+                            <li><strong>开始时间:</strong><span><input class="txt date" type="text" id="lottery_start_time"
+                                                                   name="lottery_start_time" value="{:date('Y-m-d',time())}"></span></li>
+                            <li><strong>结束时间:</strong><span><input class="txt date" type="text" id="lottery_end_time"
+                                                                   name="lottery_end_time" value="{:date('Y-m-d',time()+1*24*60*60)}"></span></li>
+                            <else/>
+                            <li><strong>开始时间:</strong><span><input class="txt date" type="text" id="lottery_start_time"
+                                                                   name="lottery_start_time" value="{$info['add_time']|date='Y-m-d',###}"></span></li>
+                            <li><strong>结束时间:</strong><span><input class="txt date" type="text" id="lottery_end_time"
+                                                                   name="lottery_end_time" value="{:date('Y-m-d',$info['lottery_end_time']+1*24*60*60)}"></span></li>
+                        </empty>
+                        <li><strong>抽奖周期:</strong><span><input type="text" name="lottery_cycle_day" value="{$info['lottery_cycle_day']}">天</span></li>
+                        <li><strong>周期次数:</strong><span><input type="text" name="lottery_cycle_times" value="{$info['lottery_cycle_times']}">次</span></li>
+                        <li><strong>所需积分:</strong><span><input type="text" name="lottery_cost_point" value="{$info['lottery_cost_point']}">分</span></li>
+                        <li><strong>所需金额:</strong><span><input type="text" name="lottery_cost_money" value="{$info['lottery_cost_money']}">元</span></li>
                     </ul>
                 </td>
-                <td class="vatop tips"></td>
+            </tr>
+            <tr>
+                <th>奖品信息</th>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table tb-type2 goods ">
+                        <tbody id="goods_body">
+                        <tr>
+                            <th>奖品图片</th>
+                            <th class="align-center">奖品名</th>
+                            <th class="align-center">奖品等级</th>
+                            <th class="align-center">奖品总数</th>
+                            <th class="align-center">奖品剩余数量</th>
+                        </tr>
+                        <for start="0" end="5" comparison="lt" step="1" name="key" >
+                            <tr>
+                                <td class="w96pre">
+                                    <span class="type-file-box">
+                                    <input type='text' name='txt_default_pic_{$key}' id='txt_default_pic_{$key}' class='type-file-text' />
+                                    <input type='button' name='but_default_pic_{$key}' id='but_default_pic_{$key}' value='' class='type-file-button' />
+                                    <input name="default_pic_{$key}" type="file" class="type-file-file" id="default_pic_{$key}" size="30" hidefocus="true" nc_type="change_default_pic">
+                                    </span>
+                                    <span class="type-file-show" style="float: left;margin-left: 10px;">
+                                    <img class="show_image" src="__IMG__/preview.png">
+                                    <div class="type-file-preview"><img src="__UPLOADS__{$info['ap_pic']}"></div>
+                                    </span>
+                                </td>
+                                <td class="w60 align-center"><input type="text" name="LotteryAward[{$key}]['award_name']" value="{$info['LotteryAward'][$key]['award_name']}"></td>
+                                <td class="w20 align-center"><span>{$key+1}<input hidden="hidden" name="LotteryAward[{$key}]['award_level']" value="{$key+1}"></span></td>
+                                <td class="w96 align-center"><span><input type="text" name="LotteryAward[{$key}]['award_amount']" value="{$info['LotteryAward'][$key]['award_amount']}"></span></td>
+                                <td class="w96 align-center"><span><input type="text" name="LotteryAward[{$key}]['award_stock']" value="{$info['LotteryAward'][$key]['award_stock']}"></span></td>
+                                <input type="hidden" name="LotteryAward[{$key}]['award_id']" value="{$info['LotteryAward'][$key]['award_id']}">
+                            </tr>
+                        </for>
+                        </tbody>
+                    </table>
+                </td>
             </tr>
             </tbody>
             <tfoot>
             <tr class="tfoot">
-                <td colspan="15" ><a href="JavaScript:void(0);" class="btn" id="submitBtn"><span>保存</span></a></td>
+                <td><a href="JavaScript:void(0);" class="btn" onclick="form_submit()"><span>
+                    <notempty name="info">保存<else/>添加</notempty>
+                </span></a></td>
             </tr>
             </tfoot>
         </table>
     </form>
 </div>
-<script>
-    //按钮先执行验证再提交表单
-    $(function(){
-        $("#submitBtn").click(function(){
-            $("#link_form").submit();
-        });
+<script type="text/javascript" src="__STATIC__/jquery-ui/jquery.ui.js"></script>
+<script type="text/javascript" src="__STATIC__/jquery-ui/i18n/zh-CN.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/jquery-ui/themes/ui-lightness/jquery.ui.css"/>
+<script type="text/javascript">
+    $(function () {
+        $('#lottery_start_time').datepicker({dateFormat: 'yy-mm-dd'});
+        $('#lottery_end_time').datepicker({dateFormat: 'yy-mm-dd'});
     });
 </script>
 <script type="text/javascript">
     // 模拟网站LOGO上传input type='file'样式
     $(function(){
-        $("#default_pic").change(function(){
-            $("#txt_default_pic").val($(this).val());
+        $("#default_pic_0").change(function(){
+            $("#txt_default_pic_0").val($(this).val());
         });
-    // 上传图片类型
+        $("#default_pic_1").change(function(){
+            $("#txt_default_pic_1").val($(this).val());
+        });
+        $("#default_pic_2").change(function(){
+            $("#txt_default_pic_2").val($(this).val());
+        });
+        $("#default_pic_3").change(function(){
+            $("#txt_default_pic_3").val($(this).val());
+        });
+        $("#default_pic_4").change(function(){
+            $("#txt_default_pic_4").val($(this).val());
+        });
+        // 上传图片类型
         $('input[class="type-file-file"]').change(function(){
             var filepatd=$(this).val();
             var extStart=filepatd.lastIndexOf(".");
@@ -107,5 +119,8 @@
             }
         });
     });
+    function form_submit(){
+        $("#form_submit").submit();
+    }
 </script>
-<include file="Public/footer" />
+<include file="Public/footer"/>

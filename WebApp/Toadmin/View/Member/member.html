@@ -35,6 +35,8 @@
         <table class="tb-type1 noborder search">
             <tbody>
             <tr>
+                <th>会员ID</th>
+                <td><input type="text" value="{$search['member_id']}" name="member_id" class="txt"></td>
                 <th>手机号</th>
                 <td><input type="text" value="{$search['mobile']}" name="mobile" class="txt"></td>
                 <th>会员等级</th>
@@ -42,9 +44,7 @@
                     <select name="agent_id" class="querySelect">
                         <option value="">请选择...</option>
                         <volist name="agent_info" id="vo">
-                            <option value="{$vo['agent_id']}"
-                            <if condition="$search['agent_id'] eq $vo['agent_id']">selected</if>
-                            >{$vo['agent_name']}</option>
+                            <option value="{$vo['agent_id']}" <if condition="$search['agent_id'] eq $vo['agent_id']">selected</if>>{$vo['agent_name']}</option>
                         </volist>
                     </select>
                 </td>

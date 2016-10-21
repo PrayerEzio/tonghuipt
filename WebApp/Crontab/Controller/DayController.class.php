@@ -109,6 +109,7 @@ class DayController extends BaseController
 						$open_id = M('Member')->where(array('member_id'=>$bill['member_id']))->getField('openid');
 						if ($open_id)
 						{
+							$member_nickname = get_member_nickname($bill['member_id']);
 							$data['touser'] = $open_id;
 							$data['template_id'] = trim('O1byAyvnVv6dtj1wrwQiL9LdUS6Zb6S6E65APrUmf7I');
 							$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>9));
