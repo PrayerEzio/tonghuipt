@@ -263,11 +263,11 @@ class OrderController extends BaseController{
 	 * 生成订单
 	 */
 	public function creatOrder(){
-		$agent_id = M('Member')->where(array('member_id'=>$this->mid))->getField('agent_id');
+		/*$agent_id = M('Member')->where(array('member_id'=>$this->mid))->getField('agent_id');
 		if (!$agent_id)
 		{
 			$this->error('您还不是本网站的经销商,没有购买权限.');
-		}
+		}*/
 		//$addr_id = intval($_POST['addr_id']);
 		//$addr_info = M('MemberAddrs')->where(array('addr_id'=>$addr_id))->find();
 		$addr_info['name'] = trim($_POST['name']);

@@ -97,6 +97,7 @@ class MemberController extends BaseController{
 					}
 				}
 				$list[$key]['agent_member_num'] = $agent_member_num;
+				$list[$key]['active_loan_count'] = M('LoanRecord')->where(array('member_id'=>$item['member_id'],'active'=>1,'status'=>1))->count();
 			}
 			$this->branch_num = count($this->getChildsMember($this->mid,$field,$loop));//count(getChildsId($all_list,$this->mid,'member_id','parent_member_id',$loop));//
 			$parent_member_id = M('Member')->where(array('member_id'=>$this->mid))->getField('parent_member_id');
@@ -391,10 +392,7 @@ class MemberController extends BaseController{
 			}
 		}elseif (IS_GET)
 		{
-			if ($this->mid != 36 && $this->mid != 37 && $this->mid != 89)
-			{
-				$where['status'] = 1;
-			}
+			$where['status'] = 1;
 			$this->list = M('Loan')->where($where)->order('loan_sort desc,loan_level desc')->select();
 			$where['member_id'] = $this->mid;
 			$user_info = D('Member')->relation(true)->where($where)->find();
@@ -703,7 +701,7 @@ class MemberController extends BaseController{
 		$a_member_where['member_id'] = $this->mid;
 		$a_member_where['member_status'] = 1;
 		$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
-		$admin_id = array(141,89,336);
+		$admin_id = array(141,89,336,447);
 		$is_in_admin_id = in_array($this->mid,$admin_id);
 		if (!$withdraw_status)
 		{

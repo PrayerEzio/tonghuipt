@@ -48,6 +48,13 @@
 					<p>手机号码：<span>{:$vo['mobile'] ? $vo['mobile'] : '未填写'}</span></p>
 					<p>微信号：<span>{:$vo['wechat'] ? $vo['wechat'] : '未填写'}</span></p>
 					<p>会员等级：<span>{$vo['member_id']|get_member_agent_name}</span></p>
+					<p>排单状态：<span>
+						<if condition="$vo['active_loan_count'] == 0">
+							未排单
+						<else/>
+							排单中
+						</if>
+					</span></p>
 					<em class="red">{$vo['branch_num']}({$vo['agent_member_num']})</em>
 				</li>
 
