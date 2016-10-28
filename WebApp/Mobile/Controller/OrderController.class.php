@@ -352,7 +352,7 @@ class OrderController extends BaseController{
 							$data['data']['type']['color'] = '#173177';
 							$data['data']['Point']['value'] = $cost_points;
 							$data['data']['Point']['color'] = '#173177';
-							$data['data']['From']['value'] = '泰鑫国际动态商城';
+							$data['data']['From']['value'] = '泰鑫国际积分商城';
 							$data['data']['From']['color'] = '#173177';
 							$data['data']['remark']['value'] = '截止'.date('Y年m月d日 H:i',time()).'，您的可用动态为'.$member['point'].'积分。如有疑问请咨询微信TH09241121';
 							$data['data']['remark']['color'] = '#173177';
