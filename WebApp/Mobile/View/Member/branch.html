@@ -22,13 +22,14 @@
 
 		<notempty name="parent_member">
 			<h2>
-				<notempty name="parent_member['wechat']">
+				上级:{$parent_member['member_id']|get_member_nickname} {$parent_member['mobile']}
+				<!--<notempty name="parent_member['wechat']">
 					[微信号]{$parent_member['nickname']}
 				</notempty>
 				<notempty name="parent_member['mobile']">
 					[手机号]{$parent_member['mobile']}
 				</notempty>
-					[会员等级]{$parent_member['member_id']|get_member_agent_name}
+					[会员等级]{$parent_member['member_id']|get_member_agent_name}-->
 			</h2>
 		</notempty>
 

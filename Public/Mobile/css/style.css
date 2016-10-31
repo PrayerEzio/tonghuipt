@@ -22,7 +22,7 @@ header .pic img { width: 74px; height: 74px; border-radius: 50%;}
 header .member-txt { float: left;}
 header .member-txt p{ color: #fff;}
 footer { text-align: center;    padding: 20px 0 70px;}
-.show-money { display:flex; display:-ms-flex; display:-moz-flex; display:-webkit-flex; background: #e4f7ff; box-shadow: 1px 1px 1px #cfcfcf;}
+.show-money { color:deepskyblue;display:flex; display:-ms-flex; display:-moz-flex; display:-webkit-flex; background: #e4f7ff; box-shadow: 1px 1px 1px #cfcfcf;}
 .show-money .f { text-align: center; -ms-flex:1; -webkit-flex:1; -moz-flex:1; -o-flex:1; padding: 10px 0; }
 i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-block; width: 35px; height: 35px; background-size: 100%; border-radius: 50%; text-align: center; line-height: 35px; color: #fff; font-size: 20px;}
 

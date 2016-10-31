@@ -22,6 +22,37 @@ class MemberController extends BaseController{
 		}
         $this->autoFinishOrder();
 	}
+	private function getBranchLoanRefund($member_id)
+	{
+		$field = 'member_id,parent_member_id';
+		$childs_member = $this->getChildsMember($member_id,$field,9);
+		if (empty($childs_member))
+		{
+			return 0;
+		}
+		foreach ($childs_member as $child)
+		{
+			$member_id_array[] = $child['member_id'];
+		}
+		if (empty($member_id_array))
+		{
+			return 0;
+		}
+		$loan_list = M('Loan')->select();
+		$sum_times_where['member_id'] = array('in',$member_id_array);
+		$sum_branch_refund = 0;
+		if (empty($loan_list))
+		{
+			return 0;
+		}
+		foreach ($loan_list as $key => $item)
+		{
+			$sum_times_where['loan_id'] = $item['loan_id'];
+			$sum_times = M('LoanRecord')->where($sum_times_where)->sum('execution_times');
+			$sum_branch_refund += $sum_times*$item['daily_refund'];
+		}
+		return $sum_branch_refund;
+	}
 	/**
 	 * 会员中心.
 	 */
@@ -30,6 +61,12 @@ class MemberController extends BaseController{
 		$where['member_id'] = $this->mid;
 		$user_info = D('Member')->relation(true)->where($where)->find();
 		$this->user_info = $user_info;
+		$this->sum_branch_refund = $this->getBranchLoanRefund($this->mid);
+		$sum_loan_p_reward_where['member_id'] = $this->mid;
+		$sum_loan_p_reward_where['bill_type'] = 1;
+		$sum_loan_p_reward_where['channel'] = 10;
+		$sum_loan_p_reward = M('MemberBill')->where($sum_loan_p_reward_where)->sum('amount');
+		$this->sum_loan_p_reward = $sum_loan_p_reward;
 		$this->display();
 	}
 	//登出
