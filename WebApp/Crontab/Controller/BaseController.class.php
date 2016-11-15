@@ -16,7 +16,7 @@ class BaseController extends Controller{
 		parent::__construct();
 		//权限认证
 		$client_ip = get_client_ip();
-		if (empty($client_ip) || $client_ip !== C('CrontabServerIp'))
+		if (empty($client_ip) ||  !in_array($client_ip,C('CrontabServerIp')))
 		{
 			echo get_client_ip();die;
 		}

@@ -7,6 +7,6 @@
  * @author     muxiangdao-com Team Prayer (283386295@qq.com)
  */
 return array(
-    'CrontabServerIp' => '120.24.168.80',
+    'CrontabServerIp' => array('120.24.168.80','127.0.0.1'),
     'CrontabKey' => 'CrucisCrontab',
 );

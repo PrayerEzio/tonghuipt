@@ -738,7 +738,7 @@ class MemberController extends BaseController{
 		$a_member_where['member_id'] = $this->mid;
 		$a_member_where['member_status'] = 1;
 		$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
-		$admin_id = array(141,89,336,447);
+		$admin_id = array(89,324);
 		$is_in_admin_id = in_array($this->mid,$admin_id);
 		if (!$withdraw_status)
 		{
@@ -778,22 +778,28 @@ class MemberController extends BaseController{
 			$mid = M('Member')->where($b_member_where)->getField('member_id');
 			$total_amount = M('Member')->where($a_member_where)->getField($type);
 			//今日转账记录
-			$count_today_transfer_record_where['member_id'] = $this->mid;
-			$count_today_transfer_record_where['addtime'] = array('egt',NOW_TIME);
+			/*$count_today_transfer_record_where['member_id'] = $this->mid;
+			$count_today_transfer_record_where['addtime'] = array('egt',strtotime(date('Y-m-d')));
 			$count_today_transfer_record_where['status'] = 1;
-			$count_today_transfer_record = M('TransferRecord')->where($count_today_transfer_record_where)->count();
-			if ($count_today_transfer_record && !$is_in_admin_id)
+			$count_today_transfer_record = M('TransferRecord')->where($count_today_transfer_record_where)->count();*/
+			//今日转账额度
+			$sum_today_transfer_record_where['member_id'] = $this->mid;
+			$sum_today_transfer_record_where['addtime'] = array('egt',strtotime(date('Y-m-d')));
+			$sum_today_transfer_record_where['status'] = 1;
+			$sum_today_transfer_record = M('TransferRecord')->where($sum_today_transfer_record_where)->sum('amount');
+			$enable_amount = 1000-$sum_today_transfer_record;
+			if ($amount > $enable_amount && !$is_in_admin_id)
 			{
-				$this->error('您今日已经进行过转账操作了,请明日再来哦.');
+				$this->error('每日转账额度1000元哦.');
 			}
 			if ($total_amount < $amount)
 			{
 				$this->error('您的剩余'.$type_name.'不足,处理失败.');
 			}
-			if ($amount > 500 && !$is_in_admin_id)
+			/*if ($amount > 500 && !$is_in_admin_id)
 			{
 				$this->error('转账上限不能超过500哦.');
-			}
+			}*/
 			if (!$mid)
 			{
 				$this->error('该用户不存在,请查证.');
@@ -914,6 +920,13 @@ class MemberController extends BaseController{
 		}elseif (IS_GET)
 		{
 			$this->member_info = M('Member')->where($a_member_where)->field('point,predeposit')->find();
+			//今日转账额度
+			$sum_today_transfer_record_where['member_id'] = $this->mid;
+			$sum_today_transfer_record_where['addtime'] = array('egt',strtotime(date('Y-m-d')));
+			$sum_today_transfer_record_where['status'] = 1;
+			$sum_today_transfer_record = M('TransferRecord')->where($sum_today_transfer_record_where)->sum('amount');
+			$enable_amount = 1000-$sum_today_transfer_record;
+			$this->enable_amount = $enable_amount;
 			$this->display();
 		}
 	}

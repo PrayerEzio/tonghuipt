@@ -1769,3 +1769,49 @@ function get_loan_price($loan_id)
 	}
 	return $loan_price;
 }
+
+function grant_loan_parent_reward($record_id)
+{
+	$record_info = M('LoanRecord')->where(array('id'=>$record_id,'parent_reward_status'=>0))->find();
+	$loan_info = M('Loan')->where(array('loan_id'=>$record_info['loan_id']))->find();
+	if (!$record_info['parent_reward_status'] && !empty($record_info) && !empty($loan_info))
+	{
+		//发放推荐人奖励
+		$red_packet_where['reward_type'] = 'loan';
+		$red_packet = M('RedPacket')->where($red_packet_where)->order('level')->select();
+		$max = M('RedPacket')->where($red_packet_where)->max('level');
+		$parents_member_list = getParentsMember($record_info['member_id'],'*',$max);
+		$member_nickname = get_member_nickname($record_info['member_id']);
+		$res_change_parent_reward_status = M('LoanRecord')->where(array('id'=>$record_info['id'],'parent_reward_status'=>0))->setField('parent_reward_status',1);
+		if ($res_change_parent_reward_status)
+		{
+			foreach ($parents_member_list as $k => $parents_member)
+			{
+				$member_level_ch = ch_num($k+1);
+				$p_reward = $red_packet[$k]['reward_price']/100*$loan_info['price'];
+				$count_parents_active_loan_where['member_id'] = $parents_member['member_id'];
+				$count_parents_active_loan_where['status'] = 1;
+				$count_parents_active_loan_where['active'] = 1;
+				$count_parents_active_loan = M('LoanRecord')->where($count_parents_active_loan_where)->count();
+				if ($p_reward && $count_parents_active_loan)
+				{
+
+					$res_p_reward = M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('predeposit',$p_reward);
+					if ($res_p_reward){
+						$bill['member_id'] = $parents_member['member_id'];
+						$bill['bill_log'] = '来自'.$member_level_ch.'级会员-'.$member_nickname.'的动态推荐奖收益';
+						$bill['amount'] = $p_reward;
+						$bill['balance'] = M('Member')->where(array('member_id'=>$parents_member['member_id']))->getField('predeposit');
+						$bill['addtime'] = NOW_TIME;
+						$bill['bill_type'] = 1;
+						$bill['channel'] = 10;
+						M('MemberBill')->add($bill);
+					}else {
+						//写入报错日志
+						system_log('贷款推荐奖发放失败','LoanRecord:'.$record_id['id'].'的父级member_id:'.$parents_member['member_id'].'没有发放成功',10,'CrontabServer');
+					}
+				}
+			}
+		}
+	}
+}

@@ -171,7 +171,7 @@ class PayController extends BaseController{
 					$data['loan_id'] = $loan_info['loan_id'];
 					$data['loan_level'] = $loan_info['loan_level'];
 					$data['create_time'] = time();
-					$data['start_time'] = strtotime('+1 day');
+					$data['start_time'] = strtotime(date('Y-m-d',strtotime('+1 day')));
 					$data['end_time'] = $data['start_time']+$loan_info['cycle']*24*60*60;
 					$data['execution_times'] = 0;
 					$data['status'] = 1;
@@ -180,6 +180,7 @@ class PayController extends BaseController{
  					$s = M('LoanRecord')->add($data);
 					if ($s)
 					{
+						grant_loan_parent_reward($s);
 						$res = $this->mod->where($where)->setField('order_state',50);
 						$bill['member_id'] = $order['member_id'];
 						$bill['bill_log'] = '购买排单成功';

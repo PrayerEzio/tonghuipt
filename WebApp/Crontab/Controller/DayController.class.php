@@ -18,6 +18,8 @@ class DayController extends BaseController
 		if($web_stting['site_status'] != 1){
 			die;
 		}
+		set_time_limit(0);
+		ignore_user_abort();
 	}
 
 	public function every()
@@ -37,49 +39,12 @@ class DayController extends BaseController
 			if ($loan_info['cycle'] > $item['execution_times'])
 			{
 				$res1_where['id'] = $item['id'];
-				$res1_data['execution_times'] = $item['execution_times']+1;
+				$execution_times_new = $item['execution_times']+1;
+				$res1_data['execution_times'] = $execution_times_new;
 				$is_pay = 1;
-				$parent_reward_status = M('LoanRecord')->where(array('id'=>$item['id'],'parent_reward_status'=>0))->getField('parent_reward_status');
-				if ($res1_data['execution_times'] >= $loan_info['cycle'] && !$parent_reward_status)
+				if ($res1_data['execution_times'] >= $loan_info['cycle'])
 				{
-					//发放推荐人奖励
-					$red_packet_where['reward_type'] = 'loan';
-					$red_packet = M('RedPacket')->where($red_packet_where)->order('level')->select();
-					$max = M('RedPacket')->where($red_packet_where)->max('level');
-					$parents_member_list = getParentsMember($item['member_id'],'*',$max);
-					$member_nickname = get_member_nickname($item['member_id']);
-					$res_change_parent_reward_status = M('LoanRecord')->where(array('id'=>$item['id'],'parent_reward_status'=>0))->setField('parent_reward_status',1);
-					if ($res_change_parent_reward_status)
-					{
-						foreach ($parents_member_list as $k => $parents_member)
-						{
-							$member_level_ch = ch_num($k+1);
-							$p_reward = $red_packet[$k]['reward_price']/100*$loan_info['price'];
-							$count_parents_active_loan_where['member_id'] = $parents_member['member_id'];
-							$count_parents_active_loan_where['status'] = 1;
-							$count_parents_active_loan_where['active'] = 1;
-							$count_parents_active_loan_where['parent_reward_status'] = 0;
-							$count_parents_active_loan = M('LoanRecord')->where($count_parents_active_loan_where)->count();
-							if ($p_reward && $count_parents_active_loan)
-							{
-
-								$res_p_reward = M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('predeposit',$p_reward);
-								if ($res_p_reward){
-									$bill['member_id'] = $parents_member['member_id'];
-									$bill['bill_log'] = '来自'.$member_level_ch.'级会员-'.$member_nickname.'的动态推荐奖收益';
-									$bill['amount'] = $p_reward;
-									$bill['balance'] = M('Member')->where(array('member_id'=>$parents_member['member_id']))->getField('predeposit');
-									$bill['addtime'] = NOW_TIME;
-									$bill['bill_type'] = 1;
-									$bill['channel'] = 10;
-									M('MemberBill')->add($bill);
-								}else {
-									//写入报错日志
-									system_log('贷款推荐奖发放失败','LoanRecord:'.$item['id'].'的父级member_id:'.$parents_member['member_id'].'没有发放成功',10,'CrontabServer');
-								}
-							}
-						}
-					}
+					grant_loan_parent_reward($item['id']);
 					$res1_data['active'] = 0;
 					$count_other_active_where['member_id'] = $item['member_id'];
 					$count_other_active_where['id'] = array('neq',$item['id']);
@@ -89,18 +54,20 @@ class DayController extends BaseController
 				}
 				if ($is_pay)
 				{
-					M()->startTrans();
 					$res1 = M('LoanRecord')->where($res1_where)->save($res1_data);
+					$res2 = 0;
+					if ($res1)
+					{
+						$res2_where['member_id'] = $item['member_id'];
+						$res2_where['loan_status'] = 1;
+						$res2_where['member_status'] = 1;
+						$res2 = M('Member')->where($res2_where)->setInc('predeposit',$loan_info['daily_refund']);
+					}
 					unset($res1_data);
 					unset($res1_where);
-					$res2_where['member_id'] = $item['member_id'];
-					$res2_where['loan_status'] = 1;
-					$res2_where['member_status'] = 1;
-					$res2 = M('Member')->where($res2_where)->setInc('predeposit',$loan_info['daily_refund']);
 					unset($res2_where);
-					if ($res1 && $res2)
+					if ($res2)
 					{
-						M()->commit();
 						//写入收入日志
 						$bill['member_id'] = $item['member_id'];
 						$bill['bill_log'] = '来自排单返款';
@@ -111,12 +78,12 @@ class DayController extends BaseController
 						$bill['channel'] = 9;
 						M('MemberBill')->add($bill);
 						//推送消息
-						$open_id = M('Member')->where(array('member_id'=>$bill['member_id']))->getField('openid');
+						/*$open_id = M('Member')->where(array('member_id'=>$bill['member_id']))->getField('openid');
 						if ($open_id)
 						{
 							$member_nickname = get_member_nickname($bill['member_id']);
 							$data['touser'] = $open_id;
-							$data['template_id'] = trim('O1byAyvnVv6dtj1wrwQiL9LdUS6Zb6S6E65APrUmf7I');
+							$data['template_id'] = trim('O1byAyvnVv6dtj1wrwQiL9LdUS6Zb6S6E65APrUmf7I').'beta';
 							$data['url'] = C('SiteUrl').U('Member/bill',array('bill_type'=>9));
 							$data['data']['first']['value'] = $member_nickname.'您好,您的排单获得返利回馈.';
 							$data['data']['first']['color'] = '#173177';
@@ -131,11 +98,7 @@ class DayController extends BaseController
 							$data['data']['remark']['value'] = '感谢您的支持！';
 							$data['data']['remark']['color'] = '#173177';
 							sendTemplateMsg($data);
-						}
-					}else {
-						M()->rollback();
-						//写入报错日志
-						system_log('贷款偿还失败',$item['id'].'事务回滚$res1='.$res1.'&$res2='.$res2,10,'CrontabServer');
+						}*/
 					}
 				}
 			}
@@ -147,6 +110,7 @@ class DayController extends BaseController
 	//每日余额利息
 	private function increaseInterest()
 	{
+		die;
 		$member_list_where['predeposit'] = array('gt',0);
 		$member_list_where['member_status'] = 1;
 		$member_list_field = 'member_id,predeposit';
