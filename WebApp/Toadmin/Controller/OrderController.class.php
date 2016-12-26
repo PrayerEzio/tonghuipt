@@ -237,7 +237,7 @@ class OrderController extends GlobalController {
 				die();
 			}
 			if ($order['order_state'] > 10) {
-				M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['order_amount']*MSC('point_exchange_rate'));
+				//M('Member')->where(array('member_id'=>$order['member_id']))->setInc('point',$order['order_amount']*MSC('point_exchange_rate'));
 				$this->model->where($where)->setField('order_state',60);
 			}elseif ($order['order_state'] == 10){
 				$this->model->where($where)->setField('order_state',60);

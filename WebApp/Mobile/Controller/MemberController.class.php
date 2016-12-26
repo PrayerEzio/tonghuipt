@@ -51,6 +51,24 @@ class MemberController extends BaseController{
 			$sum_times = M('LoanRecord')->where($sum_times_where)->sum('execution_times');
 			$sum_branch_refund += $sum_times*$item['daily_refund'];
 		}
+		/*$old_daily_refund = array(
+			1 => 6.5,
+			2 => 57.5,
+			3 => 110,
+			4 => 220,
+			5 => 550
+		);*/
+		/*foreach ($loan_list as $key => $item)
+		{
+			$sum_times_old_where['loan_id'] = $item['loan_id'];
+			$sum_times_old_where['create_time'] = array('elt',strtotime('2016-12-4 22:00:00'));
+			$sum_times_old = M('LoanRecord')->where($sum_times_old_where)->sum('execution_times');
+			$sum_branch_refund += $sum_times_old*$old_daily_refund[$item['loan_id']];
+			$sum_times_new_where['loan_id'] = $item['loan_id'];
+			$sum_times_new_where['create_time'] = array('gt',strtotime('2016-12-4 22:00:00'));
+			$sum_times_new = M('LoanRecord')->where($sum_times_new_where)->sum('execution_times');
+			$sum_branch_refund += $sum_times_new*$item['daily_refund'];
+		}*/
 		return $sum_branch_refund;
 	}
 	/**
@@ -788,6 +806,10 @@ class MemberController extends BaseController{
 			$sum_today_transfer_record_where['status'] = 1;
 			$sum_today_transfer_record = M('TransferRecord')->where($sum_today_transfer_record_where)->sum('amount');
 			$enable_amount = 1000-$sum_today_transfer_record;
+			if (($amount%100 != 0 || $amount < 100) && !$is_in_admin_id)
+			{
+				$this->error('转账额度最低100,并且必须为100的倍数.');
+			}
 			if ($amount > $enable_amount && !$is_in_admin_id)
 			{
 				$this->error('每日转账额度1000元哦.');
@@ -862,13 +884,6 @@ class MemberController extends BaseController{
 					$bill['channel'] = -8;
 					M('MemberBill')->add($bill);
 				}
-				$transfer_record['member_id'] = $a_user_info['member_id'];
-				$transfer_record['b_member_id'] = $b_user_info['member_id'];
-				$transfer_record['type'] = $type;
-				$transfer_record['amount'] = $amount;
-				$transfer_record['addtime'] = NOW_TIME;
-				$transfer_record['status'] = 1;
-				M('TransferRecord')->add($transfer_record);
 			}
 			if ($b_user_info['openid'])
 			{
@@ -916,6 +931,13 @@ class MemberController extends BaseController{
 					M('MemberBill')->add($bill);
 				}
 			}
+			$transfer_record['member_id'] = $a_user_info['member_id'];
+			$transfer_record['b_member_id'] = $b_user_info['member_id'];
+			$transfer_record['type'] = $type;
+			$transfer_record['amount'] = $amount;
+			$transfer_record['addtime'] = NOW_TIME;
+			$transfer_record['status'] = 1;
+			M('TransferRecord')->add($transfer_record);
 			$this->success('操作成功.');
 		}elseif (IS_GET)
 		{
