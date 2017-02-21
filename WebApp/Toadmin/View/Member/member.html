@@ -48,6 +48,8 @@
                         </volist>
                     </select>
                 </td>
+                <th>累计动态大于</th>
+                <td><input type="text" value="{$search['sum_loan_p_reward']}" name="sum_loan_p_reward" class="txt"></td>
                 <td><a href="javascript:document.formSearch.submit();" class="btn-search tooltip" title="查询">&nbsp;</a>
                 </td>
             </tr>
@@ -67,9 +69,10 @@
                 <th class="w48">名称</th>
                 <th class="w48">手机号</th>
                 <th class="w48">邮箱</th>
+                <th class="w48">累计动态</th>
                 <th class="w48">会员等级</th>
                 <th class="w48">注册时间</th>
-                <th class="w200 align-center">操作</th>
+                <th class="w48 align-center">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -81,6 +84,7 @@
                         <td>{$val['nickname']}</td>
                         <td>{$val['mobile']}</td>
                         <td>{$val['email']}</td>
+                        <td>{$val['sum_loan_p_reward']}</td>
                         <td>{$val['member_id']|get_member_agent_name}</td>
                         <td>{$val['register_time']|date='Y-m-d',###}</td>
                         <td class='align-center'>

@@ -1640,7 +1640,8 @@ function qrcodeBackground($qrcode,$background,$path)
 		//图片背景
 		$background = imagecreatefromstring(file_get_contents($background));
 		//重新组合图片并调整大小
-		imagecopyresampled($background, $QR, 82, 235, 0, 0, $QR_width+17,$QR_height+24, $QR_width, $QR_height);
+		//imagecopyresampled($background, $QR, 82, 235, 0, 0, $QR_width+17,$QR_height+24, $QR_width, $QR_height);
+		imagecopyresampled($background, $QR, 170, 570, 0, 0, 175,175, $QR_width, $QR_height);
 		imagepng($background, '.'.$path);
 	}
 	return $path;
@@ -1787,7 +1788,10 @@ function grant_loan_parent_reward($record_id)
 		{
 			foreach ($parents_member_list as $k => $parents_member)
 			{
-				$sub_member_count = M('Member')->where(array('parent_member_id'=>$parents_member['member_id']))->count();
+				$sub_member_count_where['parent_member_id'] = $parents_member['member_id'];
+				$sub_member_count_where['loan_times'] = array('gt',0);
+				$sub_member_count_where['member_status'] = 1;
+				$sub_member_count = M('Member')->where($sub_member_count_where)->count();
 				if ($sub_member_count > $k)
 				{
 					$member_level_ch = ch_num($k+1);
@@ -1809,6 +1813,7 @@ function grant_loan_parent_reward($record_id)
 							$bill['bill_type'] = 1;
 							$bill['channel'] = 10;
 							M('MemberBill')->add($bill);
+							M('Member')->where(array('member_id'=>$parents_member['member_id']))->setInc('sum_loan_p_reward',$p_reward);
 						}else {
 							//写入报错日志
 							system_log('贷款推荐奖发放失败','LoanRecord:'.$record_id['id'].'的父级member_id:'.$parents_member['member_id'].'没有发放成功',10,'CrontabServer');

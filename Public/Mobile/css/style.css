@@ -22,7 +22,7 @@ header .pic img { width: 74px; height: 74px; border-radius: 50%;}
 header .member-txt { float: left;}
 header .member-txt p{ color: #fff;}
 footer { text-align: center;    padding: 20px 0 70px;}
-.show-money { color:deepskyblue;display:flex; display:-ms-flex; display:-moz-flex; display:-webkit-flex; background: #e4f7ff; box-shadow: 1px 1px 1px #cfcfcf;}
+.show-money {font-size: 12px; color:#a5a5a5;display:flex; display:-ms-flex; display:-moz-flex; display:-webkit-flex; background: #feede3; box-shadow: 1px 1px 1px #cfcfcf;}
 .show-money .f { text-align: center; -ms-flex:1; -webkit-flex:1; -moz-flex:1; -o-flex:1; padding: 10px 0; }
 i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-block; width: 35px; height: 35px; background-size: 100%; border-radius: 50%; text-align: center; line-height: 35px; color: #fff; font-size: 20px;}
 
@@ -42,10 +42,51 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .m-main .item:active { background-color: #ECECEC; }
 .m-main .item .ico-right {     position: absolute; right: 15px; top: 50%; margin-top: -5px;}
 .border { border-bottom: 1px solid #cfcfcf; margin-top: 10px;}
-.flexdNav {    -webkit-box-shadow: 0 0 1px rgba(0,0,0,.85);box-shadow: 0 0 1px rgba(0,0,0,.85);  position: fixed; width: 100%;  bottom: 0; left: 0; background:#10aeff; display: flex; display: -webkit-flex; display: -moz-flex; display: -moz-flex; display: -o-flex;  }
-.flexdNav a { color: #fff; display: block; padding: 5px 0; font-size: 0.32rem;}
-.flexdNav .item { text-align: center; -ms-flex:1; -webkit-flex:1; -moz-flex:1; -o-flex:1;}
-.flexdNav a span { display: block;}
+
+.flexdNav {
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+    box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: #10aeff;
+    /*display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -moz-flex;
+    display: -o-flex;*/
+
+    display: -webkit-flex;  /* 新版本语法: Chrome 21+ */
+    display: flex;          /* 新版本语法: Opera 12.1, Firefox 22+ */
+    display: -webkit-box;   /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box;      /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox;   /* 混合版本语法: IE 10 */
+}
+
+.flexdNav a {
+    color: #fff;
+    display: block;
+    padding: 5px 0;
+    font-size: 0.32rem;
+}
+
+.flexdNav .item {
+    text-align: center;
+    /*-ms-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -o-flex: 1;*/
+    -webkit-flex: 1;        /* Chrome */
+    -ms-flex: 1;            /* IE 10 */
+    flex: 1;                /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    -webkit-box-flex: 1;    /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;       /* OLD - Firefox 19- */
+}
+
+.flexdNav a span {
+    display: block;
+}
 .redpacket-group header { padding: 20px; background: #1c5f97; color: #fff; font-size: 40px;}
 .redpacket-group header h2 { font-weight: normal; font-size: 15px; margin-bottom: 15px;}
 .redpacket-group header h3 { font-weight: normal; font-size: 15px; margin-top: 15px;}
@@ -877,3 +918,10 @@ i[class*="ico-m-"] {    vertical-align: middle; margin: 0 15px; display: inline-
 .category-8 {background: url(../images/9.svg) no-repeat; }
 .category-p { font-size: 14px; color:#000;}
 .dow-ico{    position: absolute; font-size: 12px; right: 0; top: 5px; display: block; width: 10px; height: 10px; border: 2px solid #a9a9a9; border-left: 0; border-bottom: 0; transform: rotate(135deg); }
+.hr-line-dashed {
+    border-top: 1px #ebc9c0;
+    color: #ebc9c0;
+    background-color: #ebc9c0;
+    height: 1px;
+}
+.f-line {color: #ebc9c0; text-align: center; -ms-flex:1; -webkit-flex:1; -moz-flex:1; -o-flex:1; padding: 10px 0; }

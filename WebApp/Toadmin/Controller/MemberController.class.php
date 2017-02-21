@@ -21,9 +21,11 @@ class MemberController extends GlobalController {
 		$mobile = trim($_GET['mobile']);
 		$member_id = intval($_GET['member_id']);
 		$agent_id = intval($_GET['agent_id']);
+		$sum_loan_p_reward = floatval($_GET['sum_loan_p_reward']);
 		if($member_id)$map['member_id'] = array('eq',$member_id);
 		if($mobile)$map['mobile'] = array('eq',$mobile);
 		if($agent_id)$map['agent_id'] = array('eq',$agent_id);
+		if($sum_loan_p_reward)$map['sum_loan_p_reward'] = array('gt',$sum_loan_p_reward);
 		$map['member_type'] = I('get.type',0,'int');
 		$totalRows = $this->model->where($map)->count();
 		$page = new Page($totalRows,10);	

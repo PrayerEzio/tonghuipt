@@ -180,6 +180,10 @@ class PayController extends BaseController{
  					$s = M('LoanRecord')->add($data);
 					if ($s)
 					{
+						$res2_where['member_id'] = $order['member_id'];
+						$res2_where['loan_status'] = 1;
+						$res2_where['member_status'] = 1;
+						M('Member')->where($res2_where)->setInc('loan_times',1);
 						grant_loan_parent_reward($s);
 						$res = $this->mod->where($where)->setField('order_state',50);
 						$bill['member_id'] = $order['member_id'];

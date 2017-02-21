@@ -80,11 +80,6 @@ class MemberController extends BaseController{
 		$user_info = D('Member')->relation(true)->where($where)->find();
 		$this->user_info = $user_info;
 		$this->sum_branch_refund = $this->getBranchLoanRefund($this->mid);
-		$sum_loan_p_reward_where['member_id'] = $this->mid;
-		$sum_loan_p_reward_where['bill_type'] = 1;
-		$sum_loan_p_reward_where['channel'] = 10;
-		$sum_loan_p_reward = M('MemberBill')->where($sum_loan_p_reward_where)->sum('amount');
-		$this->sum_loan_p_reward = $sum_loan_p_reward;
 		$this->display();
 	}
 	//登出
@@ -756,11 +751,41 @@ class MemberController extends BaseController{
 		$a_member_where['member_id'] = $this->mid;
 		$a_member_where['member_status'] = 1;
 		$withdraw_status = M('Member')->where(array('member_id'=>$this->mid))->getField('withdraw_status');
-		$admin_id = array(89,324);
+		$admin_id = array(37,89,324);
 		$is_in_admin_id = in_array($this->mid,$admin_id);
 		if (!$withdraw_status)
 		{
 			$this->error('抱歉,您没有转账的权限.');
+		}
+
+		$more_transfer_member_id_array = array(
+			37,
+			427,
+			1350,
+			336,
+			149,
+			429,
+			412,
+			410,
+			221,
+			352,
+			353,
+			426,
+			1369,
+			422,
+			443,
+		);
+		$upper_limit_amount = 0;
+		if (in_array($this->mid,$more_transfer_member_id_array))
+		{
+			$upper_limit_amount = 1500;
+		}elseif($this->mid == 336){
+			$upper_limit_amount = 5000;
+		}elseif($this->mid == 581)
+		{
+			$upper_limit_amount = 200;
+		}else {
+			$upper_limit_amount = 500;
 		}
 		if (IS_POST)
 		{
@@ -787,6 +812,11 @@ class MemberController extends BaseController{
 					break;
 			}
 			$mid = I('post.b_mid',0,'int');
+			/*$t_auth_id_array = array(37,89,324);
+			if (!in_array($this->mid,$t_auth_id_array) && !in_array($mid,$t_auth_id_array))
+			{
+				$this->error('用户id无效.');
+			}*/
 			if ($mid == $this->mid)
 			{
 				$this->error('用户id无效.');
@@ -805,14 +835,14 @@ class MemberController extends BaseController{
 			$sum_today_transfer_record_where['addtime'] = array('egt',strtotime(date('Y-m-d')));
 			$sum_today_transfer_record_where['status'] = 1;
 			$sum_today_transfer_record = M('TransferRecord')->where($sum_today_transfer_record_where)->sum('amount');
-			$enable_amount = 1000-$sum_today_transfer_record;
+			$enable_amount = $upper_limit_amount-$sum_today_transfer_record;
 			if (($amount%100 != 0 || $amount < 100) && !$is_in_admin_id)
 			{
 				$this->error('转账额度最低100,并且必须为100的倍数.');
 			}
 			if ($amount > $enable_amount && !$is_in_admin_id)
 			{
-				$this->error('每日转账额度1000元哦.');
+				$this->error('每日转账额度'.$upper_limit_amount.'元哦.');
 			}
 			if ($total_amount < $amount)
 			{
@@ -947,7 +977,7 @@ class MemberController extends BaseController{
 			$sum_today_transfer_record_where['addtime'] = array('egt',strtotime(date('Y-m-d')));
 			$sum_today_transfer_record_where['status'] = 1;
 			$sum_today_transfer_record = M('TransferRecord')->where($sum_today_transfer_record_where)->sum('amount');
-			$enable_amount = 1000-$sum_today_transfer_record;
+			$enable_amount = $upper_limit_amount-$sum_today_transfer_record;
 			$this->enable_amount = $enable_amount;
 			$this->display();
 		}

@@ -31,7 +31,7 @@ class IndexController extends BaseController{
 		$user = M('Member')->where($where)->field('mobile')->find();
 		$phone = $user['mobile'];
 		$url = U('Login/register',array('invite_phone'=>$phone),true,true); //二维码内容
-		$background = './Public/Mobile/images/ercode.jpg';
+		$background = './Public/Mobile/images/ercode2.jpg';
 		$this->qrcode_img = qrcode($url,'',$background);
 		$this->display();
 	}

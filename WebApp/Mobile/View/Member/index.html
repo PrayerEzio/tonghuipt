@@ -20,11 +20,14 @@
 	</header>
 	<div class="show-money">
 		 <div class="f">钱包:￥<em>{$user_info['predeposit']|price_format}</em></div>
-		 <div class="f">积分:<em>{$user_info['point']}</em></div>
+		<div class="f-line">|</div>
+		 <div class="f">购物积分:<em>{$user_info['point']}</em></div>
 	</div>
+	<div class="hr-line-dashed"></div>
 	<div class="show-money">
 		<div class="f">总业绩:￥<em>{$sum_branch_refund|price_format}</em></div>
-		<div class="f">累计动态:<em>{$sum_loan_p_reward|price_format}</em></div>
+		<div class="f-line">|</div>
+		<div class="f">累计动态:<em>{$user_info['sum_loan_p_reward']|price_format}</em></div>
 	</div>
 	<div class="m-main">
 		<div class="border"></div>
